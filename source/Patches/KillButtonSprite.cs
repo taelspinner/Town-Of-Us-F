@@ -1,5 +1,7 @@
 ﻿using HarmonyLib;
 using UnityEngine;
+using System.IO;
+using Rewired.UI.ControlMapper;
 
 namespace TownOfUs
 {
@@ -9,6 +11,22 @@ namespace TownOfUs
         public static void Prefix(KillButton __instance)
         {
             __instance.transform.Find("Text_TMP").gameObject.SetActive(false);
+        }
+    }
+    
+    [HarmonyPatch(typeof(ControlMapper), nameof(ControlMapper.OnKeyboardElementAssignmentPollingWindowUpdate))]
+    public class KillKeybind
+    {
+        [HarmonyPostfix]
+        public static void postfix(ControlMapper __instance)
+        {
+            if (!File.Exists(Application.persistentDataPath + "\\ToUKeybind.txt")) 
+                File.WriteAllTextAsync(Application.persistentDataPath + "\\ToUKeybind.txt", "Q");
+            if (__instance.pendingInputMapping.actionName == "Kill")
+            {
+                string newbind = __instance.pendingInputMapping.elementName; 
+                File.WriteAllTextAsync(Application.persistentDataPath + "\\ToUKeybind.txt", newbind.Replace(" ", string.Empty));
+            } 
         }
     }
     
@@ -128,7 +146,9 @@ namespace TownOfUs
                     PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut);
             }
 
-            var keyInt = Input.GetKeyInt(KeyCode.Q);
+            string key = File.ReadAllText(Application.persistentDataPath + "\\ToUKeybind.txt");
+            KeyCode KeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), key);
+            var keyInt = Input.GetKeyInt(KeyCode);
             var controller = ConsoleJoystick.player.GetButtonDown(8);
             if (keyInt | controller && __instance.KillButton != null && flag && !PlayerControl.LocalPlayer.Data.IsDead)
                 __instance.KillButton.DoClick();
