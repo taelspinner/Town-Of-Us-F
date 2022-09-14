@@ -20,8 +20,6 @@ namespace TownOfUs
         [HarmonyPostfix]
         public static void postfix(ControlMapper __instance)
         {
-            if (!File.Exists(Application.persistentDataPath + "\\ToUKeybind.txt")) 
-                File.WriteAllTextAsync(Application.persistentDataPath + "\\ToUKeybind.txt", "Q");
             if (__instance.pendingInputMapping.actionName == "Kill")
             {
                 string newbind = __instance.pendingInputMapping.elementName; 
