@@ -25,7 +25,8 @@ namespace TownOfUs
             if (__instance.pendingInputMapping.actionName == "Kill")
             {
                 string newbind = __instance.pendingInputMapping.elementName; 
-                File.WriteAllTextAsync(Application.persistentDataPath + "\\ToUKeybind.txt", newbind.Replace(" ", string.Empty));
+                if (newbind != "None")
+                    File.WriteAllTextAsync(Application.persistentDataPath + "\\ToUKeybind.txt", newbind.Replace(" ", string.Empty));
             } 
         }
     }
