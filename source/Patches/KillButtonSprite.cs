@@ -47,7 +47,7 @@ namespace TownOfUs
         private static Sprite Infect => TownOfUs.InfectSprite;
         private static Sprite Trap => TownOfUs.TrapSprite;
         private static Sprite Examine => TownOfUs.ExamineSprite;
-        private static Sprite Button => TownOfUs.ButtonSprite;
+
         private static Sprite Kill;
 
 

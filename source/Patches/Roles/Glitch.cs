@@ -5,10 +5,9 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using Reactor;
 using TownOfUs.CrewmateRoles.MedicMod;
-using Reactor.Extensions;
+using Reactor.Utilities;
+using Reactor.Utilities.Extensions;
 using TownOfUs.Extensions;
 using TownOfUs.Roles.Modifiers;
 using UnityEngine;
@@ -530,7 +529,7 @@ namespace TownOfUs.Roles
 
                             StopKill.BreakShield(medic, __gInstance.Player.PlayerId,
                                 CustomGameOptions.ShieldBreaks);
-                            if (CustomGameOptions.KilledOnAlert && !__gInstance.ClosestPlayer.IsProtected())
+                            if (CustomGameOptions.KilledOnAlert && !__gInstance.KillTarget.IsProtected())
                             {
                                 Utils.RpcMurderPlayer(__gInstance.Player, __gInstance.KillTarget);
                                 __gInstance.Player.SetKillTimer(CustomGameOptions.GlitchKillCooldown);
