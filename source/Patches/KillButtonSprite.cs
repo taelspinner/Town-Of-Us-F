@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using UnityEngine;
-using System.IO;
-using Rewired.UI.ControlMapper;
+using TownOfUs.Roles;
+
 
 namespace TownOfUs
 {
@@ -13,22 +13,7 @@ namespace TownOfUs
             __instance.transform.Find("Text_TMP").gameObject.SetActive(false);
         }
     }
-    
-    [HarmonyPatch(typeof(ControlMapper), nameof(ControlMapper.OnKeyboardElementAssignmentPollingWindowUpdate))]
-    public class KillKeybind
-    {
-        [HarmonyPostfix]
-        public static void postfix(ControlMapper __instance)
-        {
-            if (__instance.pendingInputMapping.actionName == "Kill")
-            {
-                string newbind = __instance.pendingInputMapping.elementName; 
-                if (newbind != "None")
-                    File.WriteAllTextAsync(Application.persistentDataPath + "\\ToUKeybind.txt", newbind.Replace(" ", string.Empty));
-            } 
-        }
-    }
-    
+
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public class KillButtonSprite
     {
@@ -145,12 +130,18 @@ namespace TownOfUs
                     PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut);
             }
 
-            string key = File.ReadAllText(Application.persistentDataPath + "\\ToUKeybind.txt");
-            KeyCode KeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), key);
-            var keyInt = Input.GetKeyInt(KeyCode);
+            var keys = KeybindPatches.ReadJson();
+            KeyCode KillKeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), keys.Kill);
+            var keyInt = Input.GetKeyInt(KillKeyCode);
             var controller = ConsoleJoystick.player.GetButtonDown(8);
             if (keyInt | controller && __instance.KillButton != null && flag && !PlayerControl.LocalPlayer.Data.IsDead)
                 __instance.KillButton.DoClick();
+
+            var role = Role.GetRole(PlayerControl.LocalPlayer);
+            KeyCode AbilityKeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), keys.RoleAbility);
+            var clicked = Input.GetKeyDownInt(AbilityKeyCode);
+            if (role?.ExtraButtons != null && clicked && !PlayerControl.LocalPlayer.Data.IsDead)
+                role.ExtraButtons[0].DoClick();
         }
     }
 }
