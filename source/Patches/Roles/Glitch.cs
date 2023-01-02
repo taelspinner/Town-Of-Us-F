@@ -1,7 +1,6 @@
 ﻿using Hazel;
 using InnerNet;
 using System;
-using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -440,8 +439,8 @@ namespace TownOfUs.Roles
         {
             public static void KillButtonUpdate(Glitch __gInstance, HudManager __instance)
             {
-                string key = File.ReadAllText(Application.persistentDataPath + "\\ToUKeybind.txt");
-                KeyCode KeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), key);
+                string key = KeybindPatches.ReadJson().Kill;
+                KeyCode KeyCode = (KeyCode) Enum.Parse(typeof(KeyCode), key);
                 if (!__gInstance.Player.Data.IsImpostor() && Input.GetKeyDown(KeyCode))
                     __instance.KillButton.DoClick();
 

@@ -198,8 +198,8 @@ namespace TownOfUs
             _harmony.PatchAll();
             SubmergedCompatibility.Initialize();
 
-            if (!System.IO.File.Exists(Application.persistentDataPath + "\\ToUKeybind.txt")) 
-                System.IO.File.WriteAllTextAsync(Application.persistentDataPath + "\\ToUKeybind.txt", "Q");
+            if (!System.IO.File.Exists(KeybindPatches.Jsonpath))
+                KeybindPatches.WriteJson("Q", "Z");
         }
 
         public static Sprite CreateSprite(string name)
