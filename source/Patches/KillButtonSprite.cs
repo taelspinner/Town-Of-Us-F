@@ -3,8 +3,6 @@ using HarmonyLib;
 using TownOfUs.Extensions;
 using TownOfUs.Roles;
 using UnityEngine;
-using TownOfUs.Roles;
-
 
 namespace TownOfUs
 {
