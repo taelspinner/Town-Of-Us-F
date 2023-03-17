@@ -2,6 +2,7 @@
 using HarmonyLib;
 using TownOfUs.Extensions;
 using TownOfUs.Roles;
+using TownOfUs.Roles.Modifiers;
 using UnityEngine;
 
 namespace TownOfUs
@@ -148,18 +149,28 @@ namespace TownOfUs
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-1f, 1f, 0f);
             }
 
-            var keys = KeybindPatches.ReadJson();
-            KeyCode KillKeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), keys.Kill);
-            var keyInt = Input.GetKeyInt(KillKeyCode);
+            bool KillKey =  Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Kill");
             var controller = ConsoleJoystick.player.GetButtonDown(8);
-            if (keyInt | controller && __instance.KillButton != null && flag && !PlayerControl.LocalPlayer.Data.IsDead)
+            if ((KillKey || controller) && __instance.KillButton != null && flag && !PlayerControl.LocalPlayer.Data.IsDead)
                 __instance.KillButton.DoClick();
 
             var role = Role.GetRole(PlayerControl.LocalPlayer);
-            KeyCode AbilityKeyCode = (KeyCode) System.Enum.Parse(typeof(KeyCode), keys.RoleAbility);
-            var clicked = Input.GetKeyDownInt(AbilityKeyCode);
-            if (role?.ExtraButtons != null && clicked && !PlayerControl.LocalPlayer.Data.IsDead)
+            bool AbilityKey =  Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU imp/nk");
+            if (role?.ExtraButtons != null && AbilityKey && !PlayerControl.LocalPlayer.Data.IsDead)
                 role.ExtraButtons[0].DoClick();
+
+            if (Modifier.GetModifier<ButtonBarry>(PlayerControl.LocalPlayer)?.ButtonUsed == false &&
+                Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU bb/disperse/mimic") &&
+                !PlayerControl.LocalPlayer.Data.IsDead)
+            {
+                Modifier.GetModifier<ButtonBarry>(PlayerControl.LocalPlayer).ButtonButton.DoClick();
+            }
+            else if (Modifier.GetModifier<Disperser>(PlayerControl.LocalPlayer)?.ButtonUsed == false &&
+                     Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU bb/disperse/mimic") &&
+                     !PlayerControl.LocalPlayer.Data.IsDead)
+            {
+                Modifier.GetModifier<Disperser>(PlayerControl.LocalPlayer).DisperseButton.DoClick();
+            }
         }
 
         [HarmonyPatch(typeof(AbilityButton), nameof(AbilityButton.Update))]

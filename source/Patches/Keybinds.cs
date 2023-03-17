@@ -1,74 +1,47 @@
-using System.IO;
-using System.Text.Json;
-using Rewired.UI.ControlMapper;
 using HarmonyLib;
-using UnityEngine;
+using Rewired;
+using Rewired.Data;
 
 namespace TownOfUs
 {
-    public class Keybindsjson
+    //thanks to TheOtherRolesAU/TheOtherRoles/pull/347 by dadoum for the patch and extension
+    [HarmonyPatch(typeof(InputManager_Base), nameof(InputManager_Base.Awake))]
+    public static class Keybinds
     {
-        public string Kill { get; set; }
-
-        public string RoleAbility { get; set; }
-    }
-
-    [HarmonyPatch]
-
-    public class KeybindPatches
-    {
-        public static readonly string Jsonpath = Application.persistentDataPath + "\\ToUKeybinds.json";
-
-        public static readonly JsonSerializerOptions opts = new()
+        [HarmonyPrefix]
+        private static void Prefix(InputManager_Base __instance)
         {
-            WriteIndented = true
-        };
-
-        [HarmonyPatch(typeof(ControlMapper), nameof(ControlMapper.OnKeyboardElementAssignmentPollingWindowUpdate))]
-        [HarmonyPostfix]
-        public static void Postfix(ControlMapper __instance)
-        {
-            var json = ReadJson();
-            if (__instance.pendingInputMapping.actionName == "Kill")
-            {
-                string newbind = __instance.pendingInputMapping.elementName;
-                if (newbind != "None")
-                {
-                    newbind = newbind.Replace(" ", string.Empty);
-                    WriteJson(newbind, json.RoleAbility);
-                }
-            }
-            else if (__instance.pendingInputMapping.actionName == "Role Ability")
-            {
-                string newbind = __instance.pendingInputMapping.elementName;
-                if (newbind != "None")
-                {
-                    newbind = newbind.Replace(" ", string.Empty);
-                    WriteJson(json.Kill, newbind);
-                }
-            }
+            __instance.userData.GetAction(8).descriptiveName = "Kill / Crew abilities";
+            __instance.userData.RegisterBind("ToU imp/nk", "-Impostor / neutral killer abilities");
+            __instance.userData.RegisterBind("ToU bb/disperse/mimic", "-Button barry / disperse / glitch mimic");
+            __instance.userData.RegisterBind("ToU hack", "-Glitch's hack");
         }
 
-        public static Keybindsjson ReadJson()
+        private static int RegisterBind(this UserData self, string name, string description, int elementIdentifierId = -1, int category = 0, InputActionType type = InputActionType.Button)
         {
-            var file = File.ReadAllText(Jsonpath);
-            var json = (Keybindsjson) JsonSerializer.Deserialize
-                                                (file,
-                                                typeof(Keybindsjson),
-                                                opts);
+            self.AddAction(category);
+            var action = self.GetAction(self.actions.Count - 1)!;
 
-            return json;
-        }
+            action.name = name;
+            action.descriptiveName = description;
+            action.categoryId = category;
+            action.type = type;
+            action.userAssignable = true;
 
-        public static void WriteJson(string killkey, string Abilitykey)
-        {
-            Keybindsjson json = new()
+            var map = new ActionElementMap
             {
-                Kill = killkey,
-                RoleAbility = Abilitykey
+                _elementIdentifierId = elementIdentifierId,
+                _actionId = action.id,
+                _elementType = ControllerElementType.Button,
+                _axisContribution = Pole.Positive,
+                _modifierKey1 = ModifierKey.None,
+                _modifierKey2 = ModifierKey.None,
+                _modifierKey3 = ModifierKey.None
             };
-            string data = JsonSerializer.Serialize(json, opts);
-            File.WriteAllText(Jsonpath, data);
+            self.keyboardMaps[0].actionElementMaps.Add(map);
+            self.joystickMaps[0].actionElementMaps.Add(map);
+
+            return action.id;
         }
     }
 }
