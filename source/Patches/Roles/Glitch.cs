@@ -122,7 +122,7 @@ namespace TownOfUs.Roles
 
             if (HudManager.Instance?.Chat != null)
             {
-                foreach (var bubble in HudManager.Instance.Chat.chatBubblePool.activeChildren)
+                foreach (var bubble in HudManager.Instance.Chat.chatBubPool.activeChildren)
                 {
                     if (bubble.Cast<ChatBubble>().NameText != null &&
                         Player.Data.PlayerName == bubble.Cast<ChatBubble>().NameText.text)
@@ -183,7 +183,7 @@ namespace TownOfUs.Roles
                         return;
                     }
 
-                    foreach (var bubble in MimicList.chatBubblePool.activeChildren)
+                    foreach (var bubble in MimicList.chatBubPool.activeChildren)
                     {
                         if (bubble == HighlightedPlayer)
                         {
@@ -720,7 +720,7 @@ namespace TownOfUs.Roles
                     __gInstance.MimicList.chatBubblePool.activeChildren.Clear();
 
                     foreach (var player in PlayerControl.AllPlayerControls.ToArray().Where(x =>
-                        x != null &&
+                        x?.Data != null &&
                         x != PlayerControl.LocalPlayer &&
                         !x.Data.Disconnected))
                     {

@@ -240,9 +240,6 @@ namespace TownOfUs
 
             _harmony.PatchAll();
             SubmergedCompatibility.Initialize();
-
-            if (!System.IO.File.Exists(KeybindPatches.Jsonpath))
-                KeybindPatches.WriteJson("Q", "Z");
         }
 
         public static Sprite CreateSprite(string name)
