@@ -11,10 +11,10 @@ namespace TownOfUs
         [HarmonyPrefix]
         private static void Prefix(InputManager_Base __instance)
         {
-            __instance.userData.GetAction(8).descriptiveName = "Kill / Crew abilities";
-            __instance.userData.RegisterBind("ToU imp/nk", "-Impostor / neutral killer abilities");
-            __instance.userData.RegisterBind("ToU bb/disperse/mimic", "-Button barry / disperse / glitch mimic");
-            __instance.userData.RegisterBind("ToU hack", "-Glitch's hack");
+            __instance.userData.GetAction(8).descriptiveName = "Kill / Crew & neutral benign abilities / infect & douse";
+            __instance.userData.RegisterBind("ToU imp/nk", "Impostor abilities / ignite");
+            __instance.userData.RegisterBind("ToU bb/disperse/mimic", "Button barry / disperse / glitch mimic");
+            __instance.userData.RegisterBind("ToU hack", "Glitch's hack");
         }
 
         private static int RegisterBind(this UserData self, string name, string description, int elementIdentifierId = -1, int category = 0, InputActionType type = InputActionType.Button)
