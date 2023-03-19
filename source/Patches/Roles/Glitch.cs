@@ -706,11 +706,7 @@ namespace TownOfUs.Roles
                     __gInstance.MimicList.chatBubPool.activeChildren.Clear();
 
                     foreach (var player in PlayerControl.AllPlayerControls.ToArray().Where(x =>
-
-                        x?.Data != null &&
-
                         x != null &&
-
                         x != PlayerControl.LocalPlayer &&
                         !x.Data.Disconnected))
                     {
