@@ -721,6 +721,10 @@ namespace TownOfUs.Roles
 
                     foreach (var player in PlayerControl.AllPlayerControls.ToArray().Where(x =>
                         x?.Data != null &&
+                        x?.Data != null &&
+
+                        x != null &&
+
                         x != PlayerControl.LocalPlayer &&
                         !x.Data.Disconnected))
                     {
