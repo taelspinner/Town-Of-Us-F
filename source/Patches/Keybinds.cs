@@ -11,7 +11,8 @@ namespace TownOfUs
         [HarmonyPrefix]
         private static void Prefix(InputManager_Base __instance)
         {
-            __instance.userData.GetAction(8).descriptiveName = "Kill / Crew & neutral benign abilities / infect & douse";
+            //change the text shown on the screen for the kill keybind
+            __instance.userData.GetAction("ActionSecondary").descriptiveName = "Kill / Crew & neutral benign abilities / infect & douse";
             __instance.userData.RegisterBind("ToU imp/nk", "Impostor abilities / ignite");
             __instance.userData.RegisterBind("ToU bb/disperse/mimic", "Button barry / disperse / glitch mimic");
             __instance.userData.RegisterBind("ToU hack", "Glitch's hack");
