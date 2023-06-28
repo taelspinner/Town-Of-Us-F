@@ -469,7 +469,7 @@ namespace TownOfUs.Roles
         {
             public static void KillButtonUpdate(Glitch __gInstance, HudManager __instance)
             {
-                if (!__gInstance.Player.Data.IsImpostor() && Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Kill"))
+                if (!__gInstance.Player.Data.IsImpostor() && Rewired.ReInput.players.GetPlayer(0).GetButtonDown(8))
                     __instance.KillButton.DoClick();
 
                 __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
