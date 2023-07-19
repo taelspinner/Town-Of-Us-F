@@ -23,6 +23,12 @@ namespace TownOfUs.Roles
 
         public bool lastMouse;
 
+        public bool LastKey;
+
+        public PoolableBehavior HighlightedPlayer;
+
+        public int PlayerIndex;
+
         public Glitch(PlayerControl owner) : base(owner)
         {
             Name = "The Glitch";
@@ -78,6 +84,17 @@ namespace TownOfUs.Roles
         {
             //System.Console.WriteLine("Reached Here - Glitch Edition");
             GlitchWins = true;
+        }
+
+        public void Reset()
+        {
+            lastMouse = false;
+            LastKey = false;
+            MimicList.Toggle();
+            MimicList.SetVisible(false);
+            MimicList = null;
+            HighlightedPlayer = null;
+            PlayerIndex = 0;
         }
 
         protected override void IntroPrefix(IntroCutscene._ShowTeam_d__36 __instance)
@@ -150,8 +167,32 @@ namespace TownOfUs.Roles
                 }
                 else
                 {
+                    if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle +"))
+                    {
+                        HighlightedPlayer = MimicList.chatBubPool.activeChildren[PlayerIndex];
+                        PlayerIndex = PlayerIndex == MimicList.chatBubPool.activeChildren.Count - 1 ? 0 : PlayerIndex + 1;
+                    }
+                    else if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle -"))
+                    {
+                        HighlightedPlayer = MimicList.chatBubPool.activeChildren[PlayerIndex];
+                        PlayerIndex = PlayerIndex == 0 ? MimicList.chatBubPool.activeChildren.Count - 1 : PlayerIndex - 1;
+                    }
+                    else if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU confirm") && HighlightedPlayer)
+                    {
+                        RpcSetMimicked(PlayerControl.AllPlayerControls.ToArray().FirstOrDefault(x => 
+                                                    x.Data.PlayerName == HighlightedPlayer.Cast<ChatBubble>().NameText.text));
+                        Reset();
+                        return;
+                    }
+
                     foreach (var bubble in MimicList.chatBubPool.activeChildren)
                     {
+                        if (bubble == HighlightedPlayer)
+                        {
+                            bubble.Cast<ChatBubble>().Background.color = Color.green;
+                        }
+                        else bubble.Cast<ChatBubble>().Background.color = Color.white;
+                        
                         if (!IsUsingMimic && MimicList != null)
                         {
                             Vector2 ScreenMin =
@@ -162,12 +203,10 @@ namespace TownOfUs.Roles
                             {
                                 if (!Input.GetMouseButtonDown(0) && lastMouse)
                                 {
-                                    lastMouse = false;
-                                    MimicList.Toggle();
-                                    MimicList.SetVisible(false);
-                                    MimicList = null;
-                                    RpcSetMimicked(PlayerControl.AllPlayerControls.ToArray().FirstOrDefault(x =>
-                                            x.Data.PlayerName == bubble.Cast<ChatBubble>().NameText.text));
+                                    System.Console.WriteLine($"1");
+                                    Reset();
+                                    RpcSetMimicked(PlayerControl.AllPlayerControls.ToArray().FirstOrDefault(x => 
+                                                    x.Data.PlayerName == bubble.Cast<ChatBubble>().NameText.text));
                                     break;
                                 }
 
@@ -182,11 +221,11 @@ namespace TownOfUs.Roles
         public bool UseAbility(KillButton __instance)
         {
             if (__instance == HackButton)
-                HackButtonHandler.HackButtonPress(this, __instance);
+                HackButtonHandler.HackButtonPress(this);
             else if (__instance == MimicButton)
-                MimicButtonHandler.MimicButtonPress(this, __instance);
+                MimicButtonHandler.MimicButtonPress(this);
             else
-                KillButtonHandler.KillButtonPress(this, __instance);
+                KillButtonHandler.KillButtonPress(this);
 
             return false;
         }
@@ -225,7 +264,7 @@ namespace TownOfUs.Roles
 
         public static class AbilityCoroutine
         {
-            public static Dictionary<byte, DateTime> tickDictionary = new Dictionary<byte, DateTime>();
+            public static Dictionary<byte, DateTime> tickDictionary = new();
 
             public static IEnumerator Hack(Glitch __instance, PlayerControl hackPlayer)
             {
@@ -464,11 +503,10 @@ namespace TownOfUs.Roles
                     __gInstance.KillTarget = __gInstance.ClosestPlayer;
                 }
 
-                if (__gInstance.KillTarget != null)
-                    __gInstance.KillTarget.myRend().material.SetColor("_OutlineColor", __gInstance.Color);
+                __gInstance.KillTarget?.myRend().material.SetColor("_OutlineColor", __gInstance.Color);
             }
 
-            public static void KillButtonPress(Glitch __gInstance, KillButton __instance)
+            public static void KillButtonPress(Glitch __gInstance)
             {
                 if (__gInstance.KillTarget != null)
                 {
@@ -547,7 +585,7 @@ namespace TownOfUs.Roles
                 }
             }
 
-            public static void HackButtonPress(Glitch __gInstance, KillButton __instance)
+            public static void HackButtonPress(Glitch __gInstance)
             {
                 // Bug: Hacking someone with a pet doesn't disable the ability to pet the pet
                 // Bug: Hacking someone doing fuel breaks all their buttons/abilities including the use and report buttons
@@ -630,7 +668,7 @@ namespace TownOfUs.Roles
                 }
             }
 
-            public static void MimicButtonPress(Glitch __gInstance, KillButton __instance)
+            public static void MimicButtonPress(Glitch __gInstance)
             {
                 if (__gInstance.MimicList == null)
                 {
