@@ -122,7 +122,7 @@ namespace TownOfUs.Roles
 
             if (HudManager.Instance?.Chat != null)
             {
-                foreach (var bubble in HudManager.Instance.Chat.chatBubPool.activeChildren)
+                foreach (var bubble in HudManager.Instance.Chat.chatBubblePool.activeChildren)
                 {
                     if (bubble.Cast<ChatBubble>().NameText != null &&
                         Player.Data.PlayerName == bubble.Cast<ChatBubble>().NameText.text)
@@ -183,7 +183,7 @@ namespace TownOfUs.Roles
                         return;
                     }
 
-                    foreach (var bubble in MimicList.chatBubPool.activeChildren)
+                    foreach (var bubble in MimicList.chatBubblePool.activeChildren)
                     {
                         if (bubble == HighlightedPlayer)
                         {
@@ -709,7 +709,7 @@ namespace TownOfUs.Roles
                             rend.enabled = false;
                             rend.gameObject.SetActive(false);
                         }
-                    }
+                    }*/
 
                     foreach (var bubble in __gInstance.MimicList.chatBubblePool.activeChildren)
                     {

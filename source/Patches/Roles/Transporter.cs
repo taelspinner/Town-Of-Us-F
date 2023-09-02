@@ -115,7 +115,7 @@ namespace TownOfUs.Roles
                     {
                         rend.enabled = false;
                         rend.gameObject.SetActive(false);
-                    }
+                    }*/
 
                 foreach (var bubble in TransportList.chatBubblePool.activeChildren)
                 {
