@@ -17,7 +17,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 - [Seer](#seer)
 - [Snitch](#snitch)
 - [Spy](#spy)
-- [Tracker](#tracker)
+- [Tagger](#tagger)
 - [Trapper](#trapper)
 - [Sheriff](#sheriff)
 - [Vampire Hunter](#vampire-hunter)
