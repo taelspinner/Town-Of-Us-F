@@ -17,8 +17,10 @@ namespace TownOfUs.Roles
             ImpostorText = () => "Complete All Your Tasks To Discover The Impostors";
             TaskText = () =>
                 TasksDone
-                    ? "Find the arrows pointing to the Impostors!"
-                    : "Complete all your tasks to discover the Impostors!";
+                    ? "Impostors revealed, but so are you!"
+                    : TasksAlmostDone
+                        ? "HURRY! The Impostors are onto you! Finish that task!"
+                        : "Complete all your tasks to discover the Impostors!";
             Color = Patches.Colors.Snitch;
             RoleType = RoleEnum.Snitch;
             AddToRoleHistory(RoleType);
@@ -26,6 +28,7 @@ namespace TownOfUs.Roles
 
         public bool Revealed => TasksLeft <= CustomGameOptions.SnitchTasksRemaining;
         public bool TasksDone => TasksLeft <= 0;
+        public bool TasksAlmostDone => TasksLeft == 1;
 
         internal override bool Criteria()
         {
