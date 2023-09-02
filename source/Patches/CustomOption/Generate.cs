@@ -896,10 +896,10 @@ namespace TownOfUs.CustomOption
             TrackCooldown =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Track Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             ResetOnNewRound = new CustomToggleOption(num++, MultiMenu.crewmate, "Tagger Arrows Reset After Each Round", false);
-            MaxTracks = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Tags Per Round", 5, 1, 15, 1);
-            MaxSimultaneousTracks = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Tags Active", 4, 1, 15, 1);
+            MaxTracks = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Tags Per Round", 3, 1, 15, 1);
+            MaxSimultaneousTracks = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Tags Active", 3, 1, 15, 1);
             TaggerPersistBody =
-                new CustomToggleOption(num++, MultiMenu.crewmate, "Arrows Persist On Dead Bodies", false);
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Arrows Persist On Dead Bodies", true);
 
             Trapper =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#A7D1B3FF>Trapper</color>");

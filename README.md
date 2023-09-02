@@ -904,8 +904,10 @@ Once they track someone, an arrow is continuously pointing to them, which update
 | Tagger | The percentage probability of the Tagger appearing | Percentage | 0% |
 | Arrow Update Interval | The time it takes for the arrow to update to the new location of the tracked player | Time | 5s |
 | Track Cooldown | The cooldown on the Tagger's track button | Time | 25s |
-| Tagger Arrows Reset Each Round | Whether Tagger Arrows are removed after each meeting | Toggle | False |
-| Maximum Number of Tracks Per Round | The number of new people they can track each round | Number | 3 |
+| Tagger Arrows Reset After Each Round | Whether Tagger Arrows are removed after each meeting | Toggle | False |
+| Maximum Number of Tags Per Round | The number of new people they can track each round | Number | 3 |
+| Maximum Number of Tags Active | The number of simultaneous tracking arrows they can have active | Number | 3 |
+| Arrows Persist On Dead Bodies | Whether Tagger Arrows are removed when a player dies | Toggle | True |
 
 -----------------------
 ## Trapper
