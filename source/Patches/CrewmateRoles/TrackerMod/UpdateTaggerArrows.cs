@@ -3,6 +3,7 @@ using TownOfUs.Roles;
 using UnityEngine;
 using TownOfUs.Extensions;
 using System;
+using System.Linq;
 
 namespace TownOfUs.CrewmateRoles.TaggerMod
 {
@@ -33,8 +34,9 @@ namespace TownOfUs.CrewmateRoles.TaggerMod
             foreach (var arrow in role.TaggerArrows)
             {
                 var player = Utils.PlayerById(arrow.Key);
+                var playerBody = UnityEngine.Object.FindObjectsOfType<DeadBody>().Where(x => x.ParentId == player.PlayerId).FirstOrDefault();
                 if (player == null || player.Data == null
-                    || (player.Data.IsDead && !CustomGameOptions.TaggerPersistBody)
+                    || (player.Data.IsDead && (!CustomGameOptions.TaggerPersistBody || playerBody == null))
                     || player.Data.Disconnected)
                 {
                     role.DestroyArrow(arrow.Key);
@@ -58,7 +60,9 @@ namespace TownOfUs.CrewmateRoles.TaggerMod
                 }
 
                 if (_time <= DateTime.UtcNow.AddSeconds(-Interval))
-                    arrow.Value.target = player.transform.position;
+                    arrow.Value.target = player.Data.IsDead
+                        ? playerBody.transform.position
+                        : player.transform.position;
             }
 
             CamoedLastTick = CamouflageUnCamouflage.IsCamoed;
