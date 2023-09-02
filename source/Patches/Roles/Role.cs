@@ -687,10 +687,10 @@ namespace TownOfUs.Roles
                     ((Snitch)role).SnitchArrows.Values.DestroyAll();
                     ((Snitch)role).SnitchArrows.Clear();
                 }
-                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Tracker))
+                foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Tagger))
                 {
-                    ((Tracker)role).TrackerArrows.Values.DestroyAll();
-                    ((Tracker)role).TrackerArrows.Clear();
+                    ((Tagger)role).TaggerArrows.Values.DestroyAll();
+                    ((Tagger)role).TaggerArrows.Clear();
                 }
                 foreach (var role in AllRoles.Where(x => x.RoleType == RoleEnum.Amnesiac))
                 {

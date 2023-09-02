@@ -61,7 +61,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
             if (imitatorRole == RoleEnum.Mystic) new Mystic(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Seer) new Seer(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Spy) new Spy(ImitatingPlayer);
-            if (imitatorRole == RoleEnum.Tracker) new Tracker(ImitatingPlayer);
+            if (imitatorRole == RoleEnum.Tagger) new Tagger(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Sheriff) new Sheriff(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Veteran) new Veteran(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Altruist) new Altruist(ImitatingPlayer);

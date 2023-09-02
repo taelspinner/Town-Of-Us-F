@@ -106,7 +106,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                         if (player.Data.IsDead && !player.Data.Disconnected && (imitatedRole == RoleEnum.Detective ||
                             imitatedRole == RoleEnum.Investigator || imitatedRole == RoleEnum.Mystic ||
                             imitatedRole == RoleEnum.Seer || imitatedRole == RoleEnum.Spy ||
-                            imitatedRole == RoleEnum.Tracker || imitatedRole == RoleEnum.Sheriff ||
+                            imitatedRole == RoleEnum.Tagger || imitatedRole == RoleEnum.Sheriff ||
                             imitatedRole == RoleEnum.Veteran || imitatedRole == RoleEnum.Altruist ||
                             imitatedRole == RoleEnum.Engineer || imitatedRole == RoleEnum.Medium ||
                             imitatedRole == RoleEnum.Transporter || imitatedRole == RoleEnum.Trapper ||

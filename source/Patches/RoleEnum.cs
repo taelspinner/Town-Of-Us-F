@@ -22,7 +22,7 @@ namespace TownOfUs
         Veteran,
         Amnesiac,
         Juggernaut,
-        Tracker,
+        Tagger,
         Transporter,
         Medium,
         Trapper,

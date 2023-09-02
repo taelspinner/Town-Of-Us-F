@@ -81,7 +81,7 @@ namespace TownOfUs
                 __instance.KillButton.graphic.sprite = Remember;
                 flag = true;
             }
-            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Tagger))
             {
                 __instance.KillButton.graphic.sprite = Track;
                 flag = true;

@@ -1127,15 +1127,15 @@ namespace TownOfUs
                 var sheriff = Role.GetRole<Sheriff>(PlayerControl.LocalPlayer);
                 sheriff.LastKilled = DateTime.UtcNow;
             }
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Tagger))
             {
-                var tracker = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
-                tracker.LastTracked = DateTime.UtcNow;
-                tracker.UsesLeft = CustomGameOptions.MaxTracks;
+                var tagger = Role.GetRole<Tagger>(PlayerControl.LocalPlayer);
+                tagger.LastTracked = DateTime.UtcNow;
+                tagger.UsesLeft = CustomGameOptions.MaxTracks;
                 if (CustomGameOptions.ResetOnNewRound)
                 {
-                    tracker.TrackerArrows.Values.DestroyAll();
-                    tracker.TrackerArrows.Clear();
+                    tagger.TaggerArrows.Values.DestroyAll();
+                    tagger.TaggerArrows.Clear();
                 }
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter))

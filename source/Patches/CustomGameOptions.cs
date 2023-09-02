@@ -55,7 +55,7 @@ namespace TownOfUs
         public static int HaunterOn => (int)Generate.HaunterOn.Get();
         public static int GrenadierOn => (int)Generate.GrenadierOn.Get();
         public static int VeteranOn => (int)Generate.VeteranOn.Get();
-        public static int TrackerOn => (int)Generate.TrackerOn.Get();
+        public static int TaggerOn => (int)Generate.TaggerOn.Get();
         public static int TrapperOn => (int)Generate.TrapperOn.Get();
         public static int TraitorOn => (int)Generate.TraitorOn.Get();
         public static int TransporterOn => (int)Generate.TransporterOn.Get();
@@ -231,6 +231,8 @@ namespace TownOfUs
         public static float TrackCd => Generate.TrackCooldown.Get();
         public static bool ResetOnNewRound => Generate.ResetOnNewRound.Get();
         public static int MaxTracks => (int)Generate.MaxTracks.Get();
+        public static int MaxSimultaneousTracks => (int)Generate.MaxSimultaneousTracks.Get();
+        public static bool TaggerPersistBody => Generate.TaggerPersistBody.Get();
         public static int LatestSpawn => (int)Generate.LatestSpawn.Get();
         public static bool NeutralKillingStopsTraitor => Generate.NeutralKillingStopsTraitor.Get();
         public static float TransportCooldown => Generate.TransportCooldown.Get();

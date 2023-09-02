@@ -17,7 +17,7 @@ namespace TownOfUs.Roles
             ImpostorText = () => "Complete All Your Tasks To Discover The Impostors";
             TaskText = () =>
                 TasksDone
-                    ? "Impostors revealed, but so are you!"
+                    ? "Impostors exposed, but so are you!"
                     : TasksAlmostDone
                         ? "HURRY! The Impostors are onto you! Finish that task!"
                         : "Complete all your tasks to discover the Impostors!";

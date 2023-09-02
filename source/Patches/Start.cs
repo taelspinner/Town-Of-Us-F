@@ -59,11 +59,11 @@ namespace TownOfUs.Patches
                 sheriff.LastKilled = sheriff.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.SheriffKillCd);
             }
 
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Tagger))
             {
-                var tracker = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
-                tracker.LastTracked = DateTime.UtcNow;
-                tracker.LastTracked = tracker.LastTracked.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.TrackCd);
+                var tagger = Role.GetRole<Tagger>(PlayerControl.LocalPlayer);
+                tagger.LastTracked = DateTime.UtcNow;
+                tagger.LastTracked = tagger.LastTracked.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.TrackCd);
             }
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter))

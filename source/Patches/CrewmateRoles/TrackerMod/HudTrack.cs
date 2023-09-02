@@ -3,7 +3,7 @@ using HarmonyLib;
 using TownOfUs.Roles;
 using UnityEngine;
 
-namespace TownOfUs.CrewmateRoles.TrackerMod
+namespace TownOfUs.CrewmateRoles.TaggerMod
 {
     [HarmonyPatch(typeof(HudManager))]
     public class HudTrack
@@ -19,12 +19,12 @@ namespace TownOfUs.CrewmateRoles.TrackerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tracker)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tagger)) return;
             var data = PlayerControl.LocalPlayer.Data;
             var isDead = data.IsDead;
             var trackButton = __instance.KillButton;
 
-            var role = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
+            var role = Role.GetRole<Tagger>(PlayerControl.LocalPlayer);
 
             if (role.UsesText == null && role.UsesLeft > 0)
             {
@@ -48,8 +48,9 @@ namespace TownOfUs.CrewmateRoles.TrackerMod
             role.UsesText.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            if (role.ButtonUsable) trackButton.SetCoolDown(role.TrackerTimer(), CustomGameOptions.TrackCd);
+            if (role.ButtonUsable) trackButton.SetCoolDown(role.TaggerTimer(), CustomGameOptions.TrackCd);
             else trackButton.SetCoolDown(0f, CustomGameOptions.TrackCd);
+            if (role.TaggerArrows.Count >= CustomGameOptions.MaxSimultaneousTracks) return;
             if (role.UsesLeft == 0) return;
 
             var notTracked = PlayerControl.AllPlayerControls

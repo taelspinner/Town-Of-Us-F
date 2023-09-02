@@ -1306,8 +1306,8 @@ namespace TownOfUs
                     if (CustomGameOptions.VeteranOn > 0)
                         CrewmateRoles.Add((typeof(Veteran), CustomGameOptions.VeteranOn, false));
 
-                    if (CustomGameOptions.TrackerOn > 0)
-                        CrewmateRoles.Add((typeof(Tracker), CustomGameOptions.TrackerOn, false));
+                    if (CustomGameOptions.TaggerOn > 0)
+                        CrewmateRoles.Add((typeof(Tagger), CustomGameOptions.TaggerOn, false));
 
                     if (CustomGameOptions.TransporterOn > 0)
                         CrewmateRoles.Add((typeof(Transporter), CustomGameOptions.TransporterOn, false));

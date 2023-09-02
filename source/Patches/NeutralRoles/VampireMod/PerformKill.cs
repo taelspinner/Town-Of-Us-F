@@ -136,12 +136,12 @@ namespace TownOfUs.NeutralRoles.VampireMod
                     UnityEngine.Object.Destroy(engineerRole.UsesText);
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Tagger))
                 {
-                    var trackerRole = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
-                    trackerRole.TrackerArrows.Values.DestroyAll();
-                    trackerRole.TrackerArrows.Clear();
-                    UnityEngine.Object.Destroy(trackerRole.UsesText);
+                    var taggerRole = Role.GetRole<Tagger>(PlayerControl.LocalPlayer);
+                    taggerRole.TaggerArrows.Values.DestroyAll();
+                    taggerRole.TaggerArrows.Clear();
+                    UnityEngine.Object.Destroy(taggerRole.UsesText);
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Mystic))

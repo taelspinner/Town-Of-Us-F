@@ -19,7 +19,7 @@ namespace TownOfUs.Patches
         public readonly static Color Vigilante = new Color(1f, 1f, 0.6f, 1f);
         public readonly static Color Veteran = new Color(0.6f, 0.5f, 0.25f, 1f);
         public readonly static Color Haunter = new Color(0.83f, 0.83f, 0.83f, 1f);
-        public readonly static Color Tracker = new Color(0f, 0.6f, 0f, 1f);
+        public readonly static Color Tagger = new Color(0f, 0.6f, 0f, 1f);
         public readonly static Color Transporter = new Color(0f, 0.93f, 1f, 1f);
         public readonly static Color Medium = new Color(0.65f, 0.5f, 1f, 1f);
         public readonly static Color Mystic = new Color(0.3f, 0.6f, 0.9f, 1f);

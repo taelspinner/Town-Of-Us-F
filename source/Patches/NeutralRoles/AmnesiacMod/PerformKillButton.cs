@@ -84,7 +84,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 case RoleEnum.Vigilante:
                 case RoleEnum.Veteran:
                 case RoleEnum.Crewmate:
-                case RoleEnum.Tracker:
+                case RoleEnum.Tagger:
                 case RoleEnum.Transporter:
                 case RoleEnum.Medium:
                 case RoleEnum.Mystic:
@@ -249,13 +249,13 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 vetRole.LastAlerted = DateTime.UtcNow;
             }
 
-            else if (role == RoleEnum.Tracker)
+            else if (role == RoleEnum.Tagger)
             {
-                var trackerRole = Role.GetRole<Tracker>(amnesiac);
-                trackerRole.TrackerArrows.Values.DestroyAll();
-                trackerRole.TrackerArrows.Clear();
-                trackerRole.UsesLeft = CustomGameOptions.MaxTracks;
-                trackerRole.LastTracked = DateTime.UtcNow;
+                var taggerRole = Role.GetRole<Tagger>(amnesiac);
+                taggerRole.TaggerArrows.Values.DestroyAll();
+                taggerRole.TaggerArrows.Clear();
+                taggerRole.UsesLeft = CustomGameOptions.MaxTracks;
+                taggerRole.LastTracked = DateTime.UtcNow;
             }
 
             else if (role == RoleEnum.VampireHunter)

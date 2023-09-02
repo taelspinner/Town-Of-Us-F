@@ -5,7 +5,7 @@ using UnityEngine;
 using TownOfUs.Extensions;
 using AmongUs.GameOptions;
 
-namespace TownOfUs.CrewmateRoles.TrackerMod
+namespace TownOfUs.CrewmateRoles.TaggerMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill
@@ -14,11 +14,12 @@ namespace TownOfUs.CrewmateRoles.TrackerMod
         public static bool Prefix(KillButton __instance)
         {
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tracker)) return true;
-            var role = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tagger)) return true;
+            var role = Role.GetRole<Tagger>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove || role.ClosestPlayer == null) return false;
-            var flag2 = role.TrackerTimer() == 0f;
+            var flag2 = role.TaggerTimer() == 0f;
             if (!flag2) return false;
+            if (role.TaggerArrows.Count >= CustomGameOptions.MaxSimultaneousTracks) return false;
             if (!__instance.enabled) return false;
             var maxDistance = GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
             if (Vector2.Distance(role.ClosestPlayer.GetTruePosition(),
@@ -50,7 +51,7 @@ namespace TownOfUs.CrewmateRoles.TrackerMod
                 gameObj.layer = 5;
                 arrow.target = target.transform.position;
 
-                role.TrackerArrows.Add(target.PlayerId, arrow);
+                role.TaggerArrows.Add(target.PlayerId, arrow);
                 role.UsesLeft--;
             }
             if (interact[0] == true)

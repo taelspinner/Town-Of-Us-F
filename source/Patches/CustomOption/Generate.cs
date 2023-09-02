@@ -14,7 +14,7 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption SeerOn;
         public static CustomNumberOption SnitchOn;
         public static CustomNumberOption SpyOn;
-        public static CustomNumberOption TrackerOn;
+        public static CustomNumberOption TaggerOn;
         public static CustomNumberOption TrapperOn;
 
         public static CustomHeaderOption CrewProtectiveRoles;
@@ -336,11 +336,13 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption AlertDuration;
         public static CustomNumberOption MaxAlerts;
 
-        public static CustomHeaderOption Tracker;
+        public static CustomHeaderOption Tagger;
         public static CustomNumberOption UpdateInterval;
         public static CustomNumberOption TrackCooldown;
         public static CustomToggleOption ResetOnNewRound;
         public static CustomNumberOption MaxTracks;
+        public static CustomNumberOption MaxSimultaneousTracks;
+        public static CustomToggleOption TaggerPersistBody;
 
         public static CustomHeaderOption Trapper;
         public static CustomNumberOption TrapCooldown;
@@ -519,7 +521,7 @@ namespace TownOfUs.CustomOption
                 PercentFormat);
             SpyOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#CCA3CCFF>Spy</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            TrackerOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#009900FF>Tracker</color>", 0f, 0f, 100f, 10f,
+            TaggerOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#009900FF>Tagger</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             TrapperOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#A7D1B3FF>Trapper</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -887,14 +889,17 @@ namespace TownOfUs.CustomOption
             WhoSeesDead = new CustomStringOption(num++, MultiMenu.crewmate, "Who Sees Dead Bodies On Admin",
                 new[] { "Nobody", "Spy", "Everyone But Spy", "Everyone" });
 
-            Tracker =
-                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#009900FF>Tracker</color>");
+            Tagger =
+                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#009900FF>Tagger</color>");
             UpdateInterval =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Arrow Update Interval", 5f, 0.5f, 15f, 0.5f, CooldownFormat);
             TrackCooldown =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Track Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
-            ResetOnNewRound = new CustomToggleOption(num++, MultiMenu.crewmate, "Tracker Arrows Reset After Each Round", false);
-            MaxTracks = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Tracks Per Round", 5, 1, 15, 1);
+            ResetOnNewRound = new CustomToggleOption(num++, MultiMenu.crewmate, "Tagger Arrows Reset After Each Round", false);
+            MaxTracks = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Tags Per Round", 5, 1, 15, 1);
+            MaxSimultaneousTracks = new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Number Of Tags Active", 4, 1, 15, 1);
+            TaggerPersistBody =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Arrows Persist On Dead Bodies", false);
 
             Trapper =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#A7D1B3FF>Trapper</color>");

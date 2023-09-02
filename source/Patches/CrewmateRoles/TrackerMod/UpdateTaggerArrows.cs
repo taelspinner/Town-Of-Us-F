@@ -4,10 +4,10 @@ using UnityEngine;
 using TownOfUs.Extensions;
 using System;
 
-namespace TownOfUs.CrewmateRoles.TrackerMod
+namespace TownOfUs.CrewmateRoles.TaggerMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
-    public class UpdateTrackerArrows
+    public class UpdateTaggerArrows
     {
         public static Sprite Sprite => TownOfUs.Arrow;
         private static DateTime _time = DateTime.UnixEpoch;
@@ -19,21 +19,23 @@ namespace TownOfUs.CrewmateRoles.TrackerMod
             if (PlayerControl.AllPlayerControls.Count <= 1) return;
             if (PlayerControl.LocalPlayer == null) return;
             if (PlayerControl.LocalPlayer.Data == null) return;
-            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tracker)) return;
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tagger)) return;
 
-            var role = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
+            var role = Role.GetRole<Tagger>(PlayerControl.LocalPlayer);
 
             if (PlayerControl.LocalPlayer.Data.IsDead)
             {
-                role.TrackerArrows.Values.DestroyAll();
-                role.TrackerArrows.Clear();
+                role.TaggerArrows.Values.DestroyAll();
+                role.TaggerArrows.Clear();
                 return;
             }
 
-            foreach (var arrow in role.TrackerArrows)
+            foreach (var arrow in role.TaggerArrows)
             {
                 var player = Utils.PlayerById(arrow.Key);
-                if (player == null || player.Data == null || player.Data.IsDead || player.Data.Disconnected)
+                if (player == null || player.Data == null
+                    || (player.Data.IsDead && !CustomGameOptions.TaggerPersistBody)
+                    || player.Data.Disconnected)
                 {
                     role.DestroyArrow(arrow.Key);
                     continue;
