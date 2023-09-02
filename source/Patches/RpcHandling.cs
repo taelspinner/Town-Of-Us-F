@@ -29,7 +29,7 @@ using UnityEngine;
 using Coroutine = TownOfUs.ImpostorRoles.JanitorMod.Coroutine;
 using Object = UnityEngine.Object;
 using PerformKillButton = TownOfUs.NeutralRoles.AmnesiacMod.PerformKillButton;
-using Random = UnityEngine.Random; //using Il2CppSystem;
+using Random = UnityEngine.Random;
 using TownOfUs.Patches;
 using AmongUs.GameOptions;
 using TownOfUs.NeutralRoles.VampireMod;
@@ -73,42 +73,37 @@ namespace TownOfUs
             roleCount = Random.RandomRangeInt(min, max + 1);
         }
 
-        private static void SortRoles(List<(Type, int, bool)> roles, int numRoles)
+        private static void SortRoles(this List<(Type, int, bool)> roles, int numRoles)
         {
+            var newList = new List<(Type, int, bool)>();
             roles.Shuffle();
-            if (roles.Count < numRoles) numRoles = roles.Count;
-            roles.Sort((a, b) =>
+
+            if (roles.Count < numRoles)
+                numRoles = roles.Count;
+
+            foreach (var item in roles)
             {
-                var a_ = a.Item2 == 100 ? 0 : 100;
-                var b_ = b.Item2 == 100 ? 0 : 100;
-                return a_.CompareTo(b_);
-            });
-            var certainRoles = 0;
-            var odds = 0;
-            foreach (var role in roles)
-                if (role.Item2 == 100) certainRoles += 1;
-                else odds += role.Item2;
-            while (certainRoles < numRoles)
+                if (newList.Count >= numRoles)
+                    break;
+
+                if (item.Item2 == 100)
+                    newList.Add(item);
+            }
+
+            foreach (var item in roles)
             {
-                var num = certainRoles;
-                var random = Random.RandomRangeInt(0, odds);
-                var rolePicked = false;
-                while (num < roles.Count && rolePicked == false)
+                if (newList.Count >= numRoles)
+                    break;
+
+                if (item.Item2 < 100)
                 {
-                    random -= roles[num].Item2;
-                    if (random < 0)
-                    {
-                        odds -= roles[num].Item2;
-                        var role = roles[num];
-                        roles.Remove(role);
-                        roles.Insert(0, role);
-                        certainRoles += 1;
-                        rolePicked = true;
-                    }
-                    num += 1;
+                    if (Random.RandomRangeInt(0, 100) < item.Item2)
+                        newList.Add(item);
                 }
             }
-            while (roles.Count > numRoles) roles.RemoveAt(roles.Count - 1);
+
+            roles = newList;
+            roles.Shuffle();
         }
 
         private static void SortModifiers(List<(Type, int)> roles, int max)
@@ -237,17 +232,15 @@ namespace TownOfUs
                     }
                 }
 
-                SortRoles(NeutralBenignRoles, benign);
-                SortRoles(NeutralEvilRoles, evil);
-                SortRoles(NeutralKillingRoles, killing);
+                NeutralBenignRoles.SortRoles(benign);
+                NeutralEvilRoles.SortRoles(evil);
+                NeutralKillingRoles.SortRoles(killing);
 
                 if (NeutralKillingRoles.Contains((typeof(Vampire), CustomGameOptions.VampireOn, true)) && CustomGameOptions.VampireHunterOn > 0)
-                {
                     CrewmateRoles.Add((typeof(VampireHunter), CustomGameOptions.VampireHunterOn, true));
-                }
 
-                SortRoles(CrewmateRoles, crewmates.Count - NeutralBenignRoles.Count - NeutralEvilRoles.Count - NeutralKillingRoles.Count);
-                SortRoles(ImpostorRoles, impostors.Count);
+                CrewmateRoles.SortRoles(crewmates.Count - NeutralBenignRoles.Count - NeutralEvilRoles.Count - NeutralKillingRoles.Count);
+                ImpostorRoles.SortRoles(impostors.Count);
             }
 
             var crewAndNeutralRoles = new List<(Type, int, bool)>();
@@ -510,7 +503,7 @@ namespace TownOfUs
             ImpostorRoles.Add((typeof(Swooper), 10, false));
             ImpostorRoles.Add((typeof(Grenadier), 10, true));
 
-            SortRoles(ImpostorRoles, impostors.Count);
+            ImpostorRoles.SortRoles(impostors.Count);
 
             NeutralKillingRoles.Add((typeof(Glitch), 10, true));
             NeutralKillingRoles.Add((typeof(Werewolf), 10, true));
@@ -525,8 +518,8 @@ namespace TownOfUs
             if (NeutralKillingRoles.Count < CustomGameOptions.NeutralRoles) neutrals = NeutralKillingRoles.Count;
             else neutrals = CustomGameOptions.NeutralRoles;
             var spareCrew = crewmates.Count - neutrals;
-            if (spareCrew > 2) SortRoles(NeutralKillingRoles, neutrals);
-            else SortRoles(NeutralKillingRoles, crewmates.Count - 3);
+            if (spareCrew > 2) NeutralKillingRoles.SortRoles(neutrals);
+            else NeutralKillingRoles.SortRoles(crewmates.Count - 3);
 
             var veterans = CustomGameOptions.VeteranCount;
             while (veterans > 0)
@@ -542,7 +535,7 @@ namespace TownOfUs
             }
             if (CrewmateRoles.Count + NeutralKillingRoles.Count > crewmates.Count)
             {
-                SortRoles(CrewmateRoles, crewmates.Count - NeutralKillingRoles.Count);
+                CrewmateRoles.SortRoles(crewmates.Count - NeutralKillingRoles.Count);
             }
             else if (CrewmateRoles.Count + NeutralKillingRoles.Count < crewmates.Count)
             {
@@ -560,11 +553,11 @@ namespace TownOfUs
             crewAndNeutralRoles.Shuffle();
             ImpostorRoles.Shuffle();
 
-            foreach (var (type, _, unique) in crewAndNeutralRoles)
+            foreach (var (type, _, _) in crewAndNeutralRoles)
             {
                 Role.GenRole<Role>(type, crewmates);
             }
-            foreach (var (type, _, unique) in ImpostorRoles)
+            foreach (var (type, _, _) in ImpostorRoles)
             {
                 Role.GenRole<Role>(type, impostors);
             }
@@ -583,8 +576,8 @@ namespace TownOfUs
             if (CustomGameOptions.SeerCultistOn > 0) specialRoles.Add((typeof(CultistSeer), CustomGameOptions.SeerCultistOn, true));
             if (CustomGameOptions.SheriffCultistOn > 0) specialRoles.Add((typeof(Sheriff), CustomGameOptions.SheriffCultistOn, true));
             if (CustomGameOptions.SurvivorCultistOn > 0) specialRoles.Add((typeof(Survivor), CustomGameOptions.SurvivorCultistOn, true));
-            if (specialRoles.Count > CustomGameOptions.SpecialRoleCount) SortRoles(specialRoles, CustomGameOptions.SpecialRoleCount);
-            if (specialRoles.Count > crewmates.Count) SortRoles(specialRoles, crewmates.Count);
+            if (specialRoles.Count > CustomGameOptions.SpecialRoleCount) specialRoles.SortRoles(CustomGameOptions.SpecialRoleCount);
+            if (specialRoles.Count > crewmates.Count) specialRoles.SortRoles(crewmates.Count);
             if (specialRoles.Count < crewmates.Count)
             {
                 var chameleons = CustomGameOptions.MaxChameleons;
@@ -635,11 +628,11 @@ namespace TownOfUs
                     crewRoles.Add((typeof(Vigilante), 10, false));
                     vigilantes--;
                 }
-                SortRoles(crewRoles, crewmates.Count - specialRoles.Count);
+                crewRoles.SortRoles(crewmates.Count - specialRoles.Count);
             }
-            impRole.Add((typeof(Necromancer), 10, true));
-            impRole.Add((typeof(Whisperer), 10, true));
-            SortRoles(impRole, 1);
+            impRole.Add((typeof(Necromancer), 100, true));
+            impRole.Add((typeof(Whisperer), 100, true));
+            impRole.SortRoles(1);
 
             foreach (var (type, _, unique) in specialRoles)
             {
