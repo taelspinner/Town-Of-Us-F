@@ -83,6 +83,7 @@ namespace TownOfUs
         SetHacked,
 
         ExecutionerToJester,
+        LawyerToJester,
         GAToSurv,
 
         Start,
