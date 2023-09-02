@@ -893,18 +893,18 @@ On Admin Table, the Spy can see the colors of every person on the map.
 | Who Sees Dead Bodies On Admin | Which players see dead bodies on the admin map | Nobody / Spy / Everyone But Spy / Everyone | Nobody |
 
 -----------------------
-## Tracker
+## Tagger
 ### **Team: Crewmates**
 
-The Tracker is a Crewmate that can track other players by tracking them during a round.\
+The Tagger is a Crewmate that can track other players by tracking them during a round.\
 Once they track someone, an arrow is continuously pointing to them, which updates in set intervals.
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
-| Tracker | The percentage probability of the Tracker appearing | Percentage | 0% |
+| Tagger | The percentage probability of the Tagger appearing | Percentage | 0% |
 | Arrow Update Interval | The time it takes for the arrow to update to the new location of the tracked player | Time | 5s |
-| Track Cooldown | The cooldown on the Tracker's track button | Time | 25s |
-| Tracker Arrows Reset Each Round | Whether Tracker Arrows are removed after each meeting | Toggle | False |
+| Track Cooldown | The cooldown on the Tagger's track button | Time | 25s |
+| Tagger Arrows Reset Each Round | Whether Tagger Arrows are removed after each meeting | Toggle | False |
 | Maximum Number of Tracks Per Round | The number of new people they can track each round | Number | 3 |
 
 -----------------------
