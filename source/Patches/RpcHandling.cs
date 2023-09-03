@@ -76,7 +76,7 @@ namespace TownOfUs
         private static void SortRoles(this List<(Type, int, bool)> roles, int max)
         {
             var newList = roles.Where(x => x.Item2 == 100).ToList();
-            roles.Shuffle();
+            newList.Shuffle();
 
             if (roles.Count < max)
                 max = roles.Count;
@@ -94,7 +94,10 @@ namespace TownOfUs
             }
 
             while (newList.Count > max)
+            {
+                newList.Shuffle();
                 newList.RemoveAt(newList.Count - 1);
+            }
 
             roles = newList;
             roles.Shuffle();
@@ -103,7 +106,7 @@ namespace TownOfUs
         private static void SortModifiers(this List<(Type, int)> roles, int max)
         {
             var newList = roles.Where(x => x.Item2 == 100).ToList();
-            roles.Shuffle();
+            newList.Shuffle();
 
             if (roles.Count < max)
                 max = roles.Count;
@@ -121,7 +124,10 @@ namespace TownOfUs
             }
 
             while (newList.Count > max)
+            {
+                newList.Shuffle();
                 newList.RemoveAt(newList.Count - 1);
+            }
 
             roles = newList;
             roles.Shuffle();
