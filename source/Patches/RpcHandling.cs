@@ -67,55 +67,64 @@ namespace TownOfUs
             var num = Random.RandomRangeInt(1, 101);
             return num <= 10 * CustomGameOptions.MaxNeutralKillingRoles;
         }
-        private static void PickRoleCount(int roleCount, int min, int max)
+        private static int PickRoleCount(int min, int max)
         {
             if (min > max) min = max;
-            roleCount = Random.RandomRangeInt(min, max + 1);
+            return Random.RandomRangeInt(min, max + 1);
         }
 
-        private static void SortRoles(this List<(Type, int, bool)> roles, int numRoles)
+        private static void SortRoles(this List<(Type, int, bool)> roles, int max)
         {
-            var newList = new List<(Type, int, bool)>();
+            var newList = roles.Where(x => x.Item2 == 100).ToList();
             roles.Shuffle();
 
-            if (roles.Count < numRoles)
-                numRoles = roles.Count;
+            if (roles.Count < max)
+                max = roles.Count;
 
-            foreach (var item in roles)
+            var roles2 = roles.Where(x => x.Item2 < 100).ToList();
+            roles2.Shuffle();
+
+            foreach (var item in roles2)
             {
-                if (newList.Count >= numRoles)
+                if (newList.Count >= max)
                     break;
 
-                if (item.Item2 == 100)
+                if (Check(item.Item2))
                     newList.Add(item);
             }
 
-            foreach (var item in roles)
-            {
-                if (newList.Count >= numRoles)
-                    break;
-
-                if (item.Item2 < 100)
-                {
-                    if (Random.RandomRangeInt(0, 100) < item.Item2)
-                        newList.Add(item);
-                }
-            }
+            while (newList.Count > max)
+                newList.RemoveAt(newList.Count - 1);
 
             roles = newList;
             roles.Shuffle();
         }
 
-        private static void SortModifiers(List<(Type, int)> roles, int max)
+        private static void SortModifiers(this List<(Type, int)> roles, int max)
         {
+            var newList = roles.Where(x => x.Item2 == 100).ToList();
             roles.Shuffle();
-            roles.Sort((a, b) =>
+
+            if (roles.Count < max)
+                max = roles.Count;
+
+            var roles2 = roles.Where(x => x.Item2 < 100).ToList();
+            roles2.Shuffle();
+
+            foreach (var item in roles2)
             {
-                var a_ = a.Item2 == 100 ? 0 : 100;
-                var b_ = b.Item2 == 100 ? 0 : 100;
-                return a_.CompareTo(b_);
-            });
-            while (roles.Count > max) roles.RemoveAt(roles.Count - 1);
+                if (newList.Count >= max)
+                    break;
+
+                if (Check(item.Item2))
+                    newList.Add(item);
+            }
+
+            while (newList.Count > max)
+                newList.RemoveAt(newList.Count - 1);
+
+            roles = newList;
+            roles.Shuffle();
         }
 
         private static void GenEachRole(List<GameData.PlayerInfo> infected)
@@ -129,13 +138,13 @@ namespace TownOfUs
             {
                 var benign = CustomGameOptions.MaxNeutralBenignRoles;
                 if (NeutralBenignRoles.Count < benign) benign = NeutralBenignRoles.Count;
-                PickRoleCount(benign, CustomGameOptions.MinNeutralBenignRoles, benign);
+                benign = PickRoleCount(CustomGameOptions.MinNeutralBenignRoles, benign);
                 var evil = CustomGameOptions.MaxNeutralEvilRoles;
                 if (NeutralEvilRoles.Count < evil) evil = NeutralEvilRoles.Count;
-                PickRoleCount(evil, CustomGameOptions.MinNeutralEvilRoles, evil);
+                evil = PickRoleCount(CustomGameOptions.MinNeutralEvilRoles, evil);
                 var killing = CustomGameOptions.MaxNeutralKillingRoles;
                 if (NeutralKillingRoles.Count < killing) killing = NeutralKillingRoles.Count;
-                PickRoleCount(killing, CustomGameOptions.MinNeutralKillingRoles, killing);
+                killing = PickRoleCount(CustomGameOptions.MinNeutralKillingRoles, killing);
 
                 var canSubtractBenign = benign > CustomGameOptions.MinNeutralBenignRoles;
                 var canSubtractEvil = evil > CustomGameOptions.MinNeutralEvilRoles;
@@ -143,8 +152,7 @@ namespace TownOfUs
 
                 while (crewmates.Count <= benign + evil + killing)
                 {
-                    if ((canSubtractBenign && canSubtractEvil && canSubtractKilling) ||
-                        (!canSubtractBenign && !canSubtractEvil && !canSubtractKilling))
+                    if ((canSubtractBenign && canSubtractEvil && canSubtractKilling) || (!canSubtractBenign && !canSubtractEvil && !canSubtractKilling))
                     {
                         var num = Random.RandomRangeInt(0, 3);
                         if (num == 0 && benign > 0)
@@ -291,10 +299,10 @@ namespace TownOfUs
             crewRoles.Shuffle();
             impRoles.Shuffle();
 
-            SortModifiers(CrewmateModifiers, crewmates.Count);
-            SortModifiers(GlobalModifiers, crewmates.Count + impostors.Count);
-            SortModifiers(ImpostorModifiers, impostors.Count);
-            SortModifiers(ButtonModifiers, crewmates.Count + impostors.Count);
+            CrewmateModifiers.SortModifiers(crewmates.Count);
+            GlobalModifiers.SortModifiers(crewmates.Count + impostors.Count);
+            ImpostorModifiers.SortModifiers(impostors.Count);
+            ButtonModifiers.SortModifiers(crewmates.Count + impostors.Count);
 
             if (CustomGameOptions.GameMode == GameMode.AllAny)
             {
