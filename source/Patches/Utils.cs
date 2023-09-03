@@ -84,7 +84,6 @@ namespace TownOfUs
         {
             if (!self.Contains(item)) self.Add(item);
         }
-
         public static bool IsLover(this PlayerControl player)
         {
             return player.Is(ModifierEnum.Lover);

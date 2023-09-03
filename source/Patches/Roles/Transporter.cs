@@ -216,7 +216,7 @@ namespace TownOfUs.Roles
                         else
                         {
                             TransportList.Toggle();
-                            TransportList.SetVisible(false);
+                            //TransportList.SetVisible(false);
                             TransportList = null;
                             PressedButton = false;
                             TransportPlayer1 = null;

@@ -543,11 +543,13 @@ namespace TownOfUs
 
             foreach (var (type, _, _) in crewAndNeutralRoles)
             {
-                Role.GenRole<Role>(type, crewmates);
+                if (crewmates.Count > 0)
+                    Role.GenRole<Role>(type, crewmates);
             }
             foreach (var (type, _, _) in ImpostorRoles)
             {
-                Role.GenRole<Role>(type, impostors);
+                if (impostors.Count > 0)
+                    Role.GenRole<Role>(type, impostors);
             }
         }
         private static void GenEachRoleCultist(List<GameData.PlayerInfo> infected)
@@ -624,15 +626,18 @@ namespace TownOfUs
 
             foreach (var (type, _, unique) in specialRoles)
             {
-                Role.GenRole<Role>(type, crewmates);
+                if (crewmates.Count > 0)
+                    Role.GenRole<Role>(type, crewmates);
             }
             foreach (var (type, _, unique) in crewRoles)
             {
-                Role.GenRole<Role>(type, crewmates);
+                if (crewmates.Count > 0)
+                    Role.GenRole<Role>(type, crewmates);
             }
             foreach (var (type, _, unique) in impRole)
             {
-                Role.GenRole<Role>(type, impostors);
+                if (impostors.Count > 0)
+                    Role.GenRole<Role>(type, impostors);
             }
 
             foreach (var crewmate in crewmates)
