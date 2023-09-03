@@ -435,7 +435,7 @@ namespace TownOfUs
                 Utils.Rpc(CustomRPC.SetPhantom, byte.MaxValue);
             }
 
-            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Lawyer) && !x.Is(RoleEnum.Vigilante) && x != SetTraitor.WillBeTraitor).ToList();
+            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Vigilante) && x != SetTraitor.WillBeTraitor).ToList();
             foreach (var role in Role.GetRoles(RoleEnum.Executioner))
             {
                 var exe = (Executioner)role;
@@ -452,7 +452,7 @@ namespace TownOfUs
             {
                 return (x.Is(Faction.Crewmates)
                     || ((x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralBenign)) && CustomGameOptions.NeutralDefendant))
-                && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Executioner)
+                && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Lawyer)
                 && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Swapper)
                 && x != SetTraitor.WillBeTraitor;
             };
@@ -460,12 +460,11 @@ namespace TownOfUs
             {
                 return (x.Is(Faction.Impostors) || x.Is(Faction.NeutralKilling)
                     || ((x.Is(Faction.NeutralEvil) || x.Is(Faction.NeutralBenign)) && CustomGameOptions.NeutralDefendant))
-                && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Executioner)
+                && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Lawyer)
                 && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Swapper)
                 && x != SetTraitor.WillBeTraitor;
             };
 
-            var lwyrTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => isValidDefendant(x)).ToList();
             foreach (var role in Role.GetRoles(RoleEnum.Lawyer))
             {
                 var lwyr = (Lawyer)role;
@@ -474,7 +473,7 @@ namespace TownOfUs
                 var lwyrTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => canBeImp ? isValidEvilDefendant(x) : isValidCrewDefendant(x)).ToList();
                 if (lwyrTargets.Count > 0)
                 {
-                    lwyr.target = lwyrTargets[Random.RandomRangeInt(0, exeTargets.Count)];
+                    lwyr.target = lwyrTargets[Random.RandomRangeInt(0, lwyrTargets.Count)];
                     lwyrTargets.Remove(lwyr.target);
 
                     Utils.Rpc(CustomRPC.SetDefendant, role.Player.PlayerId, lwyr.target.PlayerId);
