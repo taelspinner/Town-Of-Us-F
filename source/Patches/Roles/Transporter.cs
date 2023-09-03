@@ -99,9 +99,6 @@ namespace TownOfUs.Roles
                 TransportList.quickChatButton.enabled = false;
                 TransportList.quickChatButton.gameObject.SetActive(false);
 
-                TransportList.freeChatField.charCountText.enabled = false;
-                TransportList.freeChatField.charCountText.gameObject.SetActive(false);
-
                 TransportList.openKeyboardButton.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 TransportList.openKeyboardButton.Destroy();
 
@@ -153,7 +150,8 @@ namespace TownOfUs.Roles
                 if (!TransportList.IsOpenOrOpening || MeetingHud.Instance || Input.GetKeyInt(KeyCode.Escape) || PlayerControl.LocalPlayer.Data.IsDead)
                 {
                     TransportList.Toggle();
-                    TransportList.SetVisible(false);
+                    TransportList.gameObject.SetActive(false);
+                    TransportList.DestroyImmediate();
                     TransportList = null;
                     PressedButton = false;
                     TransportPlayer1 = null;
@@ -209,7 +207,8 @@ namespace TownOfUs.Roles
                         else
                         {
                             TransportList.Toggle();
-                            TransportList.SetVisible(false);
+                            TransportList.gameObject.SetActive(false);
+                            TransportList.DestroyImmediate();
                             TransportList = null;
                             PressedButton = false;
                             TransportPlayer1 = null;
@@ -242,7 +241,8 @@ namespace TownOfUs.Roles
                     {
                         PressedButton = false;
                         TransportList.Toggle();
-                        TransportList.SetVisible(false);
+                        TransportList.gameObject.SetActive(false);
+                        TransportList.DestroyImmediate();
                         TransportList = null;
 
                         TransportPlayer2 = player;

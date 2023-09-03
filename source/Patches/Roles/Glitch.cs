@@ -738,7 +738,8 @@ namespace TownOfUs.Roles
                 else
                 {
                     __gInstance.MimicList.Toggle();
-                    __gInstance.MimicList.SetVisible(false);
+                    __gInstance.MimicList.gameObject.SetActive(false);
+                    __gInstance.MimicList.DestroyImmediate();
                     __gInstance.MimicList = null;
                 }
             }

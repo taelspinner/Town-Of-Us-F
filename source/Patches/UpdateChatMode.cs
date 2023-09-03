@@ -14,8 +14,6 @@ namespace TownOfUs.Patches
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Glitch) && !PlayerControl.LocalPlayer.Is(RoleEnum.Transporter)) return true;
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Glitch))
                 return __instance != Role.GetRole<Glitch>(PlayerControl.LocalPlayer).MimicList;
-            if (Role.GetRole<Transporter>(PlayerControl.LocalPlayer).TransportList != null)
-                Debug.Log("Chat mode prefix " + (__instance != Role.GetRole<Transporter>(PlayerControl.LocalPlayer).TransportList).ToString());
             return __instance != Role.GetRole<Transporter>(PlayerControl.LocalPlayer).TransportList;
         }
     }
