@@ -551,18 +551,8 @@
       "artist": "Ophidian"
     },
     {
-      "id": "hats0110",
-      "name": "mantis_shrimpling_hat",
-      "artist": "Ophidian"
-    },
-    {
       "id": "hats0111",
       "name": "luffy_hat",
-      "artist": "Ophidian"
-    },
-    {
-      "id": "hats0112",
-      "name": "carnage_hat",
       "artist": "Ophidian"
     },
     {
@@ -573,11 +563,6 @@
     {
       "id": "hats0114",
       "name": "harley_quinn_hat",
-      "artist": "Ophidian"
-    },
-    {
-      "id": "hats0115",
-      "name": "weasel_hat",
       "artist": "Ophidian"
     },
     {
@@ -593,16 +578,6 @@
     {
       "id": "hats0118",
       "name": "sims_hat",
-      "artist": "Ophidian"
-    },
-    {
-      "id": "hats0119",
-      "name": "shrimp_hat",
-      "artist": "Ophidian"
-    },
-    {
-      "id": "hats0120",
-      "name": "pepe_hat",
       "artist": "Ophidian"
     },
     {
@@ -634,16 +609,6 @@
       "id": "hats0126",
       "name": "Soyciety hat",
       "artist": "SugaNope"
-    },
-    {
-      "id": "hats0127",
-      "name": "Tsedtacle hat",
-      "artist": "Tsed"
-    },
-    {
-      "id": "hats0128",
-      "name": "Big Shot hat",
-      "artist": "LayZ"
     },
     {
       "id": "hats0129",
@@ -971,16 +936,6 @@
       "artist": "Ophidian"
     },
     {
-      "id": "hats0194",
-      "name": "Bearded Grizzly hat",
-      "artist": "Ophidian"
-    },
-    {
-      "id": "hats0195",
-      "name": "Dumbdog hat",
-      "artist": "Ophidian"
-    },
-    {
       "id": "hats0196",
       "name": "Eyeball hat",
       "artist": "Ophidian"
@@ -1221,11 +1176,6 @@
       "artist": "Sweetrolled"
     },
     {
-      "id": "hats0244",
-      "name": "Taste The Rainbow hat",
-      "artist": "Sweetrolled"
-    },
-    {
       "id": "hats0245",
       "name": "Tux hat",
       "artist": "Sweetrolled"
@@ -1296,16 +1246,6 @@
       "artist": "NightRaiderTea"
     },
     {
-      "id": "hats0259",
-      "name": "HeyMcGurk hat",
-      "artist": "Ophidian"
-    },
-    {
-      "id": "hats0260",
-      "name": "Tuskspicious hat",
-      "artist": "Ophidian"
-    },
-    {
       "id": "hats0261",
       "name": "Bunnies hat",
       "artist": "Pigoletto"
@@ -1338,11 +1278,6 @@
     {
       "id": "hats0267",
       "name": "NoiBat hat",
-      "artist": "Ophidian"
-    },
-    {
-      "id": "hats0268",
-      "name": "Shmuelzys Piss Bucket hat",
       "artist": "Ophidian"
     },
     {
@@ -1591,31 +1526,6 @@
       "artist": "Ophidian"
     },
     {
-      "id": "hats0318",
-      "name": "Inmouth hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0319",
-      "name": "Teeth hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0320",
-      "name": "Thing hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0321",
-      "name": "Tongue hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0322",
-      "name": "Xeno hat ",
-      "artist": "Rum"
-    },
-    {
       "id": "hats0323",
       "name": "Side Arms hat 2 alt ",
       "artist": "Ghost_ejims"
@@ -1633,11 +1543,6 @@
     {
       "id": "hats0326",
       "name": "CowboyMav hat ",
-      "artist": "Ophidian"
-    },
-    {
-      "id": "hats0327",
-      "name": "DigDuck hat ",
       "artist": "Ophidian"
     },
     {
@@ -1836,41 +1741,6 @@
       "artist": "Ophidian"
     },
     {
-      "id": "hats0367",
-      "name": "Chocoberry hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0368",
-      "name": "ChocoPun hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0369",
-      "name": "Gomez hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0370",
-      "name": "Wednesday hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0371",
-      "name": "Michael Myers hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0372",
-      "name": "Strawberry hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0373",
-      "name": "Yey Billy hat ",
-      "artist": "Rum"
-    },
-    {
       "id": "hats0374",
       "name": "Breakfast Boba hat ",
       "artist": "Ophidian"
@@ -1894,31 +1764,6 @@
       "id": "hats0378",
       "name": "Little Pirate hat",
       "artist": "Pigoletto"
-    },
-    {
-      "id": "hats0379",
-      "name": "G7erard hat ",
-      "artist": "Ophidian"
-    },
-    {
-      "id": "hats0380",
-      "name": "COTC hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0381",
-      "name": "Facehugger hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0382",
-      "name": "Maks hat ",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0383",
-      "name": "Xenomorph Queen hat ",
-      "artist": "Rum"
     },
     {
       "id": "hats0384",
@@ -2301,61 +2146,6 @@
       "artist": "Ophidian"
     },
     {
-      "id": "hats0460",
-      "name": "5up hat",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0461",
-      "name": "Angel Is Kimi hat",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0462",
-      "name": "DK hat",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0463",
-      "name": "Dumbdog hat",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0464",
-      "name": "Ellum hat",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0465",
-      "name": "Hafu Penguin hat",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0466",
-      "name": "Koji hat",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0467",
-      "name": "Smajor hat",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0468",
-      "name": "Steve hat",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0469",
-      "name": "vGumiho hat",
-      "artist": "Rum"
-    },
-    {
-      "id": "hats0470",
-      "name": "xChocobars hat",
-      "artist": "Rum"
-    },
-    {
       "id": "hats0471",
       "name": "AfroBush hat",
       "artist": "Ophidian"
@@ -2481,6 +2271,16 @@
       "artist": "Pigoletto"
     },
     {
+      "id": "hats0496",
+      "name": "Vulture",
+      "artist": "Picatratus"
+    },
+    {
+      "id": "hats0497",
+      "name": "Painted Mask",
+      "artist": "Picatratus"
+    },
+    {
       "id": "misc0000",
       "name": "ZeroXFusionz hat",
       "artist": "TheLastShaymin"
@@ -2494,16 +2294,6 @@
       "id": "misc0002",
       "name": "wrench_f hat",
       "artist": "TheLastShaymin"
-    },
-    {
-      "id": "misc0003",
-      "name": "vince_foot_front hat",
-      "artist": "Ressnie"
-    },
-    {
-      "id": "misc0004",
-      "name": "vince_front hat",
-      "artist": "Ressnie"
     },
     /*{
       "id": "misc0005",
@@ -2730,11 +2520,6 @@
       "name": "squirrel hat",
       "artist": "TheLastShaymin"
     },
-    {
-      "id": "standard0004",
-      "name": "shiki hat",
-      "artist": "Ressnie"
-    },
     /*{
       "id": "standard0005",
       "name": "rollups hat",
@@ -2916,11 +2701,6 @@
       "artist": "Little Doo Doo"
     },
     {
-      "id": "standard0041",
-      "name": "Frog hat",
-      "artist": "Ressnie"
-    },
-    {
       "id": "standard0042",
       "name": "Jessie Monkey hat",
       "artist": "Little Doo Doo"
@@ -2963,21 +2743,6 @@
     {
       "id": "standard0050",
       "name": "Zeta Mark V hat",
-      "artist": "Little Doo Doo"
-    },
-    {
-      "id": "standard0051",
-      "name": "Billy Butcher hat",
-      "artist": "Little Doo Doo"
-    },
-    {
-      "id": "standard0052",
-      "name": "Queen Maeve hat",
-      "artist": "Little Doo Doo"
-    },
-    {
-      "id": "standard0053",
-      "name": "Starlight hat",
       "artist": "Little Doo Doo"
     }
   ]
