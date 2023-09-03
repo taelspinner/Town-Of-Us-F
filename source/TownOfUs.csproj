@@ -36,4 +36,8 @@
 		<EmbeddedResource Include="Resources\*" />
 		<EmbeddedResource Include="Resources\Hats\**" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="AmongUs.GameLibs.Steam" Version="2023.7.11" />
+	</ItemGroup>
 </Project>
