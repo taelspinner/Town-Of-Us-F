@@ -148,7 +148,7 @@ namespace TownOfUs.Roles
                 if (!TransportList.IsOpenOrOpening || MeetingHud.Instance || Input.GetKeyInt(KeyCode.Escape) || PlayerControl.LocalPlayer.Data.IsDead)
                 {
                     TransportList.Toggle();
-                    TransportList.SetVisible(false);
+                    //TransportList.SetVisible(false);
                     TransportList = null;
                     PressedButton = false;
                     TransportPlayer1 = null;
@@ -204,7 +204,7 @@ namespace TownOfUs.Roles
                         else
                         {
                             TransportList.Toggle();
-                            TransportList.SetVisible(false);
+                            //TransportList.SetVisible(false);
                             TransportList = null;
                             PressedButton = false;
                             TransportPlayer1 = null;
@@ -237,7 +237,7 @@ namespace TownOfUs.Roles
                     {
                         PressedButton = false;
                         TransportList.Toggle();
-                        TransportList.SetVisible(false);
+                        //TransportList.SetVisible(false);
                         TransportList = null;
 
                         TransportPlayer2 = player;
