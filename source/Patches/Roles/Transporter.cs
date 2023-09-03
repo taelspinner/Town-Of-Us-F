@@ -216,7 +216,8 @@ namespace TownOfUs.Roles
                         else
                         {
                             TransportList.Toggle();
-                            TransportList.SetVisible(false);
+                            TransportList.gameObject.SetActive(false);
+                            TransportList.DestroyImmediate();
                             TransportList = null;
                             PressedButton = false;
                             TransportPlayer1 = null;
@@ -250,6 +251,7 @@ namespace TownOfUs.Roles
                         PressedButton = false;
                         TransportList.Toggle();
                         TransportList.gameObject.SetActive(false);
+                        TransportList.DestroyImmediate();
                         TransportList = null;
 
                         TransportPlayer2 = player;

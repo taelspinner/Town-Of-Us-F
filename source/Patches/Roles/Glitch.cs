@@ -750,6 +750,7 @@ namespace TownOfUs.Roles
                 {
                     __gInstance.MimicList.Toggle();
                     __gInstance.MimicList.gameObject.SetActive(false);
+                    __gInstance.MimicList.DestroyImmediate();
                     __gInstance.MimicList = null;
                 }
             }
