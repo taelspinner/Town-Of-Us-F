@@ -679,11 +679,18 @@ namespace TownOfUs.Roles
                     __gInstance.MimicList.SetVisible(true);
                     __gInstance.MimicList.Toggle();
 
-                    __gInstance.MimicList.quickChatButton.enabled = false;
-                    __gInstance.MimicList.quickChatButton.gameObject.SetActive(false);
+                    AspectPosition newAspect = __gInstance.MimicList.gameObject.AddComponent<AspectPosition>();
+                    newAspect.Alignment = AspectPosition.EdgeAlignments.Center;
+                    newAspect.AdjustPosition();
+
+                    __gInstance.MimicList.GetPooledBubble().enabled = false;
+                    __gInstance.MimicList.GetPooledBubble().gameObject.SetActive(false);
 
                     __gInstance.MimicList.freeChatField.enabled = false;
                     __gInstance.MimicList.freeChatField.gameObject.SetActive(false);
+
+                    __gInstance.MimicList.quickChatButton.enabled = false;
+                    __gInstance.MimicList.quickChatButton.gameObject.SetActive(false);
 
                     __gInstance.MimicList.banButton.enabled = false;
                     __gInstance.MimicList.banButton.gameObject.SetActive(false);
@@ -696,16 +703,6 @@ namespace TownOfUs.Roles
                     __gInstance.MimicList.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
                     __gInstance.MimicList.backgroundImage.enabled = false;
-
-                    /*foreach (var rend in __gInstance.MimicList.Content
-                        .GetComponentsInChildren<SpriteRenderer>())
-                    {
-                        if (rend.name == "SendButton" || rend.name == "QuickChatButton")
-                        {
-                            rend.enabled = false;
-                            rend.gameObject.SetActive(false);
-                        }
-                    }*/
 
                     foreach (var bubble in __gInstance.MimicList.chatBubblePool.activeChildren)
                     {

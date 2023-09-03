@@ -76,18 +76,31 @@ namespace TownOfUs.Roles
                 TransportPlayer1 = null;
                 TransportPlayer2 = null;
 
-                __instance.Chat.SetVisible(false);
                 TransportList = Object.Instantiate(__instance.Chat);
+                __instance.Chat.SetVisible(false);
 
                 TransportList.transform.SetParent(Camera.main.transform);
                 TransportList.SetVisible(true);
                 TransportList.Toggle();
 
+                AspectPosition newAspect = TransportList.gameObject.AddComponent<AspectPosition>();
+                newAspect.Alignment = AspectPosition.EdgeAlignments.Center;
+                newAspect.AdjustPosition();
+
+                TransportList.GetPooledBubble().enabled = false;
+                TransportList.GetPooledBubble().gameObject.SetActive(false);
+
+                TransportList.freeChatField.enabled = false;
+                TransportList.freeChatField.gameObject.SetActive(false);
+
+                TransportList.banButton.MenuButton.enabled = false;
+                TransportList.banButton.MenuButton.gameObject.SetActive(false);
+
                 TransportList.quickChatButton.enabled = false;
                 TransportList.quickChatButton.gameObject.SetActive(false);
 
-                TransportList.banButton.enabled = false;
-                TransportList.banButton.gameObject.SetActive(false);
+                TransportList.freeChatField.charCountText.enabled = false;
+                TransportList.freeChatField.charCountText.gameObject.SetActive(false);
 
                 TransportList.openKeyboardButton.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 TransportList.openKeyboardButton.Destroy();
@@ -97,14 +110,6 @@ namespace TownOfUs.Roles
                 TransportList.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
                 TransportList.backgroundImage.enabled = false;
-
-                /*foreach (var rend in TransportList.Content
-                    .GetComponentsInChildren<SpriteRenderer>())
-                    if (rend.name == "SendButton" || rend.name == "QuickChatButton")
-                    {
-                        rend.enabled = false;
-                        rend.gameObject.SetActive(false);
-                    }*/
 
                 foreach (var bubble in TransportList.chatBubblePool.activeChildren)
                 {
@@ -148,7 +153,7 @@ namespace TownOfUs.Roles
                 if (!TransportList.IsOpenOrOpening || MeetingHud.Instance || Input.GetKeyInt(KeyCode.Escape) || PlayerControl.LocalPlayer.Data.IsDead)
                 {
                     TransportList.Toggle();
-                    //TransportList.SetVisible(false);
+                    TransportList.SetVisible(false);
                     TransportList = null;
                     PressedButton = false;
                     TransportPlayer1 = null;
@@ -204,7 +209,7 @@ namespace TownOfUs.Roles
                         else
                         {
                             TransportList.Toggle();
-                            //TransportList.SetVisible(false);
+                            TransportList.SetVisible(false);
                             TransportList = null;
                             PressedButton = false;
                             TransportPlayer1 = null;
@@ -237,7 +242,7 @@ namespace TownOfUs.Roles
                     {
                         PressedButton = false;
                         TransportList.Toggle();
-                        //TransportList.SetVisible(false);
+                        TransportList.SetVisible(false);
                         TransportList = null;
 
                         TransportPlayer2 = player;
