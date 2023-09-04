@@ -1,7 +1,9 @@
 ﻿using HarmonyLib;
 using Hazel;
+using Il2CppSystem;
 using Reactor.Utilities;
 using TownOfUs.Roles;
+using UnityEngine;
 
 namespace TownOfUs.CrewmateRoles.MercenaryMod
 {
@@ -10,7 +12,6 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
             var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Mercenary);
             if (!flag) return true;
             var role = Role.GetRole<Mercenary>(PlayerControl.LocalPlayer);
@@ -20,11 +21,14 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
                 if (!__instance.isActiveAndEnabled) return false;
                 if (__instance.isCoolingDown) return false;
                 if (role.ArmorTimer() != 0) return false;
-                role.TimeRemaining = CustomGameOptions.VestDuration;
+                role.TimeRemaining = CustomGameOptions.ArmorDuration;
+                role.Brilders -= 1;
                 role.DonArmor();
+                role.RegenTask();
                 Utils.Rpc(CustomRPC.DonArmor, PlayerControl.LocalPlayer.PlayerId);
                 return false;
             }
+            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
             if (role.ShieldedPlayer != null || role.ClosestPlayer == null) return false;
             if (role.StartTimer() > 0) return false;
 
@@ -36,9 +40,9 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
                 role.ShieldedPlayer = role.ClosestPlayer;
                 return false;
             }
-            if (interact[5] == true)
+            else if (interact[5] == true)
             {
-                role.StartTimer();
+                role.StartingCooldown = System.DateTime.UtcNow;
             }
             return false;
         }
