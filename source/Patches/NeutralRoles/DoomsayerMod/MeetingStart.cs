@@ -77,8 +77,8 @@ namespace TownOfUs.NeutralRoles.DoomsayerMod
                 return "(Arsonist, Miner, Plaguebearer, Prosecutor, Seer or Transporter)";
             else if (player.Is(RoleEnum.Engineer) || player.Is(RoleEnum.Escapist) || player.Is(RoleEnum.Grenadier)
                 || player.Is(RoleEnum.GuardianAngel) || player.Is(RoleEnum.Medic) || player.Is(RoleEnum.Survivor)
-                || player.Is(RoleEnum.Lawyer))
-                return "(Engineer, Escapist, Grenadier, Guardian Angel, Medic, Lawyer or Survivor)";
+                || player.Is(RoleEnum.Lawyer) || player.Is(RoleEnum.Mercenary))
+                return "(Engineer, Escapist, Grenadier, Guardian Angel, Medic, Lawyer, Mercenary or Survivor)";
             else if (player.Is(RoleEnum.Executioner) || player.Is(RoleEnum.Jester) || player.Is(RoleEnum.Mayor)
                  || player.Is(RoleEnum.Swapper) || player.Is(RoleEnum.Traitor) || player.Is(RoleEnum.Veteran))
                 return "(Executioner, Jester, Mayor, Swapper, Traitor or Veteran)";

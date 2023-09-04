@@ -1421,6 +1421,9 @@ namespace TownOfUs
                     if (CustomGameOptions.LawyerOn > 0)
                         NeutralBenignRoles.Add((typeof(Lawyer), CustomGameOptions.LawyerOn, false));
 
+                    if (CustomGameOptions.MercenaryOn > 0)
+                        NeutralBenignRoles.Add((typeof(Mercenary), CustomGameOptions.MercenaryOn, false));
+
                     if (CustomGameOptions.GuardianAngelOn > 0)
                         NeutralBenignRoles.Add((typeof(GuardianAngel), CustomGameOptions.GuardianAngelOn, false));
 
