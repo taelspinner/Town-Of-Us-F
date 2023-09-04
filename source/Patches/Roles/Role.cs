@@ -389,8 +389,6 @@ namespace TownOfUs.Roles
 
         public static T GenRole<T>(Type type, List<PlayerControl> players)
         {
-            Debug.Log(string.Join(", ", players));
-            Debug.Log(type.Name);
             var player = players[Random.RandomRangeInt(0, players.Count)];
 
             var role = GenRole<T>(type, player);
