@@ -214,13 +214,13 @@ namespace TownOfUs
                 return shieldedPlayer != null && player.PlayerId == shieldedPlayer.PlayerId;
             });
         }
-        public static Medic GetMerc(this PlayerControl player)
+        public static Mercenary GetMerc(this PlayerControl player)
         {
             return Role.GetRoles(RoleEnum.Mercenary).FirstOrDefault(role =>
             {
                 var shieldedPlayer = ((Mercenary)role).ShieldedPlayer;
                 return shieldedPlayer != null && player.PlayerId == shieldedPlayer.PlayerId;
-            }) as Medic;
+            }) as Mercenary;
         }
 
         public static bool IsOnAlert(this PlayerControl player)
@@ -1328,6 +1328,11 @@ namespace TownOfUs
             {
                 var surv = Role.GetRole<Survivor>(PlayerControl.LocalPlayer);
                 surv.LastVested = DateTime.UtcNow;
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Mercenary))
+            {
+                var merc = Role.GetRole<Mercenary>(PlayerControl.LocalPlayer);
+                merc.LastArmored = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
             {

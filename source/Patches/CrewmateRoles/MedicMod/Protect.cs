@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using Hazel;
+using Il2CppSystem;
 using Reactor.Utilities;
 using TownOfUs.Roles;
 
@@ -30,7 +31,7 @@ namespace TownOfUs.CrewmateRoles.MedicMod
             }
             if (interact[5] == true)
             {
-                role.StartTimer();
+                role.StartingCooldown = System.DateTime.UtcNow;
             }
             return false;
         }

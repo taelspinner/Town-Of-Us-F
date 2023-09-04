@@ -31,6 +31,7 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
                 role.ArmorButton.graphic.sprite = ArmorSprite;
                 role.ArmorButton.gameObject.SetActive(false);
             }
+            role.ArmorButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
             role.ArmorButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
