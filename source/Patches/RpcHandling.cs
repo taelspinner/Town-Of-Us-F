@@ -195,6 +195,9 @@ namespace TownOfUs
                             }
                             break;
                     }
+                    Debug.Log(benign.ToString() + " " +  evil.ToString() + " " + killing.ToString());
+                    if ((benign + evil + killing) == 0)
+                        break;
                 }
 
                 NeutralBenignRoles.SortRoles(benign);
@@ -269,6 +272,9 @@ namespace TownOfUs
             // This should ensure a statistically equal chance of all permutations of roles.
             crewRoles.Shuffle();
             impRoles.Shuffle();
+            Debug.Log("---ROLES---");
+            Debug.Log(string.Join(", ", crewRoles));
+            Debug.Log(string.Join(", ", impRoles));
 
             // Hand out appropriate roles to crewmates and impostors.
             foreach (var (type, _, unique) in crewRoles)
