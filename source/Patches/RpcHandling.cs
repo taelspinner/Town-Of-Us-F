@@ -35,7 +35,6 @@ using AmongUs.GameOptions;
 using TownOfUs.NeutralRoles.VampireMod;
 using TownOfUs.CrewmateRoles.MayorMod;
 using System.Reflection;
-using static Il2CppSystem.Xml.Schema.FacetsChecker.FacetsCompiler;
 
 namespace TownOfUs
 {
