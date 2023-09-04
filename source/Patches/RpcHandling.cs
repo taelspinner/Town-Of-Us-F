@@ -994,6 +994,7 @@ namespace TownOfUs
                         var armored = Utils.PlayerById(reader.ReadByte());
                         var mercRole = Role.GetRole<Mercenary>(armored);
                         mercRole.TimeRemaining = CustomGameOptions.ArmorDuration;
+                        mercRole.Brilders -= 1;
                         mercRole.DonArmor();
                         break;
                     case CustomRPC.GAProtect:

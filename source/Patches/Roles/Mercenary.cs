@@ -19,13 +19,15 @@ namespace TownOfUs.Roles
         {
             Name = "Mercenary";
             ImpostorText = () => "Collect Brilders And Survive";
-            TaskText = () => HasEnoughBrilders
+            TaskText = () => (HasEnoughBrilders
                 ? "Stay alive to win!"
-                : "Stop abilities with your shield to gain brilders";
+                : "Stop abilities with your shield to gain brilders")
+                + "\nFake Tasks:";
             Color = Patches.Colors.Mercenary;
             StartingCooldown = DateTime.UtcNow;
             LastArmored = DateTime.UtcNow;
             RoleType = RoleEnum.Mercenary;
+            Faction = Faction.NeutralBenign;
             AddToRoleHistory(RoleType);
             ShieldedPlayer = null;
         }

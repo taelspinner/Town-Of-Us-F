@@ -24,9 +24,11 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
             foreach (var role in Role.GetRoles(RoleEnum.Mercenary))
                 if (((Mercenary)role).ShieldedPlayer.PlayerId == playerId && ((Mercenary)role).Player.PlayerId == mercId)
                 {
-                    ((Mercenary)role).ShieldedPlayer = null;
-                    ((Mercenary)role).exShielded = player;
-                    ((Mercenary)role).Brilders += 1;
+                    var merc = (Mercenary)role;
+                    merc.ShieldedPlayer = null;
+                    merc.exShielded = player;
+                    merc.Brilders += 1;
+                    merc.RegenTask();
                     System.Console.WriteLine(player.name + " Is Ex-Shielded");
                 }
 

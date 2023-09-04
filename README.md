@@ -37,6 +37,8 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 - [Amnesiac](#amnesiac)
 - [Guardian Angel](#guardian-angel)
 - [Survivor](#survivor)
+- [Lawyer](#lawyer)
+- [Mercenary](#mercenary)
 - [Doomsayer](#doomsayer)
 - [Executioner](#executioner)
 - [Jester](#jester)
