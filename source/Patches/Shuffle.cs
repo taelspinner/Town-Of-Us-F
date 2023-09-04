@@ -16,8 +16,10 @@ namespace TownOfUs
 
         public static T TakeFirst<T>(this List<T> list)
         {
+            list.Shuffle();
             var item = list[0];
             list.RemoveAt(0);
+            list.Shuffle();
             return item;
         }
 
