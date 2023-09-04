@@ -2,6 +2,7 @@
 using Hazel;
 using Il2CppSystem;
 using Reactor.Utilities;
+using TownOfUs.Extensions;
 using TownOfUs.Roles;
 using UnityEngine;
 
@@ -24,6 +25,8 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
                 role.TimeRemaining = CustomGameOptions.ArmorDuration;
                 role.Brilders -= 1;
                 role.ShieldedPlayer = null;
+                role.ShieldedPlayer.myRend().material.SetColor("_VisorColor", Palette.VisorColor);
+                role.ShieldedPlayer.myRend().material.SetFloat("_Outline", 0f);
                 role.DonArmor();
                 role.RegenTask();
                 Utils.Rpc(CustomRPC.DonArmor, PlayerControl.LocalPlayer.PlayerId);
