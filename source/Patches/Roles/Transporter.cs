@@ -11,6 +11,7 @@ using TownOfUs.Patches;
 using System.Collections;
 using TownOfUs.Extensions;
 using TownOfUs.CrewmateRoles.MedicMod;
+using TownOfUs.CrewmateRoles.MercenaryMod;
 
 namespace TownOfUs.Roles
 {
@@ -205,16 +206,33 @@ namespace TownOfUs.Roles
 
                                                     if (!UntransportablePlayers.ContainsKey(TransportPlayer1.PlayerId) && !UntransportablePlayers.ContainsKey(TransportPlayer2.PlayerId))
                                                     {
+                                                        var role = GetRole(Player);
+                                                        var transRole = (Transporter)role;
+                                                        if (TransportPlayer1.IsMercShielded() || TransportPlayer2.IsMercShielded())
+                                                        {
+                                                            if (TransportPlayer1.IsMercShielded())
+                                                            {
+                                                                var merc = TransportPlayer1.GetMerc().Player.PlayerId;
+                                                                Utils.Rpc(CustomRPC.MercShield, merc, TransportPlayer1.PlayerId);
+                                                                StopAbility.BreakShield(merc, TransportPlayer1.PlayerId);
+                                                            }
+                                                            else if (TransportPlayer2.IsMercShielded())
+                                                            {
+                                                                var merc = TransportPlayer2.GetMerc().Player.PlayerId;
+                                                                Utils.Rpc(CustomRPC.MercShield, merc, TransportPlayer2.PlayerId);
+                                                                StopAbility.BreakShield(merc, TransportPlayer2.PlayerId);
+                                                            }
+                                                            transRole.LastTransported = DateTime.UtcNow;
+                                                            return;
+                                                        }
                                                         if (Player.IsInfected() || TransportPlayer1.IsInfected())
                                                         {
-                                                            foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(Player, TransportPlayer1);
+                                                            foreach (var pb in GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(Player, TransportPlayer1);
                                                         }
                                                         if (Player.IsInfected() || TransportPlayer2.IsInfected())
                                                         {
-                                                            foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(Player, TransportPlayer2);
+                                                            foreach (var pb in GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(Player, TransportPlayer2);
                                                         }
-                                                        var role = GetRole(Player);
-                                                        var transRole = (Transporter)role;
                                                         if (TransportPlayer1.Is(RoleEnum.Pestilence) || TransportPlayer1.IsOnAlert())
                                                         {
                                                             if (Player.IsShielded())
@@ -229,6 +247,14 @@ namespace TownOfUs.Roles
                                                             }
                                                             else if (!Player.IsProtected())
                                                             {
+                                                                // Pestilence is not an ability, so merc shield does not block the kill
+                                                                bool blockVetAlert = TransportPlayer1.IsOnAlert() && Player.IsMercShielded();
+                                                                if (blockVetAlert)
+                                                                {
+                                                                    var merc = Player.GetMerc().Player.PlayerId;
+                                                                    Utils.Rpc(CustomRPC.MercShield, merc, Player.PlayerId);
+                                                                    StopAbility.BreakShield(merc, Player.PlayerId);
+                                                                }
                                                                 Coroutines.Start(TransportPlayers(TransportPlayer1.PlayerId, Player.PlayerId, true));
 
                                                                 Utils.Rpc(CustomRPC.Transport, TransportPlayer1.PlayerId, Player.PlayerId, true);
@@ -251,6 +277,13 @@ namespace TownOfUs.Roles
                                                             }
                                                             else if (!Player.IsProtected())
                                                             {
+                                                                bool blockVetAlert = TransportPlayer2.IsOnAlert() && Player.IsMercShielded();
+                                                                if (blockVetAlert)
+                                                                {
+                                                                    var merc = Player.GetMerc().Player.PlayerId;
+                                                                    Utils.Rpc(CustomRPC.MercShield, merc, Player.PlayerId);
+                                                                    StopAbility.BreakShield(merc, Player.PlayerId);
+                                                                }
                                                                 Coroutines.Start(TransportPlayers(TransportPlayer2.PlayerId, Player.PlayerId, true));
 
                                                                 Utils.Rpc(CustomRPC.Transport, TransportPlayer2.PlayerId, Player.PlayerId, true);

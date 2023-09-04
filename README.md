@@ -1224,6 +1224,23 @@ However, if Lovers, or a Neutral Evil role wins the game, the survivor loses.
 | Max Uses | The amount of times the Vest ability can be used | Number | 5 |
 
 -----------------------
+## Mercenary
+### **Team: Neutral**
+The Mercenary is a Neutral role which must block the abilities of other players to win.\
+So long as they possess the required number of brilders by the end of the game, they win with anyone (except Lovers). \
+They may also expend brilders to protect themselves from attack.
+
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Mercenary | The percentage probability of the Mercenary appearing | Percentage | 0% |
+| Brilders Required To Win | How many brilders the Mercenary must possess at game end to win | Number | 5 |
+| Show Shielded Player | Who should be able to see who is Shielded | Self / Mercenary / Self + Mercenary / Everyone | Self |
+| Who Gets Ability Block Indicator | Who will receive an indicator when the shield blocks an ability | Mercenary / Shielded / Mercenary & Shielded / Everyone / Nobody | Mercenary |
+| Armor Cooldown | The cooldown of the Mercenary's Armor button | Time | 25s |
+| Armor Duration | How long the Mercenary's Armor lasts | Time | 25s |
+
+-----------------------
 ## Doomsayer
 ### **Team: Neutral**
 The Doomsayer is a Neutral role with its own win condition.\

@@ -28,6 +28,10 @@ namespace TownOfUs.CrewmateRoles.MedicMod
                 role.UsedAbility = true;
                 return false;
             }
+            if (interact[5] == true)
+            {
+                role.StartTimer();
+            }
             return false;
         }
     }
