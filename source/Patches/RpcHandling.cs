@@ -195,6 +195,7 @@ namespace TownOfUs
                             }
                             break;
                     }
+
                     Debug.Log(benign.ToString() + " " +  evil.ToString() + " " + killing.ToString());
                     if ((benign + evil + killing) == 0)
                         break;
