@@ -43,6 +43,11 @@ namespace TownOfUs
                 var lwyr = (Lawyer)role;
                 losers.Add(lwyr.Player.GetDefaultOutfit().ColorId);
             }
+            foreach (var role in Role.GetRoles(RoleEnum.Mercenary))
+            {
+                var merc = (Mercenary)role;
+                losers.Add(merc.Player.GetDefaultOutfit().ColorId);
+            }
             foreach (var role in Role.GetRoles(RoleEnum.Jester))
             {
                 var jest = (Jester)role;

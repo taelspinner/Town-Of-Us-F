@@ -1,6 +1,7 @@
 ﻿using System;
 using HarmonyLib;
 using Hazel;
+using TownOfUs.CrewmateRoles.MercenaryMod;
 using TownOfUs.Roles;
 using UnityEngine;
 
@@ -26,10 +27,19 @@ namespace TownOfUs.ImpostorRoles.MorphlingMod
                 if (role.MorphButton.graphic.sprite == SampleSprite)
                 {
                     if (target == null) return false;
+                    DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
+                    role.MorphButton.SetTarget(null);
+                    if (target.IsMercShielded())
+                    {
+                        var merc = target.GetMerc().Player.PlayerId;
+                        Utils.Rpc(CustomRPC.MercShield, merc, target.PlayerId);
+                        role.SampleCooldown = DateTime.UtcNow;
+
+                        StopAbility.BreakShield(merc, target.PlayerId);
+                        return false;
+                    }
                     role.SampledPlayer = target;
                     role.MorphButton.graphic.sprite = MorphSprite;
-                    role.MorphButton.SetTarget(null);
-                    DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
                     if (role.MorphTimer() < 5f)
                         role.LastMorphed = DateTime.UtcNow.AddSeconds(5 - CustomGameOptions.MorphlingCd);
                 }
@@ -42,10 +52,8 @@ namespace TownOfUs.ImpostorRoles.MorphlingMod
                     role.MorphedPlayer = role.SampledPlayer;
                     Utils.Morph(role.Player, role.SampledPlayer, true);
                 }
-
                 return false;
             }
-
             return true;
         }
     }
