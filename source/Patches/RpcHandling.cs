@@ -149,7 +149,7 @@ namespace TownOfUs
                 };
                 
                 // Crew must always start out outnumbering neutrals, so subtract roles until that can be guaranteed.
-                while (crewmates.Count <= benign + evil + killing)
+                while (Math.Ceiling((double)crewmates.Count/2) <= benign + evil + killing)
                 {
                     bool canSubtractBenign = canSubtract(benign, CustomGameOptions.MinNeutralBenignRoles);
                     bool canSubtractEvil = canSubtract(evil, CustomGameOptions.MinNeutralEvilRoles);
