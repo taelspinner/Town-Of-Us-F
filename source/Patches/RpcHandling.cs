@@ -996,6 +996,7 @@ namespace TownOfUs
                         var mercRole = Role.GetRole<Mercenary>(armored);
                         mercRole.TimeRemaining = CustomGameOptions.ArmorDuration;
                         mercRole.Brilders -= 1;
+                        mercRole.ShieldedPlayer = null;
                         mercRole.DonArmor();
                         break;
                     case CustomRPC.GAProtect:

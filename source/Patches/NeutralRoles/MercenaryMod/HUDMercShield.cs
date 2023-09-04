@@ -80,6 +80,7 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             protectButton.SetCoolDown(role.StartTimer(), 10f);
             if (role.ShieldedPlayer != null) return;
+            if (role.Armored) return;
             Utils.SetTarget(ref role.ClosestPlayer, protectButton);
         }
     }

@@ -23,6 +23,7 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
                 if (role.ArmorTimer() != 0) return false;
                 role.TimeRemaining = CustomGameOptions.ArmorDuration;
                 role.Brilders -= 1;
+                role.ShieldedPlayer = null;
                 role.DonArmor();
                 role.RegenTask();
                 Utils.Rpc(CustomRPC.DonArmor, PlayerControl.LocalPlayer.PlayerId);
@@ -38,7 +39,7 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
                 Utils.Rpc(CustomRPC.MercProtect, PlayerControl.LocalPlayer.PlayerId, role.ClosestPlayer.PlayerId);
 
                 role.ShieldedPlayer = role.ClosestPlayer;
-                return false;
+                role.StartingCooldown = System.DateTime.UtcNow;
             }
             else if (interact[5] == true)
             {

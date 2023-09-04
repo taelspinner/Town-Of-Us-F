@@ -3,6 +3,7 @@ using Hazel;
 using Il2CppSystem;
 using Reactor.Utilities;
 using TownOfUs.Roles;
+using UnityEngine;
 
 namespace TownOfUs.CrewmateRoles.MedicMod
 {
@@ -21,6 +22,7 @@ namespace TownOfUs.CrewmateRoles.MedicMod
             if (role.StartTimer() > 0) return false;
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
+            Debug.Log("Medic: " + string.Join(", ", interact));
             if (interact[4] == true)
             {
                 Utils.Rpc(CustomRPC.Protect, PlayerControl.LocalPlayer.PlayerId, role.ClosestPlayer.PlayerId);
@@ -29,7 +31,7 @@ namespace TownOfUs.CrewmateRoles.MedicMod
                 role.UsedAbility = true;
                 return false;
             }
-            if (interact[5] == true)
+            else if (interact[5] == true)
             {
                 role.StartingCooldown = System.DateTime.UtcNow;
             }
