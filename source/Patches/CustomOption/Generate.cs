@@ -40,6 +40,7 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption AmnesiacOn;
         public static CustomNumberOption GuardianAngelOn;
         public static CustomNumberOption SurvivorOn;
+        public static CustomNumberOption MercenaryOn;
         public static CustomNumberOption LawyerOn;
 
         public static CustomHeaderOption NeutralEvilRoles;
@@ -381,6 +382,13 @@ namespace TownOfUs.CustomOption
         public static CustomToggleOption LawyerCanTalkDefendant;
         public static CustomStringOption OnDefendantDead;
 
+        public static CustomHeaderOption Mercenary;
+        public static CustomNumberOption MercenaryBrildersRequired;
+        public static CustomStringOption ShowMercShielded;
+        public static CustomStringOption WhoGetsMercNotification;
+        public static CustomNumberOption MercArmorCd;
+        public static CustomNumberOption MercArmorDuration;
+
         public static CustomHeaderOption GuardianAngel;
         public static CustomNumberOption ProtectCd;
         public static CustomNumberOption ProtectDuration;
@@ -576,6 +584,8 @@ namespace TownOfUs.CustomOption
             SurvivorOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FFE64DFF>Survivor</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             LawyerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#D2B48CFF>Lawyer</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            MercenaryOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#A59C94FF>Mercenary</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
             NeutralEvilRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Evil Roles");
@@ -1090,6 +1100,21 @@ namespace TownOfUs.CustomOption
             LawyerCanTalkDefendant = new CustomToggleOption(num++, MultiMenu.neutral, "Lawyer And Defendant Can Talk", false);
             OnDefendantDead = new CustomStringOption(num++, MultiMenu.neutral, "Lawyer Becomes On Defendant Dead",
                 new[] { "Crew", "Amnesiac", "Survivor", "Jester" });
+
+            Mercenary =
+                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#A59C94FF>Mercenary</color>");
+            MercenaryBrildersRequired =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Brilders Required To Win", 5, 1, 15, 1);
+            ShowMercShielded =
+                new CustomStringOption(num++, MultiMenu.neutral, "Show Shielded Player",
+                    new[] { "Self", "Mercenary", "Self+Mercenary", "Everyone" });
+            WhoGetsMercNotification =
+                new CustomStringOption(num++, MultiMenu.neutral, "Who Gets Ability Block Indicator",
+                    new[] { "Mercenary", "Shielded", "Mercenary+Shielded", "Everyone", "Nobody" });
+            MercArmorCd =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Armor Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            MercArmorDuration =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Armor Duration", 25f, 5f, 60f, 1f, CooldownFormat);
 
             Doomsayer = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#00FF80FF>Doomsayer</color>");
             ObserveCooldown =

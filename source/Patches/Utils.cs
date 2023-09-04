@@ -27,6 +27,7 @@ using TownOfUs.CrewmateRoles.AurialMod;
 using Reactor.Networking;
 using Reactor.Networking.Extensions;
 using Unity.Services.Core.Telemetry.Internal;
+using TownOfUs.CrewmateRoles.MercenaryMod;
 
 namespace TownOfUs
 {
@@ -205,6 +206,23 @@ namespace TownOfUs
             }) as Medic;
         }
 
+        public static bool IsMercShielded(this PlayerControl player)
+        {
+            return Role.GetRoles(RoleEnum.Mercenary).Any(role =>
+            {
+                var shieldedPlayer = ((Mercenary)role).ShieldedPlayer;
+                return shieldedPlayer != null && player.PlayerId == shieldedPlayer.PlayerId;
+            });
+        }
+        public static Medic GetMerc(this PlayerControl player)
+        {
+            return Role.GetRoles(RoleEnum.Mercenary).FirstOrDefault(role =>
+            {
+                var shieldedPlayer = ((Mercenary)role).ShieldedPlayer;
+                return shieldedPlayer != null && player.PlayerId == shieldedPlayer.PlayerId;
+            }) as Medic;
+        }
+
         public static bool IsOnAlert(this PlayerControl player)
         {
             return Role.GetRoles(RoleEnum.Veteran).Any(role =>
@@ -220,6 +238,15 @@ namespace TownOfUs
             {
                 var surv = (Survivor)role;
                 return surv != null && surv.Vesting && player.PlayerId == surv.Player.PlayerId;
+            });
+        }
+
+        public static bool IsArmored(this PlayerControl player)
+        {
+            return Role.GetRoles(RoleEnum.Mercenary).Any(role =>
+            {
+                var merc = (Mercenary)role;
+                return merc != null && merc.Armored && player.PlayerId == merc.Player.PlayerId;
             });
         }
 
@@ -249,6 +276,8 @@ namespace TownOfUs
             bool survReset = false;
             bool zeroSecReset = false;
             bool abilityUsed = false;
+            // Mercenary shield will add cooldowns even to abilities that normally don't have them
+            bool mercReset = false;
             if (target.IsInfected() || player.IsInfected())
             {
                 foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(target, player);
@@ -259,6 +288,7 @@ namespace TownOfUs
             }
             else if (target.Is(RoleEnum.Pestilence))
             {
+                // Merc shield will not prevent Pestilence interact kills because they are not an ability
                 if (player.IsShielded())
                 {
                     var medic = player.GetMedic().Player.PlayerId;
@@ -274,7 +304,15 @@ namespace TownOfUs
             }
             else if (target.IsOnAlert())
             {
+                var mercBlockedAlert = false;
                 if (player.Is(RoleEnum.Pestilence)) zeroSecReset = true;
+                else if (player.IsMercShielded())
+                {
+                    var merc = player.GetMerc().Player.PlayerId;
+                    Utils.Rpc(CustomRPC.MercShield, merc, player.PlayerId);
+                    StopAbility.BreakShield(merc, player.PlayerId);
+                    mercBlockedAlert = true;
+                }
                 else if (player.IsShielded())
                 {
                     var medic = player.GetMedic().Player.PlayerId;
@@ -287,7 +325,7 @@ namespace TownOfUs
                 }
                 else if (player.IsProtected()) gaReset = true;
                 else RpcMurderPlayer(target, player);
-                if (toKill && CustomGameOptions.KilledOnAlert)
+                if (toKill && (CustomGameOptions.KilledOnAlert || mercBlockedAlert))
                 {
                     if (target.IsShielded())
                     {
@@ -298,6 +336,14 @@ namespace TownOfUs
                         else zeroSecReset = true;
 
                         StopKill.BreakShield(medic, target.PlayerId, CustomGameOptions.ShieldBreaks);
+                    }
+                    else if (target.IsMercShielded())
+                    {
+                        var merc = target.GetMerc().Player.PlayerId;
+                        Utils.Rpc(CustomRPC.MercShield, merc, target.PlayerId);
+                        StopAbility.BreakShield(merc, target.PlayerId);
+                        fullCooldownReset = true;
+                        zeroSecReset = false;
                     }
                     else if (target.IsProtected()) gaReset = true;
                     else
@@ -350,9 +396,21 @@ namespace TownOfUs
                 else zeroSecReset = true;
                 StopKill.BreakShield(target.GetMedic().Player.PlayerId, target.PlayerId, CustomGameOptions.ShieldBreaks);
             }
+            else if (target.IsMercShielded())
+            {
+                var merc = target.GetMerc().Player.PlayerId;
+                Utils.Rpc(CustomRPC.MercShield, merc, target.PlayerId);
+                StopAbility.BreakShield(merc, target.PlayerId);
+                fullCooldownReset = true;
+                mercReset = true;
+            }
             else if (target.IsVesting() && toKill)
             {
                 survReset = true;
+            }
+            else if (target.IsArmored() && toKill)
+            {
+                fullCooldownReset = true;
             }
             else if (target.IsProtected() && toKill)
             {
@@ -400,12 +458,15 @@ namespace TownOfUs
                 abilityUsed = true;
                 fullCooldownReset = true;
             }
-            var reset = new List<bool>();
-            reset.Add(fullCooldownReset);
-            reset.Add(gaReset);
-            reset.Add(survReset);
-            reset.Add(zeroSecReset);
-            reset.Add(abilityUsed);
+            var reset = new List<bool>()
+            {
+                fullCooldownReset,
+                gaReset,
+                survReset,
+                zeroSecReset,
+                abilityUsed,
+                mercReset
+            };
             return reset;
         }
 
@@ -1167,6 +1228,12 @@ namespace TownOfUs
                     tagger.TaggerArrows.Values.DestroyAll();
                     tagger.TaggerArrows.Clear();
                 }
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Mercenary))
+            {
+                var merc = Role.GetRole<Mercenary>(PlayerControl.LocalPlayer);
+                merc.ShieldedPlayer = null;
+                merc.exShielded = null;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter))
             {
