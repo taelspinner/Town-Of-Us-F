@@ -75,12 +75,17 @@ namespace TownOfUs
 
         private static void SortRoles(this List<(Type, int, bool)> roles, int max)
         {
+            if (max <= 0)
+            {
+                roles.Clear();
+                return;
+            }
             var chosenRoles = roles.Where(x => x.Item2 == 100).ToList();
             // Shuffle to ensure that the same 100% roles do not appear in
             // every game if there are more than the maximum.
             chosenRoles.Shuffle();
             // Truncate the list if there are more 100% roles than the max.
-            chosenRoles = chosenRoles.GetRange(0, max);
+            chosenRoles = chosenRoles.GetRange(0, Math.Min(max, chosenRoles.Count));
 
             if (chosenRoles.Count < max)
             {
@@ -89,27 +94,22 @@ namespace TownOfUs
                 // Determine which roles appear in this game.
                 var optionalRoles = potentialRoles.Where(x => Check(x.Item2)).ToList();
                 potentialRoles = potentialRoles.Where(x => !optionalRoles.Contains(x)).ToList();
-
-                // This is shuffled before roles are assigned, so we are not
-                // concerned with doing it here.
-                chosenRoles.AddRange(optionalRoles);
+                
+                optionalRoles.Shuffle();
+                chosenRoles.AddRange(optionalRoles.GetRange(0, Math.Min(max - chosenRoles.Count, optionalRoles.Count)));
 
                 // If there are not enough roles after that, randomly add
                 // ones which were previously eliminated, up to the max.
                 if (chosenRoles.Count < max)
                 {
                     potentialRoles.Shuffle();
-                    foreach(var role in potentialRoles)
-                    {
-                        if (chosenRoles.Count >= max)
-                            break;
-                        chosenRoles.Add(role);
-                    }
+                    chosenRoles.AddRange(potentialRoles.GetRange(0, Math.Min(max - chosenRoles.Count, potentialRoles.Count)));
                 }
             }
 
             // This list will be shuffled later in GenEachRole.
-            roles = chosenRoles;
+            roles.Clear();
+            roles.AddRange(chosenRoles);
         }
 
         private static void SortModifiers(this List<(Type, int)> roles, int max)
@@ -195,6 +195,9 @@ namespace TownOfUs
                             }
                             break;
                     }
+
+                    if (benign + evil + killing == 0)
+                        break;
                 }
 
                 NeutralBenignRoles.SortRoles(benign);
@@ -300,7 +303,6 @@ namespace TownOfUs
             };
             foreach ((var abilityList, int maxNumber) in assassinConfig)
             {
-                Debug.Log(maxNumber);
                 int assassinNumber = maxNumber;
                 while (abilityList.Count > 0 && assassinNumber > 0)
                 {
