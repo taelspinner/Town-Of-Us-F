@@ -1385,6 +1385,9 @@ namespace TownOfUs
                     if (CustomGameOptions.SurvivorOn > 0)
                         NeutralBenignRoles.Add((typeof(Survivor), CustomGameOptions.SurvivorOn, false));
 
+                    if (CustomGameOptions.MercenaryOn > 0)
+                        NeutralBenignRoles.Add((typeof(Mercenary), CustomGameOptions.MercenaryOn, false));
+
                     if (CustomGameOptions.GuardianAngelOn > 0)
                         NeutralBenignRoles.Add((typeof(GuardianAngel), CustomGameOptions.GuardianAngelOn, false));
 
