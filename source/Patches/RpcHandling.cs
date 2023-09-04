@@ -114,14 +114,32 @@ namespace TownOfUs
 
         private static void SortModifiers(this List<(Type, int)> roles, int max)
         {
-            roles.Shuffle();
-            roles.Sort((a, b) =>
+            var newList = roles.Where(x => x.Item2 == 100).ToList();
+            newList.Shuffle();
+
+            if (roles.Count < max)
+                max = roles.Count;
+
+            var roles2 = roles.Where(x => x.Item2 < 100).ToList();
+            roles2.Shuffle();
+
+            foreach (var item in roles2)
             {
-                var a_ = a.Item2 == 100 ? 0 : 100;
-                var b_ = b.Item2 == 100 ? 0 : 100;
-                return a_.CompareTo(b_);
-            });
-            while (roles.Count > max) roles.RemoveAt(roles.Count - 1);
+                if (newList.Count >= max)
+                    break;
+
+                if (Check(item.Item2))
+                    newList.Add(item);
+            }
+
+            while (newList.Count > max)
+            {
+                newList.Shuffle();
+                newList.RemoveAt(newList.Count - 1);
+            }
+
+            roles = newList;
+            roles.Shuffle();
         }
 
         private static void GenEachRole(List<GameData.PlayerInfo> infected)
@@ -149,7 +167,7 @@ namespace TownOfUs
                 };
                 
                 // Crew must always start out outnumbering neutrals, so subtract roles until that can be guaranteed.
-                while (crewmates.Count <= benign + evil + killing)
+                while (Math.Ceiling((double)crewmates.Count/2) <= benign + evil + killing)
                 {
                     bool canSubtractBenign = canSubtract(benign, CustomGameOptions.MinNeutralBenignRoles);
                     bool canSubtractEvil = canSubtract(evil, CustomGameOptions.MinNeutralEvilRoles);
