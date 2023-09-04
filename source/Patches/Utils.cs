@@ -275,13 +275,21 @@ namespace TownOfUs
             else if (target.IsOnAlert())
             {
                 var mercBlockedAlert = false;
+                var mercBlockedKill = false;
                 if (player.Is(RoleEnum.Pestilence)) zeroSecReset = true;
                 else if (player.IsMercShielded())
                 {
                     var merc = player.GetMerc().Player.PlayerId;
-                    Utils.Rpc(CustomRPC.MercShield, merc, player.PlayerId);
+                    Rpc(CustomRPC.MercShield, merc, player.PlayerId);
                     StopAbility.BreakShield(merc, player.PlayerId);
                     mercBlockedAlert = true;
+                }
+                else if (target.IsMercShielded())
+                {
+                    var merc = target.GetMerc().Player.PlayerId;
+                    Rpc(CustomRPC.MercShield, merc, target.PlayerId);
+                    StopAbility.BreakShield(merc, target.PlayerId);
+                    mercBlockedKill = true;
                 }
                 else if (player.IsShielded())
                 {
@@ -295,7 +303,7 @@ namespace TownOfUs
                 }
                 else if (player.IsProtected()) gaReset = true;
                 else RpcMurderPlayer(target, player);
-                if (toKill && (CustomGameOptions.KilledOnAlert || mercBlockedAlert))
+                if (toKill && !mercBlockedKill && (CustomGameOptions.KilledOnAlert || mercBlockedAlert))
                 {
                     if (target.IsShielded())
                     {
@@ -306,14 +314,6 @@ namespace TownOfUs
                         else zeroSecReset = true;
 
                         StopKill.BreakShield(medic, target.PlayerId, CustomGameOptions.ShieldBreaks);
-                    }
-                    else if (target.IsMercShielded())
-                    {
-                        var merc = target.GetMerc().Player.PlayerId;
-                        Utils.Rpc(CustomRPC.MercShield, merc, target.PlayerId);
-                        StopAbility.BreakShield(merc, target.PlayerId);
-                        fullCooldownReset = true;
-                        zeroSecReset = false;
                     }
                     else if (target.IsProtected()) gaReset = true;
                     else
@@ -1306,6 +1306,11 @@ namespace TownOfUs
                 var merc = Role.GetRole<Mercenary>(PlayerControl.LocalPlayer);
                 merc.LastArmored = DateTime.UtcNow;
             }
+            foreach (var role in Role.GetRoles(RoleEnum.Mercenary))
+            {
+                var merc = (Mercenary)role;
+                merc.ShieldedPlayer = null;
+            }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
             {
                 var vamp = Role.GetRole<Vampire>(PlayerControl.LocalPlayer);
@@ -1397,6 +1402,7 @@ namespace TownOfUs
             {
                 var morphling = Role.GetRole<Morphling>(PlayerControl.LocalPlayer);
                 morphling.LastMorphed = DateTime.UtcNow;
+                morphling.SampleCooldown = DateTime.UtcNow.AddMilliseconds(-10000);
                 morphling.MorphButton.graphic.sprite = TownOfUs.SampleSprite;
                 morphling.SampledPlayer = null;
             }
