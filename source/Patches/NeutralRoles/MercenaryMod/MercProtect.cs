@@ -24,9 +24,9 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
                 if (role.ArmorTimer() != 0) return false;
                 role.TimeRemaining = CustomGameOptions.ArmorDuration;
                 role.Brilders -= 1;
-                role.ShieldedPlayer = null;
                 role.ShieldedPlayer.myRend().material.SetColor("_VisorColor", Palette.VisorColor);
                 role.ShieldedPlayer.myRend().material.SetFloat("_Outline", 0f);
+                role.ShieldedPlayer = null;
                 role.DonArmor();
                 role.RegenTask();
                 Utils.Rpc(CustomRPC.DonArmor, PlayerControl.LocalPlayer.PlayerId);
