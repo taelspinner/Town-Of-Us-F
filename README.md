@@ -86,6 +86,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2023.7.11 & 2023.7.12 | v5.1.1 | ;) |
 | 2023.6.13s & 2023.6.13e | v5.0.1 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.1/ToU.v5.0.1.zip) |
 | 2023.6.13s & 2023.6.13e | v5.0.0 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.0/ToU.v5.0.0.zip) |
 | 2023.3.28s & 2023.3.28e | v4.0.6 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v4.0.6/ToU.v4.0.6.zip) |
@@ -146,6 +147,17 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 
 <details>
   <summary> Changelog </summary>
+  <details>
+  <summary> v5.1.1 </summary>
+  <ul> <li>New Role: Lawyer</li> </ul>
+  <ul> <li>New Role: Mercenary</li> </ul>
+  <ul> <li>Updated to Among Us v.2023.7.12</li> </ul>
+  <ul> <li>Renamed Tracker to Tagger</li> </ul>
+  <ul> <li>Tagger's arrows now point to dead bodies</li> </ul>
+  <ul> <li>Added some new costumes, removed some others</li> </ul>
+  <ul> <li>Bug Fix: Improved role selection randomness</li> </ul>
+  <ul> <li>Optimisation: Improved task text for some roles</li> </ul>
+  </details>
   <details>
   <summary> v5.0.1 </summary>
   <ul> <li>Bug Fix: Airship Ladders work again</li> </ul>
