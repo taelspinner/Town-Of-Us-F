@@ -314,13 +314,6 @@ namespace TownOfUs
                     StopAbility.BreakShield(merc, player.PlayerId);
                     mercBlockedAlert = true;
                 }
-                else if (target.IsMercShielded())
-                {
-                    var merc = target.GetMerc().Player.PlayerId;
-                    Rpc(CustomRPC.MercShield, merc, target.PlayerId);
-                    StopAbility.BreakShield(merc, target.PlayerId);
-                    mercBlockedKill = true;
-                }
                 else if (player.IsShielded())
                 {
                     var medic = player.GetMedic().Player.PlayerId;
@@ -333,6 +326,13 @@ namespace TownOfUs
                 }
                 else if (player.IsProtected()) gaReset = true;
                 else RpcMurderPlayer(target, player);
+                if (target.IsMercShielded())
+                {
+                    var merc = target.GetMerc().Player.PlayerId;
+                    Rpc(CustomRPC.MercShield, merc, target.PlayerId);
+                    StopAbility.BreakShield(merc, target.PlayerId);
+                    mercBlockedKill = true;
+                }
                 if (toKill && !mercBlockedKill && (CustomGameOptions.KilledOnAlert || mercBlockedAlert))
                 {
                     if (target.IsShielded())
@@ -387,6 +387,14 @@ namespace TownOfUs
                     }
                 }
             }
+            else if (target.IsMercShielded())
+            {
+                var merc = target.GetMerc().Player.PlayerId;
+                Utils.Rpc(CustomRPC.MercShield, merc, target.PlayerId);
+                StopAbility.BreakShield(merc, target.PlayerId);
+                fullCooldownReset = true;
+                mercReset = true;
+            }
             else if (target.IsShielded() && toKill)
             {
                 Rpc(CustomRPC.AttemptSound, target.GetMedic().Player.PlayerId, target.PlayerId);
@@ -395,14 +403,6 @@ namespace TownOfUs
                 if (CustomGameOptions.ShieldBreaks) fullCooldownReset = true;
                 else zeroSecReset = true;
                 StopKill.BreakShield(target.GetMedic().Player.PlayerId, target.PlayerId, CustomGameOptions.ShieldBreaks);
-            }
-            else if (target.IsMercShielded())
-            {
-                var merc = target.GetMerc().Player.PlayerId;
-                Utils.Rpc(CustomRPC.MercShield, merc, target.PlayerId);
-                StopAbility.BreakShield(merc, target.PlayerId);
-                fullCooldownReset = true;
-                mercReset = true;
             }
             else if (target.IsVesting() && toKill)
             {
