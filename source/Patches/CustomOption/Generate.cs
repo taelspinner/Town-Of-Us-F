@@ -1079,7 +1079,7 @@ namespace TownOfUs.CustomOption
                 new CustomNumberOption(num++, MultiMenu.neutral, "Brilders Required To Win", 5, 1, 15, 1);
             ShowMercShielded =
                 new CustomStringOption(num++, MultiMenu.neutral, "Show Shielded Player",
-                    new[] { "Self", "Mercenary", "Self+Mercenary", "Everyone" });
+                    new[] { "Mercenary", "Self", "Self+Mercenary", "Everyone" });
             WhoGetsMercNotification =
                 new CustomStringOption(num++, MultiMenu.neutral, "Who Gets Ability Block Indicator",
                     new[] { "Mercenary", "Shielded", "Mercenary+Shielded", "Everyone", "Nobody" });
