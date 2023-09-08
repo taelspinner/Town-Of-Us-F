@@ -7,8 +7,8 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
 {
     public enum ShieldOptions
     {
-        Self = 0,
-        Mercenary = 1,
+        Mercenary = 0,
+        Self = 1,
         SelfAndMerc = 2,
         Everyone = 3
     }
