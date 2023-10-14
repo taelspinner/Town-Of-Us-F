@@ -114,25 +114,15 @@ namespace TownOfUs.Roles
             Player.nameText().color = Color;
 
             if (MeetingHud.Instance != null)
-            {
                 foreach (var player in MeetingHud.Instance.playerStates)
-                {
                     if (player.NameText != null && Player.PlayerId == player.TargetPlayerId)
                         player.NameText.color = Color;
-                }
-            }
 
             if (HudManager.Instance?.Chat != null)
-            {
                 foreach (var bubble in HudManager.Instance.Chat.chatBubblePool.activeChildren)
-                {
                     if (bubble.Cast<ChatBubble>().NameText != null &&
                         Player.Data.PlayerName == bubble.Cast<ChatBubble>().NameText.text)
-                    {
                         bubble.Cast<ChatBubble>().NameText.color = Color;
-                    }
-                }
-            }
 
             FixedUpdate(__instance);
         }
@@ -162,7 +152,7 @@ namespace TownOfUs.Roles
                 if (!MimicList.IsOpenOrOpening || MeetingHud.Instance)
                 {
                     MimicList.Toggle();
-                    MimicList.SetVisible(false);
+                    MimicList.gameObject.SetActive(false);
                     MimicList = null;
                 }
                 else

@@ -105,7 +105,7 @@ namespace TownOfUs.Roles
 
                 TransportList.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
                     .enabled = false;
-                TransportList.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                TransportList.gameObject.transform.GetChild(0).gameObject.SetActive(false); 
 
                 TransportList.backgroundImage.enabled = false;
 
