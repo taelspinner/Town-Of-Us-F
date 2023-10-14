@@ -33,12 +33,17 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
                 return false;
             }
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
-            if (role.ShieldedPlayer != null || role.ClosestPlayer == null) return false;
+            if (role.ClosestPlayer == null) return false;
             if (role.StartTimer() > 0) return false;
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
             if (interact[4] == true)
             {
+                if (role.ShieldedPlayer != null)
+                {
+                    role.ShieldedPlayer.myRend().material.SetColor("_VisorColor", Palette.VisorColor);
+                    role.ShieldedPlayer.myRend().material.SetFloat("_Outline", 0f);
+                }
                 Utils.Rpc(CustomRPC.MercProtect, PlayerControl.LocalPlayer.PlayerId, role.ClosestPlayer.PlayerId);
 
                 role.ShieldedPlayer = role.ClosestPlayer;
@@ -47,6 +52,7 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
             else if (interact[5] == true)
             {
                 role.StartingCooldown = System.DateTime.UtcNow;
+                role.StartingCooldown = role.StartingCooldown.AddSeconds(-role.StartTimer() + 10);
             }
             return false;
         }

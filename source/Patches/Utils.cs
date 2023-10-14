@@ -361,7 +361,6 @@ namespace TownOfUs
                 var merc = target.GetMerc().Player.PlayerId;
                 Utils.Rpc(CustomRPC.MercShield, merc, target.PlayerId);
                 StopAbility.BreakShield(merc, target.PlayerId);
-                fullCooldownReset = true;
                 mercReset = true;
             }
             else if (target.IsShielded() && toKill)
@@ -379,7 +378,7 @@ namespace TownOfUs
             }
             else if (target.IsArmored() && toKill)
             {
-                fullCooldownReset = true;
+                mercReset = true;
             }
             else if (target.IsProtected() && toKill)
             {
@@ -1203,12 +1202,6 @@ namespace TownOfUs
                     tracker.TrackerArrows.Values.DestroyAll();
                     tracker.TrackerArrows.Clear();
                 }
-            }
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Mercenary))
-            {
-                var merc = Role.GetRole<Mercenary>(PlayerControl.LocalPlayer);
-                merc.ShieldedPlayer = null;
-                merc.exShielded = null;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter))
             {
