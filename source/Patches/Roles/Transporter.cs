@@ -430,8 +430,6 @@ namespace TownOfUs.Roles
                 {
                     foreach (var pn in Role.GetRoles(RoleEnum.Politician)) ((Politician)pn).RpcSpreadCampaign(Player, TransportPlayer2);
                 }
-                var role = GetRole(Player);
-                var transRole = (Transporter)role;
                 if (TransportPlayer1.Is(RoleEnum.Pestilence) || TransportPlayer1.IsOnAlert() || TransportPlayer2.IsBodyguarded())
                 {
                     if (Player.IsShielded())
