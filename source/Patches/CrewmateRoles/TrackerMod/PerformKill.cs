@@ -65,6 +65,11 @@ namespace TownOfUs.CrewmateRoles.TaggerMod
                 role.LastTracked = role.LastTracked.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.TrackCd);
                 return false;
             }
+            else if (interact[5])
+            {
+                role.LastTracked = DateTime.UtcNow;
+                role.LastTracked = role.LastTracked.AddSeconds(-CustomGameOptions.TrackCd + 10);
+            }
             else if (interact[3] == true) return false;
             return false;
         }

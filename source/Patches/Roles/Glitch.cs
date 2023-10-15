@@ -511,6 +511,11 @@ namespace TownOfUs.Roles
                         __gInstance.LastKill = DateTime.UtcNow;
                         return;
                     }
+                    else if (interact[5])
+                    {
+                        __gInstance.LastKill = DateTime.UtcNow;
+                        __gInstance.LastKill = __gInstance.LastKill.AddSeconds(-CustomGameOptions.GlitchKillCooldown + 10);
+                    }
                     else if (interact[1])
                     {
                         __gInstance.LastKill = DateTime.UtcNow;
@@ -590,6 +595,11 @@ namespace TownOfUs.Roles
                     {
                         __gInstance.LastHack = DateTime.UtcNow;
                         return;
+                    }
+                    else if (interact[5] == true)
+                    {
+                        __gInstance.LastHack = DateTime.UtcNow;
+                        __gInstance.LastHack = __gInstance.LastHack.AddSeconds(-CustomGameOptions.HackCooldown + 10);
                     }
                     else if (interact[1])
                     {
