@@ -152,12 +152,12 @@ namespace TownOfUs
         public static bool ColourblindComms => Generate.ColourblindComms.Get();
         public static OnTargetDead OnTargetDead => (OnTargetDead)Generate.OnTargetDead.Get();
         public static bool ExecutionerButton => Generate.ExecutionerButton.Get();
-        public static bool ExecutionerTorment => Generate.ExecutionerTorment.Get();
         public static OnDefendantDead OnDefendantDead => (OnDefendantDead)Generate.OnDefendantDead.Get();
         public static bool LawyerDies => Generate.LawyerDies.Get();
         public static int DefendantImpPercent => (int)Generate.DefendantImpPercent.Get();
         public static bool NeutralDefendant => Generate.NeutralDefendant.Get();
         public static bool LawyerCanTalkDefendant => Generate.LawyerCanTalkDefendant.Get();
+        public static bool ExecutionerTorment => Generate.ExecutionerTorment.Get();
         public static bool SnitchSeesNeutrals => Generate.SnitchSeesNeutrals.Get();
         public static int SnitchTasksRemaining => (int)Generate.SnitchTasksRemaining.Get();
         public static bool SnitchSeesImpInMeeting => Generate.SnitchSeesImpInMeeting.Get();

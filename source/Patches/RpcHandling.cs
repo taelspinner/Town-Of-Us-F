@@ -37,6 +37,7 @@ using TownOfUs.CrewmateRoles.MayorMod;
 using System.Reflection;
 using TownOfUs.CrewmateRoles.MercenaryMod;
 using TownOfUs.Patches.NeutralRoles;
+using TownOfUs.NeutralRoles.LawyerMod;
 
 namespace TownOfUs
 {
@@ -981,7 +982,7 @@ namespace TownOfUs
                         TargetColor.ExeToJes(Utils.PlayerById(reader.ReadByte()));
                         break;
                     case CustomRPC.LawyerToJester:
-                        NeutralRoles.LawyerMod.TargetColor.LwyrToJes(Utils.PlayerById(reader.ReadByte()));
+                        LawyerTargetColor.LwyrToJes(Utils.PlayerById(reader.ReadByte()));
                         break;
                     case CustomRPC.GAToSurv:
                         GATargetColor.GAToSurv(Utils.PlayerById(reader.ReadByte()));
