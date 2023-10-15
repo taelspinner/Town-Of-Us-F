@@ -1237,7 +1237,6 @@ namespace TownOfUs
                         {
                             ((Trapper)playerRole).UsesLeft = newUses;
                         }
-                        Debug.Log("Updated " + updatedPlayer.name + " uses to " + newUses);
                         break;
                 }
             }

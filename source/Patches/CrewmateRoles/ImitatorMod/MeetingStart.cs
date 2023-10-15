@@ -27,7 +27,6 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                 RoleEnum playerRole = Role.GetRole(PlayerControl.LocalPlayer).RoleType;
                 if (PlayerControl.LocalPlayer.Data.IsDead && LimitedUsesRoles.Contains(playerRole) && !StartImitate.UpdatedUses)
                 {
-                    Debug.Log("Sending updated uses");
                     int newUses = 0;
                     if (playerRole == RoleEnum.Engineer)
                     {
