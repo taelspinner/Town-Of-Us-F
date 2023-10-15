@@ -26,11 +26,11 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption VampireHunterOn;
         public static CustomNumberOption VeteranOn;
         public static CustomNumberOption VigilanteOn;
+        public static CustomNumberOption PoliticianOn;
 
         public static CustomHeaderOption CrewSupportRoles;
         public static CustomNumberOption EngineerOn;
         public static CustomNumberOption ImitatorOn;
-        public static CustomNumberOption MayorOn;
         public static CustomNumberOption MediumOn;
         public static CustomNumberOption ProsecutorOn;
         public static CustomNumberOption SwapperOn;
@@ -151,7 +151,7 @@ namespace TownOfUs.CustomOption
         public static CustomToggleOption AddPlaguebearer;
 
         public static CustomHeaderOption CultistSettings;
-        public static CustomNumberOption MayorCultistOn;
+        public static CustomNumberOption PoliticianCultistOn;
         public static CustomNumberOption SeerCultistOn;
         public static CustomNumberOption SheriffCultistOn;
         public static CustomNumberOption SurvivorCultistOn;
@@ -323,6 +323,12 @@ namespace TownOfUs.CustomOption
         public static CustomToggleOption VigilanteGuessNeutralKilling;
         public static CustomToggleOption VigilanteGuessLovers;
         public static CustomToggleOption VigilanteAfterVoting;
+
+        public static CustomHeaderOption Politician;
+        public static CustomNumberOption CampaignCooldown;
+        public static CustomToggleOption KilledOnBodyguard;
+        public static CustomNumberOption BodyguardCooldown;
+        public static CustomNumberOption BodyguardDuration;
 
         public static CustomHeaderOption Haunter;
         public static CustomNumberOption HaunterTasksRemainingClicked;
@@ -557,6 +563,8 @@ namespace TownOfUs.CustomOption
                 PercentFormat);
             VigilanteOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFFF99FF>Vigilante</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
+            PoliticianOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#C3D3D4FF>Politician</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
 
             CrewProtectiveRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Protective Roles");
             AltruistOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#660000FF>Altruist</color>", 0f, 0f, 100f, 10f,
@@ -568,8 +576,6 @@ namespace TownOfUs.CustomOption
             EngineerOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFA60AFF>Engineer</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             ImitatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B3D94DFF>Imitator</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            MayorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#704FA8FF>Mayor</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             MediumOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#A680FFFF>Medium</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -719,7 +725,7 @@ namespace TownOfUs.CustomOption
 
             CultistSettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "Cultist Settings");
-            MayorCultistOn = new CustomNumberOption(num++, MultiMenu.main, "<color=#704FA8FF>Mayor</color> (Cultist Mode)", 100f, 0f, 100f, 10f,
+            PoliticianCultistOn = new CustomNumberOption(num++, MultiMenu.main, "<color=#C3D3D4FF>Politician</color> (Cultist Mode)", 100f, 0f, 100f, 10f,
                 PercentFormat);
             SeerCultistOn = new CustomNumberOption(num++, MultiMenu.main, "<color=#FFCC80FF>Seer</color> (Cultist Mode)", 100f, 0f, 100f, 10f,
                 PercentFormat);
@@ -1000,6 +1006,16 @@ namespace TownOfUs.CustomOption
             VigilanteGuessNeutralKilling = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Neutral Killing Roles", false);
             VigilanteGuessLovers = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Lovers", false);
             VigilanteAfterVoting = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess After Voting", false);
+
+            Politician = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#C3D3D4FF>Politician</color>");
+            CampaignCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Campaign Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            KilledOnBodyguard =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Mayor Killed With Bodyguard", false);
+            BodyguardCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Mayor Bodyguard Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            BodyguardDuration =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Mayor Bodyguard Duration", 10f, 5f, 15f, 1f, CooldownFormat);
 
             Altruist = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#660000FF>Altruist</color>");
             ReviveDuration =

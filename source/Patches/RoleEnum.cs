@@ -42,6 +42,7 @@ namespace TownOfUs
         Oracle,
         Aurial,
         Mercenary,
+        Politician,
 
         Miner,
         Swooper,

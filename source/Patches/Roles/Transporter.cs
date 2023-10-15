@@ -422,7 +422,17 @@ namespace TownOfUs.Roles
                 {
                     foreach (var pb in GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(Player, TransportPlayer2);
                 }
-                if (TransportPlayer1.Is(RoleEnum.Pestilence) || TransportPlayer1.IsOnAlert())
+                if (Player.IsCampaigned() || TransportPlayer1.IsCampaigned())
+                {
+                    foreach (var pn in Role.GetRoles(RoleEnum.Politician)) ((Politician)pn).RpcSpreadCampaign(Player, TransportPlayer1);
+                }
+                if (Player.IsCampaigned() || TransportPlayer2.IsCampaigned())
+                {
+                    foreach (var pn in Role.GetRoles(RoleEnum.Politician)) ((Politician)pn).RpcSpreadCampaign(Player, TransportPlayer2);
+                }
+                var role = GetRole(Player);
+                var transRole = (Transporter)role;
+                if (TransportPlayer1.Is(RoleEnum.Pestilence) || TransportPlayer1.IsOnAlert() || TransportPlayer2.IsBodyguarded())
                 {
                     if (Player.IsShielded())
                     {
@@ -437,7 +447,7 @@ namespace TownOfUs.Roles
                     else if (!Player.IsProtected())
                     {
                         // Pestilence is not an ability, so merc shield does not block the kill
-                        bool blockVetAlert = TransportPlayer1.IsOnAlert() && Player.IsMercShielded();
+                        bool blockVetAlert = (TransportPlayer1.IsOnAlert() || TransportPlayer1.IsBodyguarded()) && Player.IsMercShielded();
                         if (blockVetAlert)
                         {
                             var merc = Player.GetMerc().Player.PlayerId;
@@ -452,7 +462,7 @@ namespace TownOfUs.Roles
                     transRole.LastTransported = DateTime.UtcNow;
                     return;
                 }
-                else if (TransportPlayer2.Is(RoleEnum.Pestilence) || TransportPlayer2.IsOnAlert())
+                else if (TransportPlayer2.Is(RoleEnum.Pestilence) || TransportPlayer2.IsOnAlert() || TransportPlayer2.IsBodyguarded())
                 {
                     if (Player.IsShielded())
                     {
@@ -466,7 +476,7 @@ namespace TownOfUs.Roles
                     }
                     else if (!Player.IsProtected())
                     {
-                        bool blockVetAlert = TransportPlayer2.IsOnAlert() && Player.IsMercShielded();
+                        bool blockVetAlert = (TransportPlayer2.IsOnAlert() || TransportPlayer2.IsBodyguarded()) && Player.IsMercShielded();
                         if (blockVetAlert)
                         {
                             var merc = Player.GetMerc().Player.PlayerId;

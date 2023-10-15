@@ -33,6 +33,8 @@ namespace TownOfUs
         private static Sprite Vest => TownOfUs.VestSprite;
         private static Sprite Protect => TownOfUs.ProtectSprite;
         private static Sprite Infect => TownOfUs.InfectSprite;
+        private static Sprite Campaign => TownOfUs.CampaignSprite;
+        private static Sprite Bodyguard => TownOfUs.BodyguardSprite;
         private static Sprite Trap => TownOfUs.TrapSprite;
         private static Sprite Inspect => TownOfUs.InspectSprite;
         private static Sprite Swoop => TownOfUs.SwoopSprite;
@@ -82,6 +84,11 @@ namespace TownOfUs
                 __instance.KillButton.graphic.sprite = Alert;
                 flag = true;
             }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Mayor))
+            {
+                __instance.KillButton.graphic.sprite = Bodyguard;
+                flag = true;
+            }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Amnesiac))
             {
                 __instance.KillButton.graphic.sprite = Remember;
@@ -115,6 +122,11 @@ namespace TownOfUs
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Plaguebearer))
             {
                 __instance.KillButton.graphic.sprite = Infect;
+                flag = true;
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Politician))
+            {
+                __instance.KillButton.graphic.sprite = Campaign;
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer) && CustomGameOptions.GameMode != GameMode.Cultist)

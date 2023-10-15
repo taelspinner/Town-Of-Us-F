@@ -401,7 +401,7 @@ namespace TownOfUs
             }
 
             // Set the Traitor, if there is one enabled.
-            var toChooseFromCrew = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(RoleEnum.Mayor) && !x.Is(ModifierEnum.Lover)).ToList();
+            var toChooseFromCrew = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover)).ToList();
             if (TraitorOn && toChooseFromCrew.Count != 0)
             {
                 var rand = Random.RandomRangeInt(0, toChooseFromCrew.Count);
@@ -447,7 +447,7 @@ namespace TownOfUs
                 Utils.Rpc(CustomRPC.SetPhantom, byte.MaxValue);
             }
 
-            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Mayor) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Vigilante) && x != SetTraitor.WillBeTraitor).ToList();
+            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Vigilante) && x != SetTraitor.WillBeTraitor).ToList();
             foreach (var role in Role.GetRoles(RoleEnum.Executioner))
             {
                 var exe = (Executioner)role;
@@ -605,7 +605,7 @@ namespace TownOfUs
             var specialRoles = new List<(Type, int, bool)>();
             var crewRoles = new List<(Type, int, bool)>();
             var impRole = new List<(Type, int, bool)>();
-            if (CustomGameOptions.MayorCultistOn > 0) specialRoles.Add((typeof(Mayor), CustomGameOptions.MayorCultistOn, true));
+            if (CustomGameOptions.PoliticianCultistOn > 0) specialRoles.Add((typeof(Politician), CustomGameOptions.PoliticianCultistOn, true));
             if (CustomGameOptions.SeerCultistOn > 0) specialRoles.Add((typeof(CultistSeer), CustomGameOptions.SeerCultistOn, true));
             if (CustomGameOptions.SheriffCultistOn > 0) specialRoles.Add((typeof(Sheriff), CustomGameOptions.SheriffCultistOn, true));
             if (CustomGameOptions.SurvivorCultistOn > 0) specialRoles.Add((typeof(Survivor), CustomGameOptions.SurvivorCultistOn, true));
@@ -1020,6 +1020,12 @@ namespace TownOfUs
                         veteranRole.TimeRemaining = CustomGameOptions.AlertDuration;
                         veteranRole.Alert();
                         break;
+                    case CustomRPC.Bodyguard:
+                        var bgMayor = Utils.PlayerById(reader.ReadByte());
+                        var bgMayorRole = Role.GetRole<Mayor>(bgMayor);
+                        bgMayorRole.TimeRemaining = CustomGameOptions.BodyguardDuration;
+                        bgMayorRole.Bodyguard();
+                        break;
                     case CustomRPC.Vest:
                         var surv = Utils.PlayerById(reader.ReadByte());
                         var survRole = Role.GetRole<Survivor>(surv);
@@ -1277,6 +1283,13 @@ namespace TownOfUs
                         GameOptionsManager.Instance.currentNormalGameOptions.RoleOptions.SetRoleRate(RoleTypes.Shapeshifter, 0, 0);
                         if (CustomGameOptions.AutoAdjustSettings) RandomMap.AdjustSettings(readByte);
                         break;
+                    case CustomRPC.Campaign:
+                        var pn = Role.GetRole<Politician>(Utils.PlayerById(reader.ReadByte()));
+                        pn.SpreadCampaign(Utils.PlayerById(reader.ReadByte()), Utils.PlayerById(reader.ReadByte()));
+                        break;
+                    case CustomRPC.TurnMayor:
+                        Role.GetRole<Politician>(Utils.PlayerById(reader.ReadByte())).TurnMayor();
+                        break;
                 }
             }
         }
@@ -1357,8 +1370,8 @@ namespace TownOfUs
                 if (CustomGameOptions.GameMode == GameMode.Classic || CustomGameOptions.GameMode == GameMode.AllAny)
                 {
                     #region Crewmate Roles
-                    if (CustomGameOptions.MayorOn > 0)
-                        CrewmateRoles.Add((typeof(Mayor), CustomGameOptions.MayorOn, true));
+                    if (CustomGameOptions.PoliticianOn > 0)
+                        CrewmateRoles.Add((typeof(Politician), CustomGameOptions.PoliticianOn, true));
 
                     if (CustomGameOptions.SheriffOn > 0)
                         CrewmateRoles.Add((typeof(Sheriff), CustomGameOptions.SheriffOn, false));

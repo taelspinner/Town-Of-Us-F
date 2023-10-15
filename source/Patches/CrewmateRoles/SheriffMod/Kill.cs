@@ -49,8 +49,15 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
             {
                 foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
             }
-            if (role.ClosestPlayer.IsOnAlert())
+            if (role.ClosestPlayer.IsCampaigned() || role.Player.IsCampaigned())
             {
+                foreach (var pn in Role.GetRoles(RoleEnum.Politician)) ((Politician)pn).RpcSpreadCampaign(role.ClosestPlayer, role.Player);
+            }
+            if (role.ClosestPlayer.IsOnAlert() || role.ClosestPlayer.IsBodyguarded())
+            {
+                var bodyguarded = role.ClosestPlayer.IsBodyguarded();
+                var onAlert = role.ClosestPlayer.IsOnAlert();
+
                 if (!role.Player.IsMercShielded())
                 {
                     if (role.ClosestPlayer.IsMercShielded())

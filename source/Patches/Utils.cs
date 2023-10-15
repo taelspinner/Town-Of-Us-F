@@ -232,6 +232,15 @@ namespace TownOfUs
             });
         }
 
+        public static bool IsBodyguarded(this PlayerControl player)
+        {
+            return Role.GetRoles(RoleEnum.Mayor).Any(role =>
+            {
+                var mayor = (Mayor)role;
+                return mayor != null && mayor.Bodyguarded && player.PlayerId == mayor.Player.PlayerId;
+            });
+        }
+
         public static bool IsVesting(this PlayerControl player)
         {
             return Role.GetRoles(RoleEnum.Survivor).Any(role =>
@@ -269,6 +278,15 @@ namespace TownOfUs
             });
         }
 
+        public static bool IsCampaigned(this PlayerControl player)
+        {
+            return Role.GetRoles(RoleEnum.Politician).Any(role =>
+            {
+                var politician = (Politician)role;
+                return politician != null && (politician.CampaignedPlayers.Contains(player.PlayerId) || player.PlayerId == politician.Player.PlayerId);
+            });
+        }
+
         public static List<bool> Interact(PlayerControl player, PlayerControl target, bool toKill = false)
         {
             bool fullCooldownReset = false;
@@ -281,6 +299,10 @@ namespace TownOfUs
             if (target.IsInfected() || player.IsInfected())
             {
                 foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(target, player);
+            }
+            if (target.IsCampaigned() || player.IsCampaigned())
+            {
+                foreach (var pn in Role.GetRoles(RoleEnum.Politician)) ((Politician)pn).RpcSpreadCampaign(player, target);
             }
             if (target == ShowRoundOneShield.FirstRoundShielded && toKill)
             {
@@ -302,10 +324,12 @@ namespace TownOfUs
                 else if (player.IsProtected()) gaReset = true;
                 else RpcMurderPlayer(target, player);
             }
-            else if (target.IsOnAlert())
+            else if (target.IsOnAlert() || target.IsBodyguarded())
             {
                 var mercBlockedAlert = false;
                 var mercBlockedKill = false;
+                var onAlert = target.IsOnAlert();
+                var bodyguarded = target.IsBodyguarded();
                 if (player.Is(RoleEnum.Pestilence)) zeroSecReset = true;
                 else if (player.IsMercShielded())
                 {
@@ -333,7 +357,7 @@ namespace TownOfUs
                     StopAbility.BreakShield(merc, target.PlayerId);
                     mercBlockedKill = true;
                 }
-                if (toKill && !mercBlockedKill && (CustomGameOptions.KilledOnAlert || mercBlockedAlert))
+                if (toKill && !mercBlockedKill && (((onAlert && CustomGameOptions.KilledOnAlert) || (bodyguarded && CustomGameOptions.KilledOnBodyguard)) || mercBlockedAlert))
                 {
                     if (target.IsShielded())
                     {
@@ -941,7 +965,7 @@ namespace TownOfUs
                 vigi.Faction = Faction.Impostors;
                 vigi.RegenTask();
                 var colorMapping = new Dictionary<string, Color>();
-                if (CustomGameOptions.MayorCultistOn > 0) colorMapping.Add("Mayor", Colors.Mayor);
+                if (CustomGameOptions.PoliticianCultistOn > 0) colorMapping.Add("Politician", Colors.Politician);
                 if (CustomGameOptions.SeerCultistOn > 0) colorMapping.Add("Seer", Colors.Seer);
                 if (CustomGameOptions.SheriffCultistOn > 0) colorMapping.Add("Sheriff", Colors.Sheriff);
                 if (CustomGameOptions.SurvivorCultistOn > 0) colorMapping.Add("Survivor", Colors.Survivor);
@@ -1296,6 +1320,12 @@ namespace TownOfUs
             {
                 var veteran = Role.GetRole<Veteran>(PlayerControl.LocalPlayer);
                 veteran.LastAlerted = DateTime.UtcNow;
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Mayor))
+            {
+                var mayor = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
+                mayor.LastBodyguarded = DateTime.UtcNow;
+                mayor.UsesLeft = 1;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Trapper))
             {
