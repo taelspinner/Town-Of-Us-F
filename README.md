@@ -150,7 +150,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 <details>
   <summary> Changelog </summary>
   <details>
-  <summary> v5.1.2 </summary>
+  <summary> v5.2.0 </summary>
   <ul> <li>New Role: Politician</li> </ul>
   <ul> <li>Mayor has been reworked to be part of Politician</li> </ul>
   <ul> <li>Mercenary protect now gives a standardised 10s cooldown</li> </ul>
