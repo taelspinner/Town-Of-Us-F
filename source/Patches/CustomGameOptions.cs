@@ -119,6 +119,7 @@ namespace TownOfUs
         public static bool JesterButton => Generate.JesterButton.Get();
         public static bool JesterVent => Generate.JesterVent.Get();
         public static bool JesterImpVision => Generate.JesterImpVision.Get();
+        public static bool JesterHaunt => Generate.JesterHaunt.Get();
         public static ShieldOptions ShowShielded => (ShieldOptions)Generate.ShowShielded.Get();
 
         public static NotificationOptions NotificationShield =>
@@ -155,6 +156,7 @@ namespace TownOfUs
         public static int DefendantImpPercent => (int)Generate.DefendantImpPercent.Get();
         public static bool NeutralDefendant => Generate.NeutralDefendant.Get();
         public static bool LawyerCanTalkDefendant => Generate.LawyerCanTalkDefendant.Get();
+        public static bool ExecutionerTorment => Generate.ExecutionerTorment.Get();
         public static bool SnitchSeesNeutrals => Generate.SnitchSeesNeutrals.Get();
         public static int SnitchTasksRemaining => (int)Generate.SnitchTasksRemaining.Get();
         public static bool SnitchSeesImpInMeeting => Generate.SnitchSeesImpInMeeting.Get();
@@ -167,6 +169,7 @@ namespace TownOfUs
         public static bool DeadSeeRoles => Generate.DeadSeeRoles.Get();
         public static bool HiddenRoles => Generate.HiddenRoles.Get();
         public static bool FirstDeathShield => Generate.FirstDeathShield.Get();
+        public static bool NeutralEvilWinEndsGame => Generate.NeutralEvilWinEndsGame.Get();
         public static bool SeeTasksDuringRound => Generate.SeeTasksDuringRound.Get();
         public static bool SeeTasksDuringMeeting => Generate.SeeTasksDuringMeeting.Get();
         public static bool SeeTasksWhenDead => Generate.SeeTasksWhenDead.Get();
@@ -213,6 +216,7 @@ namespace TownOfUs
         public static float UnderdogKillBonus => Generate.UnderdogKillBonus.Get();
         public static bool UnderdogIncreasedKC => Generate.UnderdogIncreasedKC.Get();
         public static int PhantomTasksRemaining => (int)Generate.PhantomTasksRemaining.Get();
+        public static bool PhantomSpook => Generate.PhantomSpook.Get();
         public static bool VigilanteGuessNeutralBenign => Generate.VigilanteGuessNeutralBenign.Get();
         public static bool VigilanteGuessNeutralEvil => Generate.VigilanteGuessNeutralEvil.Get();
         public static bool VigilanteGuessNeutralKilling => Generate.VigilanteGuessNeutralKilling.Get();
@@ -286,6 +290,7 @@ namespace TownOfUs
         public static bool DetectiveReportOn => Generate.DetectiveReportOn.Get();
         public static float DetectiveRoleDuration => Generate.DetectiveRoleDuration.Get();
         public static float DetectiveFactionDuration => Generate.DetectiveFactionDuration.Get();
+        public static bool CanDetectLastKiller => Generate.CanDetectLastKiller.Get();
         public static float EscapeCd => Generate.EscapeCooldown.Get();
         public static bool EscapistVent => Generate.EscapistVent.Get();
         public static float DetonateDelay => Generate.DetonateDelay.Get();
