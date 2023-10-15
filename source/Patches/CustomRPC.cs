@@ -80,6 +80,7 @@ namespace TownOfUs
         Campaign,
         TurnMayor,
         Bodyguard,
+        UpdateImitator,
 
         BypassKill,
         BypassMultiKill,

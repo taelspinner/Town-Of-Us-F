@@ -157,6 +157,8 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <ul> <li>Mercenary can now change protect targets mid-round</li> </ul>
   <ul> <li>Bug Fix: Mercenary protect no longer persists through meetings</li> </ul>
   <ul> <li>Bug Fix: Lawyer can now hear their client's messages even if they are Lovers</li> </ul>
+  <ul> <li>Bug Fix: Imitator's uses for imitated abilities now persists through meetings</li> </ul>
+  <ul> <li>Bug Fix: Imitator inherits uses left from the dead imitated role</li> </ul>
   </details>
   <details>
   <summary> v5.1.1 </summary>

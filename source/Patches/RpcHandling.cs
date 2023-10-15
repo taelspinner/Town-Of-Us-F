@@ -1290,6 +1290,31 @@ namespace TownOfUs
                     case CustomRPC.TurnMayor:
                         Role.GetRole<Politician>(Utils.PlayerById(reader.ReadByte())).TurnMayor();
                         break;
+                    case CustomRPC.UpdateImitator:
+                        var updatedPlayer = Utils.PlayerById(reader.ReadByte());
+                        int newUses = reader.ReadInt32();
+                        var playerRole = Role.GetRole(updatedPlayer);
+                        if (playerRole.RoleType == RoleEnum.Engineer)
+                        {
+                            ((Engineer)playerRole).UsesLeft = newUses;
+                        }
+                        else if (playerRole.RoleType == RoleEnum.Veteran)
+                        {
+                            ((Veteran)playerRole).UsesLeft = newUses;
+                        }
+                        else if (playerRole.RoleType == RoleEnum.VampireHunter)
+                        {
+                            ((VampireHunter)playerRole).UsesLeft = newUses;
+                        }
+                        else if (playerRole.RoleType == RoleEnum.Transporter)
+                        {
+                            ((Transporter)playerRole).UsesLeft = newUses;
+                        }
+                        else if (playerRole.RoleType == RoleEnum.Trapper)
+                        {
+                            ((Trapper)playerRole).UsesLeft = newUses;
+                        }
+                        break;
                 }
             }
         }
