@@ -1007,13 +1007,13 @@ namespace TownOfUs.CustomOption
             VigilanteGuessLovers = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Lovers", false);
             VigilanteAfterVoting = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess After Voting", false);
 
-            Politician = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#C3D3D4FF>Politician</color>");
+            Politician = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#C3D3D4FF>Politician</color>");
             CampaignCooldown =
-                new CustomNumberOption(num++, MultiMenu.neutral, "Campaign Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Campaign Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             KilledOnBodyguard =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Mayor Killed With Bodyguard", false);
             BodyguardCooldown =
-                new CustomNumberOption(num++, MultiMenu.neutral, "Mayor Bodyguard Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Mayor Bodyguard Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             BodyguardDuration =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Mayor Bodyguard Duration", 10f, 5f, 15f, 1f, CooldownFormat);
 
