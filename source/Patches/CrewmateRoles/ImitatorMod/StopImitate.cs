@@ -41,7 +41,6 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                         var trackerRole = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
                         trackerRole.TrackerArrows.Values.DestroyAll();
                         trackerRole.TrackerArrows.Clear();
-                        LimitedRoleUses["Trapper"] = trackerRole.UsesLeft;
                         Object.Destroy(trackerRole.UsesText);
                     }
 
@@ -84,6 +83,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Trapper))
                     {
                         var trapperRole = Role.GetRole<Trapper>(PlayerControl.LocalPlayer);
+                        LimitedRoleUses["Trapper"] = trapperRole.UsesLeft;
                         Object.Destroy(trapperRole.UsesText);
                         trapperRole.traps.ClearTraps();
                         trappedPlayers = trapperRole.trappedPlayers;
