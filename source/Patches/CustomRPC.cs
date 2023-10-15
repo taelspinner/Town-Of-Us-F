@@ -72,6 +72,9 @@ namespace TownOfUs
         Bless,
         Camouflage,
         SnitchCultistReveal,
+        Campaign,
+        TurnMayor,
+        Bodyguard,
 
         BypassKill,
         BypassMultiKill,

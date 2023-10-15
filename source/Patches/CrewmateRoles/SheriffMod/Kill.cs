@@ -47,8 +47,14 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
             {
                 foreach (var pb in Role.GetRoles(RoleEnum.Plaguebearer)) ((Plaguebearer)pb).RpcSpreadInfection(role.ClosestPlayer, role.Player);
             }
-            if (role.ClosestPlayer.IsOnAlert())
+            if (role.ClosestPlayer.IsCampaigned() || role.Player.IsCampaigned())
             {
+                foreach (var pn in Role.GetRoles(RoleEnum.Politician)) ((Politician)pn).RpcSpreadCampaign(role.ClosestPlayer, role.Player);
+            }
+            if (role.ClosestPlayer.IsOnAlert() || role.ClosestPlayer.IsBodyguarded())
+            {
+                var bodyguarded = role.ClosestPlayer.IsBodyguarded();
+                var onAlert = role.ClosestPlayer.IsOnAlert();
                 if (role.ClosestPlayer.IsShielded())
                 {
                     var medic = role.ClosestPlayer.GetMedic().Player.PlayerId;
@@ -73,7 +79,11 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
                 else
                 {
                     Utils.RpcMurderPlayer(role.ClosestPlayer, PlayerControl.LocalPlayer);
-                    if (CustomGameOptions.KilledOnAlert && CustomGameOptions.SheriffKillOther)
+                    if (onAlert && CustomGameOptions.KilledOnAlert && CustomGameOptions.SheriffKillOther)
+                    {
+                        Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, role.ClosestPlayer);
+                    }
+                    if (bodyguarded && CustomGameOptions.KilledOnBodyguard && CustomGameOptions.SheriffKillOther)
                     {
                         Utils.RpcMurderPlayer(PlayerControl.LocalPlayer, role.ClosestPlayer);
                     }
