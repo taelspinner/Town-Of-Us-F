@@ -86,7 +86,8 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
-| 2023.7.11 & 2023.7.12 | v5.1.1 | ;) |
+| 2023.7.12s & 2023.7.12e | v5.2.1 | ;) |
+| 2023.7.12s & 2023.7.12e | v5.1.1 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.0.2 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.2/ToU.v5.0.2.zip) |
 | 2023.6.13s & 2023.6.13e | v5.0.1 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.1/ToU.v5.0.1.zip) |
 | 2023.6.13s & 2023.6.13e | v5.0.0 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.0/ToU.v5.0.0.zip) |
@@ -149,10 +150,18 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 <details>
   <summary> Changelog </summary>
   <details>
+  <summary> v5.1.2 </summary>
+  <ul> <li>New Role: Politician</li> </ul>
+  <ul> <li>Mayor has been reworked to be part of Politician</li> </ul>
+  <ul> <li>Mercenary protect now gives a standardised 10s cooldown</li> </ul>
+  <ul> <li>Mercenary can now change protect targets mid-round</li> </ul>
+  <ul> <li>Bug Fix: Mercenary protect no longer persists through meetings</li> </ul>
+  <ul> <li>Bug Fix: Lawyer can now hear their client's messages even if they are Lovers</li> </ul>
+  </details>
+  <details>
   <summary> v5.1.1 </summary>
   <ul> <li>New Role: Lawyer</li> </ul>
   <ul> <li>New Role: Mercenary</li> </ul>
-  <ul> <li>Updated to Among Us v.2023.7.12</li> </ul>
   <ul> <li>Renamed Tracker to Tagger</li> </ul>
   <ul> <li>Tagger's arrows now point to dead bodies</li> </ul>
   <ul> <li>Added some new costumes, removed some others</li> </ul>
