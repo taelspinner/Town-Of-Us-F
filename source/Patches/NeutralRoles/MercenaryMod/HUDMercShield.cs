@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using System.Linq;
 using TownOfUs.Roles;
 using UnityEngine;
 
@@ -80,7 +81,10 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             protectButton.SetCoolDown(role.StartTimer(), 10f);
             if (role.Armored) return;
-            Utils.SetTarget(ref role.ClosestPlayer, protectButton);
+            var notShielded = PlayerControl.AllPlayerControls.ToArray().Where(
+                player => !role.ShieldedPlayer != role.ClosestPlayer
+            ).ToList();
+            Utils.SetTarget(ref role.ClosestPlayer, protectButton, float.NaN, notShielded);
         }
     }
 }
