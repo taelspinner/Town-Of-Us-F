@@ -152,6 +152,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <details>
   <summary> v5.2.0 </summary>
   <ul> <li>New Role: Politician</li> </ul>
+  <ul> <li>Detective Rework: Bodies now spawn crime scenes, which can be investigated across rounds</li> </ul>
   <ul> <li>Mayor has been reworked to be part of Politician</li> </ul>
   <ul> <li>Mercenary protect now gives a standardised 10s cooldown</li> </ul>
   <ul> <li>Mercenary can now change protect targets mid-round</li> </ul>
@@ -808,11 +809,11 @@ However, as a consequence the Aurial cannot see who is who.
 -----------------------
 ## Detective
 ### **Team: Crewmates**
-The Detective is a Crewmate that can inspect bodies and then examine players.\
-The Detective must first find a body and inspect it.\
-During the same or following rounds the Detective can then examine players to see if they were the killer.\
-If the examined player is the killer they will receive a red flash, else the flash will be green.\
-If the killer of the inspected player dies, the following round the examine button will disable indicating to the Detective the killer is dead.
+The Detective is a Crewmate that can inspect crime scenes and then examine players.\
+Wherever a player is killed, a crime scene will spawn, and persist after the body is reported.\
+Investigating a crime scene will allow the Detective to Examine players to compare evidence from the scene.\
+If the examined player was at the scene prior to the Detective investigating it, they will flash red.\
+Crime scenes can be contaminated by oblivious crewmates, so get there as fast as possible!
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
