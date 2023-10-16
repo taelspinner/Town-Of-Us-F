@@ -1213,6 +1213,20 @@ namespace TownOfUs
                         GameOptionsManager.Instance.currentNormalGameOptions.RoleOptions.SetRoleRate(RoleTypes.Shapeshifter, 0, 0);
                         if (CustomGameOptions.AutoAdjustSettings) RandomMap.AdjustSettings(readByte);
                         break;
+                    case CustomRPC.HunterStalk:
+                        var stalker = Utils.PlayerById(reader.ReadByte());
+                        var stalked = Utils.PlayerById(reader.ReadByte());
+                        Hunter hunterRole = Role.GetRole<Hunter>(stalker);
+                        hunterRole.StalkDuration = CustomGameOptions.HunterStalkDuration;
+                        hunterRole.StalkedPlayer = stalked;
+                        hunterRole.Stalk();
+                        break;
+                    case CustomRPC.HunterCatchPlayer:
+                        var hunter = Utils.PlayerById(reader.ReadByte());
+                        var prey = Utils.PlayerById(reader.ReadByte());
+                        Hunter hunter2 = Role.GetRole<Hunter>(hunter);
+                        hunter2.CatchPlayer(prey);
+                        break;
                 }
             }
         }
@@ -1328,6 +1342,9 @@ namespace TownOfUs
 
                     if (CustomGameOptions.VeteranOn > 0)
                         CrewmateRoles.Add((typeof(Veteran), CustomGameOptions.VeteranOn, false));
+
+                    if (CustomGameOptions.HunterOn > 0)
+                        CrewmateRoles.Add((typeof(Hunter), CustomGameOptions.HunterOn, false));
 
                     if (CustomGameOptions.TrackerOn > 0)
                         CrewmateRoles.Add((typeof(Tracker), CustomGameOptions.TrackerOn, false));

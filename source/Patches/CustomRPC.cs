@@ -72,6 +72,8 @@ namespace TownOfUs
         Bless,
         Camouflage,
         SnitchCultistReveal,
+        HunterStalk,
+        HunterCatchPlayer,
 
         BypassKill,
         BypassMultiKill,
