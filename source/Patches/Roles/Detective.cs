@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using TownOfUs.CrewmateRoles.DetectiveMod;
+using UnityEngine;
 
 namespace TownOfUs.Roles
 {
@@ -8,8 +10,10 @@ namespace TownOfUs.Roles
         private KillButton _examineButton;
         public PlayerControl ClosestPlayer;
         public DateTime LastExamined { get; set; }
-        public DeadBody CurrentTarget;
-        public List<byte> DetectedKillers = new List<byte>();
+        public CrimeScene CurrentTarget;
+        public CrimeScene InvestigatingScene;
+        public List<byte> InvestigatedPlayers = new List<byte>();
+        public List<GameObject> CrimeScenes = new List<GameObject>();
         public PlayerControl LastKiller;
 
         public Detective(PlayerControl player) : base(player)
