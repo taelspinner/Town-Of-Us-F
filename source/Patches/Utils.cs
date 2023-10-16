@@ -28,6 +28,7 @@ using Reactor.Networking;
 using Reactor.Networking.Extensions;
 using Unity.Services.Core.Telemetry.Internal;
 using TownOfUs.CrewmateRoles.MercenaryMod;
+using TownOfUs.CrewmateRoles.DetectiveMod;
 
 namespace TownOfUs
 {
@@ -642,7 +643,20 @@ namespace TownOfUs
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
                 {
                     var detective = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
-                    detective.LastKiller = killer;
+                    if (target.PlayerId == PlayerControl.LocalPlayer.PlayerId)
+                    {
+                        detective.CurrentTarget = null;
+                        detective.InvestigatingScene = null;
+                        CrimeSceneExtensions.ClearCrimeScenes(detective.CrimeScenes);
+                    }
+                    else
+                    {
+                        var bodyPos = target.transform.position;
+                        bodyPos.z += 0.005f;
+                        bodyPos.y -= 0.3f;
+                        bodyPos.x -= 0.11f;
+                        detective.CrimeScenes.Add(CrimeSceneExtensions.CreateCrimeScene(bodyPos, target));
+                    }
                 }
 
                 if (target.AmOwner)
