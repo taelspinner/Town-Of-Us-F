@@ -535,7 +535,7 @@ namespace TownOfUs
                         detective.InvestigatingScene = null;
                         CrimeSceneExtensions.ClearCrimeScenes(detective.CrimeScenes);
                     }
-                    else
+                    else if (!PlayerControl.LocalPlayer.Data.IsDead)
                     {
                         var bodyPos = target.transform.position;
                         bodyPos.z += 0.005f;
