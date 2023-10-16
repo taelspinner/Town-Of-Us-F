@@ -150,6 +150,10 @@ namespace TownOfUs.Patches {
                 {
                     playerRole += " (<color=#" + Patches.Colors.Torch.ToHtmlStringRGBA() + ">Torch</color>)";
                 }
+                else if (playerControl.Is(ModifierEnum.Vengeful))
+                {
+                    playerRole += " (<color=#" + Patches.Colors.Vengeful.ToHtmlStringRGBA() + ">Vengeful</color>)";
+                }
                 else if (playerControl.Is(ModifierEnum.Lover))
                 {
                     playerRole += " (<color=#" + Patches.Colors.Lovers.ToHtmlStringRGBA() + ">Lover</color>)";

@@ -1556,6 +1556,9 @@ namespace TownOfUs
 
                     if (Check(CustomGameOptions.FrostyOn))
                         CrewmateModifiers.Add((typeof(Frosty), CustomGameOptions.FrostyOn));
+
+                    if (Check(CustomGameOptions.VengefulOn))
+                        CrewmateModifiers.Add((typeof(Vengeful), CustomGameOptions.VengefulOn));
                     #endregion
                     #region Global Modifiers
                     if (Check(CustomGameOptions.TiebreakerOn))
