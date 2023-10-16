@@ -22,7 +22,6 @@ namespace TownOfUs.NeutralRoles.VengefulMod
             var votingPlayer = Utils.PlayerById(srcPlayerId);
             var suspectPlayer = Utils.PlayerById(suspectPlayerId);
             if (!suspectPlayer.Is(ModifierEnum.Vengeful)) return;
-            Debug.Log(votingPlayer.name + " voted for " + suspectPlayer.name);
             if (Vengeance.FirstVoted == null)
             {
                 Vengeance.FirstVoted = votingPlayer;
