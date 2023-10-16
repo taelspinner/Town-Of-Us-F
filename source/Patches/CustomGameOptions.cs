@@ -79,6 +79,7 @@ namespace TownOfUs
         public static int VenererOn => (int)Generate.VenererOn.Get();
         public static int AurialOn => (int)Generate.AurialOn.Get();
         public static int TorchOn => (int)Generate.TorchOn.Get();
+        public static int VengefulOn => (int)Generate.VengefulOn.Get();
         public static int DiseasedOn => (int)Generate.DiseasedOn.Get();
         public static int FlashOn => (int)Generate.FlashOn.Get();
         public static int TiebreakerOn => (int)Generate.TiebreakerOn.Get();

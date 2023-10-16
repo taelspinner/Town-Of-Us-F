@@ -79,6 +79,7 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption FrostyOn;
         public static CustomNumberOption MultitaskerOn;
         public static CustomNumberOption TorchOn;
+        public static CustomNumberOption VengefulOn;
 
         public static CustomHeaderOption GlobalModifiers;
         public static CustomNumberOption ButtonBarryOn;
@@ -634,6 +635,8 @@ namespace TownOfUs.CustomOption
             MultitaskerOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF804DFF>Multitasker</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             TorchOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FFFF99FF>Torch</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            VengefulOn = new CustomNumberOption(num++, MultiMenu.modifiers, "<color=#FF0090FF>Vengeful</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
             GlobalModifiers = new CustomHeaderOption(num++, MultiMenu.modifiers, "Global Modifiers");
