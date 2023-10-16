@@ -82,7 +82,7 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
             protectButton.SetCoolDown(role.StartTimer(), 10f);
             if (role.Armored) return;
             var notShielded = PlayerControl.AllPlayerControls.ToArray().Where(
-                player => !role.ShieldedPlayer != role.ClosestPlayer
+                player => role.ShieldedPlayer != player
             ).ToList();
             Utils.SetTarget(ref role.ClosestPlayer, protectButton, float.NaN, notShielded);
         }
