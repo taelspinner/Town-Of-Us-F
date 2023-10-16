@@ -35,13 +35,12 @@ namespace TownOfUs.NeutralRoles.PoliticianMod
                 role.LastCampaigned.AddSeconds(CustomGameOptions.ProtectKCReset - CustomGameOptions.CampaignCd);
                 return false;
             }
-            /* Mercenary compatibility
             else if (interact[5] == true)
             {
                 role.LastCampaigned = DateTime.UtcNow;
                 role.LastCampaigned.AddSeconds(-CustomGameOptions.CampaignCd + 10);
                 return false;
-            }*/
+            }
             else if (interact[3] == true) return false;
             return false;
         }

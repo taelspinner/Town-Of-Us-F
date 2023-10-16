@@ -23,11 +23,12 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 - [Vampire Hunter](#vampire-hunter)
 - [Veteran](#veteran)
 - [Vigilante](#vigilante)
+- [Hunter](#hunter)
+- [Politician](#politician)
 - [Altruist](#altruist)
 - [Medic](#medic)
 - [Engineer](#engineer)
 - [Imitator](#imitator)
-- [Politician](#politician)
 - [Medium](#medium)
 - [Prosecutor](#prosecutor)
 - [Swapper](#swapper)
@@ -153,6 +154,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <details>
   <summary> v5.2.0 </summary>
   <ul> <li>New Role: Politician</li> </ul>
+  <ul> <li>New Role: Hunter</li> </ul>
   <ul> <li>New Modifier: Vengeful</li> </ul>
   <ul> <li>Detective Rework: Bodies now spawn crime scenes, which can be investigated across rounds</li> </ul>
   <ul> <li>Mayor has been reworked to be part of Politician</li> </ul>
@@ -1040,6 +1042,23 @@ During meetings, the Vigilante can choose to kill someone by guessing their role
 | Vigilante Guess After Voting  | Whether the Vigilante can Guess after they have voted | Toggle | False |
 
 -----------------------
+## Hunter
+### **Team: Crewmates**
+The Hunter is a Crewmate who stalks their prey before striking.\
+If a player interacts with someone else while the Hunter is stalking them, the Hunter will be alerted.\
+The Hunter's Kill button only works on players they have caught interacting while stalking them.
+
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Hunter | The percentage probability of the Hunter appearing | Percentage | 0% |
+| Hunter Kill Cooldown | The cooldown on the Hunter's kill button. | Time | 25s |
+| Hunter Stalk Cooldown | The cooldown on the Hunter's stalk button. | Time | 10s |
+| Hunter Stalk Duration | The duration of the Hunter's stalk ability. | Time | 25s |
+| Maximum Stalk Uses | The number of times the Hunter can stalk throughout the game | Number | 5 |
+| Hunter Can Report Who They've Killed | Whether the Hunter is able to report their own kills | Toggle | True |
+
+-----------------------
 ## Politician
 ### **Team: Crewmates**
 The Politician is a Crewmate who is trying to be elected Mayor of the town.\
@@ -1048,7 +1067,7 @@ of anyone who interacts with them in any way, spreading the Politician's Campaig
 Once they have the votes of every living player, they become the Mayor. At the next meeting, they will be\
 revealed as the Mayor to the rest of the town. The Mayor has an additional 2 votes and cannot be assassinated.\
 After being revealed, the Mayor will be able to use Bodyguard button once per round. While the Mayor's Bodyguard is\
-active, they will kill anyone who interacts with them.\
+active, they will kill anyone who interacts with them.
 
 ### Game Options
 | Name | Description | Type | Default |

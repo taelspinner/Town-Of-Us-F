@@ -36,6 +36,11 @@ namespace TownOfUs.CrewmateRoles.HunterMod
                 {
                     role.LastStalked = DateTime.UtcNow;
                 }
+                else if (stalkInteract[5] == true)
+                {
+                    role.LastStalked = DateTime.UtcNow;
+                    role.LastStalked = role.LastKilled.AddSeconds(-CustomGameOptions.HunterKillCd + 10);
+                }
                 else if (stalkInteract[1] == true)
                 {
                     role.LastStalked = DateTime.UtcNow;
@@ -66,6 +71,11 @@ namespace TownOfUs.CrewmateRoles.HunterMod
             if (interact[0] == true)
             {
                 role.LastKilled = DateTime.UtcNow;
+            }
+            else if (interact[5] == true)
+            {
+                role.LastKilled = DateTime.UtcNow;
+                role.LastKilled = role.LastKilled.AddSeconds(-CustomGameOptions.HunterKillCd + 10);
             }
             else if (interact[1] == true)
             {
