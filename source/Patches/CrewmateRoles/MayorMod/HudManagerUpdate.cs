@@ -23,7 +23,7 @@ namespace TownOfUs.CrewmateRoles.MayorMod
 
             var role = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
 
-            if (role.UsesText == null && role.UsesLeft > 0)
+            if (role.UsesText == null)
             {
                 role.UsesText = Object.Instantiate(bodyguardButton.cooldownTimerText, bodyguardButton.transform);
                 role.UsesText.gameObject.SetActive(false);
