@@ -58,7 +58,6 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
             render.transform.localScale = scale;
             BoxCollider2D splatCollider = bloodSplat.AddComponent<BoxCollider2D>();
             splatCollider.size = new Vector2(render.size.x, render.size.y);
-            splatCollider.tag = "DeadBody";
             var scene = bloodSplat.AddComponent<CrimeScene>();
             scene.DeadPlayer = victim;
             return bloodSplat;
