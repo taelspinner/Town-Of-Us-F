@@ -71,6 +71,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 - [Frosty](#frosty)
 - [Multitasker](#multitasker)
 - [Torch](#torch)
+- [Vengeful](#vengeful)
 - [Button Barry](#button-barry)
 - [Flash](#flash)
 - [Giant](#giant)
@@ -152,6 +153,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <details>
   <summary> v5.2.0 </summary>
   <ul> <li>New Role: Politician</li> </ul>
+  <ul> <li>New Modifier: Vengeful</li> </ul>
   <ul> <li>Detective Rework: Bodies now spawn crime scenes, which can be investigated across rounds</li> </ul>
   <ul> <li>Mayor has been reworked to be part of Politician</li> </ul>
   <ul> <li>Mercenary protect now gives a standardised 10s cooldown</li> </ul>
@@ -1706,6 +1708,15 @@ The Torch's vision doesn't get reduced when the lights are sabotaged.
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
 | Torch | The percentage probability of the Torch appearing | Percentage | 0% |
+
+-----------------------
+## Vengeful
+### **Applied to: Crewmates**
+The Vengeful assassinates the first person who voted for them when they are exiled.
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Vengeful | The percentage probability of the Vengeful appearing | Percentage | 0% |
 
 -----------------------
 ## Button Barry
