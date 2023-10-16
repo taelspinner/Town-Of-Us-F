@@ -81,6 +81,8 @@ namespace TownOfUs
         TurnMayor,
         Bodyguard,
         UpdateImitator,
+        HunterStalk,
+        HunterCatchPlayer,
 
         BypassKill,
         BypassMultiKill,

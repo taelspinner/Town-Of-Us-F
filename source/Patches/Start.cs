@@ -67,6 +67,13 @@ namespace TownOfUs.Patches
                 tagger.LastTracked = tagger.LastTracked.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.TrackCd);
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
+            {
+                var hunter = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
+                hunter.LastKilled = DateTime.UtcNow;
+                hunter.LastKilled = hunter.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.HunterKillCd);
+            }
+
             if (PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter))
             {
                 var vh = Role.GetRole<VampireHunter>(PlayerControl.LocalPlayer);

@@ -101,6 +101,7 @@ namespace TownOfUs
         public static Sprite CampaignSprite;
         public static Sprite BodyguardSprite;
         public static Sprite CrimeSceneSprite;
+        public static Sprite StalkSprite;
 
         public static Sprite SettingsButtonSprite;
         public static Sprite CrewSettingsButtonSprite;
@@ -199,6 +200,7 @@ namespace TownOfUs
             HackSprite = CreateSprite("TownOfUs.Resources.Hack.png");
             MimicSprite = CreateSprite("TownOfUs.Resources.Mimic.png");
             LockSprite = CreateSprite("TownOfUs.Resources.Lock.png");
+            StalkSprite = CreateSprite("TownOfUs.Resources.Track.png");
             CrimeSceneSprite = CreateSprite("TownOfUs.Resources.CrimeScene.png");
 
             SettingsButtonSprite = CreateSprite("TownOfUs.Resources.SettingsButton.png");

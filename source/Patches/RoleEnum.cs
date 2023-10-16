@@ -43,6 +43,7 @@ namespace TownOfUs
         Aurial,
         Mercenary,
         Politician,
+        Hunter,
 
         Miner,
         Swooper,

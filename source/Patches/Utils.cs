@@ -482,6 +482,14 @@ namespace TownOfUs
                 abilityUsed = true;
                 fullCooldownReset = true;
             }
+            if (abilityUsed)
+            {
+                foreach (Role role in Role.GetRoles(RoleEnum.Hunter))
+                {
+                    Hunter hunter = (Hunter)role;
+                    hunter.CatchPlayer(player);
+                }
+            }
             var reset = new List<bool>()
             {
                 fullCooldownReset,
@@ -1260,6 +1268,11 @@ namespace TownOfUs
             {
                 var sheriff = Role.GetRole<Sheriff>(PlayerControl.LocalPlayer);
                 sheriff.LastKilled = DateTime.UtcNow;
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
+            {
+                var hunter = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
+                hunter.LastKilled = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Tagger))
             {
