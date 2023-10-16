@@ -34,6 +34,7 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
             }
             if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
             if (role.ClosestPlayer == null) return false;
+            if (role.ShieldedPlayer == role.ClosestPlayer) return false;
             if (role.StartTimer() > 0) return false;
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
