@@ -1046,7 +1046,8 @@ During meetings, the Vigilante can choose to kill someone by guessing their role
 ### **Team: Crewmates**
 The Hunter is a Crewmate who stalks their prey before striking.\
 If a player interacts with someone else while the Hunter is stalking them, the Hunter will be alerted.\
-The Hunter's Kill button only works on players they have caught interacting while stalking them.
+The Hunter's Kill button only works on players they have caught interacting while stalking them.\
+If the Hunter is exiled, they will assassinate the *last* player to vote for them on the way out.
 
 ### Game Options
 | Name | Description | Type | Default |

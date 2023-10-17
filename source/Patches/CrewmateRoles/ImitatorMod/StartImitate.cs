@@ -78,6 +78,18 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                     veteran.UsesLeft = ((Veteran)Role.GetRole(imitator.ImitatePlayer)).UsesLeft;
                 }
             }
+            if (imitatorRole == RoleEnum.Hunter)
+            {
+                var hunter = new Veteran(ImitatingPlayer);
+                if (LimitedRoleUses.ContainsKey("Hunter"))
+                {
+                    hunter.UsesLeft = LimitedRoleUses["Hunter"];
+                }
+                else
+                {
+                    hunter.UsesLeft = ((Hunter)Role.GetRole(imitator.ImitatePlayer)).UsesLeft;
+                }
+            }
             if (imitatorRole == RoleEnum.Altruist) new Altruist(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Engineer)
             {
