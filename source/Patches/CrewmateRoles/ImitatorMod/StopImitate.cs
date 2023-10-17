@@ -51,6 +51,17 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                         Object.Destroy(vhRole.UsesText);
                     }
 
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
+                    {
+                        var hunterRole = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
+                        LimitedRoleUses["Hunter"] = hunterRole.UsesLeft;
+                        StartImitate.ImitatedCaughtPlayers.Clear();
+                        StartImitate.ImitatedCaughtPlayers.AddRange(hunterRole.CaughtPlayers);
+                        hunterRole.ClosestStalkPlayer = null;
+                        hunterRole.StalkButton.gameObject.SetActive(false);
+                        Object.Destroy(hunterRole.UsesText);
+                    }
+
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Mystic))
                     {
                         var mysticRole = Role.GetRole<Mystic>(PlayerControl.LocalPlayer);
@@ -98,6 +109,13 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
                     {
                         var detecRole = Role.GetRole<Detective>(PlayerControl.LocalPlayer);
+                        StartImitate.ImitatedDetectiveScenes.Clear();
+                        StartImitate.ImitatedDetectiveScenes.AddRange(detecRole.CrimeScenes);
+                        StartImitate.ImitatedInvestigatedPlayers.Clear();
+                        StartImitate.ImitatedInvestigatedPlayers.AddRange(detecRole.InvestigatedPlayers);
+                        StartImitate.ImitatedInvestigatingScene = detecRole.InvestigatingScene;
+                        foreach(GameObject scene in StartImitate.ImitatedDetectiveScenes)
+                            scene.SetActive(false);
                         detecRole.ClosestPlayer = null;
                         detecRole.ExamineButton.gameObject.SetActive(false);
                     }

@@ -22,7 +22,8 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                     RoleEnum.Veteran,
                     RoleEnum.VampireHunter,
                     RoleEnum.Transporter,
-                    RoleEnum.Trapper
+                    RoleEnum.Trapper,
+                    RoleEnum.Hunter
                 };
                 RoleEnum playerRole = Role.GetRole(PlayerControl.LocalPlayer).RoleType;
                 if (PlayerControl.LocalPlayer.Data.IsDead && LimitedUsesRoles.Contains(playerRole) && !StartImitate.UpdatedUses)
@@ -48,7 +49,11 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                     {
                         newUses = ((Trapper)Role.GetRole(PlayerControl.LocalPlayer)).UsesLeft;
                     }
-                    foreach(var role in Role.GetRoles(RoleEnum.Imitator))
+                    else if (playerRole == RoleEnum.Hunter)
+                    {
+                        newUses = ((Hunter)Role.GetRole(PlayerControl.LocalPlayer)).UsesLeft;
+                    }
+                    foreach (var role in Role.GetRoles(RoleEnum.Imitator))
                     {
                         // Only needed once per game
                         StartImitate.UpdatedUses = true;

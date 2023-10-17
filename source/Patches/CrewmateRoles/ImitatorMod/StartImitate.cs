@@ -5,6 +5,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 using TownOfUs.Patches;
 using System.Collections.Generic;
+using TownOfUs.CrewmateRoles.DetectiveMod;
 
 namespace TownOfUs.CrewmateRoles.ImitatorMod
 {
@@ -19,6 +20,10 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
     {
         public static PlayerControl ImitatingPlayer;
         public static Dictionary<string, int> LimitedRoleUses;
+        public static List<GameObject> ImitatedDetectiveScenes = new List<GameObject>();
+        public static CrimeScene ImitatedInvestigatingScene = null;
+        public static List<byte> ImitatedInvestigatedPlayers = new List<byte>();
+        public static List<PlayerControl> ImitatedCaughtPlayers = new List<PlayerControl>();
         public static bool UpdatedUses = false;
         public static void ExileControllerPostfix(ExileController __instance)
         {
@@ -59,7 +64,15 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
             var role = Role.GetRole(ImitatingPlayer);
             var killsList = (role.Kills, role.CorrectKills, role.IncorrectKills, role.CorrectAssassinKills, role.IncorrectAssassinKills);
             Role.RoleDictionary.Remove(ImitatingPlayer.PlayerId);
-            if (imitatorRole == RoleEnum.Detective) new Detective(ImitatingPlayer);
+            if (imitatorRole == RoleEnum.Detective)
+            {
+                var detective = new Detective(ImitatingPlayer);
+                detective.CrimeScenes.AddRange(ImitatedDetectiveScenes);
+                detective.InvestigatedPlayers.AddRange(ImitatedInvestigatedPlayers);
+                detective.InvestigatingScene = ImitatedInvestigatingScene;
+                foreach(GameObject scene in detective.CrimeScenes)
+                    scene.SetActive(true);
+            }
             if (imitatorRole == RoleEnum.Investigator) new Investigator(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Mystic) new Mystic(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Seer) new Seer(ImitatingPlayer);
@@ -80,7 +93,8 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
             }
             if (imitatorRole == RoleEnum.Hunter)
             {
-                var hunter = new Veteran(ImitatingPlayer);
+                var hunter = new Hunter(ImitatingPlayer);
+                hunter.CaughtPlayers.AddRange(ImitatedCaughtPlayers);
                 if (LimitedRoleUses.ContainsKey("Hunter"))
                 {
                     hunter.UsesLeft = LimitedRoleUses["Hunter"];

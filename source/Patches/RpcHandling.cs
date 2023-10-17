@@ -1328,6 +1328,10 @@ namespace TownOfUs
                         {
                             ((Trapper)playerRole).UsesLeft = newUses;
                         }
+                        else if (playerRole.RoleType == RoleEnum.Hunter)
+                        {
+                            ((Hunter)playerRole).UsesLeft = newUses;
+                        }
                         break;
                 }
             }
