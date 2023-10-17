@@ -796,6 +796,7 @@ If you have issues installing Town of Us, you can join our [Discord](https://dis
 # Crewmate Roles
 ## Aurial
 ### **Team: Crewmates**
+
 The Aurial is a Crewmate that can see the Auras of other players.\
 At the beginning of the game all players are white, once radiated enough the Aurial can see their alignment.\
 Green is Crewmate, Grey is Neutral and Red is Impostor.\
@@ -813,6 +814,7 @@ However, as a consequence the Aurial cannot see who is who.
 -----------------------
 ## Detective
 ### **Team: Crewmates**
+
 The Detective is a Crewmate that can inspect crime scenes and then examine players.\
 Wherever a player is killed, a crime scene will spawn, and persist after the body is reported.\
 Investigating a crime scene will allow the Detective to Examine players to compare evidence from the scene.\
@@ -831,6 +833,7 @@ Crime scenes can be contaminated by oblivious crewmates, so get there as fast as
 -----------------------
 ## Haunter
 ### **Team: Crewmates**
+
 The Haunter is a dead Crewmate that can reveal Impostors if they finish all their tasks.\
 Upon finishing all of their tasks, Impostors are revealed to alive crewmates after a meeting is called.\
 However, if the Haunter is clicked they lose their ability to reveal Impostors and are once again a normal ghost.
@@ -846,9 +849,9 @@ However, if the Haunter is clicked they lose their ability to reveal Impostors a
 -----------------------
 ## Investigator
 ### **Team: Crewmates**
+
 The Investigator is a Crewmate that can see the footprints of players.\
 Every footprint disappears after a set amount of time.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -862,6 +865,7 @@ Every footprint disappears after a set amount of time.
 -----------------------
 ## Mystic
 ### **Team: Crewmates**
+
 The Mystic is a Crewmate that gets an alert revealing when someone has died.\
 On top of this, the Mystic briefly gets an arrow pointing in the direction of the body.
 ### Game Options
@@ -873,6 +877,7 @@ On top of this, the Mystic briefly gets an arrow pointing in the direction of th
 -----------------------
 ## Oracle
 ### **Team: Crewmates**
+
 The Oracle is a Crewmate that can get another player to confess information to them.\
 The Oracle has 3 abilities, the first is that when they die, the person confessin to them will reveal their alignment.\
 The second, is that every meeting the Oracle receives a confession about who might be evil.\
@@ -890,6 +895,7 @@ The final ability is giving a blessing to the person confessing to them, with th
 -----------------------
 ## Seer
 ### **Team: Crewmates**
+
 The Seer is a Crewmate that can reveal the alliance of other players.\
 Based on settings, the Seer can find out whether a player is a Good or an Evil role.\
 A player's name will change color depending on faction and role.
@@ -971,9 +977,9 @@ However, this is done so in a random order, not stating who entered the trap, no
 -----------------------
 ## Sheriff
 ### **Team: Crewmates**
+
 The Sheriff is a Crewmate that has the ability to eliminate the Impostors using their kill button.\
 However, if they kill a Crewmate or a Neutral player they can't kill, they instead die themselves.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -994,10 +1000,10 @@ However, if they kill a Crewmate or a Neutral player they can't kill, they inste
 -----------------------
 ## Vampire Hunter
 ### **Team: Crewmates**
+
 The Vampire Hunter is a Crewmate role which can hunt Vampires.\
 Their job is to kill all Vampires.\
 Once all Vampires are dead they turn into a different Crewmate role after the following meeting.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1044,11 +1050,11 @@ During meetings, the Vigilante can choose to kill someone by guessing their role
 -----------------------
 ## Hunter
 ### **Team: Crewmates**
+
 The Hunter is a Crewmate who stalks their prey before striking.\
 If a player interacts with someone else while the Hunter is stalking them, the Hunter will be alerted.\
 The Hunter's Kill button only works on players they have caught interacting while stalking them.\
 If the Hunter is exiled, they will assassinate the *last* player to vote for them on the way out.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1062,14 +1068,14 @@ If the Hunter is exiled, they will assassinate the *last* player to vote for the
 -----------------------
 ## Politician
 ### **Team: Crewmates**
+
 The Politician is a Crewmate who is trying to be elected Mayor of the town.\
-They can gain people's votes using the Campaign button. Anyone voting for them will also automatically gain the vote\
-of anyone who interacts with them in any way, spreading the Politician's Campaign.\
+They can gain people's votes using the Campaign button. Anyone voting for them will also automatically gain the\
+vote of anyone who interacts with them in any way, spreading the Politician's Campaign.\
 Once they have the votes of every living player, they become the Mayor. At the next meeting, they will be\
 revealed as the Mayor to the rest of the town. The Mayor has an additional 2 votes and cannot be assassinated.\
-After being revealed, the Mayor will be able to use Bodyguard button once per round. While the Mayor's Bodyguard is\
-active, they will kill anyone who interacts with them.
-
+After being revealed, the Mayor will be able to use Bodyguard button once per round. While the Mayor's \
+Bodyguard is active, they will kill anyone who interacts with them.
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1097,6 +1103,7 @@ After a set period of time, the player will be resurrected, if the revival isn't
 -----------------------
 ## Medic
 ### **Team: Crewmates**
+
 The Medic is a Crewmate that can give any player a shield that will make them immortal until the Medic dies.\
 A Shielded player cannot be killed by anyone, unless by suicide.\
 If the Medic reports a dead body, they can get a report containing clues to the Killer's identity.\
@@ -1152,9 +1159,9 @@ A report can contain the name of the killer or the color type (Darker/Lighter)
 -----------------------
 ## Engineer
 ### **Team: Crewmates**
+
 The Engineer is a Crewmate that can fix sabotages from anywhere on the map.\
 They can use vents to get across the map easily.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1164,11 +1171,11 @@ They can use vents to get across the map easily.
 -----------------------
 ## Imitator
 ### **Team: Crewmates**
+
 The Imitator is a Crewmate that can mimic dead crewamtes.\
 During meetings the Imitator can select who they are going to imitate the following round from the dead.\
 They can choose to use each dead players as many times as they wish.\
 It should be noted the Imitator can not imitate all crew roles.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1177,11 +1184,11 @@ It should be noted the Imitator can not imitate all crew roles.
 -----------------------
 ## Medium
 ### **Team: Crewmates**
+
 The Medium is a Crewmate that can see ghosts.\
 During each round the Medium has an ability called Mediate.\
 If the Medium uses this ability and no one is dead, nothing will happen.\
 However, if someone is dead, the Medium and the dead player will be able to see each other and communicate from beyond the grave!
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1194,9 +1201,9 @@ However, if someone is dead, the Medium and the dead player will be able to see 
 -----------------------
 ## Prosecutor
 ### **Team: Crewmates**
+
 The Prosecutor is a Crewmate that can once per game prosecute a player which results in them being exiled that meeting.\
 The Prosecutor can also see votes non-anonymously.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1206,9 +1213,9 @@ The Prosecutor can also see votes non-anonymously.
 -----------------------
 ## Swapper
 ### **Team: Crewmates**
+
 The Swapper is a Crewmate that can swap the votes on 2 players during a meeting.\
 All the votes for the first player will instead be counted towards the second player and vice versa.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1218,9 +1225,9 @@ All the votes for the first player will instead be counted towards the second pl
 -----------------------
 ## Transporter
 ### **Team: Crewmates**
+
 The Transporter is a Crewmate that can change the locations of two random players at will.\
 Players who have been transported are alerted with a blue flash on their screen.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1233,11 +1240,11 @@ Players who have been transported are alerted with a blue flash on their screen.
 # Neutral Roles
 ## Amnesiac
 ### **Team: Neutral**
+
 The Amnesiac is a Neutral role with no win condition.\
 They have zero tasks and are essentially roleless.\
 However, they can remember a role by finding a dead player.\
 Once they remember their role, they go on to try win with their new win condition.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1248,10 +1255,10 @@ Once they remember their role, they go on to try win with their new win conditio
 -----------------------
 ## Guardian Angel
 ### **Team: Neutral**
+
 The Guardian Angel is a Neutral role which aligns with the faction of their target.\
 Their job is to protect their target at all costs.\
 If their target loses, they lose.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1269,9 +1276,9 @@ If their target loses, they lose.
 -----------------------
 ## Survivor
 ### **Team: Neutral**
+
 The Survivor is a Neutral role which can win by simply surviving.\
 However, if Lovers, or a Neutral Evil role wins the game, the survivor loses.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1284,9 +1291,10 @@ However, if Lovers, or a Neutral Evil role wins the game, the survivor loses.
 -----------------------
 ## Lawyer
 ### **Team: Neutral**
-The Lawyer is a Neutral role which wins if their assigned defendant survives. If their defendant is exiled, they are also killed.\
-The Lawyer can win with any team that does not explicitly win alone, as long as their defendant survives.
 
+The Lawyer is a Neutral role which wins if their assigned defendant survives.\
+If their defendant is exiled, they are also killed.\
+The Lawyer can win with any team that does not explicitly win alone, as long as their defendant survives.
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1300,10 +1308,11 @@ The Lawyer can win with any team that does not explicitly win alone, as long as 
 -----------------------
 ## Mercenary
 ### **Team: Neutral**
-The Mercenary is a Neutral role which must block the abilities of other players to win.\
-So long as they possess the required number of brilders by the end of the game, they win with anyone (except Lovers). \
-They may also expend brilders to protect themselves from attack. They cannot shield while armored.
 
+The Mercenary is a Neutral role which must block the abilities of other players to win.\
+So long as they possess the required number of brilders by the end of the game, they\
+win with anyone (except Lovers).\
+They may also expend brilders to protect themselves from attack. They cannot shield while armored.
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1317,6 +1326,7 @@ They may also expend brilders to protect themselves from attack. They cannot shi
 -----------------------
 ## Doomsayer
 ### **Team: Neutral**
+
 The Doomsayer is a Neutral role with its own win condition.\
 Their goal is to assassinate a certain number of players.\
 Once done so they win the game.\
@@ -1351,10 +1361,10 @@ If that player gets voted out, they win the game.
 -----------------------
 ## Jester
 ### **Team: Neutral**
+
 The Jester is a Neutral role with its own win condition.\
 If they are voted out after a meeting, the game finishes and they win.\
 However, the Jester does not win if the Crewmates, Impostors or another Neutral role wins.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1437,7 +1447,6 @@ The Glitch's aim is to kill everyone and be the last person standing.\
 The Glitch can Hack players, resulting in them being unable to report bodies and do tasks.\
 Hacking prevents the hacked player from doing anything but walk around the map.\
 The Glitch can Mimic someone, which results in them looking exactly like the other person.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1495,7 +1504,6 @@ The Werewolf needs to be the last killer alive to win the game.
 
 The Escapist is an Impostor that can teleport to a different location.\
 Once per round the Escapist can Mark a location which they can then escape to later in the round.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1510,7 +1518,6 @@ Once per round the Escapist can Mark a location which they can then escape to la
 The Grenadier is an Impostor that can throw smoke grenades.\
 During the game, the Grenadier has the option to throw down a smoke grenade which blinds crewmates so they can't see.\
 However, a sabotage and a smoke grenade can not be active at the same time.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1527,7 +1534,6 @@ However, a sabotage and a smoke grenade can not be active at the same time.
 The Morphling is an Impostor that can Morph into another player.\
 At the beginning of the game and after every meeting, they can choose someone to Sample.\
 They can then Morph into that person at any time for a limited amount of time.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1541,7 +1547,6 @@ They can then Morph into that person at any time for a limited amount of time.
 ### **Team: Impostors**
 
 The Swooper is an Impostor that can temporarily turn invisible.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1559,7 +1564,6 @@ After their first kill, the Venerer can camouflage themself.\
 After their second kill, the Venerer can sprint.\
 After their third kill, every other player is slowed while their ability is activated.\
 All abilities are activated by the one button and have the same duration.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1575,7 +1579,6 @@ All abilities are activated by the one button and have the same duration.
 The Bomber is an Impostor who has the ability to plant bombs instead of kill.\
 After a bomb is planted, the bomb will detonate a fixed time period as per settings.\
 Once the bomb detonates it will kill all crewmates (and Impostors!) inside the radius.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1592,7 +1595,6 @@ Once the bomb detonates it will kill all crewmates (and Impostors!) inside the r
 If all Impostors die before a certain point in the game, a random crewmate is selected to become the Traitor.\
 The Traitor has no additional abilities and their job is simply to avenge the dead Impostors.\
 Once this player has turned into the Traitor their alliance sits with the Impostors.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1607,7 +1609,6 @@ Once this player has turned into the Traitor their alliance sits with the Impost
 The Warlock is an Impostor that can charge up their kill button.\
 Once activated the Warlock can use their kill button infinitely until they run out of charge.\
 However, they do not need to fully charge their kill button to use it.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1618,10 +1619,10 @@ However, they do not need to fully charge their kill button to use it.
 -----------------------
 ## Blackmailer
 ### **Team: Impostors**
+
 The Blackmailer is an Impostor that can silence people in meetings.\
 During each round, the Blackmailer can go up to someone and blackmail them.\
 This prevents the blackmailed person from speaking during the next meeting.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1631,9 +1632,9 @@ This prevents the blackmailed person from speaking during the next meeting.
 -----------------------
 ## Janitor
 ### **Team: Impostors**
+
 The Janitor is an Impostor that can clean up bodies.\
 Both their Kill and Clean ability have a shared cooldown, meaning they have to choose which one they want to use.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1645,7 +1646,6 @@ Both their Kill and Clean ability have a shared cooldown, meaning they have to c
 
 The Miner is an Impostor that can create new vents.\
 These vents only connect to each other, forming a new passway.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1657,7 +1657,6 @@ These vents only connect to each other, forming a new passway.
 ### **Team: Impostors**
 
 The Undertaker is an Impostor that can drag and drop bodies.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1673,6 +1672,7 @@ The Undertaker is an Impostor that can drag and drop bodies.
 Modifiers are added on top of players' roles.
 ## Aftermath
 ### **Applied to: Crewmates**
+
 Killing the Aftermath forces their killer to use their ability (if they have one and it's not in use).
 ### Game Options
 | Name | Description | Type | Default |
@@ -1682,6 +1682,7 @@ Killing the Aftermath forces their killer to use their ability (if they have one
 -----------------------
 ## Bait
 ### **Applied to: Crewmates**
+
 Killing the Bait makes the killer auto self-report.
 ### Game Options
 | Name | Description | Type | Default |
@@ -1693,6 +1694,7 @@ Killing the Bait makes the killer auto self-report.
 -----------------------
 ## Diseased
 ### **Applied to: Crewmates**
+
 Killing the Diseased increases the killer's kill cooldown.
 ### Game Options
 | Name | Description | Type | Default |
@@ -1703,6 +1705,7 @@ Killing the Diseased increases the killer's kill cooldown.
 -----------------------
 ## Frosty
 ### **Applied to: Crewmates**
+
 Killing the Frosty slows the killer for a short duration.
 ### Game Options
 | Name | Description | Type | Default |
@@ -1714,6 +1717,7 @@ Killing the Frosty slows the killer for a short duration.
 -----------------------
 ## Multitasker
 ### **Applied to: Crewmates**
+
 The Multitasker's tasks are transparent.
 ### Game Options
 | Name | Description | Type | Default |
@@ -1723,6 +1727,7 @@ The Multitasker's tasks are transparent.
 -----------------------
 ## Torch
 ### **Applied to: Crewmates**
+
 The Torch's vision doesn't get reduced when the lights are sabotaged.
 ### Game Options
 | Name | Description | Type | Default |
@@ -1732,6 +1737,7 @@ The Torch's vision doesn't get reduced when the lights are sabotaged.
 -----------------------
 ## Vengeful
 ### **Applied to: Crewmates**
+
 The Vengeful assassinates the first person who voted for them when they are exiled.
 ### Game Options
 | Name | Description | Type | Default |
@@ -1741,6 +1747,7 @@ The Vengeful assassinates the first person who voted for them when they are exil
 -----------------------
 ## Button Barry
 ### **Applied to: All**
+
 Button Barry has the ability to call a meeting from anywhere on the map, even during sabotages.
 They have the same amount of meetings as a regular player.
 ### Game Options
@@ -1751,6 +1758,7 @@ They have the same amount of meetings as a regular player.
 -----------------------
 ## Flash
 ### **Applied to: All**
+
 The Flash travels at a faster speed in comparison to a normal player.
 ### Game Options
 | Name | Description | Type | Default |
@@ -1761,6 +1769,7 @@ The Flash travels at a faster speed in comparison to a normal player.
 -----------------------
 ## Giant
 ### **Applied to: All**
+
 The Giant is a gigantic Crewmate, that has a decreased walk speed.
 ### Game Options
 | Name | Description | Type | Default |
@@ -1771,13 +1780,13 @@ The Giant is a gigantic Crewmate, that has a decreased walk speed.
 -----------------------
 ## Lovers
 ### **Applied to: All**
+
 The Lovers are two players who are linked together.\
 These two players get picked randomly between Crewmates and Impostors.\
 They gain the primary objective to stay alive together.\
 If they are both among the last 3 players, they win.\
 In order to do so, they gain access to a private chat, only visible by them in between meetings.\
 However, they can also win with their respective team, hence why the Lovers do not know the role of the other lover.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1789,6 +1798,7 @@ However, they can also win with their respective team, hence why the Lovers do n
 -----------------------
 ## Radar
 ### **Applied to: All**
+
 The Radar is a crewmate who knows where the closest player is to them.
 ### Game Options
 | Name | Description | Type | Default |
@@ -1798,6 +1808,7 @@ The Radar is a crewmate who knows where the closest player is to them.
 -----------------------
 ## Sleuth
 ### **Applied to: All**
+
 The Sleuth is a crewmate who gains knowledge from reporting dead bodies.\
 During meetings the Sleuth can see the roles of all players in which they've reported.
 ### Game Options
@@ -1808,6 +1819,7 @@ During meetings the Sleuth can see the roles of all players in which they've rep
 -----------------------
 ## Tiebreaker
 ### **Applied to: All**
+
 If any vote is a draw, the Tiebreaker's vote will go through.\
 If they voted another player, they will get voted out.
 ### Game Options
@@ -1818,6 +1830,7 @@ If they voted another player, they will get voted out.
 -----------------------
 ## Disperser
 ### **Applied to: Impostors**
+
 The Disperser is an Impostor who has a 1 time use ability to send all players to a random vent.\
 This includes miner vents.\
 Does not appear on Airship or Submerged.
@@ -1829,6 +1842,7 @@ Does not appear on Airship or Submerged.
 -----------------------
 ## Double Shot
 ### **Applied to: Impostors**
+
 Double Shot is an Impostor who gets an extra life when assassinating.\
 Once they use their life they are indicated with a red flash\
 and can no longer guess the person who they guessed wrong for the remainder of that meeting.
@@ -1843,7 +1857,6 @@ and can no longer guess the person who they guessed wrong for the remainder of t
 
 The Underdog is an Impostor with a prolonged kill cooldown.\
 When they are the only remaining Impostor, they will have their kill cooldown shortened.
-
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
