@@ -6,6 +6,7 @@ using TownOfUs.CrewmateRoles.MedicMod;
 using Reactor.Utilities;
 using AmongUs.GameOptions;
 using System.Collections.Generic;
+using TownOfUs.Extensions;
 
 namespace TownOfUs.CrewmateRoles.DetectiveMod
 {
@@ -29,7 +30,6 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
                 if (role.ClosestPlayer == null) return false;
                 if (Vector2.Distance(role.ClosestPlayer.GetTruePosition(),
                     PlayerControl.LocalPlayer.GetTruePosition()) > maxDistance) return false;
-                if (role.ClosestPlayer == null) return false;
                 var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer);
                 if (interact[4] == true)
                 {
@@ -38,7 +38,7 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
                         Coroutines.Start(Utils.FlashCoroutine(Color.red));
                         var deadPlayer = role.InvestigatingScene.DeadPlayer;
                         if (DestroyableSingleton<HudManager>.Instance)
-                            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"{role.ClosestPlayer.name} was at the scene of {deadPlayer.name}'s death!");
+                            DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, $"{role.ClosestPlayer.GetDefaultOutfit().PlayerName} was at the scene of {deadPlayer.GetDefaultOutfit().PlayerName}'s death!");
                     }
                     else Coroutines.Start(Utils.FlashCoroutine(Color.green));
                 }
