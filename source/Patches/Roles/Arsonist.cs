@@ -89,7 +89,7 @@ namespace TownOfUs.Roles
             foreach (var playerId in DousedPlayers)
             {
                 var player = Utils.PlayerById(playerId);
-                if (!player.Is(RoleEnum.Pestilence) && !player.IsShielded() && !player.IsMercShielded() && !player.IsProtected() && player != ShowRoundOneShield.FirstRoundShielded)
+                if (!player.Is(RoleEnum.Pestilence) && !player.IsShielded() && !player.IsMercShielded() && !player.IsArmored() && !player.IsProtected() && player != ShowRoundOneShield.FirstRoundShielded)
                 {
                     Utils.RpcMultiMurderPlayer(Player, player);
                 }
