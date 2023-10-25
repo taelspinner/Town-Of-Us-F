@@ -8,7 +8,7 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
     [HarmonyPatch(typeof(HudManager))]
     public class HUDMercShield
     {
-        public static Sprite ArmorSprite => TownOfUs.VestSprite;
+        public static Sprite ArmorSprite => TownOfUs.DonArmorSprite;
 
         [HarmonyPatch(nameof(HudManager.Update))]
         public static void Postfix(HudManager __instance)
