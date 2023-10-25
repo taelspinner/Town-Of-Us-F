@@ -152,6 +152,17 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 <details>
   <summary> Changelog </summary>
   <details>
+  <summary> v5.2.2 </summary>
+  <ul> <li>New button sprites for Mercenary, courtesy of local hero Don</li> </ul>
+  <ul> <li>New button sprite for Politician's Campaign</li> </ul>
+  <ul> <li>Several new cosmetics</li> </ul>
+  </details>
+  <details>
+  <summary> v5.2.1 </summary>
+  <ul> <li>Bug Fix: Mercenary's armor did not prevent you from being killed</li> </ul>
+  <ul> <li>Bug Fix: Imitator could imitate the Hunter while they were still alive</li> </ul>
+  </details>
+  <details>
   <summary> v5.2.0 </summary>
   <ul> <li>New Role: Politician</li> </ul>
   <ul> <li>New Role: Hunter</li> </ul>
