@@ -20,7 +20,8 @@ namespace TownOfUs
     {
         private static Sprite Fix => TownOfUs.EngineerFix;
         private static Sprite Medic => TownOfUs.MedicSprite;
-        private static Sprite Mercenary => TownOfUs.MedicSprite;
+        private static Sprite Mercenary => TownOfUs.MercProtectSprite;
+        private static Sprite DonArmor => TownOfUs.DonArmorSprite;
         private static Sprite Seer => TownOfUs.SeerSprite;
         private static Sprite Douse => TownOfUs.DouseSprite;
         private static Sprite Revive => TownOfUs.ReviveSprite;
