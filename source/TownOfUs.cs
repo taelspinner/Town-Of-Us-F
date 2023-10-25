@@ -204,7 +204,7 @@ namespace TownOfUs
             LockSprite = CreateSprite("TownOfUs.Resources.Lock.png");
             MercProtectSprite = CreateSprite("TownOfUs.Resources.MercProtect.png");
             DonArmorSprite = CreateSprite("TownOfUs.Resources.DonArmor.png");
-            StalkSprite = CreateSprite("TownOfUs.Resources.Track.png");
+            StalkSprite = CreateSprite("TownOfUs.Resources.Stalk.png");
             CrimeSceneSprite = CreateSprite("TownOfUs.Resources.CrimeScene.png");
 
             SettingsButtonSprite = CreateSprite("TownOfUs.Resources.SettingsButton.png");
