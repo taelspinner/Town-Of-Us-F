@@ -153,8 +153,9 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <summary> Changelog </summary>
   <details>
   <summary> v5.2.2 </summary>
-  <ul> <li>New button sprites for Mercenary, courtesy of local hero Don</li> </ul>
-  <ul> <li>New button sprite for Politician's Campaign</li> </ul>
+  <ul> <li>New button sprites for Mercenary courtesy of local hero Don</li> </ul>
+  <ul> <li>New button sprites for Politician</li> </ul>
+  <ul> <li>New button sprite for Hunter</li> </ul>
   <ul> <li>Several new cosmetics</li> </ul>
   </details>
   <details>
