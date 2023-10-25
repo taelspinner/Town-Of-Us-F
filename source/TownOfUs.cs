@@ -173,7 +173,7 @@ namespace TownOfUs
             DarkerSprite = CreateSprite("TownOfUs.Resources.Darker.png");
             InfectSprite = CreateSprite("TownOfUs.Resources.Infect.png");
             CampaignSprite = CreateSprite("TownOfUs.Resources.Campaign.png");
-            BodyguardSprite = CreateSprite("TownOfUs.Resources.Alert.png");
+            BodyguardSprite = CreateSprite("TownOfUs.Resources.Bodyguard.png");
             RampageSprite = CreateSprite("TownOfUs.Resources.Rampage.png");
             TrapSprite = CreateSprite("TownOfUs.Resources.Trap.png");
             InspectSprite = CreateSprite("TownOfUs.Resources.Inspect.png");
