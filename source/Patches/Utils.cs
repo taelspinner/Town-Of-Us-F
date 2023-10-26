@@ -525,6 +525,19 @@ namespace TownOfUs
                     else if (killer != target) veteran.IncorrectKills += 1;
                 }
 
+                if (killer.Is(RoleEnum.Hunter))
+                {
+                    var hunter = Role.GetRole<Hunter>(killer);
+                    if (target.Is(RoleEnum.Doomsayer) || target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling))
+                    {
+                        hunter.CorrectKills += 1;
+                    }
+                    else
+                    {
+                        hunter.IncorrectKills += 1;
+                    }
+                }
+
                 target.gameObject.layer = LayerMask.NameToLayer("Ghost");
                 target.Visible = false;
 

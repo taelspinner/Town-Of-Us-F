@@ -74,6 +74,7 @@ namespace TownOfUs
         SnitchCultistReveal,
         HunterStalk,
         HunterCatchPlayer,
+        Retribution,
 
         BypassKill,
         BypassMultiKill,
