@@ -1300,6 +1300,10 @@ namespace TownOfUs
                         Hunter hunter2 = Role.GetRole<Hunter>(hunter);
                         hunter2.CatchPlayer(prey);
                         break;
+                    case CustomRPC.Retribution:
+                        var lastVoted = Utils.PlayerById(reader.ReadByte());
+                        AssassinKill.MurderPlayer(lastVoted);
+                        break;
                     case CustomRPC.Campaign:
                         var pn = Role.GetRole<Politician>(Utils.PlayerById(reader.ReadByte()));
                         pn.SpreadCampaign(Utils.PlayerById(reader.ReadByte()), Utils.PlayerById(reader.ReadByte()));

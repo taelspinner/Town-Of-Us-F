@@ -1,11 +1,6 @@
 ﻿using HarmonyLib;
-using Reactor.Utilities;
-using System.Linq;
 using TownOfUs.Modifiers.AssassinMod;
-using TownOfUs.Patches.NeutralRoles;
 using TownOfUs.Roles;
-using TownOfUs.Roles.Modifiers;
-using UnityEngine;
 
 namespace TownOfUs.CrewmateRoles.HunterMod
 {
@@ -39,8 +34,9 @@ namespace TownOfUs.CrewmateRoles.HunterMod
             {
                 if (Retribution.LastVoted != null && Retribution.LastVoted.PlayerId != player.PlayerId)
                 {
-                    AssassinKill.RpcMurderPlayer(Retribution.LastVoted, player);
-                    Role.GetRole(player).CorrectAssassinKills -= 1;
+                    var hunter = Role.GetRole<Hunter>(player);
+                    Utils.Rpc(CustomRPC.Retribution, Retribution.LastVoted);
+                    AssassinKill.MurderPlayer(Retribution.LastVoted);
                 }
             }
             Retribution.LastVoted = null;

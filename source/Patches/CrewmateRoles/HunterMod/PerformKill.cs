@@ -57,17 +57,6 @@ namespace TownOfUs.CrewmateRoles.HunterMod
                         GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance];
             if (!flag3) return false;
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, true);
-            if (interact[4] == true)
-            {
-                if(role.ClosestPlayer.Is(RoleEnum.Doomsayer) || role.ClosestPlayer.Is(Faction.Impostors) || role.ClosestPlayer.Is(Faction.NeutralKilling))
-                {
-                    role.CorrectKills += 1;
-                }
-                else
-                {
-                    role.IncorrectKills += 1;
-                }
-            }
             if (interact[0] == true)
             {
                 role.LastKilled = DateTime.UtcNow;
