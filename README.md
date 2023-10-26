@@ -152,6 +152,11 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 <details>
   <summary> Changelog </summary>
   <details>
+  <summary> v5.2.3 </summary>
+  <ul> <li>Bug Fix: Lawyer is no longer killed once for each player when their client is voted out</li> </ul>
+  <ul> <li>Bug Fix: Hunter kill stats show correctly on end screen for everyone now</li> </ul>
+  </details>
+  <details>
   <summary> v5.2.2 </summary>
   <ul> <li>New button sprites for Mercenary courtesy of local hero Don</li> </ul>
   <ul> <li>New button sprites for Politician</li> </ul>
