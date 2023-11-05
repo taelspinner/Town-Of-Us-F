@@ -1361,6 +1361,11 @@ namespace TownOfUs
                 var veteran = Role.GetRole<Veteran>(PlayerControl.LocalPlayer);
                 veteran.LastAlerted = DateTime.UtcNow;
             }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Politician))
+            {
+                var politician = Role.GetRole<Politician>(PlayerControl.LocalPlayer);
+                politician.LastCampaigned = DateTime.UtcNow;
+            }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Mayor))
             {
                 var mayor = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
