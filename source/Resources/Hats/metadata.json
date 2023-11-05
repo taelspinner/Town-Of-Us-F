@@ -2286,13 +2286,13 @@
       "artist": "Don"
     },
     {
-      "id": "hats0503",
-      "name": "Volition",
+      "id": "hats0504",
+      "name": "Aerostatic",
       "artist": "Don"
     },
     {
-      "id": "hats0504",
-      "name": "Aerostatic",
+      "id": "hats0503",
+      "name": "Volition",
       "artist": "Don"
     },
     {
@@ -2313,6 +2313,11 @@
     {
       "id": "hats0502",
       "name": "Man with a Plan",
+      "artist": "Don"
+    },
+    {
+      "id": "hats0505",
+      "name": "Hellboy",
       "artist": "Don"
     },
     {

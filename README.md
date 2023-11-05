@@ -88,6 +88,9 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2023.7.12s & 2023.7.12e | v5.2.4 | ;) |
+| 2023.7.12s & 2023.7.12e | v5.2.3 | ;) |
+| 2023.7.12s & 2023.7.12e | v5.2.2 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.2.1 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.1.1 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.0.2 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.2/ToU.v5.0.2.zip) |
@@ -151,6 +154,10 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 
 <details>
   <summary> Changelog </summary>
+  <details>
+  <summary> v5.2.3 </summary>
+  <ul> <li>Bug Fix: Politician's Campaign is properly on cooldown after meetings now</li> </ul>
+  </details>
   <details>
   <summary> v5.2.3 </summary>
   <ul> <li>Bug Fix: Lawyer is no longer killed once for each player when their client is voted out</li> </ul>
