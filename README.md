@@ -155,7 +155,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 <details>
   <summary> Changelog </summary>
   <details>
-  <summary> v5.2.3 </summary>
+  <summary> v5.2.4 </summary>
   <ul> <li>Bug Fix: Politician's Campaign is properly on cooldown after meetings now</li> </ul>
   </details>
   <details>
