@@ -1395,7 +1395,7 @@ namespace TownOfUs
             {
                 var morphling = Role.GetRole<Morphling>(PlayerControl.LocalPlayer);
                 morphling.LastMorphed = DateTime.UtcNow;
-                morphling.SampleCooldown = DateTime.UtcNow.AddMilliseconds(-10000);
+                morphling.SampleCooldown = DateTime.UtcNow.AddSeconds(-CustomGameOptions.ProtectAbsorbCd);
                 morphling.MorphButton.graphic.sprite = TownOfUs.SampleSprite;
                 morphling.SampledPlayer = null;
             }
