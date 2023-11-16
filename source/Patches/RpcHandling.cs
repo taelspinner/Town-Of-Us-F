@@ -1227,10 +1227,6 @@ namespace TownOfUs
                         Hunter hunter2 = Role.GetRole<Hunter>(hunter);
                         hunter2.CatchPlayer(prey);
                         break;
-                    case CustomRPC.Retribution:
-                        var lastVoted = Utils.PlayerById(reader.ReadByte());
-                        AssassinKill.MurderPlayer(lastVoted);
-                        break;
                 }
             }
         }

@@ -1,24 +1,16 @@
 ﻿using HarmonyLib;
+using Hazel;
+using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using TownOfUs.Modifiers.AssassinMod;
 using TownOfUs.Roles;
+using TownOfUs.Roles.Modifiers;
+using UnityEngine;
 
 namespace TownOfUs.CrewmateRoles.HunterMod
 {
     public static class Retribution
     {
         public static PlayerControl LastVoted = null;
-    }
-
-    [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.CastVote))]
-    internal class CastVote
-    {
-        private static void Postfix(MeetingHud __instance, [HarmonyArgument(0)] byte srcPlayerId, [HarmonyArgument(1)] byte suspectPlayerId)
-        {
-            var votingPlayer = Utils.PlayerById(srcPlayerId);
-            var suspectPlayer = Utils.PlayerById(suspectPlayerId);
-            if (!suspectPlayer.Is(RoleEnum.Hunter)) return;
-            Retribution.LastVoted = votingPlayer;
-        }
     }
 
     [HarmonyPatch(typeof(ExileController), nameof(ExileController.Begin))]
@@ -34,8 +26,7 @@ namespace TownOfUs.CrewmateRoles.HunterMod
             {
                 if (Retribution.LastVoted != null && Retribution.LastVoted.PlayerId != player.PlayerId)
                 {
-                    var hunter = Role.GetRole<Hunter>(player);
-                    Utils.Rpc(CustomRPC.Retribution, Retribution.LastVoted);
+                    Debug.Log(Retribution.LastVoted.CurrentOutfit.PlayerName + " was the last vote");
                     AssassinKill.MurderPlayer(Retribution.LastVoted);
                 }
             }
