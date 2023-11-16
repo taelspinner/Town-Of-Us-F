@@ -35,7 +35,7 @@ namespace TownOfUs.ImpostorRoles.MorphlingMod
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             if (role.MorphButton.graphic.sprite == SampleSprite)
             {
-                role.MorphButton.SetCoolDown(role.SampleTimer(), 10f);
+                role.MorphButton.SetCoolDown(role.SampleTimer(), CustomGameOptions.ProtectAbsorbCd);
                 Utils.SetTarget(ref role.ClosestPlayer, role.MorphButton);
             }
             else
