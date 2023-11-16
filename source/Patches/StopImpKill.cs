@@ -49,7 +49,7 @@ namespace TownOfUs
             }
             else if (interact[5] == true)
             {
-                PlayerControl.LocalPlayer.SetKillTimer(10f);
+                PlayerControl.LocalPlayer.SetKillTimer(CustomGameOptions.ProtectAbsorbCd + 0.01f);
                 return false;
             }
             else if (interact[1] == true)

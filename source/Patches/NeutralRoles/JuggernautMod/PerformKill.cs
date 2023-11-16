@@ -35,7 +35,7 @@ namespace TownOfUs.NeutralRoles.JuggernautMod
             else if (interact[5] == true)
             {
                 role.LastKill = DateTime.UtcNow;
-                role.LastKill = role.LastKill.AddSeconds(-role.KillTimer() + 10);
+                role.LastKill = role.LastKill.AddSeconds(-(CustomGameOptions.JuggKCd - CustomGameOptions.ReducedKCdPerKill * role.JuggKills) + CustomGameOptions.ProtectAbsorbCd);
             }
             else if (interact[1] == true)
             {

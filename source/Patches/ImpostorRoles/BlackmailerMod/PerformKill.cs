@@ -40,6 +40,7 @@ namespace TownOfUs.ImpostorRoles.BlackmailerMod
                 else if (interact[5])
                 {
                     role.LastBlackmailed = System.DateTime.UtcNow;
+                    role.LastBlackmailed = role.LastBlackmailed.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.BlackmailCd);
                 }
                 role.BlackmailButton.SetCoolDown(0.01f, 1f);
                 return false;

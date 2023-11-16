@@ -323,6 +323,7 @@ namespace TownOfUs
 
         public static CrewmateRoles.MercenaryMod.NotificationOptions NotificationMercShield =>
             (CrewmateRoles.MercenaryMod.NotificationOptions)Generate.WhoGetsMercNotification.Get();
+        public static float ProtectAbsorbCd => Generate.MercAbsorbCd.Get();
         public static float ArmorCd => Generate.MercArmorCd.Get();
         public static float ArmorDuration => Generate.MercArmorDuration.Get();
         public static float AbilityCd => Generate.AbilityCooldown.Get();

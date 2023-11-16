@@ -475,7 +475,7 @@ namespace TownOfUs.Roles
                     else if (interact[5] == true)
                     {
                         __gInstance.LastKill = DateTime.UtcNow;
-                        __gInstance.LastKill = __gInstance.LastKill.AddSeconds(-CustomGameOptions.GlitchKillCooldown + 10);
+                        __gInstance.LastKill = __gInstance.LastKill.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.GlitchKillCooldown);
                     }
                     else if (interact[1] == true)
                     {

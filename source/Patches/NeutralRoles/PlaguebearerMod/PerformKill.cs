@@ -33,7 +33,7 @@ namespace TownOfUs.NeutralRoles.PlaguebearerMod
             else if (interact[5] == true)
             {
                 role.LastInfected = System.DateTime.UtcNow;
-                role.LastInfected = role.LastInfected.AddSeconds(-CustomGameOptions.InfectCd + 10);
+                role.LastInfected = role.LastInfected.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.InfectCd);
             }
             else if (interact[1] == true)
             {

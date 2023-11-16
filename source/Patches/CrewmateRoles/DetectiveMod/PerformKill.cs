@@ -48,7 +48,7 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
                 else if (interact[5])
                 {
                     role.LastExamined = DateTime.UtcNow;
-                    role.LastExamined = role.LastExamined.AddSeconds(-CustomGameOptions.ExamineCd + 10);
+                    role.LastExamined = role.LastExamined.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.ExamineCd);
                 }
                 else if (interact[3] == true) return false;
                 return false;

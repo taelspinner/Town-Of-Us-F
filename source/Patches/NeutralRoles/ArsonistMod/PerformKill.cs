@@ -39,7 +39,7 @@ namespace TownOfUs.NeutralRoles.ArsonistMod
                     else if (interact2[5] == true)
                     {
                         role.LastDoused = DateTime.UtcNow;
-                        role.LastDoused = role.LastDoused.AddSeconds(-CustomGameOptions.DouseCd + 10);
+                        role.LastDoused = role.LastDoused.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.DouseCd);
                     }
                     else if (interact2[1] == true)
                     {
@@ -77,7 +77,7 @@ namespace TownOfUs.NeutralRoles.ArsonistMod
             else if (interact[5] == true)
             {
                 role.LastDoused = DateTime.UtcNow;
-                role.LastDoused = role.LastDoused.AddSeconds(-CustomGameOptions.DouseCd + 10);
+                role.LastDoused = role.LastDoused.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.DouseCd);
             }
             else if (interact[3] == true) return false;
             return false;

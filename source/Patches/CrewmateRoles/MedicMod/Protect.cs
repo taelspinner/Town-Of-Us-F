@@ -34,7 +34,7 @@ namespace TownOfUs.CrewmateRoles.MedicMod
             else if (interact[5] == true)
             {
                 role.StartingCooldown = System.DateTime.UtcNow;
-                role.StartingCooldown = role.StartingCooldown.AddSeconds(-role.StartTimer() + 10);
+                role.StartingCooldown = role.StartingCooldown.AddSeconds(CustomGameOptions.ProtectAbsorbCd - role.StartTimer());
             }
             return false;
         }

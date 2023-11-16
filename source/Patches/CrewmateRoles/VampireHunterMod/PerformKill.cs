@@ -44,7 +44,7 @@ namespace TownOfUs.CrewmateRoles.VampireHunterMod
                 else if (interact[5])
                 {
                     role.LastStaked = DateTime.UtcNow;
-                    role.LastStaked = role.LastStaked.AddSeconds(-CustomGameOptions.StakeCd + 10);
+                    role.LastStaked = role.LastStaked.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.StakeCd);
                 }
                 else if (interact[3] == true) return false;
                 return false;
@@ -61,7 +61,7 @@ namespace TownOfUs.CrewmateRoles.VampireHunterMod
                 else if (interact[5])
                 {
                     role.LastStaked = DateTime.UtcNow;
-                    role.LastStaked = role.LastStaked.AddSeconds(-CustomGameOptions.StakeCd + 10);
+                    role.LastStaked = role.LastStaked.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.StakeCd);
                 }
                 else if (interact[1] == true)
                 {

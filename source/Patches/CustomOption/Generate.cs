@@ -379,6 +379,7 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption MercenaryBrildersRequired;
         public static CustomStringOption ShowMercShielded;
         public static CustomStringOption WhoGetsMercNotification;
+        public static CustomNumberOption MercAbsorbCd;
         public static CustomNumberOption MercArmorCd;
         public static CustomNumberOption MercArmorDuration;
 
@@ -1090,6 +1091,8 @@ namespace TownOfUs.CustomOption
             WhoGetsMercNotification =
                 new CustomStringOption(num++, MultiMenu.neutral, "Who Gets Ability Block Indicator",
                     new[] { "Mercenary", "Shielded", "Mercenary+Shielded", "Everyone", "Nobody" });
+            MercAbsorbCd =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Cooldown Reset On Absorbed", 10f, 0f, 60f, 2.5f, CooldownFormat);
             MercArmorCd =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Armor Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             MercArmorDuration =

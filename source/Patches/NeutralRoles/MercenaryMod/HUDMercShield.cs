@@ -79,7 +79,7 @@ namespace TownOfUs.CrewmateRoles.MercenaryMod
             protectButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            protectButton.SetCoolDown(role.StartTimer(), 10f);
+            protectButton.SetCoolDown(role.StartTimer(), CustomGameOptions.ProtectAbsorbCd);
             if (role.Armored) return;
             var notShielded = PlayerControl.AllPlayerControls.ToArray().Where(
                 player => role.ShieldedPlayer != player

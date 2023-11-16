@@ -223,7 +223,7 @@ namespace TownOfUs.Roles
                                                                 StopAbility.BreakShield(merc, TransportPlayer2.PlayerId);
                                                             }
                                                             transRole.LastTransported = DateTime.UtcNow;
-                                                            transRole.LastTransported = transRole.LastTransported.AddSeconds(-CustomGameOptions.TransportCooldown + 10);
+                                                            transRole.LastTransported = transRole.LastTransported.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.TransportCooldown);
                                                             return;
                                                         }
                                                         if (Player.IsInfected() || TransportPlayer1.IsInfected())

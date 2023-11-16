@@ -69,7 +69,7 @@ namespace TownOfUs.CrewmateRoles.OracleMod
             else if (interact[5] == true)
             {
                 role.LastConfessed = System.DateTime.UtcNow;
-                role.LastConfessed = role.LastConfessed.AddSeconds(-CustomGameOptions.ConfessCd + 10);
+                role.LastConfessed = role.LastConfessed.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.ConfessCd);
             }
             else if (interact[3] == true) return false;
             return false;

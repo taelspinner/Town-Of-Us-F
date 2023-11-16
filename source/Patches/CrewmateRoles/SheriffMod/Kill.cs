@@ -125,7 +125,7 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
             else if (role.ClosestPlayer.IsArmored())
             {
                 role.LastKilled = DateTime.UtcNow;
-                role.LastKilled = role.LastKilled.AddSeconds(-CustomGameOptions.SheriffKillCd + 10);
+                role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.SheriffKillCd);
                 return false;
             }
             else if (role.ClosestPlayer.IsVesting())
