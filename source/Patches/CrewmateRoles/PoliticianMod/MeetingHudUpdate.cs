@@ -12,6 +12,7 @@ namespace TownOfUs.NeutralRoles.PoliticianMod
             var localPlayer = PlayerControl.LocalPlayer;
             var _role = Role.GetRole(localPlayer);
             if (_role?.RoleType != RoleEnum.Politician) return;
+            if (!CustomGameOptions.CanSeeCampaigned) return;
             if (localPlayer.Data.IsDead) return;
             var role = (Politician)_role;
             foreach (var state in __instance.playerStates)

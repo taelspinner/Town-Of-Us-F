@@ -228,6 +228,7 @@ namespace TownOfUs
         public static bool VigilanteMultiKill => Generate.VigilanteMultiKill.Get();
         public static bool VigilanteAfterVoting => Generate.VigilanteAfterVoting.Get();
         public static float CampaignCd => Generate.CampaignCooldown.Get();
+        public static bool CanSeeCampaigned => Generate.PoliticianCanSeeCampaigned.Get();
         public static float BodyguardCd => Generate.BodyguardCooldown.Get();
         public static float BodyguardDuration => Generate.BodyguardDuration.Get();
         public static bool KilledOnBodyguard => Generate.KilledOnBodyguard.Get();
