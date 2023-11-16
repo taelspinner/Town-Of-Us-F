@@ -88,6 +88,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2023.7.12s & 2023.7.12e | v5.2.5 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.2.4 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.2.3 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.2.2 | ;) |
@@ -154,6 +155,12 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 
 <details>
   <summary> Changelog </summary>
+  <details>
+  <summary> v5.2.5 </summary>
+  <ul> <li>Bug Fix: Hunter's Retribution now shows the correct target for all players</li> </ul>
+  <ul> <li>Bug Fix: Lawyer can no longer have themselves as a client if text chat with client is turned off</li> </ul>
+  <ul> <li>New Option: Toggle showing campaigned players in a different color to the Politician during meetings (this can give them quite a bit of info and out some killers, so it may be too overpowered)</li> </ul>
+  </details>
   <details>
   <summary> v5.2.4 </summary>
   <ul> <li>Bug Fix: Politician's Campaign is properly on cooldown after meetings now</li> </ul>
