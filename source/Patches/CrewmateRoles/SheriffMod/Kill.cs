@@ -118,6 +118,7 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
                 var merc = role.ClosestPlayer.GetMerc().Player.PlayerId;
                 Utils.Rpc(CustomRPC.MercShield, merc, role.ClosestPlayer.PlayerId);
                 role.LastKilled = DateTime.UtcNow;
+                role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.ProtectAbsorbCd - CustomGameOptions.SheriffKillCd);
                 StopAbility.BreakShield(merc, role.ClosestPlayer.PlayerId);
 
                 return false;
