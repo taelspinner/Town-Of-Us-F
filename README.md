@@ -1069,6 +1069,7 @@ active, they will kill anyone who interacts with them.\
 |----------|:-------------:|:------:|:------:|
 | Politician | The percentage probability of the Politician appearing | Percentage | 0% |
 | Campaign Cooldown | The cooldown on the Politician's campaign button. | Time | 25s |
+| See Campaigned In Meetings | Whether the names of campaigned players are a different color during meetings | Toggle | False |
 | Can Be Killed With Bodyguard | Whether the Mayor dies when someone tries to kill them when they have a bodyguard | Toggle | False |
 | Bodyguard Cooldown | The cooldown on the Mayor's bodyguard button. | Time | 25s |
 | Bodyguard Duration | The duration of the alert | Time | 10s |
