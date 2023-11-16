@@ -324,6 +324,7 @@ namespace TownOfUs.CustomOption
 
         public static CustomHeaderOption Politician;
         public static CustomNumberOption CampaignCooldown;
+        public static CustomToggleOption PoliticianCanSeeCampaigned;
         public static CustomToggleOption KilledOnBodyguard;
         public static CustomNumberOption BodyguardCooldown;
         public static CustomNumberOption BodyguardDuration;
@@ -984,6 +985,8 @@ namespace TownOfUs.CustomOption
             Politician = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#C3D3D4FF>Politician</color>");
             CampaignCooldown =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Campaign Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            PoliticianCanSeeCampaigned =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "See Campaigned In Meetings", false);
             KilledOnBodyguard =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Mayor Killed With Bodyguard", false);
             BodyguardCooldown =
