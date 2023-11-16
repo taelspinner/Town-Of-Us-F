@@ -8,7 +8,6 @@ using TownOfUs.Roles.Modifiers;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using TownOfUs.CrewmateRoles.HunterMod;
 
 namespace TownOfUs.CrewmateRoles.MayorMod
 {
@@ -196,11 +195,6 @@ namespace TownOfUs.CrewmateRoles.MayorMod
                         {
                             __instance.BloopAVoteIcon(playerInfo, allNums[i], playerVoteArea.transform);
                             allNums[i]++;
-                            PlayerControl votedFor = Utils.PlayerById(playerVoteArea.TargetPlayerId);
-                            if (votedFor.Is(RoleEnum.Hunter))
-                            {
-                                Retribution.LastVoted = Utils.PlayerById(voteState.VoterId);
-                            }
                         }
                         foreach (var mayor in Role.GetRoles(RoleEnum.Mayor))
                         {
