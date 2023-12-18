@@ -141,8 +141,9 @@ namespace TownOfUs
                 newList.RemoveAt(newList.Count - 1);
             }
 
-            roles = newList;
-            roles.Shuffle();
+            // This list will be shuffled later in GenEachRole.
+            roles.Clear();
+            roles.AddRange(chosenRoles);
         }
 
         private static void GenEachRole(List<GameData.PlayerInfo> infected)
@@ -401,7 +402,7 @@ namespace TownOfUs
             }
 
             // Set the Traitor, if there is one enabled.
-            var toChooseFromCrew = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover)).ToList();
+            var toChooseFromCrew = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(RoleEnum.Politician) && !x.Is(ModifierEnum.Lover)).ToList();
             if (TraitorOn && toChooseFromCrew.Count != 0)
             {
                 var rand = Random.RandomRangeInt(0, toChooseFromCrew.Count);
@@ -776,8 +777,11 @@ namespace TownOfUs
 
                         break;
                     case CustomRPC.EngineerFix:
-                        var engineer = Utils.PlayerById(reader.ReadByte());
-                        Role.GetRole<Engineer>(engineer).UsesLeft -= 1;
+                        if (ShipStatus.Instance.Systems.ContainsKey(SystemTypes.MushroomMixupSabotage))
+                        {
+                            var mushroom = ShipStatus.Instance.Systems[SystemTypes.MushroomMixupSabotage].Cast<MushroomMixupSabotageSystem>();
+                            if (mushroom.IsActive) mushroom.currentSecondsUntilHeal = 0.1f;
+                        }
                         break;
 
                     case CustomRPC.FixLights:
@@ -1611,7 +1615,7 @@ namespace TownOfUs
                         GlobalModifiers.Add((typeof(Radar), CustomGameOptions.RadarOn));
                     #endregion
                     #region Impostor Modifiers
-                    if (Check(CustomGameOptions.DisperserOn) && GameOptionsManager.Instance.currentNormalGameOptions.MapId != 4 && GameOptionsManager.Instance.currentNormalGameOptions.MapId != 5)
+                    if (Check(CustomGameOptions.DisperserOn))
                         ImpostorModifiers.Add((typeof(Disperser), CustomGameOptions.DisperserOn));
 
                     if (Check(CustomGameOptions.DoubleShotOn))
