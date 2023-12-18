@@ -125,15 +125,7 @@ namespace TownOfUs
 
             var roles2 = roles.Where(x => x.Item2 < 100).ToList();
             roles2.Shuffle();
-
-            foreach (var item in roles2)
-            {
-                if (newList.Count >= max)
-                    break;
-
-                if (Check(item.Item2))
-                    newList.Add(item);
-            }
+            newList.AddRange(roles2.Where(x => Check(x.Item2)));
 
             while (newList.Count > max)
             {
@@ -141,9 +133,8 @@ namespace TownOfUs
                 newList.RemoveAt(newList.Count - 1);
             }
 
-            // This list will be shuffled later in GenEachRole.
-            roles.Clear();
-            roles.AddRange(chosenRoles);
+            roles = newList;
+            roles.Shuffle();
         }
 
         private static void GenEachRole(List<GameData.PlayerInfo> infected)
