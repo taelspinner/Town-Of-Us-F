@@ -88,6 +88,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2023.11.28s & 2023.11.28e | v5.2.6 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.2.5 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.2.4 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.2.3 | ;) |
@@ -157,6 +158,10 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 <details>
   <summary> Changelog </summary>
   <details>
+  <summary> v5.2.7 </summary>
+  <ul> <li>Compatibility with the new Among Us version v2023.11.28</li> </ul>
+  </details>
+  <details>
   <summary> v5.2.5 </summary>
   <ul> <li>Bug Fix: Hunter's Retribution now shows the correct target for all players</li> </ul>
   <ul> <li>Bug Fix: Lawyer can no longer have themselves as a client if text chat with client is turned off</li> </ul>
@@ -211,7 +216,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <details>
   <summary> v5.0.3 </summary>
   <ul> <li>Compatibility with the new Among Us version v2023.11.28</li> </ul>
-  <ul> <li>Role gen system reparied, courtesy of @AlchlcDvl</li> </ul>
+  <ul> <li>Role gen system reparied, courtesy of @AlchlcDvl and @fariparedes</li> </ul>
   <ul> <li>Role color is now used for interaction highlights</li> </ul>
   <ul> <li>Changes to intro role colors, courtesy of @Loonie-Toons</li> </ul>
   <ul> <li>Custom keybinds for interactions - integration to among us keybinds, courtesy of @whichtwix</li> </ul>
