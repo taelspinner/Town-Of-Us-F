@@ -180,15 +180,15 @@ namespace TownOfUs
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-1f, 1f, 0f);
             }
 
-            bool KillKey =  Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Kill");
+            bool KillKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Kill");
             var controller = ConsoleJoystick.player.GetButtonDown(8);
             if ((KillKey || controller) && __instance.KillButton != null && flag && !PlayerControl.LocalPlayer.Data.IsDead)
                 __instance.KillButton.DoClick();
 
             var role = Role.GetRole(PlayerControl.LocalPlayer);
-            bool AbilityKey =  Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU imp/nk");
+            bool AbilityKey = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU imp/nk");
             if (role?.ExtraButtons != null && AbilityKey && !PlayerControl.LocalPlayer.Data.IsDead)
-                role.ExtraButtons[0].DoClick();
+                role?.ExtraButtons[0]?.DoClick();
 
             if (Modifier.GetModifier<ButtonBarry>(PlayerControl.LocalPlayer)?.ButtonUsed == false &&
                 Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU bb/disperse/mimic") &&

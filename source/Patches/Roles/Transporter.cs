@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using Hazel;
 using System.Linq;
 using TMPro;
 using Reactor.Utilities;
@@ -76,6 +75,7 @@ namespace TownOfUs.Roles
                 TransportPlayer1 = null;
                 TransportPlayer2 = null;
 
+
                 TransportList = Object.Instantiate(__instance.Chat);
                 __instance.Chat.SetVisible(false);
 
@@ -104,7 +104,7 @@ namespace TownOfUs.Roles
 
                 TransportList.gameObject.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>()
                     .enabled = false;
-                TransportList.gameObject.transform.GetChild(0).gameObject.SetActive(false); 
+                TransportList.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
                 TransportList.backgroundImage.enabled = false;
 
@@ -162,13 +162,13 @@ namespace TownOfUs.Roles
                 {
                     if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle +"))
                     {
-                        HighlightedPlayer = TransportList.chatBubblePool.activeChildren[PlayerIndex];
                         PlayerIndex = PlayerIndex == TransportList.chatBubblePool.activeChildren.Count - 1 ? 0 : PlayerIndex + 1;
+                        HighlightedPlayer = TransportList.chatBubblePool.activeChildren[PlayerIndex];
                     }
                     else if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle -"))
                     {
-                        HighlightedPlayer = TransportList.chatBubblePool.activeChildren[PlayerIndex];
                         PlayerIndex = PlayerIndex == 0 ? TransportList.chatBubblePool.activeChildren.Count - 1 : PlayerIndex - 1;
+                        HighlightedPlayer = TransportList.chatBubblePool.activeChildren[PlayerIndex];
                     }
                     else if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("ToU confirm") && HighlightedPlayer)
                     {
@@ -207,8 +207,7 @@ namespace TownOfUs.Roles
                         else
                         {
                             TransportList.Toggle();
-                            TransportList.gameObject.SetActive(false);
-                            TransportList.DestroyImmediate();
+                            TransportList.SetVisible(false);
                             TransportList = null;
                             PressedButton = false;
                             TransportPlayer1 = null;
@@ -242,7 +241,6 @@ namespace TownOfUs.Roles
                         PressedButton = false;
                         TransportList.Toggle();
                         TransportList.gameObject.SetActive(false);
-                        TransportList.DestroyImmediate();
                         TransportList = null;
 
                         TransportPlayer2 = player;
@@ -251,9 +249,21 @@ namespace TownOfUs.Roles
 
                         TransportPlayer1 = null;
                         TransportPlayer2 = null;
-                        HighlightedPlayer = null;
-                        PlayerIndex = 0;
                     }
+                    if (!Input.GetMouseButtonDown(0) && LastMouse)
+                    {
+                        if (MenuClick)
+                            MenuClick = false;
+                        else
+                        {
+                            TransportList.Toggle();
+                            TransportList.SetVisible(false);
+                            TransportList = null;
+                            PressedButton = false;
+                            TransportPlayer1 = null;
+                        }
+                    }
+                    LastMouse = Input.GetMouseButtonDown(0);
                 }
             }
         }
