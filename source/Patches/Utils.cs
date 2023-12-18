@@ -26,7 +26,6 @@ using TownOfUs.CrewmateRoles.ImitatorMod;
 using TownOfUs.CrewmateRoles.AurialMod;
 using Reactor.Networking;
 using Reactor.Networking.Extensions;
-using Unity.Services.Core.Telemetry.Internal;
 using TownOfUs.CrewmateRoles.DetectiveMod;
 
 namespace TownOfUs
@@ -971,7 +970,7 @@ namespace TownOfUs
                         GameOptionsManager.Instance.currentNormalGameOptions.MapId == 4))
                         normalPlayerTask.taskStep = 1;
                     if (updateArrow)
-                        normalPlayerTask.UpdateArrow();
+                        normalPlayerTask.UpdateArrowAndLocation();
 
                     var taskInfo = player.Data.FindTaskById(task.Id);
                     taskInfo.Complete = false;
