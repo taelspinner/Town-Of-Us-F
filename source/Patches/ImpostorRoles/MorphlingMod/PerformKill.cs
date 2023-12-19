@@ -1,6 +1,5 @@
 ﻿using System;
 using HarmonyLib;
-using Hazel;
 using TownOfUs.CrewmateRoles.MercenaryMod;
 using TownOfUs.Roles;
 using UnityEngine;
