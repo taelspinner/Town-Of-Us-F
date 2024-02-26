@@ -41,5 +41,10 @@ namespace TownOfUs.Roles
             if (flag2) return 0;
             return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
         }
+
+        public bool CanSeeBlackmailed(int playerId)
+        {
+            return !CustomGameOptions.BlackmailInvisible || Blackmailed?.PlayerId == playerId || Player.PlayerId == playerId;
+        }
     }
 }
