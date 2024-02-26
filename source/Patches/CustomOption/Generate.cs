@@ -391,6 +391,7 @@ namespace TownOfUs.CustomOption
 
         public static CustomHeaderOption Blackmailer;
         public static CustomNumberOption BlackmailCooldown;
+        public static CustomToggleOption BlackmailInvisible;
 
         public static CustomHeaderOption Plaguebearer;
         public static CustomNumberOption InfectCooldown;
@@ -1243,6 +1244,8 @@ namespace TownOfUs.CustomOption
             Blackmailer = new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Blackmailer</color>");
             BlackmailCooldown =
                 new CustomNumberOption(num++, MultiMenu.imposter, "Initial Blackmail Cooldown", 10f, 1f, 15f, 1f, CooldownFormat);
+            BlackmailInvisible =
+                new CustomToggleOption(num++, MultiMenu.imposter, "Only Target Sees Blackmail", false);
 
             Miner = new CustomHeaderOption(num++, MultiMenu.imposter, "<color=#FF0000FF>Miner</color>");
             MineCooldown =

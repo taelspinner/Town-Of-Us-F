@@ -1580,6 +1580,7 @@ This prevents the blackmailed person from speaking during the next meeting.
 |----------|:-------------:|:------:|:------:|
 | Blackmailer | The percentage probability of the Blackmailer appearing | Percentage | 0% |
 | Initial Blackmail Cooldown | The initial cooldown of the Blackmailer's Blackmail button | Time | 10s |
+| Only Target Sees Blackmail | If enabled, only the blackmailed player (and the Blackmailer) will see that the player can't speak. | Toggle | False |
 
 -----------------------
 ## Janitor
