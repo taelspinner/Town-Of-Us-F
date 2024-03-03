@@ -33,6 +33,7 @@ namespace TownOfUs
         VampireWin,
 
         JanitorClean,
+        ScavengerClean,
         FixLights,
         EngineerFix,
         SetSwaps,

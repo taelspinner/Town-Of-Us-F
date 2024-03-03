@@ -213,6 +213,13 @@ namespace TownOfUs.Patches
                 doomsayer.LastObserved = doomsayer.LastObserved.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.ObserveCooldown);
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Scavenger))
+            {
+                var scavenger = Role.GetRole<Scavenger>(PlayerControl.LocalPlayer);
+                scavenger.LastDevoured = DateTime.UtcNow;
+                scavenger.LastDevoured = scavenger.LastDevoured.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.DevourCd);
+            }
+
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Executioner))
             {
                 var exe = Role.GetRole<Executioner>(PlayerControl.LocalPlayer);

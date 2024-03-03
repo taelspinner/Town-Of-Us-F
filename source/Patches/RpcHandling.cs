@@ -27,6 +27,7 @@ using TownOfUs.Roles.Cultist;
 using TownOfUs.Roles.Modifiers;
 using UnityEngine;
 using Coroutine = TownOfUs.ImpostorRoles.JanitorMod.Coroutine;
+using ScavCoroutine = TownOfUs.NeutralRoles.ScavengerMod.Coroutine;
 using Object = UnityEngine.Object;
 using PerformKillButton = TownOfUs.NeutralRoles.AmnesiacMod.PerformKillButton;
 using Random = UnityEngine.Random;
@@ -767,6 +768,18 @@ namespace TownOfUs
                                 Coroutines.Start(Coroutine.CleanCoroutine(body, janitorRole));
 
                         break;
+
+                    case CustomRPC.ScavengerClean:
+                        readByte1 = reader.ReadByte();
+                        var scavengerPlayer = Utils.PlayerById(readByte1);
+                        var scavengerRole = Role.GetRole<Scavenger>(scavengerPlayer);
+                        readByte = reader.ReadByte();
+                        var deadBodiesScav = Object.FindObjectsOfType<DeadBody>();
+                        foreach (var body in deadBodiesScav)
+                            if (body.ParentId == readByte)
+                                Coroutines.Start(ScavCoroutine.DevourCoroutine(body, scavengerRole));
+
+                        break;
                     case CustomRPC.EngineerFix:
                         if (ShipStatus.Instance.Systems.ContainsKey(SystemTypes.MushroomMixupSabotage))
                         {
@@ -1496,6 +1509,9 @@ namespace TownOfUs
 
                     if (CustomGameOptions.DoomsayerOn > 0)
                         NeutralEvilRoles.Add((typeof(Doomsayer), CustomGameOptions.DoomsayerOn, false));
+
+                    if (CustomGameOptions.ScavengerOn > 0)
+                        NeutralEvilRoles.Add((typeof(Scavenger), CustomGameOptions.ScavengerOn, false));
 
                     if (CustomGameOptions.SurvivorOn > 0)
                         NeutralBenignRoles.Add((typeof(Survivor), CustomGameOptions.SurvivorOn, false));

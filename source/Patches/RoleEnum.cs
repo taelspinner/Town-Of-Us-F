@@ -44,6 +44,7 @@ namespace TownOfUs
         Mercenary,
         Politician,
         Hunter,
+        Scavenger,
 
         Miner,
         Swooper,

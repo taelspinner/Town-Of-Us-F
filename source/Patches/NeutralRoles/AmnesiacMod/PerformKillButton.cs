@@ -453,6 +453,13 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 doomRole.LastObservedPlayer = null;
             }
 
+            else if (role == RoleEnum.Scavenger)
+            {
+                var scavRole = Role.GetRole<Scavenger>(amnesiac);
+                scavRole.CorpsesEaten = 0;
+                scavRole.LastDevoured = DateTime.UtcNow;
+            }
+
             else if (role == RoleEnum.Plaguebearer)
             {
                 var plagueRole = Role.GetRole<Plaguebearer>(amnesiac);

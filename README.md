@@ -43,6 +43,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 - [Doomsayer](#doomsayer)
 - [Executioner](#executioner)
 - [Jester](#jester)
+- [Scavenger](#scavenger)
 - [Phantom](#phantom)
 - [Arsonist](#arsonist)
 - [Juggernaut](#juggernaut)
@@ -1074,6 +1075,7 @@ However, if they kill a Crewmate or a Neutral player they can't kill, they inste
 | Sheriff Kills Doomsayer | Whether the Sheriff is able to kill the Doomsayer | Toggle | False |
 | Sheriff Kills Executioner | Whether the Sheriff is able to kill the Executioner | Toggle | False |
 | Sheriff Kills Jester | Whether the Sheriff is able to kill the Jester | Toggle | False |
+| Sheriff Kills Scavenger | Whether the Sheriff is able to kill the Scavenger | Toggle | False |
 | Sheriff Kills Arsonist | Whether the Sheriff is able to kill the Arsonist | Toggle | False |
 | Sheriff Kills The Glitch | Whether the Sheriff is able to kill The Glitch | Toggle | False |
 | Sheriff Kills Juggernaut | Whether the Sheriff is able to kill the Juggernaut | Toggle | False |
@@ -1460,6 +1462,20 @@ However, the Jester does not win if the Crewmates, Impostors or another Neutral 
 | Jester Can Vent | Whether the Jester Can Vent | Toggle | False |
 | Jester Has Impostor Vision | Whether the Jester Has Impostor Vision | Toggle | False |
 | Jester Haunt On Victory | Whether the Jester can haunt someone when they win | Toggle | True |
+
+-----------------------
+## Scavenger
+### **Team: Neutral**
+The Scavenger is a Neutral role with its own win condition.\
+They must scour the map for dead bodies and devour them, destroying them like a Janitor.\
+If they successfully devour enough bodies, the game finishes and they win.
+
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Scavenger | The percentage probability of the Scavenger appearing | Percentage | 0% |
+| Devour Cooldown | The Cooldown of the Scavenger's Devour button | Time | 25s |
+| Number Of Corpses Devoured To Win | The amount of corpses that must be devoured in order for the Scavenger to win | Number | 5 |
 
 -----------------------
 ## Phantom

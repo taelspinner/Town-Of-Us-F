@@ -48,6 +48,7 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption DoomsayerOn;
         public static CustomNumberOption ExecutionerOn;
         public static CustomNumberOption JesterOn;
+        public static CustomNumberOption ScavengerOn;
         public static CustomNumberOption PhantomOn;
 
         public static CustomHeaderOption NeutralKillingRoles;
@@ -187,6 +188,7 @@ namespace TownOfUs.CustomOption
         public static CustomToggleOption SheriffKillsDoomsayer;
         public static CustomToggleOption SheriffKillsExecutioner;
         public static CustomToggleOption SheriffKillsJester;
+        public static CustomToggleOption SheriffKillsScavenger;
         public static CustomToggleOption SheriffKillsArsonist;
         public static CustomToggleOption SheriffKillsJuggernaut;
         public static CustomToggleOption SheriffKillsPlaguebearer;
@@ -465,6 +467,10 @@ namespace TownOfUs.CustomOption
         public static CustomToggleOption DoomsayerAfterVoting;
         public static CustomNumberOption DoomsayerGuessesToWin;
 
+        public static CustomHeaderOption Scavenger;
+        public static CustomNumberOption DevourCooldown;
+        public static CustomNumberOption ScavCorpsesToWin;
+
         public static CustomHeaderOption Vampire;
         public static CustomNumberOption BiteCooldown;
         public static CustomToggleOption VampImpVision;
@@ -619,6 +625,8 @@ namespace TownOfUs.CustomOption
             ExecutionerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#8C4005FF>Executioner</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             JesterOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FFBFCCFF>Jester</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            ScavengerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#992727FF>Scavenger</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             PhantomOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#662962FF>Phantom</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -979,6 +987,8 @@ namespace TownOfUs.CustomOption
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Executioner", false);
             SheriffKillsJester =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Jester", false);
+            SheriffKillsScavenger =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Scavenger", false);
             SheriffKillsArsonist =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Arsonist", false);
             SheriffKillsGlitch =
@@ -1200,6 +1210,13 @@ namespace TownOfUs.CustomOption
                 new CustomToggleOption(num++, MultiMenu.neutral, "Jester Has Impostor Vision", false);
             JesterHaunt =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Jester Haunts Player On Victory", true);
+
+            Scavenger =
+                new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#992727FF>Scavenger</color>");
+            DevourCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Devour Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            ScavCorpsesToWin =
+                 new CustomNumberOption(num++, MultiMenu.neutral, "Corpses Devoured To Win", 5, 1, 15, 1);
 
             Phantom =
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#662962FF>Phantom</color>");

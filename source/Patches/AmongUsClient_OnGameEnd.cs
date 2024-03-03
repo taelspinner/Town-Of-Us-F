@@ -188,6 +188,18 @@ namespace TownOfUs
                             return;
                         }
                     }
+                    else if (type == RoleEnum.Scavenger)
+                    {
+                        var scav = (Scavenger)role;
+                        if (scav.WonByDevouring)
+                        {
+                            TempData.winners = new List<WinningPlayerData>();
+                            var scavData = new WinningPlayerData(scav.Player.Data);
+                            if (PlayerControl.LocalPlayer != scav.Player) scavData.IsYou = false;
+                            TempData.winners.Add(scavData);
+                            return;
+                        }
+                    }
                     else if (type == RoleEnum.Phantom)
                     {
                         var phantom = (Phantom)role;

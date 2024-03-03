@@ -44,6 +44,7 @@ namespace TownOfUs
         private static Sprite Stake => TownOfUs.StakeSprite;
         private static Sprite Confess => TownOfUs.ConfessSprite;
         private static Sprite Radiate => TownOfUs.RadiateSprite;
+        private static Sprite Devour => TownOfUs.DevourSprite;
 
         private static Sprite Kill;
 
@@ -153,6 +154,11 @@ namespace TownOfUs
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Doomsayer))
             {
                 __instance.KillButton.graphic.sprite = Observe;
+                flag = true;
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Scavenger))
+            {
+                __instance.KillButton.graphic.sprite = Devour;
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))

@@ -50,6 +50,7 @@ namespace TownOfUs
                            || playerControl.Is(RoleEnum.Jester)
                            || playerControl.Is(RoleEnum.Executioner)
                            || playerControl.Is(RoleEnum.Mercenary)
+                           || playerControl.Is(RoleEnum.Scavenger)
                            || playerControl.Is(RoleEnum.Juggernaut)
                            || playerControl.Is(RoleEnum.Arsonist)
                            || playerControl.Is(RoleEnum.Plaguebearer)

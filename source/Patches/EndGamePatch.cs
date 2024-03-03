@@ -100,6 +100,7 @@ namespace TownOfUs.Patches {
                     else if (role.Value == RoleEnum.Imitator) { playerRole += "<color=#" + Patches.Colors.Imitator.ToHtmlStringRGBA() + ">Imitator</color> > "; }
                     else if (role.Value == RoleEnum.Bomber) { playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Bomber</color> > "; }
                     else if (role.Value == RoleEnum.Doomsayer) { playerRole += "<color=#" + Patches.Colors.Doomsayer.ToHtmlStringRGBA() + ">Doomsayer</color> > "; }
+                    else if (role.Value == RoleEnum.Scavenger) { playerRole += "<color=#" + Patches.Colors.Scavenger.ToHtmlStringRGBA() + ">Scavenger</color> > "; }
                     else if (role.Value == RoleEnum.Vampire) { playerRole += "<color=#" + Patches.Colors.Vampire.ToHtmlStringRGBA() + ">Vampire</color> > "; }
                     else if (role.Value == RoleEnum.VampireHunter) { playerRole += "<color=#" + Patches.Colors.VampireHunter.ToHtmlStringRGBA() + ">Vampire Hunter</color> > "; }
                     else if (role.Value == RoleEnum.Prosecutor) { playerRole += "<color=#" + Patches.Colors.Prosecutor.ToHtmlStringRGBA() + ">Prosecutor</color> > "; }
@@ -232,6 +233,11 @@ namespace TownOfUs.Patches {
                 {
                     var jest = (Jester)jester;
                     if (jest.VotedOut) AdditionalTempData.otherWinners.Add(new AdditionalTempData.Winners() { PlayerName = jest.Player.Data.PlayerName, Role = RoleEnum.Jester });
+                }
+                foreach (var scavenger in Role.GetRoles(RoleEnum.Scavenger))
+                {
+                    var scav = (Scavenger)scavenger;
+                    if (scav.WonByDevouring) AdditionalTempData.otherWinners.Add(new AdditionalTempData.Winners() { PlayerName = scav.Player.Data.PlayerName, Role = RoleEnum.Scavenger });
                 }
                 foreach (var phantom in Role.GetRoles(RoleEnum.Phantom))
                 {
