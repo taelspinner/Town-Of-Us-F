@@ -499,6 +499,7 @@ namespace TownOfUs
                         target.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsVampire ||
                         target.Is(RoleEnum.Executioner) && CustomGameOptions.SheriffKillsExecutioner ||
                         target.Is(RoleEnum.Doomsayer) && CustomGameOptions.SheriffKillsDoomsayer ||
+                        target.Is(RoleEnum.Scavenger) && CustomGameOptions.SheriffKillsScavenger ||
                         target.Is(RoleEnum.Jester) && CustomGameOptions.SheriffKillsJester) sheriff.CorrectKills += 1;
                     else if (killer == target) sheriff.IncorrectKills += 1;
                 }
@@ -900,6 +901,15 @@ namespace TownOfUs
             }
         }
 
+        public static bool NeutralWonGame()
+        {
+            if (Role.GetRoles(RoleEnum.Jester).Any(x => ((Jester)x).VotedOut)) return true;
+            if (Role.GetRoles(RoleEnum.Executioner).Any(x => ((Executioner)x).TargetVotedOut)) return true;
+            if (Role.GetRoles(RoleEnum.Doomsayer).Any(x => ((Doomsayer)x).WonByGuessing)) return true;
+            if (Role.GetRoles(RoleEnum.Scavenger).Any(x => ((Scavenger)x).WonByDevouring)) return true;
+            return false;
+        }
+
         public static IEnumerator FlashCoroutine(Color color, float waitfor = 1f, float alpha = 0.3f)
         {
             color.a = alpha;
@@ -1281,6 +1291,11 @@ namespace TownOfUs
                 var doom = Role.GetRole<Doomsayer>(PlayerControl.LocalPlayer);
                 doom.LastObserved = DateTime.UtcNow;
                 doom.LastObservedPlayer = null;
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Scavenger))
+            {
+                var scav = Role.GetRole<Scavenger>(PlayerControl.LocalPlayer);
+                scav.LastDevoured = DateTime.UtcNow;
             }
             #endregion
             #region ImposterRoles

@@ -71,6 +71,7 @@ namespace TownOfUs
         public static int ImitatorOn => (int)Generate.ImitatorOn.Get();
         public static int BomberOn => (int)Generate.BomberOn.Get();
         public static int DoomsayerOn => (int)Generate.DoomsayerOn.Get();
+        public static int ScavengerOn => (int)Generate.ScavengerOn.Get();
         public static int VampireOn => (int)Generate.VampireOn.Get();
         public static int VampireHunterOn => (int)Generate.VampireHunterOn.Get();
         public static int ProsecutorOn => (int)Generate.ProsecutorOn.Get();
@@ -101,6 +102,7 @@ namespace TownOfUs
         public static bool SheriffKillsDoomsayer => Generate.SheriffKillsDoomsayer.Get();
         public static bool SheriffKillsExecutioner => Generate.SheriffKillsExecutioner.Get();
         public static bool SheriffKillsJester => Generate.SheriffKillsJester.Get();
+        public static bool SheriffKillsScavenger => Generate.SheriffKillsScavenger.Get();
         public static bool SheriffKillsArsonist => Generate.SheriffKillsArsonist.Get();
         public static bool SheriffKillsJuggernaut => Generate.SheriffKillsJuggernaut.Get();
         public static bool SheriffKillsPlaguebearer => Generate.SheriffKillsPlaguebearer.Get();
@@ -297,6 +299,8 @@ namespace TownOfUs
         public static bool DoomsayerGuessImpostors => Generate.DoomsayerGuessImpostors.Get();
         public static bool DoomsayerAfterVoting => Generate.DoomsayerAfterVoting.Get();
         public static int DoomsayerGuessesToWin => (int)Generate.DoomsayerGuessesToWin.Get();
+        public static float DevourCd => Generate.DevourCooldown.Get();
+        public static int ScavCorpsesToWin => (int)Generate.ScavCorpsesToWin.Get();
         public static float BiteCd => Generate.BiteCooldown.Get();
         public static bool VampImpVision => Generate.VampImpVision.Get();
         public static bool VampVent => Generate.VampVent.Get();
