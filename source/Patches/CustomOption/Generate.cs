@@ -1117,7 +1117,7 @@ namespace TownOfUs.CustomOption
             DevourCooldown =
                 new CustomNumberOption(num++, MultiMenu.neutral, "Devour Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             ScavCorpsesToWin =
-                 new CustomNumberOption(num++, MultiMenu.neutral, "Corpses Devoured For Win", 5, 1, 15, 1);
+                 new CustomNumberOption(num++, MultiMenu.neutral, "Corpses Devoured To Win", 5, 1, 15, 1);
 
             Phantom =
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#662962FF>Phantom</color>");
