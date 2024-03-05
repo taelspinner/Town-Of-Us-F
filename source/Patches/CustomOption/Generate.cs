@@ -321,6 +321,8 @@ namespace TownOfUs.CustomOption
         public static CustomToggleOption VigilanteGuessNeutralKilling;
         public static CustomToggleOption VigilanteGuessLovers;
         public static CustomToggleOption VigilanteAfterVoting;
+        public static CustomNumberOption VigilanceCooldown;
+        public static CustomNumberOption VigilanceDuration;
 
         public static CustomHeaderOption Haunter;
         public static CustomNumberOption HaunterTasksRemainingClicked;
@@ -974,6 +976,10 @@ namespace TownOfUs.CustomOption
             VigilanteGuessNeutralKilling = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Neutral Killing Roles", false);
             VigilanteGuessLovers = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess Lovers", false);
             VigilanteAfterVoting = new CustomToggleOption(num++, MultiMenu.crewmate, "Vigilante Can Guess After Voting", false);
+            VigilanceCooldown =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Vigilance Cooldown", 10f, 5f, 60f, 2.5f, CooldownFormat);
+            VigilanceDuration =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Vigilance Duration", 25f, 5f, 60f, 1f, CooldownFormat);
 
             Altruist = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#660000FF>Altruist</color>");
             ReviveDuration =

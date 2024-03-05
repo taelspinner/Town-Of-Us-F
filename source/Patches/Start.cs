@@ -104,6 +104,13 @@ namespace TownOfUs.Patches
                 veteran.LastAlerted = veteran.LastAlerted.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.AlertCd);
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante))
+            {
+                var vigilante = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
+                vigilante.LastVigilance = DateTime.UtcNow;
+                vigilante.LastVigilance = vigilante.LastVigilance.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.VigilanceCd);
+            }
+
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Chameleon))
             {
                 var chameleon = Role.GetRole<Chameleon>(PlayerControl.LocalPlayer);

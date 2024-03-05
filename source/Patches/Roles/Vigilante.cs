@@ -5,11 +5,15 @@ using TownOfUs.Patches;
 using UnityEngine;
 using TownOfUs.NeutralRoles.ExecutionerMod;
 using TownOfUs.NeutralRoles.GuardianAngelMod;
+using System;
 
 namespace TownOfUs.Roles
 {
     public class Vigilante : Role, IGuesser
     {
+        public bool Enabled;
+        public DateTime LastVigilance;
+        public float TimeRemaining;
         public Dictionary<byte, (GameObject, GameObject, GameObject, TMP_Text)> Buttons { get; set; } = new();
 
         private Dictionary<string, Color> ColorMapping = new();
@@ -17,6 +21,20 @@ namespace TownOfUs.Roles
         public Dictionary<string, Color> SortedColorMapping;
 
         public Dictionary<byte, string> Guesses = new();
+        public bool ButtonUsable
+        {
+            get
+            {
+                if (!Player) return false;
+                if (Player.MyPhysics.Velocity.magnitude > 0) return false;
+                if (!Player.CanMove) return false;
+                if (!ShipStatus.Instance) return false;
+                var switchSystem = GameOptionsManager.Instance.currentNormalGameOptions.MapId == 5 ? null : ShipStatus.Instance.Systems[SystemTypes.Electrical]?.TryCast<SwitchSystem>();
+                if (switchSystem != null && switchSystem.IsActive) return false;
+                return true;
+            }
+        }
+        public bool InVigilance => TimeRemaining > 0f;
 
         public Vigilante(PlayerControl player) : base(player)
         {
@@ -24,6 +42,7 @@ namespace TownOfUs.Roles
             ImpostorText = () => "Kill Impostors If You Can Guess Their Roles";
             TaskText = () => "Guess the roles of impostors mid-meeting to kill them!";
             Color = Patches.Colors.Vigilante;
+            LastVigilance = DateTime.UtcNow;
             RoleType = RoleEnum.Vigilante;
             AddToRoleHistory(RoleType);
 
@@ -110,5 +129,30 @@ namespace TownOfUs.Roles
         public int RemainingKills { get; set; }
 
         public List<string> PossibleGuesses => SortedColorMapping.Keys.ToList();
+
+        public float VigilanceTimer()
+        {
+            var utcNow = DateTime.UtcNow;
+            var timeSpan = utcNow - LastVigilance;
+            ;
+            var num = CustomGameOptions.VigilanceCd * 1000f;
+            var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
+            if (flag2) return 0;
+            return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
+        }
+
+        public void Vigilance()
+        {
+            Enabled = true;
+            TimeRemaining -= Time.deltaTime;
+        }
+
+
+        public void UnVigilance()
+        {
+            Enabled = false;
+            LastVigilance = DateTime.UtcNow;
+            TimeRemaining = 0;
+        }
     }
 }

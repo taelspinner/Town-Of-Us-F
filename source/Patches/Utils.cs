@@ -1186,6 +1186,7 @@ namespace TownOfUs
                         var vigi = new Vigilante(vhPlayer);
                         vigi.CorrectKills = kills;
                         vigi.RegenTask();
+                        vigi.LastVigilance = DateTime.UtcNow;
                     }
                     else
                     {
@@ -1205,6 +1206,11 @@ namespace TownOfUs
             {
                 var veteran = Role.GetRole<Veteran>(PlayerControl.LocalPlayer);
                 veteran.LastAlerted = DateTime.UtcNow;
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante))
+            {
+                var vigilante = Role.GetRole<Vigilante>(PlayerControl.LocalPlayer);
+                vigilante.LastVigilance = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Trapper))
             {
