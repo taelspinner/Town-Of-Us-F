@@ -52,6 +52,15 @@ namespace TownOfUs
                     return false;
                 }
             }
+            else if (player._object.Is(RoleEnum.Vigilante))
+            {
+                var role = Role.GetRole<Vigilante>(player._object);
+                if (role.InVigilance)
+                {
+                    __result = __instance.MaxLightRadius * GameOptionsManager.Instance.currentNormalGameOptions.ImpostorLightMod;
+                    return false;
+                }
+            }
 
             if (Patches.SubmergedCompatibility.isSubmerged())
             {

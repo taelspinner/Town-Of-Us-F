@@ -27,6 +27,7 @@ namespace TownOfUs
         private static Sprite Douse => TownOfUs.DouseSprite;
         private static Sprite Revive => TownOfUs.ReviveSprite;
         private static Sprite Alert => TownOfUs.AlertSprite;
+        private static Sprite Vigilance => TownOfUs.VigilanceSprite;
         private static Sprite Remember => TownOfUs.RememberSprite;
         private static Sprite Track => TownOfUs.TrackSprite;
         private static Sprite Transport => TownOfUs.TransportSprite;
@@ -84,6 +85,11 @@ namespace TownOfUs
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Veteran))
             {
                 __instance.KillButton.graphic.sprite = Alert;
+                flag = true;
+            }
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Vigilante))
+            {
+                __instance.KillButton.graphic.sprite = Vigilance;
                 flag = true;
             }
             else if (PlayerControl.LocalPlayer.Is(RoleEnum.Mayor))

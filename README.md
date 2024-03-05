@@ -1129,7 +1129,9 @@ When the Veteran is on alert, anyone, whether crew, neutral or impostor, if they
 ### **Team: Crewmates**
 
 The Vigilante is a Crewmate that can kill during meetings.\
-During meetings, the Vigilante can choose to kill someone by guessing their role, however, if they guess incorrectly, they die instead.
+During meetings, the Vigilante can choose to kill someone by guessing their role, however, if they guess incorrectly, they die instead.\
+The Vigilante also has an active ability, Vigilance. They may only use it while standing still and not otherwise occupied, while the lights are on.\
+While they are in Vigilance, they have an impostor's vision radius.
 ### Game Options
 | Name | Description | Type | Default |
 |----------|:-------------:|:------:|:------:|
@@ -1141,6 +1143,8 @@ During meetings, the Vigilante can choose to kill someone by guessing their role
 | Vigilante Guess Neutral Killing  | Whether the Vigilante can Guess Neutral Killing roles | Toggle | False |
 | Vigilante Guess Lovers  | Whether the Vigilante can Guess Lovers | Toggle | False |
 | Vigilante Guess After Voting  | Whether the Vigilante can Guess after they have voted | Toggle | False |
+| Vigilance Cooldown | The cooldown on the Vigilante's vigilance button. | Time | 10s |
+| Vigilance Duration | The duration of vigilance before a cooldown is forced | Time | 25s |
 
 -----------------------
 ## Hunter

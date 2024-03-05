@@ -257,6 +257,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 var vigiRole = Role.GetRole<Vigilante>(amnesiac);
                 vigiRole.RemainingKills = CustomGameOptions.VigilanteKills;
                 DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
+                vigiRole.LastVigilance = DateTime.UtcNow;
             }
 
             else if (role == RoleEnum.Veteran)
