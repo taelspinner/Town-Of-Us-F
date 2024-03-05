@@ -89,6 +89,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2023.11.28s & 2023.11.28e | v5.3.0 | ;) |
 | 2023.11.28s & 2023.11.28e | v5.2.7 | ;) |
 | 2023.11.28s & 2023.11.28e | v5.2.6 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.2.5 | ;) |
@@ -159,6 +160,12 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 
 <details>
   <summary> Changelog </summary>
+  <details>
+  <summary> v5.2.7 </summary>
+  <ul> <li>New Role: Scavenger</li> </ul>
+  <ul> <li>Bug Fix: Some abilities (mostly kill buttons) can now be used on players in vents again</li> </ul>
+  <ul> <li>Bug Fix: Dead players can see who's blackmailed</li> </ul>
+  </details>
   <details>
   <summary> v5.2.7 </summary>
   <ul> <li>Added option to Blackmailer to make blackmailing visible only to the target</li> </ul>
