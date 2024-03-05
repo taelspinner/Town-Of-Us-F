@@ -161,8 +161,9 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 <details>
   <summary> Changelog </summary>
   <details>
-  <summary> v5.2.7 </summary>
+  <summary> v5.3.0 </summary>
   <ul> <li>New Role: Scavenger</li> </ul>
+  <ul> <li>Vigilante Rework: Vigilante now has the Vigilance ability, which lets them use impostor vision while standing still</li> </ul>
   <ul> <li>Bug Fix: Some abilities (mostly kill buttons) can now be used on players in vents again</li> </ul>
   <ul> <li>Bug Fix: Dead players can see who's blackmailed</li> </ul>
   </details>
