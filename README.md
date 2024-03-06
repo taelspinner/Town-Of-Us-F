@@ -89,7 +89,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
-| 2023.11.28s & 2023.11.28e | v5.3.0 | ;) |
+| 2024.3.5s | v5.3.0 | ;) |
 | 2023.11.28s & 2023.11.28e | v5.2.7 | ;) |
 | 2023.11.28s & 2023.11.28e | v5.2.6 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.2.5 | ;) |
@@ -166,6 +166,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <ul> <li>Vigilante Rework: Vigilante now has the Vigilance ability, which lets them use impostor vision while standing still</li> </ul>
   <ul> <li>Bug Fix: Some abilities (mostly kill buttons) can now be used on players in vents again</li> </ul>
   <ul> <li>Bug Fix: Dead players can see who's blackmailed</li> </ul>
+  <ul> <li>Compatibility with the new Among Us version v2024.3.5s</li> </ul>
   </details>
   <details>
   <summary> v5.2.7 </summary>
