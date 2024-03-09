@@ -1489,6 +1489,7 @@ If they successfully devour enough bodies, the game finishes and they win.
 | Scavenger | The percentage probability of the Scavenger appearing | Percentage | 0% |
 | Devour Cooldown | The Cooldown of the Scavenger's Devour button | Time | 25s |
 | Number Of Corpses Devoured To Win | The amount of corpses that must be devoured in order for the Scavenger to win | Number | 5 |
+| Scavenger Has Impostor Vision | Whether the Scavenger Has Impostor Vision | Toggle | False |
 
 -----------------------
 ## Phantom
