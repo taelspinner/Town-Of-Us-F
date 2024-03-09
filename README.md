@@ -89,6 +89,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2024.3.5s | v5.3.1 | ;) |
 | 2024.3.5s | v5.3.0 | ;) |
 | 2023.11.28s & 2023.11.28e | v5.2.7 | ;) |
 | 2023.11.28s & 2023.11.28e | v5.2.6 | ;) |
@@ -160,6 +161,10 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 
 <details>
   <summary> Changelog </summary>
+  <details>
+  <summary> v5.3.1 </summary>
+  <ul> <li>Bug Fix: Fixed Amnesiac taking Scavenger role</li> </ul>
+  </details>
   <details>
   <summary> v5.3.0 </summary>
   <ul> <li>New Role: Scavenger</li> </ul>
