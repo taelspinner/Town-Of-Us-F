@@ -434,6 +434,7 @@ namespace TownOfUs.CustomOption
         public static CustomHeaderOption Scavenger;
         public static CustomNumberOption DevourCooldown;
         public static CustomNumberOption ScavCorpsesToWin;
+        public static CustomToggleOption ScavengerImpVision;
 
         public static CustomHeaderOption Vampire;
         public static CustomNumberOption BiteCooldown;
@@ -1118,6 +1119,8 @@ namespace TownOfUs.CustomOption
                 new CustomNumberOption(num++, MultiMenu.neutral, "Devour Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
             ScavCorpsesToWin =
                  new CustomNumberOption(num++, MultiMenu.neutral, "Corpses Devoured To Win", 5, 1, 15, 1);
+            ScavengerImpVision =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Scavenger Has Impostor Vision", false);
 
             Phantom =
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#662962FF>Phantom</color>");
