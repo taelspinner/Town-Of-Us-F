@@ -114,6 +114,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 case RoleEnum.Werewolf:
                 case RoleEnum.Doomsayer:
                 case RoleEnum.Vampire:
+                case RoleEnum.Scavenger:
 
                     rememberImp = false;
 
