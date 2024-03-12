@@ -38,6 +38,11 @@ namespace TownOfUs
                 var exe = (Executioner)role;
                 losers.Add(exe.Player.GetDefaultOutfit().ColorId);
             }
+            foreach (var role in Role.GetRoles(RoleEnum.Scavenger))
+            {
+                var scav = (Scavenger)role;
+                losers.Add(scav.Player.GetDefaultOutfit().ColorId);
+            }
             foreach (var role in Role.GetRoles(RoleEnum.Jester))
             {
                 var jest = (Jester)role;
