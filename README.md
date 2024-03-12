@@ -89,6 +89,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2024.3.5s | v5.3.2 | ;) |
 | 2024.3.5s | v5.3.1 | ;) |
 | 2024.3.5s | v5.3.0 | ;) |
 | 2023.11.28s & 2023.11.28e | v5.2.7 | ;) |
@@ -162,7 +163,13 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 <details>
   <summary> Changelog </summary>
   <details>
+  <summary> v5.3.2 </summary>
+  <ul> <li>Bug Fix: Scavenger no longer counts towards crew tasks</li> </ul>
+  <ul> <li>Bug Fix: Scavenger no longer wins with crew</li> </ul>
+  </details>
+  <details>
   <summary> v5.3.1 </summary>
+  <ul> <li>Added impostor vision setting to Scavenger</li> </ul>
   <ul> <li>Bug Fix: Fixed Amnesiac taking Scavenger role</li> </ul>
   </details>
   <details>
