@@ -48,6 +48,11 @@ namespace TownOfUs
                 var merc = (Mercenary)role;
                 losers.Add(merc.Player.GetDefaultOutfit().ColorId);
             }
+            foreach (var role in Role.GetRoles(RoleEnum.Scavenger))
+            {
+                var scav = (Scavenger)role;
+                losers.Add(scav.Player.GetDefaultOutfit().ColorId);
+            }
             foreach (var role in Role.GetRoles(RoleEnum.Jester))
             {
                 var jest = (Jester)role;
