@@ -28,7 +28,10 @@ namespace TownOfUs.NeutralRoles.ScavengerMod
             }
 
             Object.Destroy(body.gameObject);
-            role.CorpsesEaten += 1;
+            if(!MeetingHud.Instance)
+            {
+                role.CorpsesEaten += 1;
+            }
         }
     }
 }
