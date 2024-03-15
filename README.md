@@ -166,6 +166,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <summary> v5.3.2 </summary>
   <ul> <li>Bug Fix: Scavenger no longer counts towards crew tasks</li> </ul>
   <ul> <li>Bug Fix: Scavenger no longer wins with crew</li> </ul>
+  <ul> <li>Bug Fix: Scavenger Devour no longer counts if a meeting is called before it finishes</li> </ul>
   </details>
   <details>
   <summary> v5.3.1 </summary>
