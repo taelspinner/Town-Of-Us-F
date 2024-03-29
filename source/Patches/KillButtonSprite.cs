@@ -1,5 +1,7 @@
 ﻿using AmongUs.GameOptions;
 using HarmonyLib;
+using System.Collections.Generic;
+using System.Linq;
 using TownOfUs.Extensions;
 using TownOfUs.Roles;
 using TownOfUs.Roles.Modifiers;
@@ -192,7 +194,8 @@ namespace TownOfUs
                 __instance.KillButton.graphic.sprite = Kill;
                 __instance.KillButton.buttonLabelText.gameObject.SetActive(true);
                 PlayerControl closestPlayer = __instance.KillButton.currentTarget;
-                Utils.SetTarget(ref closestPlayer, __instance.KillButton, allowVented: true);
+                var validTargets = new List<PlayerControl>(PlayerControl.AllPlayerControls.ToArray()).Where(t => !t.Data.IsDead && (Role.GetRole(PlayerControl.LocalPlayer).Faction != Faction.Impostors || Role.GetRole(t).Faction != Faction.Impostors)).ToList();
+                Utils.SetTarget(ref closestPlayer, __instance.KillButton, targets: validTargets, allowVented: true);
                 __instance.KillButton.currentTarget = closestPlayer;
                 __instance.KillButton.buttonLabelText.text = "Kill";
                 flag = PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff) || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) ||
