@@ -530,7 +530,7 @@ namespace TownOfUs.CustomOption
                 PercentFormat);
             InvestigatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#00B3B3FF>Investigator</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            ImmortalOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#DAAA5EFF>Immortal</color>", 0f, 0f, 100f, 10f,
+            ImmortalOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#E5A01DFF>Immortal</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             MysticOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#4D99E6FF>Mystic</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -871,7 +871,7 @@ namespace TownOfUs.CustomOption
             AnonymousFootPrint = new CustomToggleOption(num++, MultiMenu.crewmate, "Anonymous Footprint", false);
             VentFootprintVisible = new CustomToggleOption(num++, MultiMenu.crewmate, "Footprint Vent Visible", false);
 
-            Immortal = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#DAAA5EFF>Immortal</color>");
+            Immortal = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#E5A01DFF>Immortal</color>");
             ImmortalReviveDuration =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Immortal Revive Duration", 10f, 1f, 25f, 1f, CooldownFormat);
 

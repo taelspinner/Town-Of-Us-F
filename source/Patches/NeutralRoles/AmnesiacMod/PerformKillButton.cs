@@ -484,7 +484,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 bomberRole.Bomb.ClearBomb();
             }
 
-            else if (role == RoleEnum.Immortal)
+            else if (role == RoleEnum.Immortal && amnesiac.AmOwner)
             {
                 Utils.Camouflage();
             }
@@ -506,6 +506,10 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
             otherRole.IncorrectKills = killsList.IncorrectKills;
             otherRole.CorrectAssassinKills = killsList.CorrectAssassinKills;
             otherRole.IncorrectAssassinKills = killsList.IncorrectAssassinKills;
+            if (role == RoleEnum.Immortal && other.AmOwner)
+            {
+                Utils.UnCamouflage();
+            }
 
             if (amnesiac.Is(Faction.Impostors) && (!amnesiac.Is(RoleEnum.Traitor) || CustomGameOptions.SnitchSeesTraitor))
             {

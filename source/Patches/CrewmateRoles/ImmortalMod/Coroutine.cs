@@ -47,7 +47,6 @@ namespace TownOfUs.CrewmateRoles.ImmortalMod
                 Murder.KilledPlayers.FirstOrDefault(x => x.PlayerId == role.Player.PlayerId));
             if (role.Player.AmOwner)
             {
-                role.RegenTask();
                 Utils.Camouflage();
                 if (Minigame.Instance) Minigame.Instance.Close();
                 yield return Utils.FlashCoroutine(role.Color, 1f, 0.5f);

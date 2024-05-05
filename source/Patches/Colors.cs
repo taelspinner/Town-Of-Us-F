@@ -11,6 +11,7 @@ namespace TownOfUs.Patches
         public readonly static Color Engineer = new Color(1f, 0.65f, 0.04f, 1f);
         public readonly static Color Swapper = new Color(0.4f, 0.9f, 0.4f, 1f);
         public readonly static Color Investigator = new Color(0f, 0.7f, 0.7f, 1f);
+        public readonly static Color Immortal = new Color(0.55f, 0.38f, 0.07f, 1f);
         public readonly static Color Medic = new Color(0f, 0.4f, 0f, 1f);
         public readonly static Color Seer = new Color(1f, 0.8f, 0.5f, 1f);
         public readonly static Color Spy = new Color(0.8f, 0.64f, 0.8f, 1f);
@@ -32,7 +33,6 @@ namespace TownOfUs.Patches
         public readonly static Color Oracle = new Color(0.75f, 0f, 0.75f, 1f);
         public readonly static Color Aurial = new Color(0.7f, 0.3f, 0.6f, 1f);
         public readonly static Color Hunter = new Color(0.16f, 0.67f, 0.53f, 1f);
-        public readonly static Color Immortal = new Color(0.85f, 0.67f, 0.37f, 1f);
 
         // Neutral Colors
         public readonly static Color Jester = new Color(1f, 0.75f, 0.8f, 1f);
