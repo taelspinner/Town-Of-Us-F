@@ -12,6 +12,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 - [Detective](#detective)
 - [Haunter](#haunter)
 - [Investigator](#investigator)
+- [Immortal](#immortal)
 - [Mystic](#mystic)
 - [Oracle](#oracle)
 - [Seer](#seer)
@@ -873,6 +874,18 @@ Every footprint disappears after a set amount of time.
 | Anonymous Footprint | When enabled, all footprints are grey instead of the player's colors | Toggle | False |
 | Footprint Vent Visible | Whether footprints near vents are shown | Toggle | False |
 
+-----------------------
+## Immortal
+### **Team: Crewmates**
+The Immortal is an ancient Crewmate that is quite difficult to kill.\
+However, it cannot tell any of its fellow crew apart.
+
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Immortal | The percentage probability of the Immortal appearing | Percentage | 0% |
+| Immortal Revive Duration | The time it takes for the Immortal to get back up after being killed | Time | 10s |
+| Immortal Revives if Reported | Whether the Immortal will revive when a meeting is called while they are still dead | Toggle | False |
 -----------------------
 ## Mystic
 ### **Team: Crewmates**
