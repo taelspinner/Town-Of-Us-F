@@ -76,6 +76,7 @@ namespace TownOfUs
 
         public static void UnCamouflage()
         {
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal)) return;
             foreach (var player in PlayerControl.AllPlayerControls) Unmorph(player);
         }
 
