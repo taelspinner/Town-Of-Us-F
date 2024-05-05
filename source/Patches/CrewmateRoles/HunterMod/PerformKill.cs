@@ -1,7 +1,12 @@
 using AmongUs.GameOptions;
 using HarmonyLib;
+using Hazel;
+using System;
+using UnityEngine;
+=========
 using System;
 using TownOfUs.Roles;
+>>>>>>>>> Temporary merge branch 2
 
 namespace TownOfUs.CrewmateRoles.HunterMod
 {

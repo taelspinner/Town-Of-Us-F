@@ -656,6 +656,19 @@ namespace TownOfUs
                     }
                 }
 
+                if (killer.Is(RoleEnum.Hunter))
+                {
+                    var hunter = Role.GetRole<Hunter>(killer);
+                    if (target.Is(RoleEnum.Doomsayer) || target.Is(Faction.Impostors) || target.Is(Faction.NeutralKilling))
+                    {
+                        hunter.CorrectKills += 1;
+                    }
+                    else
+                    {
+                        hunter.IncorrectKills += 1;
+                    }
+                }
+
                 target.gameObject.layer = LayerMask.NameToLayer("Ghost");
                 target.Visible = false;
 
@@ -1383,6 +1396,15 @@ namespace TownOfUs
                         vigi.CorrectKills = kills;
                         vigi.RegenTask();
                         vigi.LastVigilance = DateTime.UtcNow;
+                    }
+                    else if (CustomGameOptions.BecomeOnVampDeaths == BecomeEnum.Hunter)
+                    {
+                        Role.RoleDictionary.Remove(vhPlayer.PlayerId);
+                        var kills = ((VampireHunter)vh).CorrectKills;
+                        var hunter = new Hunter(vhPlayer);
+                        hunter.CorrectKills = kills;
+                        hunter.RegenTask();
+                        hunter.LastKilled = DateTime.UtcNow;
                     }
                     else
                     {

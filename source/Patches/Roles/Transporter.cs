@@ -517,6 +517,12 @@ namespace TownOfUs.Roles
                     hunter.CatchPlayer(Player);
                 }
 
+                foreach (Role hunterRole in Role.GetRoles(RoleEnum.Hunter))
+                {
+                    Hunter hunter = (Hunter)hunterRole;
+                    hunter.CatchPlayer(Player);
+                }
+
                 Coroutines.Start(TransportPlayers(TransportPlayer1.PlayerId, TransportPlayer2.PlayerId, false));
 
                 Utils.Rpc(CustomRPC.Transport, TransportPlayer1.PlayerId, TransportPlayer2.PlayerId, false);

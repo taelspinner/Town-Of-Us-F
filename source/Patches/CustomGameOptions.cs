@@ -57,7 +57,6 @@ namespace TownOfUs
         public static int HaunterOn => (int)Generate.HaunterOn.Get();
         public static int GrenadierOn => (int)Generate.GrenadierOn.Get();
         public static int VeteranOn => (int)Generate.VeteranOn.Get();
-        public static int HunterOn => (int)Generate.HunterOn.Get();
         public static int TaggerOn => (int)Generate.TaggerOn.Get();
         public static int TrapperOn => (int)Generate.TrapperOn.Get();
         public static int TraitorOn => (int)Generate.TraitorOn.Get();
