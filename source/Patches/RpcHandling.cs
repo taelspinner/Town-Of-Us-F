@@ -1125,6 +1125,15 @@ namespace TownOfUs
                             }
 
                         break;
+                    case CustomRPC.ImmortalRevive:
+                        readByte1 = reader.ReadByte();
+                        var immortalPlayer = Utils.PlayerById(readByte1);
+                        var immortalRole = Role.GetRole<Immortal>(immortalPlayer);
+                        readByte2 = reader.ReadByte();
+                        var immortalKiller = Utils.PlayerById(readByte2);
+                        immortalRole.LastKiller = immortalKiller;
+                        Coroutines.Start(global::TownOfUs.CrewmateRoles.ImmortalMod.Coroutine.ImmortalRevive(immortalRole));
+                        break;
                     case CustomRPC.FixAnimation:
                         var player3 = Utils.PlayerById(reader.ReadByte());
                         player3.MyPhysics.ResetMoveState();
@@ -1442,6 +1451,9 @@ namespace TownOfUs
 
                     if (CustomGameOptions.InvestigatorOn > 0)
                         CrewmateRoles.Add((typeof(Investigator), CustomGameOptions.InvestigatorOn, false));
+
+                    if (CustomGameOptions.ImmortalOn > 0)
+                        CrewmateRoles.Add((typeof(Immortal), CustomGameOptions.ImmortalOn, false));
 
                     if (CustomGameOptions.MedicOn > 0)
                         CrewmateRoles.Add((typeof(Medic), CustomGameOptions.MedicOn, true));

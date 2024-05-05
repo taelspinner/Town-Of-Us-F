@@ -45,6 +45,8 @@ namespace TownOfUs
         Mine,
         Swoop,
         AltruistRevive,
+        ImmortalRevive,
+        ImmortalReviveNow,
         BarryButton,
         Drag,
         Drop,

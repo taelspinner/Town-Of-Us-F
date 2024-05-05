@@ -17,15 +17,16 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 | [Miner](#miner)              | [Hunter](#hunter)                  | [Jester](#jester)                | [Double Shot](#double-shot) |
 | [Morphling](#morphling)      | [Imitator](#imitator)              | [Juggernaut](#juggernaut)        | [Flash](#flash)             |
 | [Swooper](#swooper)          | [Investigator](#investigator)      | [Lawyer](#lawyer)                | [Frosty](#frosty)           |
-| [Traitor](#traitor)          | [Medic](#medic)                    | [Mercenary](#mercenary)          | [Giant](#giant)             |
-| [Undertaker](#undertaker)    | [Medium](#medium)                  | [Phantom](#phantom)              | [Lovers](#lovers)           |
-| [Venerer](#venerer)          | [Mystic](#mystic)                  | [Plaguebearer](#plaguebearer)    | [Multitasker](#multitasker) |
-| [Warlock](#warlock)          | [Oracle](#oracle)                  | [Scavenger](#scavenger)          | [Radar](#radar)             |
-|                             | [Politician](#politician)          | [Survivor](#survivor)            | [Sleuth](#sleuth)           |
-|                             | [Prosecutor](#prosecutor)          | [The Glitch](#the-glitch)        | [Tiebreaker](#tiebreaker)   |
-|                             | [Seer](#seer)                      | [Vampire](#vampire)              | [Torch](#torch)             |
-|                             | [Sheriff](#sheriff)                | [Werewolf](#werewolf)            | [Underdog](#underdog)       |
-|                             | [Snitch](#snitch)                  |                                 | [Vengeful](#vengeful)        |
+| [Traitor](#traitor)          | [Immortal](#immortal)              | [Mercenary](#mercenary)          | [Giant](#giant)             |
+| [Undertaker](#undertaker)    | [Medic](#medic)                    | [Phantom](#phantom)              | [Lovers](#lovers)           |
+| [Venerer](#venerer)          | [Medium](#medium)                  | [Plaguebearer](#plaguebearer)    | [Multitasker](#multitasker) |
+| [Warlock](#warlock)          | [Mystic](#mystic)                  | [Scavenger](#scavenger)          | [Radar](#radar)             |
+|                             | [Oracle](#oracle)                   | [Survivor](#survivor)            | [Sleuth](#sleuth)           |
+|                             | [Politician](#politician)           | [The Glitch](#the-glitch)        | [Tiebreaker](#tiebreaker)   |
+|                             | [Prosecutor](#prosecutor)           | [Vampire](#vampire)              | [Torch](#torch)             |
+|                             | [Seer](#seer)                       | [Werewolf](#werewolf)            | [Underdog](#underdog)       |
+|                             | [Sheriff](#sheriff)                 |                                 | [Vengeful](#vengeful)        |
+|                             | [Snitch](#snitch)                   |                                 |                             |
 |                             | [Spy](#spy)                        |                                 |                             |
 |                             | [Swapper](#swapper)                |                                 |                             |
 |                             | [Tagger](#tagger  )                |                                 |                             |
@@ -944,6 +945,18 @@ Every footprint disappears after a set amount of time.
 | Anonymous Footprint | When enabled, all footprints are grey instead of the player's colors | Toggle | False |
 | Footprint Vent Visible | Whether footprints near vents are shown | Toggle | False |
 
+-----------------------
+## Immortal
+### **Team: Crewmates**
+The Immortal is an ancient Crewmate that is quite difficult to kill.\
+However, it cannot tell any of its fellow crew apart.
+
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Immortal | The percentage probability of the Immortal appearing | Percentage | 0% |
+| Immortal Revive Duration | The time it takes for the Immortal to get back up after being killed | Time | 10s |
+| Immortal Revives if Reported | Whether the Immortal will revive when a meeting is called while they are still dead | Toggle | False |
 -----------------------
 ## Mystic
 ### **Team: Crewmates**

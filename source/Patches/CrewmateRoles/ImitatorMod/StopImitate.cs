@@ -23,6 +23,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
             {
                 List<RoleEnum> trappedPlayers = null;
                 PlayerControl confessingPlayer = null;
+                bool isImmortal = PlayerControl.LocalPlayer.Is(RoleEnum.Immortal);
                 Dictionary<string, int> LimitedRoleUses = StartImitate.LimitedRoleUses;
 
                 if (PlayerControl.LocalPlayer == StartImitate.ImitatingPlayer)
@@ -153,6 +154,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                 newRole.IncorrectKills = killsList.IncorrectKills;
                 newRole.CorrectAssassinKills = killsList.CorrectAssassinKills;
                 newRole.IncorrectAssassinKills = killsList.IncorrectAssassinKills;
+                if (isImmortal && StartImitate.ImitatingPlayer.AmOwner) Utils.UnCamouflage();
                 Role.GetRole<Imitator>(StartImitate.ImitatingPlayer).ImitatePlayer = null;
                 StartImitate.ImitatingPlayer = null;
             }

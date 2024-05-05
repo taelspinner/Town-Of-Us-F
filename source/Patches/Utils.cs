@@ -7,6 +7,7 @@ using System.Linq;
 using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using TownOfUs.CrewmateRoles.MedicMod;
+using TownOfUs.CrewmateRoles.ImmortalMod;
 using TownOfUs.Extensions;
 using TownOfUs.Patches;
 using TownOfUs.Roles;
@@ -78,6 +79,7 @@ namespace TownOfUs
 
         public static void UnCamouflage()
         {
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal)) return;
             foreach (var player in PlayerControl.AllPlayerControls) Unmorph(player);
         }
 
@@ -775,7 +777,7 @@ namespace TownOfUs
                     target.myTasks.Insert(0, importantTextTask);
                 }
 
-                if (jumpToBody)
+                if (jumpToBody && (!target.Is(RoleEnum.Immortal) || !target.AmOwner))
                 {
                     killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(killer, target));
                 }
@@ -805,6 +807,14 @@ namespace TownOfUs
                 if (target.Is(ModifierEnum.Bait))
                 {
                     BaitReport(killer, target);
+                }
+
+                if(target.Is(RoleEnum.Immortal))
+                {
+                    Rpc(CustomRPC.ImmortalRevive, target.PlayerId, killer.PlayerId);
+                    var immortal = Role.GetRole<Immortal>(target);
+                    immortal.LastKiller = killer;
+                    Coroutines.Start(CrewmateRoles.ImmortalMod.Coroutine.ImmortalRevive(immortal));
                 }
 
                 if (target.Is(ModifierEnum.Aftermath))

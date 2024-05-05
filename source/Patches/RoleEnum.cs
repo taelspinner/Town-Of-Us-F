@@ -45,6 +45,7 @@ namespace TownOfUs
         Politician,
         Hunter,
         Scavenger,
+        Immortal,
 
         Miner,
         Swooper,

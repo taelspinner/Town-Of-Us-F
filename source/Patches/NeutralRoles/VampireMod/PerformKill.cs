@@ -236,6 +236,10 @@ namespace TownOfUs.NeutralRoles.VampireMod
             }
 
             if (CustomGameOptions.NewVampCanAssassin) new Assassin(newVamp);
+            if (oldRole.RoleType == RoleEnum.Immortal)
+            {
+                Utils.UnCamouflage();
+            }
         }
     }
 }

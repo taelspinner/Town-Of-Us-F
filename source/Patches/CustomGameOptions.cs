@@ -39,6 +39,7 @@ namespace TownOfUs
         public static int SwapperOn => (int)Generate.SwapperOn.Get();
         public static int AmnesiacOn => (int)Generate.AmnesiacOn.Get();
         public static int InvestigatorOn => (int)Generate.InvestigatorOn.Get();
+        public static int ImmortalOn => (int)Generate.ImmortalOn.Get();
         public static int MedicOn => (int)Generate.MedicOn.Get();
         public static int SeerOn => (int)Generate.SeerOn.Get();
         public static int GlitchOn => (int)Generate.GlitchOn.Get();
@@ -198,6 +199,7 @@ namespace TownOfUs
         public static int MaxFixes => (int)Generate.MaxFixes.Get();
         public static float ReviveDuration => Generate.ReviveDuration.Get();
         public static bool AltruistTargetBody => Generate.AltruistTargetBody.Get();
+        public static float ImmortalReviveDuration => Generate.ImmortalReviveDuration.Get();
         public static bool SheriffBodyReport => Generate.SheriffBodyReport.Get();
         public static float DragCd => Generate.DragCooldown.Get();
         public static float UndertakerDragSpeed => Generate.UndertakerDragSpeed.Get();

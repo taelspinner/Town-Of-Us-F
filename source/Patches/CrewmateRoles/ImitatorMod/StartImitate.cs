@@ -105,6 +105,11 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                 }
             }
             if (imitatorRole == RoleEnum.Altruist) new Altruist(ImitatingPlayer);
+            if (imitatorRole == RoleEnum.Immortal)
+            {
+                new Immortal(ImitatingPlayer);
+                if(ImitatingPlayer.AmOwner) Utils.Camouflage();
+            }
             if (imitatorRole == RoleEnum.Engineer)
             {
                 var engi = new Engineer(ImitatingPlayer);

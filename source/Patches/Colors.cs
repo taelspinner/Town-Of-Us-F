@@ -11,6 +11,7 @@ namespace TownOfUs.Patches
         public readonly static Color Engineer = new Color(1f, 0.65f, 0.04f, 1f);
         public readonly static Color Swapper = new Color(0.4f, 0.9f, 0.4f, 1f);
         public readonly static Color Investigator = new Color(0f, 0.7f, 0.7f, 1f);
+        public readonly static Color Immortal = new Color(0.55f, 0.38f, 0.07f, 1f);
         public readonly static Color Medic = new Color(0f, 0.4f, 0f, 1f);
         public readonly static Color Seer = new Color(1f, 0.8f, 0.5f, 1f);
         public readonly static Color Spy = new Color(0.8f, 0.64f, 0.8f, 1f);

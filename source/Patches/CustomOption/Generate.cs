@@ -9,6 +9,7 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption DetectiveOn;
         public static CustomNumberOption HaunterOn;
         public static CustomNumberOption InvestigatorOn;
+        public static CustomNumberOption ImmortalOn;
         public static CustomNumberOption MysticOn;
         public static CustomNumberOption OracleOn;
         public static CustomNumberOption SeerOn;
@@ -215,6 +216,9 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption FootprintDuration;
         public static CustomToggleOption AnonymousFootPrint;
         public static CustomToggleOption VentFootprintVisible;
+
+        public static CustomHeaderOption Immortal;
+        public static CustomNumberOption ImmortalReviveDuration;
 
         public static CustomHeaderOption Medic;
         public static CustomStringOption ShowShielded;
@@ -562,6 +566,8 @@ namespace TownOfUs.CustomOption
             HaunterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#D3D3D3FF>Haunter</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             InvestigatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#00B3B3FF>Investigator</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            ImmortalOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#E5A01DFF>Immortal</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             MysticOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#4D99E6FF>Mystic</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -913,6 +919,10 @@ namespace TownOfUs.CustomOption
             FootprintDuration = new CustomNumberOption(num++, MultiMenu.crewmate, "Footprint Duration", 10f, 1f, 15f, 0.5f, CooldownFormat);
             AnonymousFootPrint = new CustomToggleOption(num++, MultiMenu.crewmate, "Anonymous Footprint", false);
             VentFootprintVisible = new CustomToggleOption(num++, MultiMenu.crewmate, "Footprint Vent Visible", false);
+
+            Immortal = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#E5A01DFF>Immortal</color>");
+            ImmortalReviveDuration =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Immortal Revive Duration", 10f, 1f, 25f, 1f, CooldownFormat);
 
             Mystic =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#4D99E6FF>Mystic</color>");
