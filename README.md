@@ -116,6 +116,13 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 <details>
   <summary> Changelog </summary>
   <details>
+  <summary> v5.4.0 </summary>
+  <ul> <li>New Role: Immortal</li> </ul>
+  <ul> <li>Added venting setting to Scavenger</li> </ul>
+  <ul> <li>Bug Fix: Vampire Hunter now properly turns into Hunter if the setting is enabled</li> </ul>
+  <ul> <li>Merged codebase with vanilla Town of Us</li> </ul>
+  </details>
+  <details>
   <summary> v5.3.2 </summary>
   <ul> <li>Bug Fix: Impostor kill button no longer targets other impostors</li> </ul>
   </details>
