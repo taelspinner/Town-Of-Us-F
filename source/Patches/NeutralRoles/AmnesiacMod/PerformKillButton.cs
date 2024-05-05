@@ -76,6 +76,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 case RoleEnum.Mayor:
                 case RoleEnum.Swapper:
                 case RoleEnum.Investigator:
+                case RoleEnum.Immortal:
                 case RoleEnum.Medic:
                 case RoleEnum.Seer:
                 case RoleEnum.Spy:
@@ -481,6 +482,11 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
             {
                 var bomberRole = Role.GetRole<Bomber>(amnesiac);
                 bomberRole.Bomb.ClearBomb();
+            }
+
+            else if (role == RoleEnum.Immortal)
+            {
+                Utils.Camouflage();
             }
 
             else if (!(amnesiac.Is(RoleEnum.Altruist) || amnesiac.Is(RoleEnum.Amnesiac) || amnesiac.Is(Faction.Impostors)))

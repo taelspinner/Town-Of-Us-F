@@ -80,6 +80,11 @@ namespace TownOfUs.Patches
                 vh.LastStaked = vh.LastStaked.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.StakeCd);
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal))
+            {
+                Utils.Camouflage();
+            }
+
             if (CustomGameOptions.CanStakeRoundOne)
             {
                 foreach (var vh in Role.GetRoles(RoleEnum.VampireHunter))

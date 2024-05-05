@@ -64,6 +64,11 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
             if (imitatorRole == RoleEnum.Sheriff) new Sheriff(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Veteran) new Veteran(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Altruist) new Altruist(ImitatingPlayer);
+            if (imitatorRole == RoleEnum.Immortal)
+            {
+                new Immortal(ImitatingPlayer);
+                if(ImitatingPlayer.AmOwner) Utils.Camouflage();
+            }
             if (imitatorRole == RoleEnum.Engineer) new Engineer(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Medium) new Medium(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Transporter) new Transporter(ImitatingPlayer);

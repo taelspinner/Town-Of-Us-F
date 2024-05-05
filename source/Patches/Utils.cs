@@ -633,7 +633,7 @@ namespace TownOfUs
                     target.myTasks.Insert(0, importantTextTask);
                 }
 
-                if (jumpToBody)
+                if (jumpToBody && (!target.Is(RoleEnum.Immortal) || !target.AmOwner))
                 {
                     killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(killer, target));
                 }
@@ -667,8 +667,10 @@ namespace TownOfUs
 
                 if(target.Is(RoleEnum.Immortal))
                 {
-                    Rpc(CustomRPC.ImmortalRevive, target.PlayerId);
-                    Coroutines.Start(CrewmateRoles.ImmortalMod.Coroutine.ImmortalRevive(Role.GetRole<Immortal>(target)));
+                    Rpc(CustomRPC.ImmortalRevive, target.PlayerId, killer.PlayerId);
+                    var immortal = Role.GetRole<Immortal>(target);
+                    immortal.LastKiller = killer;
+                    Coroutines.Start(CrewmateRoles.ImmortalMod.Coroutine.ImmortalRevive(immortal));
                 }
 
                 if (target.Is(ModifierEnum.Aftermath))

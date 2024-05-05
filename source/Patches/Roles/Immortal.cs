@@ -1,7 +1,12 @@
+using TownOfUs.Extensions;
+
 namespace TownOfUs.Roles
 {
     public class Immortal : Role
     {
+
+        public PlayerControl LastKiller;
+        public bool KilledMe;
         
         public Immortal(PlayerControl player) : base(player)
         {
@@ -11,7 +16,13 @@ namespace TownOfUs.Roles
             Color = Patches.Colors.Immortal;
             RoleType = RoleEnum.Immortal;
             AddToRoleHistory(RoleType);
-            Utils.Camouflage();
+            LastKiller = null;
+            KilledMe = false;
+        }
+
+        internal override bool RoleCriteria()
+        {
+            return KilledMe || base.RoleCriteria();
         }
     }
 }

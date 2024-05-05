@@ -13,20 +13,21 @@ namespace TownOfUs.CrewmateRoles.ImmortalMod
     public class Coroutine
     {
 
-        public static IEnumerator ImmortalRevive(Immortal role)
+        public static IEnumerator ImmortalRevive(Immortal role, bool reviveNow = false)
         {
             var startTime = DateTime.UtcNow;
-            while (true)
+            while (!reviveNow)
             {
                 var now = DateTime.UtcNow;
                 var seconds = (now - startTime).TotalSeconds;
-                if (seconds < CustomGameOptions.ImmortalReviveDuration || (MeetingHud.Instance && CustomGameOptions.ImmortalMeetingRevive))
+                if (seconds < CustomGameOptions.ImmortalReviveDuration)
                     yield return null;
                 else break;
 
-                if (MeetingHud.Instance && !CustomGameOptions.ImmortalMeetingRevive) yield break;
+                if (MeetingHud.Instance) yield break;
             }
 
+            if(!role.Player.Data.IsDead) yield break;
             Vector2? bodyPos = null;
             foreach (DeadBody deadBody in GameObject.FindObjectsOfType<DeadBody>())
             {
@@ -37,23 +38,44 @@ namespace TownOfUs.CrewmateRoles.ImmortalMod
                 }
             }
 
-            if (bodyPos == null) yield break;
-            Vector2 position = (Vector2)bodyPos;
-
             role.Player.Revive();
+            if (!MeetingHud.Instance)
+            {
+                if (bodyPos == null) yield break;
+                Vector2 position = (Vector2)bodyPos;
+                role.Player.NetTransform.SnapTo(new Vector2(position.x, position.y + 0.3636f));
+            }
             RoleManager.Instance.SetRole(role.Player, RoleTypes.Crewmate);
             Murder.KilledPlayers.Remove(
                 Murder.KilledPlayers.FirstOrDefault(x => x.PlayerId == role.Player.PlayerId));
             if (role.Player.AmOwner)
             {
-                Minigame.Instance.Close();
+                role.RegenTask();
+                Utils.Camouflage();
+                if (Minigame.Instance) Minigame.Instance.Close();
                 yield return Utils.FlashCoroutine(role.Color, 1f, 0.5f);
             }
-            role.Player.NetTransform.SnapTo(new Vector2(position.x, position.y + 0.3636f));
+            else if (role.LastKiller && role.LastKiller.AmOwner)
+            {
+                // Reveal the Immortal's role to the person that killed them now that they've revived
+                role.KilledMe = true;
+            }
 
             if (Patches.SubmergedCompatibility.isSubmerged() && PlayerControl.LocalPlayer.PlayerId == role.Player.PlayerId)
             {
                 Patches.SubmergedCompatibility.ChangeFloor(role.Player.transform.position.y > -7);
+            }
+
+            if(MeetingHud.Instance)
+            {
+                foreach(PlayerVoteArea voteArea in MeetingHud.Instance.playerStates)
+                {
+                    if (voteArea.TargetPlayerId == role.Player.PlayerId)
+                    {
+                        voteArea.AmDead = false;
+                        voteArea.XMark.gameObject.SetActive(false);
+                    }
+                }
             }
         }
     }

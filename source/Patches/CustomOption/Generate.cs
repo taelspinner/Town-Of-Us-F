@@ -213,7 +213,6 @@ namespace TownOfUs.CustomOption
 
         public static CustomHeaderOption Immortal;
         public static CustomNumberOption ImmortalReviveDuration;
-        public static CustomToggleOption ImmortalMeetingRevive;
 
         public static CustomHeaderOption Medic;
         public static CustomStringOption ShowShielded;
@@ -875,8 +874,6 @@ namespace TownOfUs.CustomOption
             Immortal = new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#DAAA5EFF>Immortal</color>");
             ImmortalReviveDuration =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Immortal Revive Duration", 10f, 1f, 25f, 1f, CooldownFormat);
-            ImmortalMeetingRevive =
-                new CustomToggleOption(num++, MultiMenu.crewmate, "Immortal Revives If Reported", false);
 
             Mystic =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#4D99E6FF>Mystic</color>");
