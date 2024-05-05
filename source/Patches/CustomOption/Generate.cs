@@ -595,8 +595,6 @@ namespace TownOfUs.CustomOption
                 PercentFormat);
             VigilanteOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFFF99FF>Vigilante</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
-            HunterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#29AB87FF>Hunter</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
             PoliticianOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#C3D3D4FF>Politician</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
 
