@@ -1256,6 +1256,15 @@ namespace TownOfUs
                         vigi.CorrectKills = kills;
                         vigi.RegenTask();
                     }
+                    else if (CustomGameOptions.BecomeOnVampDeaths == BecomeEnum.Hunter)
+                    {
+                        Role.RoleDictionary.Remove(vhPlayer.PlayerId);
+                        var kills = ((VampireHunter)vh).CorrectKills;
+                        var hunter = new Hunter(vhPlayer);
+                        hunter.CorrectKills = kills;
+                        hunter.RegenTask();
+                        hunter.LastKilled = DateTime.UtcNow;
+                    }
                     else
                     {
                         Role.RoleDictionary.Remove(vhPlayer.PlayerId);
