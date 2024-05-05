@@ -7,6 +7,7 @@ using System.Linq;
 using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using TownOfUs.CrewmateRoles.MedicMod;
+using TownOfUs.CrewmateRoles.ImmortalMod;
 using TownOfUs.Extensions;
 using TownOfUs.Patches;
 using TownOfUs.Roles;
@@ -611,6 +612,12 @@ namespace TownOfUs
                 if (target.Is(ModifierEnum.Bait))
                 {
                     BaitReport(killer, target);
+                }
+
+                if(target.Is(RoleEnum.Immortal))
+                {
+                    Rpc(CustomRPC.ImmortalRevive, target.PlayerId);
+                    Coroutines.Start(CrewmateRoles.ImmortalMod.Coroutine.ImmortalRevive(Role.GetRole<Immortal>(target)));
                 }
 
                 if (target.Is(ModifierEnum.Aftermath))

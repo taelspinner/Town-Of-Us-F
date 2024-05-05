@@ -1028,6 +1028,12 @@ namespace TownOfUs
                             }
 
                         break;
+                    case CustomRPC.ImmortalRevive:
+                        readByte1 = reader.ReadByte();
+                        var immortalPlayer = Utils.PlayerById(readByte1);
+                        var immortalRole = Role.GetRole<Immortal>(immortalPlayer);
+                        Coroutines.Start(global::TownOfUs.CrewmateRoles.ImmortalMod.Coroutine.ImmortalRevive(immortalRole));
+                        break;
                     case CustomRPC.FixAnimation:
                         var player3 = Utils.PlayerById(reader.ReadByte());
                         player3.MyPhysics.ResetMoveState();
