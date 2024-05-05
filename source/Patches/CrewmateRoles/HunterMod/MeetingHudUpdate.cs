@@ -2,7 +2,6 @@ using HarmonyLib;
 using System.Linq;
 using TownOfUs.Roles;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace TownOfUs.CrewmateRoles.HunterMod
 {

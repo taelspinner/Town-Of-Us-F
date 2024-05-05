@@ -36,7 +36,6 @@ using TownOfUs.NeutralRoles.VampireMod;
 using TownOfUs.CrewmateRoles.MayorMod;
 using System.Reflection;
 using TownOfUs.Patches.NeutralRoles;
-using BepInEx.Logging;
 
 namespace TownOfUs
 {
@@ -1197,6 +1196,7 @@ namespace TownOfUs
                         GameOptionsManager.Instance.currentNormalGameOptions.RoleOptions.SetRoleRate(RoleTypes.Shapeshifter, 0, 0);
                         if (CustomGameOptions.AutoAdjustSettings) RandomMap.AdjustSettings(readByte);
                         break;
+
                     case CustomRPC.HunterStalk:
                         var stalker = Utils.PlayerById(reader.ReadByte());
                         var stalked = Utils.PlayerById(reader.ReadByte());

@@ -45,8 +45,8 @@ namespace TownOfUs.CrewmateRoles.HunterMod
     {
         public static bool Prefix(PlayerControl __instance)
         {
-            if (!__instance.Is(RoleEnum.Sheriff)) return true;
-            if (CustomGameOptions.SheriffBodyReport) return true;
+            if (!__instance.Is(RoleEnum.Hunter)) return true;
+            if (CustomGameOptions.HunterBodyReport) return true;
 
             if (AmongUsClient.Instance.IsGameOver) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
@@ -64,6 +64,23 @@ namespace TownOfUs.CrewmateRoles.HunterMod
                     }
                 }
 
+            return false;
+        }
+    }
+
+    [HarmonyPatch(typeof(DeadBody), nameof(DeadBody.OnClick))]
+    public static class DontClick
+    {
+        public static bool Prefix(DeadBody __instance)
+        {
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Hunter)) return true;
+            if (CustomGameOptions.HunterBodyReport) return true;
+
+            if (AmongUsClient.Instance.IsGameOver) return false;
+            if (PlayerControl.LocalPlayer.Data.IsDead) return false;
+
+            var matches = Murder.KilledPlayers.FirstOrDefault(x => x.PlayerId == __instance.ParentId);
+            if (matches != null && matches.KillerId != PlayerControl.LocalPlayer.PlayerId) return true;
             return false;
         }
     }

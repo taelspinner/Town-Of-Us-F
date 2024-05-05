@@ -1,7 +1,5 @@
 ﻿using HarmonyLib;
 using TownOfUs.Modifiers.AssassinMod;
-using TownOfUs.Roles;
-using UnityEngine;
 
 namespace TownOfUs.CrewmateRoles.HunterMod
 {
