@@ -304,6 +304,7 @@ namespace TownOfUs
         public static float DevourCd => Generate.DevourCooldown.Get();
         public static int ScavCorpsesToWin => (int)Generate.ScavCorpsesToWin.Get();
         public static bool ScavImpVision => Generate.ScavengerImpVision.Get();
+        public static bool ScavVent => Generate.ScavengerVent.Get();
         public static float BiteCd => Generate.BiteCooldown.Get();
         public static bool VampImpVision => Generate.VampImpVision.Get();
         public static bool VampVent => Generate.VampVent.Get();
