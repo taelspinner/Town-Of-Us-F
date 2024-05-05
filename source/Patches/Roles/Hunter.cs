@@ -49,9 +49,9 @@ namespace TownOfUs.Roles
             var utcNow = DateTime.UtcNow;
             var timeSpan = utcNow - LastKilled;
             var num = CustomGameOptions.HunterKillCd * 1000f;
-            var flag2 = num - (float) timeSpan.TotalMilliseconds < 0f;
+            var flag2 = num - (float)timeSpan.TotalMilliseconds < 0f;
             if (flag2) return 0;
-            return (num - (float) timeSpan.TotalMilliseconds) / 1000f;
+            return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
         }
 
         public float StalkTimer()

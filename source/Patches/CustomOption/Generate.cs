@@ -126,6 +126,7 @@ namespace TownOfUs.CustomOption
         public static CustomToggleOption HiddenRoles;
         public static CustomToggleOption FirstDeathShield;
         public static CustomToggleOption NeutralEvilWinEndsGame;
+        public static CustomToggleOption GhostsDoTasks;
 
         public static CustomHeaderOption BetterPolusSettings;
         public static CustomToggleOption VentImprovements;
@@ -468,6 +469,7 @@ namespace TownOfUs.CustomOption
         public static CustomToggleOption DoomsayerGuessImpostors;
         public static CustomToggleOption DoomsayerAfterVoting;
         public static CustomNumberOption DoomsayerGuessesToWin;
+        public static CustomToggleOption DoomsayerCantObserve;
 
         public static CustomHeaderOption Scavenger;
         public static CustomNumberOption DevourCooldown;
@@ -576,6 +578,8 @@ namespace TownOfUs.CustomOption
                 PercentFormat);
 
             CrewKillingRoles = new CustomHeaderOption(num++, MultiMenu.crewmate, "Crewmate Killing Roles");
+            HunterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#29AB87FF>Hunter</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
             SheriffOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#FFFF00FF>Sheriff</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             VampireHunterOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B3B3E6FF>Vampire Hunter</color>", 0f, 0f, 100f, 10f,
@@ -840,6 +844,7 @@ namespace TownOfUs.CustomOption
             HiddenRoles = new CustomToggleOption(num++, MultiMenu.main, "Enable Hidden Roles", true);
             FirstDeathShield = new CustomToggleOption(num++, MultiMenu.main, "First Death Shield Next Game", false);
             NeutralEvilWinEndsGame = new CustomToggleOption(num++, MultiMenu.main, "Neutral Evil Win Ends Game", true);
+            GhostsDoTasks = new CustomToggleOption(num++, MultiMenu.main, "Ghosts Do Tasks", true);
 
             TaskTrackingSettings =
                 new CustomHeaderOption(num++, MultiMenu.main, "Task Tracking Settings");
@@ -980,6 +985,19 @@ namespace TownOfUs.CustomOption
             MinAmountOfPlayersInTrap =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Minimum Number Of Roles Required To Trigger Trap", 3, 1, 5, 1);
 
+            Hunter =
+               new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#29AB87FF>Hunter</color>");
+            HunterKillCd =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Hunter Kill Cooldown", 25f, 10f, 40f, 2.5f, CooldownFormat);
+            HunterStalkCd =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Hunter Stalk Cooldown", 10f, 0f, 40f, 2.5f, CooldownFormat);
+            HunterStalkDuration =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Hunter Stalk Duration", 25f, 5f, 40f, 1f, CooldownFormat);
+            HunterStalkUses =
+                new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Stalk Uses", 5, 1, 15, 1);
+            HunterBodyReport =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Hunter Can Report Who They've Killed");
+
             Sheriff =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#FFFF00FF>Sheriff</color>");
             SheriffKillOther =
@@ -1016,7 +1034,7 @@ namespace TownOfUs.CustomOption
             CanStakeRoundOne = new CustomToggleOption(num++, MultiMenu.crewmate, "Can Stake Round One", false);
             SelfKillAfterFinalStake = new CustomToggleOption(num++, MultiMenu.crewmate, "Self Kill On Failure To Kill A Vamp With All Stakes", false);
             BecomeOnVampDeaths =
-                new CustomStringOption(num++, MultiMenu.crewmate, "What Vampire Hunter Becomes On All Vampire Deaths", new[] { "Crewmate", "Sheriff", "Veteran", "Vigilante", "Hunter" });
+                new CustomStringOption(num++, MultiMenu.crewmate, "What Vampire Hunter Becomes On All Vampire Deaths", new[] { "Crewmate", "Sheriff", "Veteran", "Vigilante", "Hunter"});
 
             Veteran =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#998040FF>Veteran</color>");
@@ -1197,6 +1215,7 @@ namespace TownOfUs.CustomOption
             DoomsayerGuessImpostors = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess Impostor Roles", false);
             DoomsayerAfterVoting = new CustomToggleOption(num++, MultiMenu.neutral, "Doomsayer Can Guess After Voting", false);
             DoomsayerGuessesToWin = new CustomNumberOption(num++, MultiMenu.neutral, "Number Of Doomsayer Kills To Win", 3, 1, 5, 1);
+            DoomsayerCantObserve = new CustomToggleOption(num++, MultiMenu.neutral, "(Experienced) Doomsayer can't observe", false);
 
             Executioner =
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C4005FF>Executioner</color>");

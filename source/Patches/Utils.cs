@@ -683,6 +683,32 @@ namespace TownOfUs
                     }
                 }
 
+                if (!CustomGameOptions.GhostsDoTasks)
+                {
+                    if (AmongUsClient.Instance.AmHost)
+                    {
+                        var modded_criteria = Role.ShipStatus_KMPKPPGPNIH.Prefix((LogicGameFlowNormal)GameManager.Instance.LogicFlow);
+                        if (modded_criteria) GameManager.Instance.LogicFlow.CheckEndCriteria();
+                        if (GameManager.Instance.ShouldCheckForGameEnd && target.myTasks.ToArray().Count(x => !x.IsComplete) + GameData.Instance.CompletedTasks < GameData.Instance.TotalTasks)
+                        {
+                            // Host should only process tasks being removed if the game wouldn't have ended otherwise.
+                            for (var i = 0; i < target.myTasks.Count; i++)
+                            {
+                                var playerTask = target.myTasks.ToArray()[i];
+                                GameData.Instance.CompleteTask(target, playerTask.Id);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (var i = 0; i < target.myTasks.Count; i++)
+                        {
+                            var playerTask = target.myTasks.ToArray()[i];
+                            GameData.Instance.CompleteTask(target, playerTask.Id);
+                        }
+                    }
+                }
+
                 if (target.AmOwner)
                 {
                     try
@@ -709,11 +735,14 @@ namespace TownOfUs
                     target.RpcSetScanner(false);
                     var importantTextTask = new GameObject("_Player").AddComponent<ImportantTextTask>();
                     importantTextTask.transform.SetParent(AmongUsClient.Instance.transform, false);
-                    if (!GameOptionsManager.Instance.currentNormalGameOptions.GhostsDoTasks)
+                    if (!CustomGameOptions.GhostsDoTasks)//&& target.myTasks.ToArray().Count(x=>!x.IsComplete)+GameData.Instance.CompletedTasks < GameData.Instance.TotalTasks
                     {
+                        //GameManager.Instance.LogicFlow.CheckEndCriteria();
                         for (var i = 0; i < target.myTasks.Count; i++)
                         {
                             var playerTask = target.myTasks.ToArray()[i];
+                            GameData.Instance.CompleteTask(target, playerTask.Id);
+                            playerTask.Complete();
                             playerTask.OnRemove();
                             Object.Destroy(playerTask.gameObject);
                         }

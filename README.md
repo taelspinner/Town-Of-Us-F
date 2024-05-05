@@ -7,88 +7,38 @@ An Among Us mod that adds a bunch of roles, modifiers and game settings
 
 Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or want to find people to play with!
 
-**Crewmate Roles**
-- [Aurial](#aurial)
-- [Detective](#detective)
-- [Haunter](#haunter)
-- [Investigator](#investigator)
-- [Mystic](#mystic)
-- [Oracle](#oracle)
-- [Seer](#seer)
-- [Snitch](#snitch)
-- [Spy](#spy)
-- [Tagger](#tagger)
-- [Trapper](#trapper)
-- [Sheriff](#sheriff)
-- [Vampire Hunter](#vampire-hunter)
-- [Veteran](#veteran)
-- [Vigilante](#vigilante)
-- [Hunter](#hunter)
-- [Politician](#politician)
-- [Altruist](#altruist)
-- [Medic](#medic)
-- [Engineer](#engineer)
-- [Imitator](#imitator)
-- [Medium](#medium)
-- [Prosecutor](#prosecutor)
-- [Swapper](#swapper)
-- [Transporter](#transporter)
-
-**Neutral Roles**
-- [Amnesiac](#amnesiac)
-- [Guardian Angel](#guardian-angel)
-- [Survivor](#survivor)
-- [Lawyer](#lawyer)
-- [Mercenary](#mercenary)
-- [Doomsayer](#doomsayer)
-- [Executioner](#executioner)
-- [Jester](#jester)
-- [Scavenger](#scavenger)
-- [Phantom](#phantom)
-- [Arsonist](#arsonist)
-- [Juggernaut](#juggernaut)
-- [Plaguebearer](#plaguebearer)
-- [The Glitch](#the-glitch)
-- [Vampire](#vampire)
-- [Werewolf](#werewolf)
-
-**Impostor Roles**
-- [Escapist](#escapist)
-- [Grenadier](#grenadier)
-- [Morphling](#morphling)
-- [Swooper](#swooper)
-- [Venerer](#venerer)
-- [Bomber](#bomber)
-- [Traitor](#traitor)
-- [Warlock](#warlock)
-- [Blackmailer](#blackmailer)
-- [Janitor](#janitor)
-- [Miner](#miner)
-- [Undertaker](#undertaker)
-
-**Modifiers**
-- [Aftermath](#aftermath)
-- [Bait](#bait)
-- [Diseased](#diseased)
-- [Frosty](#frosty)
-- [Multitasker](#multitasker)
-- [Torch](#torch)
-- [Vengeful](#vengeful)
-- [Button Barry](#button-barry)
-- [Flash](#flash)
-- [Giant](#giant)
-- [Radar](#radar)
-- [Lovers](#lovers)
-- [Sleuth](#sleuth)
-- [Tiebreaker](#tiebreaker)
-- [Disperser](#disperser)
-- [Double Shot](#double-shot)
-- [Underdog](#underdog)
-
+| **Impostor Roles**           | **Crewmate Roles**                | **Neutral Roles**               | **Modifiers**                |
+|:---------------------------:|:---------------------------------:|:-------------------------------:|:---------------------------:|
+| [Blackmailer](#blackmailer)  | [Altruist](#altruist)              | [Amnesiac](#amnesiac)            | [Aftermath](#aftermath)     |
+| [Bomber](#bomber)            | [Aurial](#aurial)                  | [Arsonist](#arsonist)            | [Bait](#bait)               |
+| [Escapist](#escapist)        | [Detective](#detective)            | [Doomsayer](#doomsayer)          | [Button Barry](#button-barry)|
+| [Grenadier](#grenadier)      | [Engineer](#engineer)              | [Executioner](#executioner)      | [Diseased](#diseased)       |
+| [Janitor](#janitor)          | [Haunter](#haunter)                | [Guardian Angel](#guardian-angel)| [Disperser](#disperser)     |
+| [Miner](#miner)              | [Hunter](#hunter)                  | [Jester](#jester)                | [Double Shot](#double-shot) |
+| [Morphling](#morphling)      | [Imitator](#imitator)              | [Juggernaut](#juggernaut)        | [Flash](#flash)             |
+| [Swooper](#swooper)          | [Investigator](#investigator)      | [Lawyer](#lawyer)                | [Frosty](#frosty)           |
+| [Traitor](#traitor)          | [Medic](#medic)                    | [Mercenary](#mercenary)          | [Giant](#giant)             |
+| [Undertaker](#undertaker)    | [Medium](#medium)                  | [Phantom](#phantom)              | [Lovers](#lovers)           |
+| [Venerer](#venerer)          | [Mystic](#mystic)                  | [Plaguebearer](#plaguebearer)    | [Multitasker](#multitasker) |
+| [Warlock](#warlock)          | [Oracle](#oracle)                  | [Scavenger](#scavenger)          | [Radar](#radar)             |
+|                             | [Politician](#politician)          | [Survivor](#survivor)            | [Sleuth](#sleuth)           |
+|                             | [Prosecutor](#prosecutor)          | [The Glitch](#the-glitch)        | [Tiebreaker](#tiebreaker)   |
+|                             | [Seer](#seer)                      | [Vampire](#vampire)              | [Torch](#torch)             |
+|                             | [Sheriff](#sheriff)                | [Werewolf](#werewolf)            | [Underdog](#underdog)       |
+|                             | [Snitch](#snitch)                  |                                 | [Vengeful](#vengeful)        |
+|                             | [Spy](#spy)                        |                                 |                             |
+|                             | [Swapper](#swapper)                |                                 |                             |
+|                             | [Tagger](#tagger  )                |                                 |                             |
+|                             | [Trapper](#trapper)                |                                 |                             |
+|                             | [Transporter](#transporter)        |                                 |                             |
+|                             | [Vampire Hunter](#vampire-hunter)  |                                 |                             |
+|                             | [Veteran](#veteran)                |                                 |                             |
+|                             | [Vigilante](#vigilante)            |                                 |                             |
 -----------------------
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2024.3.5s | v5.4.0 | ;) |
 | 2024.3.5s | v5.3.3 | ;) |
 | 2024.3.5s | v5.3.2 | ;) |
 | 2024.3.5s | v5.3.1 | ;) |
@@ -101,6 +51,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 | 2023.7.12s & 2023.7.12e | v5.2.2 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.2.1 | ;) |
 | 2023.7.12s & 2023.7.12e | v5.1.1 | ;) |
+| 2024.3.5s & 2024.3.5e | v5.0.4 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.4/ToU.v5.0.4.zip) |
 | 2023.11.28s & 2023.11.28e | v5.0.3 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.3/ToU.v5.0.3.zip) |
 | 2023.7.12s & 2023.7.12e | v5.0.2 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.2/ToU.v5.0.2.zip) |
 | 2023.6.13s & 2023.6.13e | v5.0.1 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.1/ToU.v5.0.1.zip) |
@@ -245,6 +196,17 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <ul> <li>Added some new costumes, removed some others</li> </ul>
   <ul> <li>Bug Fix: Improved role selection randomness</li> </ul>
   <ul> <li>Optimisation: Improved task text for some roles</li> </ul>
+  </details>
+  <details>
+  <summary> v5.0.4 </summary>
+  <ul> <li>Compatibility with the new Among Us version v2024.3.5</li> </ul>
+  <ul> <li>Added ghosts ignore tasks option</li> </ul>
+  <ul> <li>Hide vanilla roles in hudstring and its tab, courtesy of @whichtwix</li> </ul>
+  <ul> <li>April fools options, courtesy of @whichtwix</li> </ul>
+  <ul> <li>Vampire Remains Vampire When Remembered, courtesy of @Loons-Loons/@Loonie-Toons</li> </ul>
+  <ul> <li>Hats system standardised to Unity Addressables</li> </ul>
+  <ul> <li>New Role: Hunter, courtesy of @fariparedes</li> </ul>
+  <ul> <li>Modified updater, courtesy of @whichtwix</li> </ul>
   </details>
   <details>
   <summary> v5.0.3 </summary>
@@ -874,11 +836,17 @@ If the mod does not work and the version of Among Us that you see in the main me
 \
 **11. Click on Enter.**\
 \
-**12. Copy or move the contents of the Town Of Us zip file into the AmongUs folder.**\
+**12. Copy all the Among Us files and put them in a new folder on your desktop or anywhere else.**\
 \
-**13. Finally, launch Among Us from Epic Games library.**\
+**13. Paste the contents of the town of us zip in the new folder.**\
 \
-A first launch may take up to 5 minutes, so be patient if it doesn't launch immediately.<br/>
+**14. Download the exe file [here](https://github.com/whichtwix/EpicGamesStarter/releases/latest) and place it in your among us folder.**\
+\
+**15. Open the ```EpicGamesStarter.exe``` by double clicking it to start the game in the copy.**\
+\
+**16. Add the folder as a exclusion for any antivirus you have and for windows defender.**\
+\
+A first launch may take awhile as it sets up and downloads prerequisites, so be patient if it doesn't launch immediately.<br/>
 <br/>
 
 If the mod does not work and the version of Among Us that you see in the main menu, under the town of us logo or bottom left, does not correspond to the version indicated in the [releases table](#releases) above please do the following to get the correct version:
@@ -1087,6 +1055,23 @@ However, this is done so in a random order, not stating who entered the trap, no
 | Maximum Number of Traps Per Game | The number of traps they can place in a game | Number | 5 |
 | Trap Size | The size of each trap | Factor | 0.25x |
 | Minimum Number of Roles required to Trigger Trap | The number of players that must enter the trap for it to be triggered | Number | 3 |
+
+-----------------------
+## Hunter
+### **Team: Crewmates**
+
+The Hunter is a Crewmate Killing role with the ability to track players and execute them if they do anything suspicious.\ 
+Unlike the Sheriff, the Hunter does not die if they kill an innocent player,\
+however the Hunter may only execute players who have given them probable cause.\
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Hunter | The percentage probability of the Hunter appearing | Percentage | 0% |
+| Hunter Kill Cooldown | The cooldown of the Hunter's Kill button | Number | 25 |
+| Hunter Stalk Cooldown | The cooldown of the Hunter's Stalk button | Number | 10 |
+| Hunter Stalk Duration | The duration of the Hunter's Stalk | Number | 25 |
+| Maximum Stalk Uses | Maximum number of times a Hunter can Stalk | Number | 5 |
+| Hunter Can Report Who They've Killed |  Whether the Hunter is able to report their own kills | Toggle | True |
 
 -----------------------
 ## Sheriff
@@ -1462,6 +1447,7 @@ They have an additional observe ability that hints towards certain player's role
 | Doomsayer Guess Impostors  | Whether the Doomsayer can Guess Impostor roles | Toggle | False |
 | Doomsayer Can Guess After Voting  | Whether the Doomsayer can Guess after voting | Toggle | False |
 | Number Of Doomsayer Kills To Win | The amount of kills in order for the Doomsayer to win | Number | 3 |
+| (Experienced) Doomsayer Can't Observe | The Doomsayer doesn't have the observe feature | Toggle | False |
 
 -----------------------
 ## Executioner

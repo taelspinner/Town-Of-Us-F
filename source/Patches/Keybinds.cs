@@ -27,7 +27,7 @@ namespace TownOfUs
         }
 
         private static int RegisterBind(this UserData self, string name, string description, int elementIdentifierId = -1, int category = 0, InputActionType type = InputActionType.Button)
-        {
+    {
             self.AddAction(category);
             var action = self.GetAction(self.actions.Count - 1)!;
 
@@ -38,7 +38,7 @@ namespace TownOfUs
             action.userAssignable = true;
 
             var map = new ActionElementMap
-            {
+        {
                 _elementIdentifierId = elementIdentifierId,
                 _actionId = action.id,
                 _elementType = ControllerElementType.Button,
@@ -46,7 +46,7 @@ namespace TownOfUs
                 _modifierKey1 = ModifierKey.None,
                 _modifierKey2 = ModifierKey.None,
                 _modifierKey3 = ModifierKey.None
-            };
+        };
             self.keyboardMaps[0].actionElementMaps.Add(map);
             self.joystickMaps[0].actionElementMaps.Add(map);
 
@@ -97,13 +97,13 @@ namespace TownOfUs
                 if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle +"))
                 {
                     (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item2.GetComponent<PassiveButton>().OnClick.Invoke();
-                }
+            }
                 else if (ReInput.players.GetPlayer(0).GetButtonDown("ToU cycle -"))
                 {
                     (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item1.GetComponent<PassiveButton>().OnClick.Invoke();
-                }
+        }
                 else if (ReInput.players.GetPlayer(0).GetButtonDown("ToU confirm"))
-                {
+        {
                     (guesser as IGuesser).Buttons[HighlightedPlayer.TargetPlayerId].Item3.GetComponent<PassiveButton>().OnClick.Invoke();
                 }
             }
@@ -114,7 +114,7 @@ namespace TownOfUs
         [HarmonyPostfix]
 
         public static void Reset()
-        {
+            {
             HighlightedPlayer = null;
             PlayerIndex = 0;
         }

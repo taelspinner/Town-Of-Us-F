@@ -109,6 +109,14 @@ namespace TownOfUs.Roles
 
                 TransportList.backgroundImage.enabled = false;
 
+                foreach (var rend in TransportList.chatScreen
+                    .GetComponentsInChildren<SpriteRenderer>())
+                    if (rend.name == "SendButton" || rend.name == "QuickChatButton")
+                    {
+                        rend.enabled = false;
+                        rend.gameObject.SetActive(false);
+                    }
+
                 foreach (var bubble in TransportList.chatBubblePool.activeChildren)
                 {
                     bubble.enabled = false;
@@ -208,7 +216,8 @@ namespace TownOfUs.Roles
                         else
                         {
                             TransportList.Toggle();
-                            TransportList.SetVisible(false);
+                            TransportList.gameObject.SetActive(false);
+                            TransportList.DestroyImmediate();
                             TransportList = null;
                             PressedButton = false;
                             TransportPlayer1 = null;
@@ -242,6 +251,7 @@ namespace TownOfUs.Roles
                         PressedButton = false;
                         TransportList.Toggle();
                         TransportList.gameObject.SetActive(false);
+                        TransportList.DestroyImmediate();
                         TransportList = null;
 
                         TransportPlayer2 = player;

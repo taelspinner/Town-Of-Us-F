@@ -1,10 +1,8 @@
-﻿using Hazel;
-using InnerNet;
+﻿using InnerNet;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TownOfUs.CrewmateRoles.MedicMod;
 using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using TownOfUs.Extensions;
@@ -123,9 +121,7 @@ namespace TownOfUs.Roles
             }
 
             if (HudManager.Instance?.Chat != null)
-            {
                 foreach (var bubble in HudManager.Instance.Chat.chatBubblePool.activeChildren)
-                {
                     if (bubble.Cast<ChatBubble>().NameText != null &&
                         Player.Data.PlayerName == bubble.Cast<ChatBubble>().NameText.text)
                     {
@@ -727,7 +723,7 @@ namespace TownOfUs.Roles
                             rend.enabled = false;
                             rend.gameObject.SetActive(false);
                         }
-                    }
+                    }*/
 
                     foreach (var bubble in __gInstance.MimicList.chatBubblePool.activeChildren)
                     {
@@ -738,7 +734,11 @@ namespace TownOfUs.Roles
                     __gInstance.MimicList.chatBubblePool.activeChildren.Clear();
 
                     foreach (var player in PlayerControl.AllPlayerControls.ToArray().Where(x =>
+                        x?.Data != null &&
+                        x?.Data != null &&
+
                         x != null &&
+
                         x != PlayerControl.LocalPlayer &&
                         !x.Data.Disconnected))
                     {
