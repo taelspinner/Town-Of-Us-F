@@ -2252,8 +2252,13 @@
     },
     {
       "id": "hats0496",
-      "name": "Sendit hat",
-      "artist": "Sarinjin"
+      "name": "Vulture",
+      "artist": "Picatratus"
+    },
+    {
+      "id": "hats0497",
+      "name": "Painted Mask",
+      "artist": "Picatratus"
     },
     {
       "id": "misc0000",
@@ -2269,16 +2274,6 @@
       "id": "misc0002",
       "name": "wrench_f hat",
       "artist": "TheLastShaymin"
-    },
-    {
-      "id": "misc0003",
-      "name": "vince_foot_front hat",
-      "artist": "Ressnie"
-    },
-    {
-      "id": "misc0004",
-      "name": "vince_front hat",
-      "artist": "Ressnie"
     },
     /*{
       "id": "misc0005",
@@ -2504,11 +2499,6 @@
       "id": "standard0003",
       "name": "squirrel hat",
       "artist": "TheLastShaymin"
-    },
-    {
-      "id": "standard0004",
-      "name": "shiki hat",
-      "artist": "Ressnie"
     },
     /*{
       "id": "standard0005",

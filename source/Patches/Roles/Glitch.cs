@@ -674,9 +674,9 @@ namespace TownOfUs.Roles
                     __gInstance.MimicList.SetVisible(true);
                     __gInstance.MimicList.Toggle();
 
-                    var aspect = __gInstance.MimicList.gameObject.AddComponent<AspectPosition>();
-                    aspect.Alignment = AspectPosition.EdgeAlignments.Center;
-                    aspect.AdjustPosition();
+                    AspectPosition newAspect = __gInstance.MimicList.gameObject.AddComponent<AspectPosition>();
+                    newAspect.Alignment = AspectPosition.EdgeAlignments.Center;
+                    newAspect.AdjustPosition();
 
                     __gInstance.MimicList.GetPooledBubble().enabled = false;
                     __gInstance.MimicList.GetPooledBubble().gameObject.SetActive(false);
@@ -684,11 +684,11 @@ namespace TownOfUs.Roles
                     __gInstance.MimicList.freeChatField.enabled = false;
                     __gInstance.MimicList.freeChatField.gameObject.SetActive(false);
 
-                    __gInstance.MimicList.banButton.MenuButton.enabled = false;
-                    __gInstance.MimicList.banButton.MenuButton.gameObject.SetActive(false);
+                    __gInstance.MimicList.quickChatButton.enabled = false;
+                    __gInstance.MimicList.quickChatButton.gameObject.SetActive(false);
 
-                    __gInstance.MimicList.freeChatField.charCountText.enabled = false;
-                    __gInstance.MimicList.freeChatField.charCountText.gameObject.SetActive(false);
+                    __gInstance.MimicList.banButton.enabled = false;
+                    __gInstance.MimicList.banButton.gameObject.SetActive(false);
 
                     __gInstance.MimicList.openKeyboardButton.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     __gInstance.MimicList.openKeyboardButton.Destroy();

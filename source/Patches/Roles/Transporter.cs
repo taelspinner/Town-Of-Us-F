@@ -83,13 +83,12 @@ namespace TownOfUs.Roles
                 TransportList.SetVisible(true);
                 TransportList.Toggle();
 
-                var aspect = TransportList.gameObject.AddComponent<AspectPosition>();
-                aspect.Alignment = AspectPosition.EdgeAlignments.Center;
-                aspect.AdjustPosition();
+                AspectPosition newAspect = TransportList.gameObject.AddComponent<AspectPosition>();
+                newAspect.Alignment = AspectPosition.EdgeAlignments.Center;
+                newAspect.AdjustPosition();
 
                 TransportList.GetPooledBubble().enabled = false;
                 TransportList.GetPooledBubble().gameObject.SetActive(false);
-
 
                 TransportList.freeChatField.enabled = false;
                 TransportList.freeChatField.gameObject.SetActive(false);
@@ -97,8 +96,8 @@ namespace TownOfUs.Roles
                 TransportList.banButton.MenuButton.enabled = false;
                 TransportList.banButton.MenuButton.gameObject.SetActive(false);
 
-                TransportList.freeChatField.charCountText.enabled = false;
-                TransportList.freeChatField.charCountText.gameObject.SetActive(false);
+                TransportList.quickChatButton.enabled = false;
+                TransportList.quickChatButton.gameObject.SetActive(false);
 
                 TransportList.openKeyboardButton.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 TransportList.openKeyboardButton.Destroy();
@@ -115,7 +114,7 @@ namespace TownOfUs.Roles
                     {
                         rend.enabled = false;
                         rend.gameObject.SetActive(false);
-                    }*/
+                    }
 
                 foreach (var bubble in TransportList.chatBubblePool.activeChildren)
                 {
@@ -160,7 +159,7 @@ namespace TownOfUs.Roles
                 {
                     TransportList.Toggle();
                     TransportList.gameObject.SetActive(false);
-                    TransportList.gameObject.DestroyImmediate();
+                    TransportList.DestroyImmediate();
                     TransportList = null;
                     PressedButton = false;
                     TransportPlayer1 = null;

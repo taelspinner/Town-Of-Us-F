@@ -20,10 +20,10 @@ namespace TownOfUs
                 "<size=2><color=#00FF00FF>TownOfUs v" + TownOfUs.VersionString + "</color>" + TownOfUs.VersionTag + "\n" +
                 $"Ping: {AmongUsClient.Instance?.Ping}ms\n" +
                 (!MeetingHud.Instance
-                    ? "<color=#00FF00FF>Modded By: Donners &</color>\n" +
-                    "<color=#00FF00FF>MyDragonBreath</color>\n" : "") +
-                (AmongUsClient.Instance?.GameState != InnerNet.InnerNetClient.GameStates.Started
-                    ? "<color=#00FF00FF>Formerly: Slushiegoose & Polus.gg</color>\n" +
+                    ? "<color=#00FF00FF>Modded By: Tael</color>\n" : "") +
+                (AmongUsClient.Instance.GameState != InnerNet.InnerNetClient.GameStates.Started
+                    ? "<color=#00FF00FF>Formerly: Donners & MyDragonBreath</color>\n" +
+                    "<color=#00FF00FF>Slushiegoose & Polus.gg</color>\n" +
                      $"Host: {host?.PlayerName}" : "") +
                     "</size>";
         }
