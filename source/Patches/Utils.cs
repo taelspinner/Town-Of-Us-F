@@ -744,7 +744,8 @@ namespace TownOfUs
                     {
                     }
 
-                    DestroyableSingleton<HudManager>.Instance.KillOverlay.ShowKillAnimation(killer.Data, data);
+                    if(target.Is(RoleEnum.Immortal) && target.AmOwner) DestroyableSingleton<HudManager>.Instance.KillOverlay.ShowKillAnimation(data, data);
+                    else DestroyableSingleton<HudManager>.Instance.KillOverlay.ShowKillAnimation(killer.Data, data);
                     DestroyableSingleton<HudManager>.Instance.ShadowQuad.gameObject.SetActive(false);
                     target.nameText().GetComponent<MeshRenderer>().material.SetInt("_Mask", 0);
                     target.RpcSetScanner(false);
@@ -777,7 +778,7 @@ namespace TownOfUs
                     target.myTasks.Insert(0, importantTextTask);
                 }
 
-                if (jumpToBody && (!target.Is(RoleEnum.Immortal) || !target.AmOwner))
+                if (jumpToBody)
                 {
                     killer.MyPhysics.StartCoroutine(killer.KillAnimations.Random().CoPerformKill(killer, target));
                 }
