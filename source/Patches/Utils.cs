@@ -46,7 +46,28 @@ namespace TownOfUs
 
         public static void Unmorph(PlayerControl player)
         {
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal))
+            {
+                DoCamouflage(player);
+                return;
+            }
             if (!(PlayerControl.LocalPlayer.Is(RoleEnum.Aurial) && !Role.GetRole<Aurial>(PlayerControl.LocalPlayer).NormalVision)) player.SetOutfit(CustomPlayerOutfitType.Default);
+        }
+
+        public static void DoCamouflage(PlayerControl player)
+        {
+            player.SetOutfit(CustomPlayerOutfitType.Camouflage, new GameData.PlayerOutfit()
+            {
+                ColorId = player.GetDefaultOutfit().ColorId,
+                HatId = "",
+                SkinId = "",
+                VisorId = "",
+                PlayerName = " ",
+                PetId = ""
+            });
+            PlayerMaterial.SetColors(Color.grey, player.myRend());
+            player.nameText().color = Color.clear;
+            player.cosmetics.colorBlindText.color = Color.clear;
         }
 
         public static void Camouflage()
@@ -58,19 +79,7 @@ namespace TownOfUs
                     player.GetCustomOutfitType() != CustomPlayerOutfitType.Swooper &&
                     player.GetCustomOutfitType() != CustomPlayerOutfitType.PlayerNameOnly)
                 {
-                    player.SetOutfit(CustomPlayerOutfitType.Camouflage, new GameData.PlayerOutfit()
-                    {
-                        ColorId = player.GetDefaultOutfit().ColorId,
-                        HatId = "",
-                        SkinId = "",
-                        VisorId = "",
-                        PlayerName = " ",
-                        PetId = ""
-                    });
-                    PlayerMaterial.SetColors(Color.grey, player.myRend());
-                    player.nameText().color = Color.clear;
-                    player.cosmetics.colorBlindText.color = Color.clear;
-                  
+                    DoCamouflage(player);
                 }
             }
         }
