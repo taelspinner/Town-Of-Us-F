@@ -46,7 +46,7 @@ namespace TownOfUs
 
         public static void Unmorph(PlayerControl player)
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 DoCamouflage(player);
                 return;
@@ -86,7 +86,7 @@ namespace TownOfUs
 
         public static void UnCamouflage()
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal)) return;
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && !PlayerControl.LocalPlayer.Data.IsDead) return;
             foreach (var player in PlayerControl.AllPlayerControls) Unmorph(player);
         }
 
@@ -1301,6 +1301,10 @@ namespace TownOfUs
             {
                 var chameleon = Role.GetRole<Chameleon>(PlayerControl.LocalPlayer);
                 chameleon.LastSwooped = DateTime.UtcNow;
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && PlayerControl.LocalPlayer.Data.IsDead && !CamouflageUnCamouflage.CommsEnabled)
+            {
+                Utils.UnCamouflage();
             }
             #endregion
             #region NeutralRoles
