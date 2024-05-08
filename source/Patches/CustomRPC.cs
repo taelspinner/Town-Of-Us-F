@@ -72,6 +72,9 @@ namespace TownOfUs
         Bless,
         Camouflage,
         SnitchCultistReveal,
+        HunterStalk,
+        HunterCatchPlayer,
+        Retribution,
         UpdateImitator,
 
         BypassKill,
@@ -92,6 +95,8 @@ namespace TownOfUs
         RemoveAllBodies,
         CheckMurder,
 
-        SubmergedFixOxygen
+        SubmergedFixOxygen,
+
+        ContentAddition
     }
 }
