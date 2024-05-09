@@ -74,6 +74,7 @@ namespace TownOfUs
         public static int DoomsayerOn => (int)Generate.DoomsayerOn.Get();
         public static int VampireOn => (int)Generate.VampireOn.Get();
         public static int VampireHunterOn => (int)Generate.VampireHunterOn.Get();
+        public static int FanaticOn => (int)Generate.FanaticOn.Get();
         public static int ProsecutorOn => (int)Generate.ProsecutorOn.Get();
         public static int WarlockOn => (int)Generate.WarlockOn.Get();
         public static int OracleOn => (int)Generate.OracleOn.Get();
@@ -306,6 +307,12 @@ namespace TownOfUs
         public static int MaxVampiresPerGame => (int)Generate.MaxVampiresPerGame.Get();
         public static bool CanBiteNeutralBenign => Generate.CanBiteNeutralBenign.Get();
         public static bool CanBiteNeutralEvil => Generate.CanBiteNeutralEvil.Get();
+        public static float FanaticKillCd => Generate.FanaticKillCooldown.Get();
+        public static bool FanaticImpVision => Generate.FanaticImpVision.Get();
+        public static bool FanaticVent => Generate.FanaticVent.Get();
+        public static bool NewFanaticCanAssassin => Generate.NewFanaticCanAssassin.Get();
+        public static bool CanConvertNeutralBenign => Generate.CanConvertNeutralBenign.Get();
+        public static bool CanConvertNeutralEvil => Generate.CanConvertNeutralEvil.Get();
         public static float StakeCd => Generate.StakeCooldown.Get();
         public static int MaxFailedStakesPerGame => (int)Generate.MaxFailedStakesPerGame.Get();
         public static bool CanStakeRoundOne => Generate.CanStakeRoundOne.Get();

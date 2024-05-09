@@ -23,6 +23,7 @@ namespace TownOfUs.Roles
         public static bool NobodyWins;
         public static bool SurvOnlyWins;
         public static bool VampireWins;
+        public static bool FanaticsWin;
 
         public List<KillButton> ExtraButtons = new List<KillButton>();
 
@@ -200,6 +201,28 @@ namespace TownOfUs.Roles
             VampireWins = true;
 
             Utils.Rpc(CustomRPC.VampireWin);
+        }
+        public static void FanaticWin()
+        {
+            foreach (var jest in GetRoles(RoleEnum.Jester))
+            {
+                var jestRole = (Jester)jest;
+                if (jestRole.VotedOut) return;
+            }
+            foreach (var exe in GetRoles(RoleEnum.Executioner))
+            {
+                var exeRole = (Executioner)exe;
+                if (exeRole.TargetVotedOut) return;
+            }
+            foreach (var doom in GetRoles(RoleEnum.Doomsayer))
+            {
+                var doomRole = (Doomsayer)doom;
+                if (doomRole.WonByGuessing) return;
+            }
+
+            FanaticsWin = true;
+
+            Utils.Rpc(CustomRPC.FanaticsWin);
         }
 
         internal static bool NobodyEndCriteria(LogicGameFlowNormal __instance)

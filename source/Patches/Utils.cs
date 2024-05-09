@@ -302,6 +302,11 @@ namespace TownOfUs
                             var ww = Role.GetRole<Werewolf>(player);
                             ww.LastKilled = DateTime.UtcNow;
                         }
+                        else if (player.Is(RoleEnum.Fanatic))
+                        {
+                            var fan = Role.GetRole<Fanatic>(player);
+                            fan.LastKilled = DateTime.UtcNow;
+                        }
                         RpcMurderPlayer(player, target);
                         abilityUsed = true;
                         fullCooldownReset = true;
@@ -359,6 +364,11 @@ namespace TownOfUs
                 {
                     var ww = Role.GetRole<Werewolf>(player);
                     ww.LastKilled = DateTime.UtcNow;
+                }
+                else if (player.Is(RoleEnum.Fanatic))
+                {
+                    var fan = Role.GetRole<Fanatic>(player);
+                    fan.LastKilled = DateTime.UtcNow;
                 }
                 RpcMurderPlayer(player, target);
                 abilityUsed = true;
