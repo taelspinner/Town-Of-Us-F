@@ -1361,9 +1361,6 @@ namespace TownOfUs
                             ((Hunter)playerRole).UsesLeft = newUses;
                         }
                         break;
-                }
-            }
-        }
                     case CustomRPC.Indoctrinate:
                         var leader = Utils.PlayerById(reader.ReadByte());
                         var followerByte = reader.ReadByte();

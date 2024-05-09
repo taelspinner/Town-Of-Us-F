@@ -146,11 +146,11 @@ namespace TownOfUs.Roles
                     UnityEngine.Object.Destroy(engineerRole.UsesText);
                 }
 
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Tagger))
                 {
-                    var trackerRole = GetRole<Tracker>(PlayerControl.LocalPlayer);
-                    trackerRole.TrackerArrows.Values.DestroyAll();
-                    trackerRole.TrackerArrows.Clear();
+                    var trackerRole = GetRole<Tagger>(PlayerControl.LocalPlayer);
+                    trackerRole.TaggerArrows.Values.DestroyAll();
+                    trackerRole.TaggerArrows.Clear();
                     UnityEngine.Object.Destroy(trackerRole.UsesText);
                 }
 
