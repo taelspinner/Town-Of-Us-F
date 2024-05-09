@@ -40,6 +40,9 @@ namespace TownOfUs.Roles
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
                     (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
             {
+                var vampsAlives = PlayerControl.AllPlayerControls.ToArray()
+                    .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(RoleEnum.Vampire)).ToList();
+                if (vampsAlives.Count == 0) return false;
                 VampWin();
                 Utils.EndGame();
                 return false;
