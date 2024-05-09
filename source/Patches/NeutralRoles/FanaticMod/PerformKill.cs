@@ -50,7 +50,7 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                     role.LastKilled = DateTime.UtcNow;
                     role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.FanaticKillCd);
                 }
-                else
+                else if (!indoctrinate[3])
                 {
                     role.LastKilled = DateTime.UtcNow;
                 }
