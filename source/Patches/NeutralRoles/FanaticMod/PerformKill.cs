@@ -50,9 +50,13 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                     role.LastKilled = DateTime.UtcNow;
                     role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.FanaticKillCd);
                 }
-                else
+                else if (indoctrinate[0])
                 {
                     role.LastKilled = DateTime.UtcNow;
+                }
+                else if (indoctrinate[5] || (indoctrinate[4] && !canIndoctrinate))
+                {
+                    role.LastKilled = role.LastKilled.AddSeconds(-role.KillTimer() + 10);
                 }
                 return false;
             }
@@ -107,6 +111,11 @@ namespace TownOfUs.NeutralRoles.FanaticMod
             {
                 role.LastKilled = DateTime.UtcNow;
                 role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.FanaticKillCd);
+            }
+            else if (interact[5] == true)
+            {
+                role.LastKilled = DateTime.UtcNow;
+                role.LastKilled = role.LastKilled.AddSeconds(-role.KillTimer() + 10);
             }
             return false;
         }

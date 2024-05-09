@@ -107,6 +107,8 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <summary> v5.4.3 </summary>
   <ul> <li>New Role: Fanatic</li> </ul>
   <ul> <li>Bug Fix: Vampire can no longer win when killed by impostor in final two</li> </ul>
+  <ul> <li>Bug Fix: The Hunter's Stalk ability button no longer sticks around when they are converted to a Vampire</li> </ul>
+  <ul> <li>Bug Fix: Detective's crime scenes no longer stick around when they are converted to a Vampire</li> </ul>
   </details>
   <details>
   <summary> v5.4.0 </summary>

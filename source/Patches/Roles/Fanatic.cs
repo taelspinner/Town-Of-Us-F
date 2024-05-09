@@ -8,6 +8,7 @@ using TownOfUs.CrewmateRoles.TrapperMod;
 using TownOfUs.Extensions;
 using TownOfUs.Patches.ScreenEffects;
 using TownOfUs.Roles.Modifiers;
+using UnityEngine;
 
 namespace TownOfUs.Roles
 {
@@ -192,6 +193,10 @@ namespace TownOfUs.Roles
                 {
                     var detecRole = GetRole<Detective>(PlayerControl.LocalPlayer);
                     detecRole.ExamineButton.gameObject.SetActive(false);
+                    foreach (GameObject scene in detecRole.CrimeScenes)
+                    {
+                        UnityEngine.Object.Destroy(scene);
+                    }
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
@@ -212,6 +217,13 @@ namespace TownOfUs.Roles
                 {
                     var gaRole = GetRole<GuardianAngel>(PlayerControl.LocalPlayer);
                     UnityEngine.Object.Destroy(gaRole.UsesText);
+                }
+
+                if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
+                {
+                    var hunterRole = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
+                    hunterRole.StalkButton.gameObject.SetActive(false);
+                    UnityEngine.Object.Destroy(hunterRole.UsesText);
                 }
             }
 
