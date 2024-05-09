@@ -20,10 +20,16 @@ namespace TownOfUs.NeutralRoles.FanaticMod
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Fanatic)) return;
             var role = Role.GetRole<Fanatic>(PlayerControl.LocalPlayer);
 
+            var notFanatic = PlayerControl.AllPlayerControls
+                .ToArray()
+                .Where(x => !x.Is(RoleEnum.Fanatic) || (Role.GetRole<Fanatic>(x).WasConverted && !role.WasConverted && CustomGameOptions.FanaticLeaderCanKillFollowers))
+                .ToList();
+
             __instance.KillButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
             __instance.KillButton.SetCoolDown(role.KillTimer(), CustomGameOptions.FanaticKillCd);
+            Utils.SetTarget(ref role.ClosestPlayer, __instance.KillButton, targets: notFanatic);
 
             if (role.WasConverted) return;
 
@@ -40,11 +46,6 @@ namespace TownOfUs.NeutralRoles.FanaticMod
             role.IndoctrinateButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-
-            var notFanatic = PlayerControl.AllPlayerControls
-                .ToArray()
-                .Where(x => !x.Is(RoleEnum.Fanatic))
-                .ToList();
 
             if (role.ConvertingPlayer != null)
             {
@@ -68,12 +69,16 @@ namespace TownOfUs.NeutralRoles.FanaticMod
             var renderer = role.IndoctrinateButton.graphic;
             if (role.ConvertingPlayer == null && aliveFanatics.Count == 1)
             {
+                renderer.color = Palette.EnabledColor;
+                renderer.material.SetFloat("_Desat", 0f);
                 Utils.SetTarget(ref role.ClosestPlayer, role.IndoctrinateButton, GameOptionsData.KillDistances[GameOptionsManager.Instance.currentNormalGameOptions.KillDistance], notFanatic);
                 role.IndoctrinateButton.SetCoolDown(role.KillTimer(), CustomGameOptions.FanaticKillCd);
             }
             else
             {
-                role.IndoctrinateButton.SetCoolDown(0f, 1f);
+                renderer.color = Palette.DisabledClear;
+                renderer.material.SetFloat("_Desat", 1f);
+                role.IndoctrinateButton.SetCoolDown(0f, CustomGameOptions.FanaticKillCd);
             }
         }
     }

@@ -60,6 +60,9 @@ namespace TownOfUs.Roles
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
                     (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
             {
+                var fanaticsAlive = PlayerControl.AllPlayerControls.ToArray()
+                    .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(RoleEnum.Fanatic)).ToList();
+                if (fanaticsAlive.Count == 0) return false;
                 FanaticWin();
                 Utils.EndGame();
                 return false;
@@ -226,7 +229,12 @@ namespace TownOfUs.Roles
             }
 
             if (CustomGameOptions.NewFanaticCanAssassin) new Assassin(newFanatic);
+            ConvertingPlayer = null;
+        }
+        internal override bool RoleCriteria()
+        {
+            if (RoleType == RoleEnum.Fanatic && PlayerControl.LocalPlayer.Is(RoleEnum.Fanatic)) return true;
+            return false;
         }
     }
-}
 }

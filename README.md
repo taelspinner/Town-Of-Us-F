@@ -13,16 +13,16 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 | [Bomber](#bomber)            | [Aurial](#aurial)                  | [Arsonist](#arsonist)            | [Bait](#bait)               |
 | [Escapist](#escapist)        | [Detective](#detective)            | [Doomsayer](#doomsayer)          | [Button Barry](#button-barry)|
 | [Grenadier](#grenadier)      | [Engineer](#engineer)              | [Executioner](#executioner)      | [Diseased](#diseased)       |
-| [Janitor](#janitor)          | [Haunter](#haunter)                | [Guardian Angel](#guardian-angel)| [Disperser](#disperser)     |
-| [Miner](#miner)              | [Hunter](#hunter)                  | [Jester](#jester)                | [Double Shot](#double-shot) |
-| [Morphling](#morphling)      | [Imitator](#imitator)              | [Juggernaut](#juggernaut)        | [Flash](#flash)             |
-| [Swooper](#swooper)          | [Investigator](#investigator)      | [Phantom](#phantom)              | [Frosty](#frosty)           |
-| [Traitor](#traitor)          | [Mayor](#mayor)                    | [Plaguebearer](#plaguebearer)    | [Giant](#giant)             |
-| [Undertaker](#undertaker)    | [Medic](#medic)                    | [Survivor](#survivor)            | [Lovers](#lovers)           |
-| [Venerer](#venerer)          | [Medium](#medium)                  | [The Glitch](#the-glitch)        | [Multitasker](#multitasker)|
-| [Warlock](#warlock)          | [Mystic](#mystic)                  | [Vampire](#vampire)              | [Radar](#radar)             |
-|                             | [Oracle](#oracle)                  | [Werewolf](#werewolf)            | [Sleuth](#sleuth)           |
-|                             | [Prosecutor](#prosecutor)          |                                 | [Tiebreaker](#tiebreaker)   |
+| [Janitor](#janitor)          | [Haunter](#haunter)                | [Fanatic](#fanatic)              | [Disperser](#disperser)     |
+| [Miner](#miner)              | [Hunter](#hunter)                  | [Guardian Angel](#guardian-angel)| [Double Shot](#double-shot) |
+| [Morphling](#morphling)      | [Imitator](#imitator)              | [Jester](#jester)                | [Flash](#flash)             |
+| [Swooper](#swooper)          | [Investigator](#investigator)      | [Juggernaut](#juggernaut)        | [Frosty](#frosty)           |
+| [Traitor](#traitor)          | [Mayor](#mayor)                    | [Phantom](#phantom)              | [Giant](#giant)             |
+| [Undertaker](#undertaker)    | [Medic](#medic)                    | [Plaguebearer](#plaguebearer)    | [Lovers](#lovers)           |
+| [Venerer](#venerer)          | [Medium](#medium)                  | [Survivor](#survivor)            | [Multitasker](#multitasker)|
+| [Warlock](#warlock)          | [Mystic](#mystic)                  | [The Glitch](#the-glitch)        | [Radar](#radar)             |
+|                             | [Oracle](#oracle)                  | [Vampire](#vampire)             | [Sleuth](#sleuth)           |
+|                             | [Prosecutor](#prosecutor)          | [Werewolf](#werewolf)           | [Tiebreaker](#tiebreaker)   |
 |                             | [Seer](#seer)                      |                                 | [Torch](#torch)             |
 |                             | [Sheriff](#sheriff)                |                                 | [Underdog](#underdog)       |
 |                             | [Snitch](#snitch)                  |                                 |                             |
@@ -984,6 +984,7 @@ However, if they kill a Crewmate or a Neutral player they can't kill, they inste
 | Sheriff Kills Executioner | Whether the Sheriff is able to kill the Executioner | Toggle | False |
 | Sheriff Kills Jester | Whether the Sheriff is able to kill the Jester | Toggle | False |
 | Sheriff Kills Arsonist | Whether the Sheriff is able to kill the Arsonist | Toggle | False |
+| Sheriff Kills Fanatic | Whether the Sheriff is able to kill the Fanatic | Toggle | False |
 | Sheriff Kills The Glitch | Whether the Sheriff is able to kill The Glitch | Toggle | False |
 | Sheriff Kills Juggernaut | Whether the Sheriff is able to kill the Juggernaut | Toggle | False |
 | Sheriff Kills Plaguebearer | Whether the Sheriff is able to kill the Plaguebearer | Toggle | False |
@@ -1336,6 +1337,29 @@ The Arsonist needs to be the last killer alive to win the game.
 | Maximum Alive Players Doused | The maximum amount of players that the Arsonist can have doused | Number | 5 |
 | Arsonist Has Impostor Vision | Whether the Arsonist Has Impostor Vision | Toggle | False |
 | Ignite Cooldown Removed When Arso Is Last Killer | Whether the Arsonist's Ignite Cooldown is removed when they're the final killer | Toggle | False |
+
+-----------------------
+## Fanatic
+### **Team: Neutral**
+
+The Fanatic is a Neutral role with its own win condition.\
+The Fanatic recruits followers by converting them into its twisted, murderous religion.\
+It can have one living follower at any time.\
+The Fanatic must first choose a prospect and Indoctrinate them to render their mind susceptible to the Fanatic's ideals.\
+Then, if the Fanatic kills someone in vision range of the Indoctrinated prospect, they will be converted to the Fanatic's cause.\
+Attempting to Indoctrinate invalid targets will put the ability on cooldown.\
+Indoctrinate shares a cooldown with the Fanatic's Kill button.
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Fanatic | The percentage probability of the Fanatic appearing | Percentage | 0% |
+| Kill Cooldown | The cooldown of the Fanatic's Kill button | Time | 25s |
+| Fanatic Has Impostor Vision | Whether the Fanatic Has Impostor Vision | Toggle | False |
+| Fanatic Can Vent | Whether the Fanatic Can Vent | Toggle | False |
+| Leader Can Kill Followers | Whether the original Fanatic can kill their follower, allowing them to Indoctrinate someone else | Toggle | False |
+| New Fanatic Can Assassinate | Whether the new Fanatic can assassinate | Toggle | False |
+| Can Convert Neutral Benign Roles | Whether Neutral Benign Roles can be turned into Fanatics | Toggle | False |
+| Can Convert Neutral Evil Roles | Whether Neutral Evil Roles can be turned into Fanatics | Toggle | False |
 
 -----------------------
 ## Juggernaut

@@ -462,6 +462,7 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption FanaticKillCooldown;
         public static CustomToggleOption FanaticImpVision;
         public static CustomToggleOption FanaticVent;
+        public static CustomToggleOption FanaticLeaderCanKillFollowers;
         public static CustomToggleOption NewFanaticCanAssassin;
         public static CustomToggleOption CanConvertNeutralBenign;
         public static CustomToggleOption CanConvertNeutralEvil;
@@ -1168,6 +1169,8 @@ namespace TownOfUs.CustomOption
                 new CustomToggleOption(num++, MultiMenu.neutral, "Fanatics Have Impostor Vision", false);
             FanaticVent =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Fanatics Can Vent", false);
+            FanaticLeaderCanKillFollowers =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Leader Can Kill Followers", false);
             NewFanaticCanAssassin =
                 new CustomToggleOption(num++, MultiMenu.neutral, "New Fanatic Can Assassinate", false);
             CanConvertNeutralBenign =

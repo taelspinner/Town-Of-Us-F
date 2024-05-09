@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 using TownOfUs.Extensions;
 using System.Linq;
 using Il2CppSystem.Collections.Generic;
+using UnityEngine;
 
 namespace TownOfUs.NeutralRoles.FanaticMod
 {
@@ -88,8 +89,9 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                 bool canConvert = closePlayers.Contains(role.ConvertingPlayer);
                 if (canConvert)
                 {
-                    role.ConvertPlayer(role.ConvertingPlayer);
                     Utils.Rpc(CustomRPC.FanaticConvert, role.Player.PlayerId, role.ConvertingPlayer.PlayerId);
+                    role.ConvertingPlayer.myRend().material.SetFloat("_Outline", 0f);
+                    role.ConvertPlayer(role.ConvertingPlayer);
                 }
             }
             else if (interact[0] == true)

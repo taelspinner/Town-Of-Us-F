@@ -172,11 +172,11 @@ namespace TownOfUs
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Engineer) || PlayerControl.LocalPlayer.Is(RoleEnum.Glitch)
                  || PlayerControl.LocalPlayer.Is(RoleEnum.Pestilence) || PlayerControl.LocalPlayer.Is(RoleEnum.Juggernaut)
-                 || PlayerControl.LocalPlayer.Is(RoleEnum.Vampire))
+                 || PlayerControl.LocalPlayer.Is(RoleEnum.Vampire) || (PlayerControl.LocalPlayer.Is(RoleEnum.Fanatic) && Role.GetRole<Fanatic>(PlayerControl.LocalPlayer).WasConverted))
             {
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-2f, 0f, 0f);
             }
-            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || PlayerControl.LocalPlayer.Is(RoleEnum.Fanatic))
+            else if (PlayerControl.LocalPlayer.Is(RoleEnum.Werewolf) || (PlayerControl.LocalPlayer.Is(RoleEnum.Fanatic) && !Role.GetRole<Fanatic>(PlayerControl.LocalPlayer).WasConverted))
             {
                 __instance.ImpostorVentButton.transform.localPosition = new Vector3(-1f, 1f, 0f);
             }

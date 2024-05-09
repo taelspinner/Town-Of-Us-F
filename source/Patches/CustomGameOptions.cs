@@ -314,6 +314,7 @@ namespace TownOfUs
         public static bool NewFanaticCanAssassin => Generate.NewFanaticCanAssassin.Get();
         public static bool CanConvertNeutralBenign => Generate.CanConvertNeutralBenign.Get();
         public static bool CanConvertNeutralEvil => Generate.CanConvertNeutralEvil.Get();
+        public static bool FanaticLeaderCanKillFollowers => Generate.FanaticLeaderCanKillFollowers.Get();
         public static float StakeCd => Generate.StakeCooldown.Get();
         public static int MaxFailedStakesPerGame => (int)Generate.MaxFailedStakesPerGame.Get();
         public static bool CanStakeRoundOne => Generate.CanStakeRoundOne.Get();
