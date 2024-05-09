@@ -221,6 +221,7 @@ namespace TownOfUs.NeutralRoles.VampireMod
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
                 {
                     var hunterRole = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
+                    hunterRole.StalkButton.gameObject.SetActive(false);
                     UnityEngine.Object.Destroy(hunterRole.UsesText);
                 }
             }
