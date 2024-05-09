@@ -31,6 +31,7 @@ namespace TownOfUs
         SurvivorOnlyWin,
         MercenaryOnlyWin,
         VampireWin,
+        FanaticsWin,
 
         JanitorClean,
         ScavengerClean,
@@ -87,6 +88,8 @@ namespace TownOfUs
         HunterStalk,
         HunterCatchPlayer,
         Retribution,
+        Indoctrinate,
+        FanaticConvert,
 
         BypassKill,
         BypassMultiKill,

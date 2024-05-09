@@ -39,7 +39,7 @@ namespace TownOfUs.Roles.Modifiers
 
             foreach(var player in canHaveModifiers)
             {
-                if (player.Is(Faction.Impostors) || (player.Is(Faction.NeutralKilling) && !player.Is(RoleEnum.Vampire) && CustomGameOptions.NeutralLovers))
+                if (player.Is(Faction.Impostors) || (player.Is(Faction.NeutralKilling) && !player.Is(RoleEnum.Vampire) && !player.Is(RoleEnum.Fanatic) && CustomGameOptions.NeutralLovers))
                     impostors.Add(player);
                 else if (player.Is(Faction.Crewmates) || (player.Is(Faction.NeutralBenign) && CustomGameOptions.NeutralLovers)
                      || (player.Is(Faction.NeutralEvil) && CustomGameOptions.NeutralLovers))

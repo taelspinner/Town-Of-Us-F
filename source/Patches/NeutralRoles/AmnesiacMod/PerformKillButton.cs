@@ -124,6 +124,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 case RoleEnum.Doomsayer:
                 case RoleEnum.Vampire:
                 case RoleEnum.Scavenger:
+                case RoleEnum.Fanatic:
 
                     rememberImp = false;
 
@@ -173,16 +174,10 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 else
                 {
                     // If role is not Vampire, turn dead player into Survivor
-                    if (role != RoleEnum.Vampire)
+                    if (role != RoleEnum.Vampire && role != RoleEnum.Fanatic)
                     {
                         var survivor = new Survivor(other);
                         survivor.RegenTask();
-                    }
-                    // If role is Vampire, keep dead player as Vampire
-                    if (role == RoleEnum.Vampire)
-                    {
-                        var vampire = new Vampire(other);
-                        vampire.RegenTask();
                     }
 
                     if (role == RoleEnum.Arsonist || role == RoleEnum.Glitch || role == RoleEnum.Plaguebearer ||
@@ -492,6 +487,12 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
             {
                 var vampRole = Role.GetRole<Vampire>(amnesiac);
                 vampRole.LastBit = DateTime.UtcNow;
+            }
+
+            else if (role == RoleEnum.Fanatic)
+            {
+                var fanRole = Role.GetRole<Fanatic>(amnesiac);
+                fanRole.WasConverted = Role.GetRole<Fanatic>(other).WasConverted;
             }
 
             else if (role == RoleEnum.Trapper)

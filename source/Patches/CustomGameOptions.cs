@@ -78,6 +78,7 @@ namespace TownOfUs
         public static int ScavengerOn => (int)Generate.ScavengerOn.Get();
         public static int VampireOn => (int)Generate.VampireOn.Get();
         public static int VampireHunterOn => (int)Generate.VampireHunterOn.Get();
+        public static int FanaticOn => (int)Generate.FanaticOn.Get();
         public static int ProsecutorOn => (int)Generate.ProsecutorOn.Get();
         public static int WarlockOn => (int)Generate.WarlockOn.Get();
         public static int OracleOn => (int)Generate.OracleOn.Get();
@@ -110,6 +111,7 @@ namespace TownOfUs
         public static bool SheriffKillsJester => Generate.SheriffKillsJester.Get();
         public static bool SheriffKillsScavenger => Generate.SheriffKillsScavenger.Get();
         public static bool SheriffKillsArsonist => Generate.SheriffKillsArsonist.Get();
+        public static bool SheriffKillsFanatic => Generate.SheriffKillsFanatic.Get();
         public static bool SheriffKillsJuggernaut => Generate.SheriffKillsJuggernaut.Get();
         public static bool SheriffKillsPlaguebearer => Generate.SheriffKillsPlaguebearer.Get();
         public static bool SheriffKillsGlitch => Generate.SheriffKillsGlitch.Get();
@@ -332,6 +334,13 @@ namespace TownOfUs
         public static int MaxVampiresPerGame => (int)Generate.MaxVampiresPerGame.Get();
         public static bool CanBiteNeutralBenign => Generate.CanBiteNeutralBenign.Get();
         public static bool CanBiteNeutralEvil => Generate.CanBiteNeutralEvil.Get();
+        public static float FanaticKillCd => Generate.FanaticKillCooldown.Get();
+        public static bool FanaticImpVision => Generate.FanaticImpVision.Get();
+        public static bool FanaticVent => Generate.FanaticVent.Get();
+        public static bool NewFanaticCanAssassin => Generate.NewFanaticCanAssassin.Get();
+        public static bool CanConvertNeutralBenign => Generate.CanConvertNeutralBenign.Get();
+        public static bool CanConvertNeutralEvil => Generate.CanConvertNeutralEvil.Get();
+        public static bool FanaticLeaderCanKillFollowers => Generate.FanaticLeaderCanKillFollowers.Get();
         public static float StakeCd => Generate.StakeCooldown.Get();
         public static int MaxFailedStakesPerGame => (int)Generate.MaxFailedStakesPerGame.Get();
         public static bool CanStakeRoundOne => Generate.CanStakeRoundOne.Get();

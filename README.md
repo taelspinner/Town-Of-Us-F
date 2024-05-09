@@ -13,19 +13,19 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 | [Bomber](#bomber)            | [Aurial](#aurial)                  | [Arsonist](#arsonist)            | [Bait](#bait)               |
 | [Escapist](#escapist)        | [Detective](#detective)            | [Doomsayer](#doomsayer)          | [Button Barry](#button-barry)|
 | [Grenadier](#grenadier)      | [Engineer](#engineer)              | [Executioner](#executioner)      | [Diseased](#diseased)       |
-| [Janitor](#janitor)          | [Haunter](#haunter)                | [Guardian Angel](#guardian-angel)| [Disperser](#disperser)     |
-| [Miner](#miner)              | [Hunter](#hunter)                  | [Jester](#jester)                | [Double Shot](#double-shot) |
-| [Morphling](#morphling)      | [Imitator](#imitator)              | [Juggernaut](#juggernaut)        | [Flash](#flash)             |
-| [Swooper](#swooper)          | [Investigator](#investigator)      | [Lawyer](#lawyer)                | [Frosty](#frosty)           |
-| [Traitor](#traitor)          | [Immortal](#immortal)              | [Mercenary](#mercenary)          | [Giant](#giant)             |
-| [Undertaker](#undertaker)    | [Medic](#medic)                    | [Phantom](#phantom)              | [Lovers](#lovers)           |
-| [Venerer](#venerer)          | [Medium](#medium)                  | [Plaguebearer](#plaguebearer)    | [Multitasker](#multitasker) |
-| [Warlock](#warlock)          | [Mystic](#mystic)                  | [Scavenger](#scavenger)          | [Radar](#radar)             |
-|                             | [Oracle](#oracle)                   | [Survivor](#survivor)            | [Sleuth](#sleuth)           |
-|                             | [Politician](#politician)           | [The Glitch](#the-glitch)        | [Tiebreaker](#tiebreaker)   |
-|                             | [Prosecutor](#prosecutor)           | [Vampire](#vampire)              | [Torch](#torch)             |
-|                             | [Seer](#seer)                       | [Werewolf](#werewolf)            | [Underdog](#underdog)       |
-|                             | [Sheriff](#sheriff)                 |                                 | [Vengeful](#vengeful)        |
+| [Janitor](#janitor)          | [Haunter](#haunter)                | [Fanatic](#fanatic)              | [Disperser](#disperser)     |
+| [Miner](#miner)              | [Hunter](#hunter)                  | [Guardian Angel](#guardian-angel)| [Double Shot](#double-shot) |
+| [Morphling](#morphling)      | [Imitator](#imitator)              | [Jester](#jester)                | [Flash](#flash)             |
+| [Swooper](#swooper)          | [Investigator](#investigator)      | [Juggernaut](#juggernaut)        | [Frosty](#frosty)           |
+| [Traitor](#traitor)          | [Immortal](#immortal)              | [Lawyer](#lawyer)                | [Giant](#giant)             |
+| [Undertaker](#undertaker)    | [Medic](#medic)                    | [Mercenary](#mercenary)          | [Lovers](#lovers)           |
+| [Venerer](#venerer)          | [Medium](#medium)                  | [Phantom](#phantom)              | [Multitasker](#multitasker) |
+| [Warlock](#warlock)          | [Mystic](#mystic)                  | [Plaguebearer](#plaguebearer)    | [Radar](#radar)             |
+|                             | [Oracle](#oracle)                   | [Scavenger](#scavenger)         | [Sleuth](#sleuth)           |
+|                             | [Politician](#politician)           | [Survivor](#survivor)           | [Tiebreaker](#tiebreaker)   |
+|                             | [Prosecutor](#prosecutor)           | [The Glitch](#the-glitch)       | [Torch](#torch)             |
+|                             | [Seer](#seer)                       | [Vampire](#vampire)             | [Underdog](#underdog)       |
+|                             | [Sheriff](#sheriff)                 | [Werewolf](#werewolf)           | [Vengeful](#vengeful)        |
 |                             | [Snitch](#snitch)                   |                                 |                             |
 |                             | [Spy](#spy)                        |                                 |                             |
 |                             | [Swapper](#swapper)                |                                 |                             |
@@ -39,19 +39,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
-| 2024.3.5s | v5.4.0 | ;) |
-| 2024.3.5s | v5.3.3 | ;) |
-| 2024.3.5s | v5.3.2 | ;) |
-| 2024.3.5s | v5.3.1 | ;) |
-| 2024.3.5s | v5.3.0 | ;) |
-| 2023.11.28s & 2023.11.28e | v5.2.7 | ;) |
-| 2023.11.28s & 2023.11.28e | v5.2.6 | ;) |
-| 2023.7.12s & 2023.7.12e | v5.2.5 | ;) |
-| 2023.7.12s & 2023.7.12e | v5.2.4 | ;) |
-| 2023.7.12s & 2023.7.12e | v5.2.3 | ;) |
-| 2023.7.12s & 2023.7.12e | v5.2.2 | ;) |
-| 2023.7.12s & 2023.7.12e | v5.2.1 | ;) |
-| 2023.7.12s & 2023.7.12e | v5.1.1 | ;) |
+| 2024.3.5s | v5.4.3 | ;) |
 | 2024.3.5s & 2024.3.5e | v5.0.4 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.4/ToU.v5.0.4.zip) |
 | 2023.11.28s & 2023.11.28e | v5.0.3 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.3/ToU.v5.0.3.zip) |
 | 2023.7.12s & 2023.7.12e | v5.0.2 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.2/ToU.v5.0.2.zip) |
@@ -115,6 +103,10 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 
 <details>
   <summary> Changelog </summary>
+  <details>
+  <summary> v5.4.3 </summary>
+  <ul> <li>New Role: Fanatic</li> </ul>
+  </details>
   <details>
   <summary> v5.4.0 </summary>
   <ul> <li>New Role: Immortal</li> </ul>
@@ -1109,6 +1101,7 @@ However, if they kill a Crewmate or a Neutral player they can't kill, they inste
 | Sheriff Kills Jester | Whether the Sheriff is able to kill the Jester | Toggle | False |
 | Sheriff Kills Scavenger | Whether the Sheriff is able to kill the Scavenger | Toggle | False |
 | Sheriff Kills Arsonist | Whether the Sheriff is able to kill the Arsonist | Toggle | False |
+| Sheriff Kills Fanatic | Whether the Sheriff is able to kill the Fanatic | Toggle | False |
 | Sheriff Kills The Glitch | Whether the Sheriff is able to kill The Glitch | Toggle | False |
 | Sheriff Kills Juggernaut | Whether the Sheriff is able to kill the Juggernaut | Toggle | False |
 | Sheriff Kills Plaguebearer | Whether the Sheriff is able to kill the Plaguebearer | Toggle | False |
@@ -1544,6 +1537,29 @@ The Arsonist needs to be the last killer alive to win the game.
 | Maximum Alive Players Doused | The maximum amount of players that the Arsonist can have doused | Number | 5 |
 | Arsonist Has Impostor Vision | Whether the Arsonist Has Impostor Vision | Toggle | False |
 | Ignite Cooldown Removed When Arso Is Last Killer | Whether the Arsonist's Ignite Cooldown is removed when they're the final killer | Toggle | False |
+
+-----------------------
+## Fanatic
+### **Team: Neutral**
+
+The Fanatic is a Neutral role with its own win condition.\
+The Fanatic recruits followers by converting them into its twisted, murderous religion.\
+It can have one living follower at any time.\
+The Fanatic must first choose a prospect and Indoctrinate them to render their mind susceptible to the Fanatic's ideals.\
+Then, if the Fanatic kills someone in vision range of the Indoctrinated prospect, they will be converted to the Fanatic's cause.\
+Attempting to Indoctrinate invalid targets will put the ability on cooldown.\
+Indoctrinate shares a cooldown with the Fanatic's Kill button.
+### Game Options
+| Name | Description | Type | Default |
+|----------|:-------------:|:------:|:------:|
+| Fanatic | The percentage probability of the Fanatic appearing | Percentage | 0% |
+| Kill Cooldown | The cooldown of the Fanatic's Kill button | Time | 25s |
+| Fanatic Has Impostor Vision | Whether the Fanatic Has Impostor Vision | Toggle | False |
+| Fanatic Can Vent | Whether the Fanatic Can Vent | Toggle | False |
+| Leader Can Kill Followers | Whether the original Fanatic can kill their follower, allowing them to Indoctrinate someone else | Toggle | False |
+| New Fanatic Can Assassinate | Whether the new Fanatic can assassinate | Toggle | False |
+| Can Convert Neutral Benign Roles | Whether Neutral Benign Roles can be turned into Fanatics | Toggle | False |
+| Can Convert Neutral Evil Roles | Whether Neutral Evil Roles can be turned into Fanatics | Toggle | False |
 
 -----------------------
 ## Juggernaut

@@ -54,6 +54,7 @@ namespace TownOfUs.CustomOption
 
         public static CustomHeaderOption NeutralKillingRoles;
         public static CustomNumberOption ArsonistOn;
+        public static CustomNumberOption FanaticOn;
         public static CustomNumberOption PlaguebearerOn;
         public static CustomNumberOption GlitchOn;
         public static CustomNumberOption VampireOn;
@@ -194,6 +195,7 @@ namespace TownOfUs.CustomOption
         public static CustomToggleOption SheriffKillsArsonist;
         public static CustomToggleOption SheriffKillsJuggernaut;
         public static CustomToggleOption SheriffKillsPlaguebearer;
+        public static CustomToggleOption SheriffKillsFanatic;
         public static CustomToggleOption SheriffKillsGlitch;
         public static CustomToggleOption SheriffKillsVampire;
         public static CustomToggleOption SheriffKillsWerewolf;
@@ -497,6 +499,15 @@ namespace TownOfUs.CustomOption
         public static CustomToggleOption SelfKillAfterFinalStake;
         public static CustomStringOption BecomeOnVampDeaths;
 
+        public static CustomHeaderOption Fanatic;
+        public static CustomNumberOption FanaticKillCooldown;
+        public static CustomToggleOption FanaticImpVision;
+        public static CustomToggleOption FanaticVent;
+        public static CustomToggleOption FanaticLeaderCanKillFollowers;
+        public static CustomToggleOption NewFanaticCanAssassin;
+        public static CustomToggleOption CanConvertNeutralBenign;
+        public static CustomToggleOption CanConvertNeutralEvil;
+
         public static CustomHeaderOption Prosecutor;
         public static CustomToggleOption ProsDiesOnIncorrectPros;
 
@@ -645,6 +656,8 @@ namespace TownOfUs.CustomOption
 
             NeutralKillingRoles = new CustomHeaderOption(num++, MultiMenu.neutral, "Neutral Killing Roles");
             ArsonistOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#FF4D00FF>Arsonist</color>", 0f, 0f, 100f, 10f,
+                PercentFormat);
+            FanaticOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#A640A6FF>Fanatic</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             PlaguebearerOn = new CustomNumberOption(num++, MultiMenu.neutral, "<color=#E6FFB3FF>Plaguebearer</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -1021,6 +1034,8 @@ namespace TownOfUs.CustomOption
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Scavenger", false);
             SheriffKillsArsonist =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Arsonist", false);
+            SheriffKillsFanatic =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills Fanatic", false);
             SheriffKillsGlitch =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Sheriff Kills The Glitch", false);
             SheriffKillsJuggernaut =
@@ -1273,6 +1288,22 @@ namespace TownOfUs.CustomOption
                 new CustomToggleOption(num++, MultiMenu.neutral, "Arsonist Has Impostor Vision", false);
             IgniteCdRemoved =
                 new CustomToggleOption(num++, MultiMenu.neutral, "Ignite Cooldown Removed When Arsonist Is Last Killer", false);
+
+            Fanatic = new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#A640A6FF>Fanatic</color>");
+            FanaticKillCooldown =
+                new CustomNumberOption(num++, MultiMenu.neutral, "Fanatic Kill Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
+            FanaticImpVision =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Fanatics Have Impostor Vision", false);
+            FanaticVent =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Fanatics Can Vent", false);
+            FanaticLeaderCanKillFollowers =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Leader Can Kill Followers", false);
+            NewFanaticCanAssassin =
+                new CustomToggleOption(num++, MultiMenu.neutral, "New Fanatic Can Assassinate", false);
+            CanConvertNeutralBenign =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Can Convert Neutral Benign Roles", false);
+            CanConvertNeutralEvil =
+                new CustomToggleOption(num++, MultiMenu.neutral, "Can Convert Neutral Evil Roles", false);
 
             Juggernaut =
                 new CustomHeaderOption(num++, MultiMenu.neutral, "<color=#8C004DFF>Juggernaut</color>");

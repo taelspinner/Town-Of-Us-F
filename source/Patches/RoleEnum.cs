@@ -46,6 +46,7 @@ namespace TownOfUs
         Hunter,
         Scavenger,
         Immortal,
+        Fanatic,
 
         Miner,
         Swooper,

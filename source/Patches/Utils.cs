@@ -414,6 +414,11 @@ namespace TownOfUs
                             var ww = Role.GetRole<Werewolf>(player);
                             ww.LastKilled = DateTime.UtcNow;
                         }
+                        else if (player.Is(RoleEnum.Fanatic))
+                        {
+                            var fan = Role.GetRole<Fanatic>(player);
+                            fan.LastKilled = DateTime.UtcNow;
+                        }
                         RpcMurderPlayer(player, target);
                         abilityUsed = true;
                         fullCooldownReset = true;
@@ -482,6 +487,11 @@ namespace TownOfUs
                 {
                     var ww = Role.GetRole<Werewolf>(player);
                     ww.LastKilled = DateTime.UtcNow;
+                }
+                else if (player.Is(RoleEnum.Fanatic))
+                {
+                    var fan = Role.GetRole<Fanatic>(player);
+                    fan.LastKilled = DateTime.UtcNow;
                 }
                 RpcMurderPlayer(player, target);
                 abilityUsed = true;
@@ -634,6 +644,7 @@ namespace TownOfUs
                         target.Is(RoleEnum.Werewolf) && CustomGameOptions.SheriffKillsWerewolf ||
                         target.Is(RoleEnum.Juggernaut) && CustomGameOptions.SheriffKillsJuggernaut ||
                         target.Is(RoleEnum.Vampire) && CustomGameOptions.SheriffKillsVampire ||
+                        target.Is(RoleEnum.Fanatic) && CustomGameOptions.SheriffKillsFanatic ||
                         target.Is(RoleEnum.Executioner) && CustomGameOptions.SheriffKillsExecutioner ||
                         target.Is(RoleEnum.Doomsayer) && CustomGameOptions.SheriffKillsDoomsayer ||
                         target.Is(RoleEnum.Scavenger) && CustomGameOptions.SheriffKillsScavenger ||
@@ -866,6 +877,14 @@ namespace TownOfUs
                     var vampire = Role.GetRole<Vampire>(killer);
                     vampire.LastBit = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.BiteCd);
                     vampire.Player.SetKillTimer(CustomGameOptions.BiteCd * CustomGameOptions.DiseasedMultiplier);
+                    return;
+                }
+
+                if (target.Is(ModifierEnum.Diseased) && killer.Is(RoleEnum.Fanatic))
+                {
+                    var fanatic = Role.GetRole<Fanatic>(killer);
+                    fanatic.LastKilled = DateTime.UtcNow.AddSeconds((CustomGameOptions.DiseasedMultiplier - 1f) * CustomGameOptions.FanaticKillCd);
+                    fanatic.Player.SetKillTimer(CustomGameOptions.FanaticKillCd * CustomGameOptions.DiseasedMultiplier);
                     return;
                 }
 
@@ -1506,6 +1525,11 @@ namespace TownOfUs
             {
                 var vamp = Role.GetRole<Vampire>(PlayerControl.LocalPlayer);
                 vamp.LastBit = DateTime.UtcNow;
+            }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Fanatic))
+            {
+                var fan = Role.GetRole<Fanatic>(PlayerControl.LocalPlayer);
+                fan.LastKilled = DateTime.UtcNow;
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.GuardianAngel))
             {

@@ -93,6 +93,11 @@ namespace TownOfUs
                 var vamp = (Vampire)role;
                 losers.Add(vamp.Player.GetDefaultOutfit().ColorId);
             }
+            foreach (var role in Role.GetRoles(RoleEnum.Fanatic))
+            {
+                var fan = (Fanatic)role;
+                losers.Add(fan.Player.GetDefaultOutfit().ColorId);
+            }
             foreach (var role in Role.GetRoles(RoleEnum.Werewolf))
             {
                 var ww = (Werewolf)role;
@@ -251,6 +256,18 @@ namespace TownOfUs
                     var vampData = new WinningPlayerData(vamp.Player.Data);
                     if (PlayerControl.LocalPlayer != vamp.Player) vampData.IsYou = false;
                     TempData.winners.Add(vampData);
+                }
+            }
+
+            if (Role.FanaticsWin)
+            {
+                TempData.winners = new List<WinningPlayerData>();
+                foreach (var role in Role.GetRoles(RoleEnum.Fanatic))
+                {
+                    var fan = (Fanatic)role;
+                    var fanData = new WinningPlayerData(fan.Player.Data);
+                    if (PlayerControl.LocalPlayer != fan.Player) fanData.IsYou = false;
+                    TempData.winners.Add(fanData);
                 }
             }
 

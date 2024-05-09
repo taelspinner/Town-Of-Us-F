@@ -33,6 +33,15 @@ namespace TownOfUs.Modifiers.AssassinMod
                     player.Data.Disconnected
                 ) return true;
             }
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Fanatic))
+            {
+                if (
+                    player == null ||
+                    player.Is(RoleEnum.Fanatic) ||
+                    player.Data.IsDead ||
+                    player.Data.Disconnected
+                ) return true;
+            }
             else if (PlayerControl.LocalPlayer.Is(Faction.NeutralKilling))
             {
                 if (

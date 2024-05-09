@@ -109,6 +109,7 @@ namespace TownOfUs.Patches {
                     else if (role.Value == RoleEnum.Oracle) { playerRole += "<color=#" + Patches.Colors.Oracle.ToHtmlStringRGBA() + ">Oracle</color> > "; }
                     else if (role.Value == RoleEnum.Venerer) { playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Venerer</color> > "; }
                     else if (role.Value == RoleEnum.Aurial) { playerRole += "<color=#" + Patches.Colors.Aurial.ToHtmlStringRGBA() + ">Aurial</color> > "; }
+                    else if (role.Value == RoleEnum.Fanatic) { playerRole += "<color=#" + Patches.Colors.Fanatic.ToHtmlStringRGBA() + ">Fanatic</color> > "; }
                     if (CustomGameOptions.GameMode == GameMode.Cultist && playerControl.Data.IsImpostor())
                     {
                         if (role.Value == RoleEnum.Engineer) { playerRole += "<color=#" + Patches.Colors.Impostor.ToHtmlStringRGBA() + ">Demolitionist</color> > "; }

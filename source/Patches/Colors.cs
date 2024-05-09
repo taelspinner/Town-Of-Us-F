@@ -53,6 +53,7 @@ namespace TownOfUs.Patches
         public readonly static Color Vampire = new Color(0.15f, 0.15f, 0.15f, 1f);
         public readonly static Color Mercenary = new Color(0.65f, 0.61f, 0.58f, 1f);
         public readonly static Color Scavenger = new Color(0.6f, 0.15f, 0.15f, 1f);
+        public readonly static Color Fanatic = new Color(0.65f, 0.25f, 0.65f, 1f);
 
         //Imposter Colors
         public readonly static Color Impostor = Palette.ImpostorRed;

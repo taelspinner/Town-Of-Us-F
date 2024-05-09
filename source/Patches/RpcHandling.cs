@@ -724,6 +724,10 @@ namespace TownOfUs
                         Role.VampWin();
                         break;
 
+                    case CustomRPC.FanaticsWin:
+                        Role.FanaticWin();
+                        break;
+
                     case CustomRPC.SetCouple:
                         var id = reader.ReadByte();
                         var id2 = reader.ReadByte();
@@ -1360,6 +1364,24 @@ namespace TownOfUs
                 }
             }
         }
+                    case CustomRPC.Indoctrinate:
+                        var leader = Utils.PlayerById(reader.ReadByte());
+                        var followerByte = reader.ReadByte();
+                        if (followerByte == byte.MaxValue)
+                        {
+                            Role.GetRole<Fanatic>(leader).ConvertingPlayer = null;
+                        }
+                        var follower = Utils.PlayerById(followerByte);
+                        Role.GetRole<Fanatic>(leader).ConvertingPlayer = follower;
+                        break;
+                    case CustomRPC.FanaticConvert:
+                        var fanatic = Utils.PlayerById(reader.ReadByte());
+                        var convert = Utils.PlayerById(reader.ReadByte());
+                        Role.GetRole<Fanatic>(fanatic).ConvertPlayer(convert);
+                        break;
+                }
+            }
+        }
 
         [HarmonyPatch(typeof(RoleManager), nameof(RoleManager.SelectRoles))]
         public static class RpcSetRole
@@ -1542,6 +1564,9 @@ namespace TownOfUs
 
                     if (CustomGameOptions.ArsonistOn > 0)
                         NeutralKillingRoles.Add((typeof(Arsonist), CustomGameOptions.ArsonistOn, true));
+
+                    if (CustomGameOptions.GameMode == GameMode.Classic && CustomGameOptions.FanaticOn > 0)
+                        NeutralKillingRoles.Add((typeof(Fanatic), CustomGameOptions.FanaticOn, true));
 
                     if (CustomGameOptions.PlaguebearerOn > 0)
                         NeutralKillingRoles.Add((typeof(Plaguebearer), CustomGameOptions.PlaguebearerOn, true));
