@@ -106,6 +106,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
   <details>
   <summary> v5.4.3 </summary>
   <ul> <li>New Role: Fanatic</li> </ul>
+  <ul> <li>Bug Fix: Vampire can no longer win when killed by impostor in final two</li> </ul>
   </details>
   <details>
   <summary> v5.4.0 </summary>
