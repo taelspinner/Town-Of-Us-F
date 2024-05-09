@@ -37,7 +37,7 @@ namespace TownOfUs.NeutralRoles.ExecutionerMod
 
             if (role.target && role.target.nameText()) role.target.nameText().color = Color.black;
 
-            if (!role.target.Data.IsDead && !role.target.Data.Disconnected && !role.target.Is(RoleEnum.Vampire)) return;
+            if (!role.target.Data.IsDead && !role.target.Data.Disconnected && !role.target.Is(RoleEnum.Vampire) && !role.target.Is(RoleEnum.Fanatic)) return;
             if (role.TargetVotedOut) return;
 
             Utils.Rpc(CustomRPC.ExecutionerToJester, PlayerControl.LocalPlayer.PlayerId);

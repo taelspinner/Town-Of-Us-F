@@ -18,7 +18,7 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                 if (Role.GetRoles(RoleEnum.Doomsayer).Any(x => ((Doomsayer)x).WonByGuessing)) return;
             }
             var role = Role.AllRoles.FirstOrDefault(x =>
-                x.RoleType == RoleEnum.Vampire && Role.VampireWins);
+                x.RoleType == RoleEnum.Fanatic && Role.FanaticsWin);
             if (role == null) return;
             PoolablePlayer[] array = Object.FindObjectsOfType<PoolablePlayer>();
             foreach (var player in array) player.NameText().text = role.ColorString + player.NameText().text + "</color>";

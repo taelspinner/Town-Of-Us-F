@@ -290,6 +290,13 @@ namespace TownOfUs.Patches
                 vamp.LastBit = vamp.LastBit.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.BiteCd);
             }
 
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Fanatic))
+            {
+                var fan = Role.GetRole<Fanatic>(PlayerControl.LocalPlayer);
+                fan.LastKilled = DateTime.UtcNow;
+                fan.LastKilled = fan.LastKilled.AddSeconds(CustomGameOptions.InitialCooldowns - CustomGameOptions.FanaticKillCd);
+            }
+
             if (PlayerControl.LocalPlayer.Is(ModifierEnum.Radar))
             {
                 var radar = Modifier.GetModifier<Radar>(PlayerControl.LocalPlayer);

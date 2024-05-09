@@ -1408,7 +1408,7 @@ namespace TownOfUs
                     if (CustomGameOptions.ArsonistOn > 0)
                         NeutralKillingRoles.Add((typeof(Arsonist), CustomGameOptions.ArsonistOn, true));
 
-                    if (CustomGameOptions.FanaticOn > 0)
+                    if (CustomGameOptions.GameMode == GameMode.Classic && CustomGameOptions.FanaticOn > 0)
                         NeutralKillingRoles.Add((typeof(Fanatic), CustomGameOptions.FanaticOn, true));
 
                     if (CustomGameOptions.PlaguebearerOn > 0)

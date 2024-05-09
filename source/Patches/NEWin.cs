@@ -29,6 +29,8 @@ namespace TownOfUs.Patches
                 if (survRole != null) return;
                 var vampRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Vampire && Role.VampireWins);
                 if (vampRole != null) return;
+                var fanRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Fanatic && Role.FanaticsWin);
+                if (fanRole != null) return;
                 var arsoRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Arsonist && ((Arsonist)x).ArsonistWins);
                 if (arsoRole != null) return;
                 var glitchRole = Role.AllRoles.FirstOrDefault(x => x.RoleType == RoleEnum.Glitch && ((Glitch)x).GlitchWins);

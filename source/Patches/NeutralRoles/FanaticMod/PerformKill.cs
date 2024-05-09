@@ -71,7 +71,8 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                     role.ConvertingPlayer.Is(RoleEnum.Juggernaut) || role.ConvertingPlayer.Is(RoleEnum.Pestilence) ||
                     (role.ConvertingPlayer.Is(RoleEnum.Jester) && CustomGameOptions.JesterImpVision) ||
                     (role.ConvertingPlayer.Is(RoleEnum.Arsonist) && CustomGameOptions.ArsoImpVision) ||
-                    (role.ConvertingPlayer.Is(RoleEnum.Vampire) && CustomGameOptions.VampImpVision))
+                    (role.ConvertingPlayer.Is(RoleEnum.Vampire) && CustomGameOptions.VampImpVision) ||
+                    (role.ConvertingPlayer.Is(RoleEnum.Fanatic) && CustomGameOptions.FanaticImpVision))
                 {
                     sightMod = GameOptionsManager.Instance.currentNormalGameOptions.ImpostorLightMod;
                 }
