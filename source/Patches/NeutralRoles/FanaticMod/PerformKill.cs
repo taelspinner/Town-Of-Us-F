@@ -40,6 +40,10 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                     Utils.Rpc(CustomRPC.Indoctrinate, PlayerControl.LocalPlayer.PlayerId, target.PlayerId);
                     role.LastKilled = DateTime.UtcNow;
                 }
+                else if (indoctrinate[0])
+                {
+                    role.LastKilled = DateTime.UtcNow;
+                }
                 else if (indoctrinate[1])
                 {
                     role.LastKilled = DateTime.UtcNow;
@@ -49,10 +53,6 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                 {
                     role.LastKilled = DateTime.UtcNow;
                     role.LastKilled = role.LastKilled.AddSeconds(CustomGameOptions.VestKCReset - CustomGameOptions.FanaticKillCd);
-                }
-                else if (indoctrinate[0])
-                {
-                    role.LastKilled = DateTime.UtcNow;
                 }
                 else if (indoctrinate[5] || (indoctrinate[4] && !canIndoctrinate))
                 {
