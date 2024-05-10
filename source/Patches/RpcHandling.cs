@@ -907,6 +907,12 @@ namespace TownOfUs
                         VigilanteKill.MurderPlayer(toDie2);
                         VigilanteKill.VigiKillCount(toDie2, vigi);
                         break;
+                    case CustomRPC.Vigilance:
+                        var vigilant = Utils.PlayerById(reader.ReadByte());
+                        var vigiRole = Role.GetRole<Vigilante>(vigilant);
+                        vigiRole.TimeRemaining = CustomGameOptions.VigilanceDuration;
+                        vigiRole.Vigilance();
+                        break;
                     case CustomRPC.DoomsayerKill:
                         var toDie3 = Utils.PlayerById(reader.ReadByte());
                         var doom = Utils.PlayerById(reader.ReadByte());

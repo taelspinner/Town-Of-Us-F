@@ -19,6 +19,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
             if (role.VigilanceTimer() != 0) return false;
             role.TimeRemaining = CustomGameOptions.VigilanceDuration;
             role.Vigilance();
+            Utils.Rpc(CustomRPC.Vigilance, PlayerControl.LocalPlayer.PlayerId);
             return false;
         }
     }

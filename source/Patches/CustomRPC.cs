@@ -53,6 +53,7 @@ namespace TownOfUs
         Drop,
         AssassinKill,
         VigilanteKill,
+        Vigilance,
         DoomsayerKill,
         FlashGrenade,
         Alert,
