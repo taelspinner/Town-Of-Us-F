@@ -71,6 +71,8 @@ namespace TownOfUs.NeutralRoles.FanaticMod
             if (interact[4] == true && role.ConvertingPlayer != null)
             {
                 // indoctrinated player has to witness the kill to be converted
+                var switchSystem = GameOptionsManager.Instance.currentNormalGameOptions.MapId == 5 ? null : ShipStatus.Instance.Systems[SystemTypes.Electrical]?.TryCast<SwitchSystem>();
+                var lightRadius = switchSystem == null ? ShipStatus.Instance.MaxLightRadius : switchSystem.Value;
                 var sightMod = GameOptionsManager.Instance.currentNormalGameOptions.CrewLightMod;
                 if (role.ConvertingPlayer.Is(RoleEnum.Glitch) ||
                     role.ConvertingPlayer.Is(RoleEnum.Juggernaut) || role.ConvertingPlayer.Is(RoleEnum.Pestilence) ||
@@ -79,6 +81,7 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                     (role.ConvertingPlayer.Is(RoleEnum.Vampire) && CustomGameOptions.VampImpVision) ||
                     (role.ConvertingPlayer.Is(RoleEnum.Fanatic) && CustomGameOptions.FanaticImpVision))
                 {
+                    lightRadius = ShipStatus.Instance.MaxLightRadius;
                     sightMod = GameOptionsManager.Instance.currentNormalGameOptions.ImpostorLightMod;
                 }
                 else if (role.ConvertingPlayer.Is(RoleEnum.Werewolf))
@@ -86,11 +89,15 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                     var ww = Role.GetRole<Werewolf>(role.ConvertingPlayer);
                     if (ww.Rampaged)
                     {
+                        lightRadius = ShipStatus.Instance.MaxLightRadius;
                         sightMod = GameOptionsManager.Instance.currentNormalGameOptions.ImpostorLightMod;
                     }
                 }
-                List<PlayerControl> closePlayers = Utils.GetClosestPlayers(role.Player.GetTruePosition(), sightMod, false);
-                bool canConvert = closePlayers.Contains(role.ConvertingPlayer);
+                var distFromTarget = Utils.GetDistBetweenPlayers(role.Player, role.ConvertingPlayer);
+                var vector = role.ConvertingPlayer.GetTruePosition() - role.Player.GetTruePosition();
+                bool canConvert = distFromTarget < lightRadius * sightMod && !PhysicsHelpers.AnyNonTriggersBetween(
+                    role.Player.GetTruePosition(), vector.normalized, vector.magnitude, Constants.ShipAndObjectsMask
+                );
                 if (canConvert)
                 {
                     Utils.Rpc(CustomRPC.FanaticConvert, role.Player.PlayerId, role.ConvertingPlayer.PlayerId);
