@@ -40,6 +40,7 @@ namespace TownOfUs
         {
             if (CamouflageUnCamouflage.IsCamoed) return;
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial) && !Role.GetRole<Aurial>(PlayerControl.LocalPlayer).NormalVision) return;
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && !PlayerControl.LocalPlayer.Data.IsDead) return;
             if (player.GetCustomOutfitType() != CustomPlayerOutfitType.Morph)
                 player.SetOutfit(CustomPlayerOutfitType.Morph, MorphedPlayer.Data.DefaultOutfit);
         }
