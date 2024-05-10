@@ -1501,7 +1501,7 @@ namespace TownOfUs
                 var chameleon = Role.GetRole<Chameleon>(PlayerControl.LocalPlayer);
                 chameleon.LastSwooped = DateTime.UtcNow;
             }
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && PlayerControl.LocalPlayer.Data.IsDead && !CamouflageUnCamouflage.CommsEnabled)
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && PlayerControl.LocalPlayer.Data.IsDead && (!CamouflageUnCamouflage.CommsEnabled || !CustomGameOptions.ColourblindComms))
             {
                 Utils.UnCamouflage();
             }

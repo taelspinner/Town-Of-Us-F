@@ -236,6 +236,10 @@ namespace TownOfUs.NeutralRoles.VampireMod
                 role.CorrectAssassinKills = killsList.CorrectAssassinKills;
                 role.IncorrectAssassinKills = killsList.IncorrectAssassinKills;
                 role.RegenTask();
+                if (oldRole.RoleType == RoleEnum.Immortal && (!CamouflageUnCamouflage.CommsEnabled || !CustomGameOptions.ColourblindComms))
+                {
+                    Utils.UnCamouflage();
+                }
             }
             else
             {
@@ -247,10 +251,6 @@ namespace TownOfUs.NeutralRoles.VampireMod
             }
 
             if (CustomGameOptions.NewVampCanAssassin) new Assassin(newVamp);
-            if (oldRole.RoleType == RoleEnum.Immortal)
-            {
-                Utils.UnCamouflage();
-            }
         }
     }
 }

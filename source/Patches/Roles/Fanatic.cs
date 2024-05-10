@@ -223,7 +223,7 @@ namespace TownOfUs.Roles
             if (PlayerControl.LocalPlayer == newFanatic)
             {
                 role.RegenTask();
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal))
+                if (oldRole.RoleType == RoleEnum.Immortal && (!CamouflageUnCamouflage.CommsEnabled || !CustomGameOptions.ColourblindComms))
                 {
                     Utils.UnCamouflage();
                 }
