@@ -63,7 +63,7 @@ namespace TownOfUs.NeutralRoles.FanaticMod
             if (!flag3) return false;
 
             var interact = Utils.Interact(PlayerControl.LocalPlayer, role.ClosestPlayer, true);
-            if (interact[4] == true && role.ConvertingPlayer != null)
+            if (interact[4] == true && role.ConvertingPlayer != null && role.ConvertingPlayer.PlayerId != role.ClosestPlayer.PlayerId)
             {
                 // indoctrinated player has to witness the kill to be converted
                 var switchSystem = GameOptionsManager.Instance.currentNormalGameOptions.MapId == 5 ? null : ShipStatus.Instance.Systems[SystemTypes.Electrical]?.TryCast<SwitchSystem>();
