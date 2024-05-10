@@ -79,7 +79,8 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                     (role.ConvertingPlayer.Is(RoleEnum.Jester) && CustomGameOptions.JesterImpVision) ||
                     (role.ConvertingPlayer.Is(RoleEnum.Arsonist) && CustomGameOptions.ArsoImpVision) ||
                     (role.ConvertingPlayer.Is(RoleEnum.Vampire) && CustomGameOptions.VampImpVision) ||
-                    (role.ConvertingPlayer.Is(RoleEnum.Fanatic) && CustomGameOptions.FanaticImpVision))
+                    (role.ConvertingPlayer.Is(RoleEnum.Fanatic) && CustomGameOptions.FanaticImpVision) ||
+                    (role.ConvertingPlayer.Is(RoleEnum.Vigilante) && Role.GetRole<Vigilante>(role.ConvertingPlayer).InVigilance))
                 {
                     lightRadius = ShipStatus.Instance.MaxLightRadius;
                     sightMod = GameOptionsManager.Instance.currentNormalGameOptions.ImpostorLightMod;
