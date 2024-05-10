@@ -30,8 +30,7 @@ namespace TownOfUs.NeutralRoles.FanaticMod
                 var aliveFanatics = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(RoleEnum.Fanatic) && !x.Data.IsDead && !x.Data.Disconnected).ToList();
                 bool canIndoctrinate = (role.ClosestPlayer.Is(Faction.Crewmates) || (role.ClosestPlayer.Is(Faction.NeutralBenign)
                     && CustomGameOptions.CanConvertNeutralBenign) || (role.ClosestPlayer.Is(Faction.NeutralEvil)
-                    && CustomGameOptions.CanConvertNeutralEvil)) && !role.ClosestPlayer.Is(ModifierEnum.Lover) &&
-                    aliveFanatics.Count == 1 && !role.WasConverted;
+                    && CustomGameOptions.CanConvertNeutralEvil)) && aliveFanatics.Count == 1 && !role.WasConverted;
                 var indoctrinate = Utils.Interact(PlayerControl.LocalPlayer, target);
                 role.IndoctrinateButton.SetCoolDown(0.01f, 1f);
                 if (indoctrinate[4] && canIndoctrinate)
