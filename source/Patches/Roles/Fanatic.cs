@@ -211,10 +211,6 @@ namespace TownOfUs.Roles
             if (PlayerControl.LocalPlayer == newFanatic)
             {
                 role.RegenTask();
-                if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal))
-                {
-                    Utils.UnCamouflage();
-                }
             }
 
             if (CustomGameOptions.NewFanaticCanAssassin) new Assassin(newFanatic);
