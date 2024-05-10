@@ -56,29 +56,22 @@ namespace TownOfUs.Roles
         internal override bool NeutralWin(LogicGameFlowNormal __instance)
         {
             if (Player.Data.IsDead || Player.Data.Disconnected) return true;
+            // Can't win when no Fanatics are alive
             var fanaticsAlive = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(RoleEnum.Fanatic)).ToList();
             if (fanaticsAlive.Count == 0) return false;
+            // Can't win if another killer is still alive
+            if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
+                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling)) && !x.Is(RoleEnum.Fanatic)) > 0) return false;
+            // Can't win if other players still outnumber the Fanatics
             var playersAlive = PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected);
+            if (fanaticsAlive.Count < Math.Ceiling((double)(playersAlive / 2))) return false;
+            // Can't win if Lovers should win instead
+            if (playersAlive < 4 && PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(ModifierEnum.Lover)) > 1) return false;
 
-            if (playersAlive <= 2 &&
-                    PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling))) == 1)
-            {
-                FanaticWin();
-                Utils.EndGame();
-                return false;
-            }
-            else if (playersAlive <= 4 &&
-                    PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling)) && !x.Is(RoleEnum.Fanatic)) == 0)
-            {
-                if (fanaticsAlive.Count < 2) return false;
-                if (playersAlive < 4 && PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(ModifierEnum.Lover)) > 1) return false;
-                FanaticWin();
-                Utils.EndGame();
-                return false;
-            }
+            // Living Fanatics are equal to or greater in number than other players, no other killers are alive, and Lovers cannot win, so Fanatics win
+            FanaticWin();
+            Utils.EndGame();
             return false;
         }
 
