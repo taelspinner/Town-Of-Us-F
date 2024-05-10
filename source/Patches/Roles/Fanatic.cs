@@ -75,7 +75,7 @@ namespace TownOfUs.Roles
                     (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling)) && !x.Is(RoleEnum.Fanatic)) == 0)
             {
                 if (fanaticsAlive.Count < 2) return false;
-                if (playersAlive == 3 && PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(ModifierEnum.Lover)) > 0) return false;
+                if (playersAlive < 4 && PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(ModifierEnum.Lover)) > 1) return false;
                 FanaticWin();
                 Utils.EndGame();
                 return false;

@@ -194,7 +194,7 @@ namespace TownOfUs
                 __instance.KillButton.graphic.sprite = Kill;
                 __instance.KillButton.buttonLabelText.gameObject.SetActive(true);
                 PlayerControl closestPlayer = __instance.KillButton.currentTarget;
-                var validTargets = new List<PlayerControl>(PlayerControl.AllPlayerControls.ToArray()).Where(t => !t.Data.IsDead && (Role.GetRole(PlayerControl.LocalPlayer).Faction != Faction.Impostors || Role.GetRole(t).Faction != Faction.Impostors)).ToList();
+                var validTargets = new List<PlayerControl>(PlayerControl.AllPlayerControls.ToArray()).Where(t => !t.Data.IsDead && !t.Data.Disconnected && (Role.GetRole(PlayerControl.LocalPlayer).Faction != Faction.Impostors || Role.GetRole(t).Faction != Faction.Impostors)).ToList();
                 Utils.SetTarget(ref closestPlayer, __instance.KillButton, targets: validTargets, allowVented: true);
                 __instance.KillButton.currentTarget = closestPlayer;
                 __instance.KillButton.buttonLabelText.text = "Kill";
