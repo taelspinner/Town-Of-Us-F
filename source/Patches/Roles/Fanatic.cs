@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Il2CppSystem.Collections.Generic;
+using Reactor.Utilities;
 using TownOfUs.CrewmateRoles.AurialMod;
 using TownOfUs.CrewmateRoles.ImitatorMod;
 using TownOfUs.CrewmateRoles.InvestigatorMod;
@@ -133,6 +134,7 @@ namespace TownOfUs.Roles
 
             if (PlayerControl.LocalPlayer == newFanatic)
             {
+                Coroutines.Start(Utils.FlashCoroutine(Color));
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Investigator)) Footprint.DestroyAll(GetRole<Investigator>(PlayerControl.LocalPlayer));
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Sheriff)) HudManager.Instance.KillButton.buttonLabelText.gameObject.SetActive(false);
