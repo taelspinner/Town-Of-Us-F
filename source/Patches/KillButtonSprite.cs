@@ -55,6 +55,7 @@ namespace TownOfUs
         public static void Postfix(HudManager __instance)
         {
             if (__instance.KillButton == null) return;
+            if (!GameManager.Instance.GameHasStarted) return;
 
             if (!Kill) Kill = __instance.KillButton.graphic.sprite;
 
