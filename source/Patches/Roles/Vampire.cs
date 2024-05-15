@@ -44,7 +44,7 @@ namespace TownOfUs.Roles
                     (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling)) && !x.Is(RoleEnum.Vampire)) > 0) return false;
             // Can't win if living players outnumber living Vampires
             var playersAlive = PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected);
-            if (vampsAlives.Count < Math.Ceiling((double)(playersAlive / 2))) return false;
+            if (vampsAlives.Count < Math.Ceiling((double)(playersAlive / 2f))) return false;
             // No other killers are alive and Vampires are equal to or greater in number than the living, so they win
             VampWin();
             Utils.EndGame();
