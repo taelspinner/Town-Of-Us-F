@@ -65,7 +65,7 @@ namespace TownOfUs.Roles
                     (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling)) && !x.Is(RoleEnum.Fanatic)) > 0) return false;
             // Can't win if other players still outnumber the Fanatics
             var playersAlive = PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected);
-            if (fanaticsAlive.Count < Math.Ceiling((double)(playersAlive / 2))) return false;
+            if (fanaticsAlive.Count < (playersAlive / 2f)) return false;
             // Can't win if Lovers should win instead
             if (playersAlive < 4 && PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(ModifierEnum.Lover)) > 1) return false;
 
