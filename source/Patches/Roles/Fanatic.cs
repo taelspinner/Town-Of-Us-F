@@ -204,6 +204,17 @@ namespace TownOfUs.Roles
             if (PlayerControl.LocalPlayer == newFanatic)
             {
                 role.RegenTask();
+                if (Minigame.Instance)
+                {
+                    Minigame.Instance.Close();
+                    Minigame.Instance.Close();
+                }
+
+                if (MapBehaviour.Instance)
+                {
+                    MapBehaviour.Instance.Close();
+                    MapBehaviour.Instance.Close();
+                }
             }
 
             if (CustomGameOptions.NewFanaticCanAssassin) new Assassin(newFanatic);
