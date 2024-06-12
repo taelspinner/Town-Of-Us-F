@@ -42,14 +42,14 @@ namespace TownOfUs
         {
             if (CamouflageUnCamouflage.IsCamoed) return;
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial) && !Role.GetRole<Aurial>(PlayerControl.LocalPlayer).NormalVision) return;
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && !PlayerControl.LocalPlayer.Data.IsDead) return;
+            if (!ImmortalFullyDead()) return;
             if (player.GetCustomOutfitType() != CustomPlayerOutfitType.Morph)
                 player.SetOutfit(CustomPlayerOutfitType.Morph, MorphedPlayer.Data.DefaultOutfit);
         }
 
         public static void Unmorph(PlayerControl player)
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && !PlayerControl.LocalPlayer.Data.IsDead)
+            if (!ImmortalFullyDead())
             {
                 DoCamouflage(player);
                 return;
@@ -89,8 +89,15 @@ namespace TownOfUs
 
         public static void UnCamouflage()
         {
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && !PlayerControl.LocalPlayer.Data.IsDead) return;
+            if (!ImmortalFullyDead()) return;
             foreach (var player in PlayerControl.AllPlayerControls) Unmorph(player);
+        }
+
+        public static bool ImmortalFullyDead()
+        {
+            if (!PlayerControl.LocalPlayer.Is(RoleEnum.Immortal)) return true;
+            Immortal role = Role.GetRole<Immortal>(PlayerControl.LocalPlayer);
+            return role.FullyDead;
         }
 
         public static void AddUnique<T>(this Il2CppSystem.Collections.Generic.List<T> self, T item)
@@ -1501,9 +1508,13 @@ namespace TownOfUs
                 var chameleon = Role.GetRole<Chameleon>(PlayerControl.LocalPlayer);
                 chameleon.LastSwooped = DateTime.UtcNow;
             }
-            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && PlayerControl.LocalPlayer.Data.IsDead && (!CamouflageUnCamouflage.CommsEnabled || !CustomGameOptions.ColourblindComms))
+            if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal) && PlayerControl.LocalPlayer.Data.IsDead)
             {
-                Utils.UnCamouflage();
+                Role.GetRole<Immortal>(PlayerControl.LocalPlayer).FullyDead = true;
+                if (!CamouflageUnCamouflage.CommsEnabled || !CustomGameOptions.ColourblindComms)
+                {
+                    Utils.UnCamouflage();
+                }
             }
             #endregion
             #region NeutralRoles
