@@ -51,8 +51,6 @@ namespace TownOfUs.NeutralRoles.FanaticMod
             {
                 if (!role.ConvertingPlayer.Data.IsDead && !role.ConvertingPlayer.Data.Disconnected)
                 {
-                    role.ConvertingPlayer.myRend().material.SetFloat("_Outline", 1f);
-                    role.ConvertingPlayer.myRend().material.SetColor("_OutlineColor", new Color(0.65f, 0.25f, 0.65f));
                     if (role.ConvertingPlayer.GetCustomOutfitType() != CustomPlayerOutfitType.Camouflage &&
                         role.ConvertingPlayer.GetCustomOutfitType() != CustomPlayerOutfitType.Swooper)
                         role.ConvertingPlayer.nameText().color = new Color(0.65f, 0.25f, 0.65f);
