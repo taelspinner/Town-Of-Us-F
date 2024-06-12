@@ -6,6 +6,8 @@ using BepInEx.Logging;
 using Reactor.Utilities;
 using System.Linq;
 using UnityEngine.AddressableAssets;
+using UnityEngine;
+using Il2CppSystem.Runtime.InteropServices.ComTypes;
 
 namespace TownOfUs.Patches.CustomHats
 {
@@ -54,12 +56,16 @@ namespace TownOfUs.Patches.CustomHats
         private static List<HatData> DiscoverHatBehaviours()
         {
             var hatBehaviours = new List<HatData>();
-            var path = TownOfUs.RuntimeLocation + "\\touhats.catalog";
-            Addressables.AddResourceLocator(Addressables.LoadContentCatalog(path).WaitForCompletion());
-            var all_hat_locations = Addressables.LoadResourceLocationsAsync("touhats").WaitForCompletion();
-            var assets = Addressables.LoadAssetsAsync<HatData>(all_hat_locations, null, false).WaitForCompletion();
-            var array = new Il2CppSystem.Collections.Generic.List<HatData>(assets.Pointer);
-            hatBehaviours.AddRange(array.ToArray());
+            var catalogs = new List<string>() { "touhats", "customtouhats" };
+            foreach (var name in catalogs)
+            {
+                var path = TownOfUs.RuntimeLocation + "\\" + name + ".catalog";
+                Addressables.AddResourceLocator(Addressables.LoadContentCatalog(path).WaitForCompletion());
+                var all_hat_locations = Addressables.LoadResourceLocationsAsync(name).WaitForCompletion();
+                var assets = Addressables.LoadAssetsAsync<HatData>(all_hat_locations, null, false).WaitForCompletion();
+                var array = new Il2CppSystem.Collections.Generic.List<HatData>(assets.Pointer);
+                hatBehaviours.AddRange(array.ToArray());
+            }
             return hatBehaviours;
         }
     }

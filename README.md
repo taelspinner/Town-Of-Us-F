@@ -39,6 +39,7 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2024.6.4s | v5.4.7 | ;) |
 | 2024.3.5s | v5.4.3 | ;) |
 | 2024.3.5s & 2024.3.5e | v5.0.4 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.4/ToU.v5.0.4.zip) |
 | 2023.11.28s & 2023.11.28e | v5.0.3 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.3/ToU.v5.0.3.zip) |
@@ -103,6 +104,14 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 
 <details>
   <summary> Changelog </summary>
+  <details>
+  <summary> v5.4.7 </summary>
+  <ul> <li>Updated to Among Us 2024.6.4</li> </ul>
+  <ul> <li>Bug Fix: Immortal can no longer see the revealed Mayor</li> </ul>
+  <ul> <li>Improved Immortal logic for uncloaking players after they die fully</li> </ul>
+  <ul> <li>Fanatic's Indoctrinated target is no longer outlined, as this made targeting their Kill button confusing</li> </ul>
+  <ul> <li>Increased the lenience of line of sight for Fanatic indoctrination kills</li> </ul>
+  </details>
   <details>
   <summary> v5.4.3 </summary>
   <ul> <li>New Role: Fanatic</li> </ul>
