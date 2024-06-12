@@ -7,6 +7,7 @@ namespace TownOfUs.Roles
 
         public PlayerControl LastKiller;
         public bool KilledMe;
+        public bool FullyDead;
         
         public Immortal(PlayerControl player) : base(player)
         {
@@ -18,6 +19,7 @@ namespace TownOfUs.Roles
             AddToRoleHistory(RoleType);
             LastKiller = null;
             KilledMe = false;
+            FullyDead = false;
         }
 
         internal override bool RoleCriteria()
