@@ -55,7 +55,7 @@ namespace TownOfUs.Roles
 
         internal override bool Criteria()
         {
-            return (Revealed && !Player.Data.IsDead && !Utils.ImmortalFullyDead()) || base.Criteria();
+            return (Revealed && !Player.Data.IsDead && (Utils.ImmortalFullyDead() || MeetingHud.Instance)) || base.Criteria();
         }
 
         internal override bool RoleCriteria()
