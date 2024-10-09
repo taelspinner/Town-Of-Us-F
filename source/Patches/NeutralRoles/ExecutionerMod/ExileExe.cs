@@ -19,7 +19,7 @@ namespace TownOfUs.NeutralRoles.ExecutionerMod
     {
         public static void ExileControllerPostfix(ExileController __instance)
         {
-            var exiled = __instance.exiled;
+            var exiled = __instance.initData.networkedPlayer;
             if (exiled == null) return;
             var player = exiled.Object;
 

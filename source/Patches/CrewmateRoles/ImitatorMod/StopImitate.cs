@@ -4,8 +4,6 @@ using UnityEngine;
 using TownOfUs.CrewmateRoles.InvestigatorMod;
 using TownOfUs.CrewmateRoles.TrapperMod;
 using System.Collections.Generic;
-using TownOfUs.CrewmateRoles.AurialMod;
-using TownOfUs.Patches.ScreenEffects;
 
 namespace TownOfUs.CrewmateRoles.ImitatorMod
 {
@@ -13,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
     [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.StartMeeting))]
     class StartMeetingPatch
     {
-        public static void Prefix(PlayerControl __instance, [HarmonyArgument(0)] GameData.PlayerInfo meetingTarget)
+        public static void Prefix(PlayerControl __instance, [HarmonyArgument(0)] NetworkedPlayerInfo meetingTarget)
         {
             if (__instance == null)
             {
@@ -51,6 +49,13 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                         LimitedRoleUses["VampireHunter"] = vhRole.UsesLeft;
                         Object.Destroy(vhRole.UsesText);
                     }
+                    
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
+                    {
+                        var aurialRole = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
+                        aurialRole.SenseArrows.Values.DestroyAll();
+                        aurialRole.SenseArrows.Clear();
+                    }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
                     {
@@ -75,14 +80,6 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                         var transporterRole = Role.GetRole<Transporter>(PlayerControl.LocalPlayer);
                         LimitedRoleUses["Transporter"] = transporterRole.UsesLeft;
                         Object.Destroy(transporterRole.UsesText);
-                        if (transporterRole.TransportList != null)
-                        {
-                            transporterRole.TransportList.Toggle();
-                            transporterRole.TransportList.SetVisible(false);
-                            transporterRole.TransportList = null;
-                            transporterRole.PressedButton = false;
-                            transporterRole.TransportPlayer1 = null;
-                        }
                     }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Veteran))
@@ -104,7 +101,14 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Oracle))
                     {
                         var oracleRole = Role.GetRole<Oracle>(PlayerControl.LocalPlayer);
+                        oracleRole.ClosestPlayer = null;
                         confessingPlayer = oracleRole.Confessor;
+                    }
+
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Warden))
+                    {
+                        var wardenRole = Role.GetRole<Warden>(PlayerControl.LocalPlayer);
+                        wardenRole.ClosestPlayer = null;
                     }
 
                     if (PlayerControl.LocalPlayer.Is(RoleEnum.Detective))
@@ -119,14 +123,20 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                             scene.SetActive(false);
                         detecRole.ClosestPlayer = null;
                         detecRole.ExamineButton.gameObject.SetActive(false);
+                        foreach (GameObject scene in detecRole.CrimeScenes)
+                        {
+                            UnityEngine.Object.Destroy(scene);
+                        }
                     }
 
-                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
+                    if (PlayerControl.LocalPlayer.Is(RoleEnum.Hunter))
                     {
-                        var aurialRole = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
-                        aurialRole.NormalVision = true;
-                        SeeAll.AllToNormal();
-                        CameraEffect.singleton.materials.Clear();
+                        var hunterRole = Role.GetRole<Hunter>(PlayerControl.LocalPlayer);
+                        Object.Destroy(hunterRole.UsesText);
+                        hunterRole.ClosestPlayer = null;
+                        hunterRole.ClosestStalkPlayer = null;
+                        hunterRole.StalkButton.SetTarget(null);
+                        hunterRole.StalkButton.gameObject.SetActive(false);
                     }
 
                     if (!PlayerControl.LocalPlayer.Is(RoleEnum.Investigator) && !PlayerControl.LocalPlayer.Is(RoleEnum.Mystic)

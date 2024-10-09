@@ -1,10 +1,9 @@
 using System;
 using HarmonyLib;
-using Hazel;
 using TownOfUs.Roles;
 using AmongUs.GameOptions;
 
-namespace TownOfUs.NeutralRoles.PoliticianMod
+namespace TownOfUs.CrewmateRoles.PoliticianMod
 {
     [HarmonyPatch(typeof(KillButton), nameof(KillButton.DoClick))]
     public class PerformKill
@@ -14,6 +13,7 @@ namespace TownOfUs.NeutralRoles.PoliticianMod
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Politician)) return true;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
             if (!PlayerControl.LocalPlayer.CanMove) return false;
+            if (!__instance.enabled) return false;
             var role = Role.GetRole<Politician>(PlayerControl.LocalPlayer);
             if (role.CampaignTimer() != 0) return false;
 

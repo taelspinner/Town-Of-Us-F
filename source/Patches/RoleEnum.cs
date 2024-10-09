@@ -37,7 +37,6 @@ namespace TownOfUs
         Imitator,
         Doomsayer,
         Vampire,
-        VampireHunter,
         Prosecutor,
         Oracle,
         Aurial,
@@ -47,6 +46,9 @@ namespace TownOfUs
         Scavenger,
         Immortal,
         Fanatic,
+        Warden,
+        Jailor,
+        SoulCollector,
 
         Miner,
         Swooper,
@@ -60,16 +62,10 @@ namespace TownOfUs
         Bomber,
         Warlock,
         Venerer,
+        Hypnotist,
 
         Crewmate,
         Impostor,
-
-        Necromancer,
-        Whisperer,
-        CultistSeer,
-        CultistMystic,
-        Chameleon,
-        CultistSnitch,
 
         None
     }
@@ -92,6 +88,8 @@ namespace TownOfUs
         DoubleShot,
         Underdog,
         Frosty,
+        SixthSense,
+        Shy
         Vengeful
     }
 

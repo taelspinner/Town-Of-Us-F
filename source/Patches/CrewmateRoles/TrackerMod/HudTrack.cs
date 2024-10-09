@@ -61,7 +61,7 @@ namespace TownOfUs.CrewmateRoles.TaggerMod
             Utils.SetTarget(ref role.ClosestPlayer, trackButton, float.NaN, notTracked);
 
             var renderer = trackButton.graphic;
-            if (role.ClosestPlayer != null && role.ButtonUsable)
+            if (role.ClosestPlayer != null && role.ButtonUsable && PlayerControl.LocalPlayer.moveable)
             {
                 renderer.color = Palette.EnabledColor;
                 renderer.material.SetFloat("_Desat", 0f);

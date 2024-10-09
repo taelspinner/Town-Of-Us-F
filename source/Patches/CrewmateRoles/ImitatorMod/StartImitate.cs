@@ -27,7 +27,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
         public static bool UpdatedUses = false;
         public static void ExileControllerPostfix(ExileController __instance)
         {
-            var exiled = __instance.exiled?.Object;
+            var exiled = __instance.initData.networkedPlayer?.Object;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Imitator)) return;
             if (PlayerControl.LocalPlayer.Data.IsDead || PlayerControl.LocalPlayer.Data.Disconnected) return;
             if (exiled == PlayerControl.LocalPlayer) return;
@@ -64,6 +64,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
             var role = Role.GetRole(ImitatingPlayer);
             var killsList = (role.Kills, role.CorrectKills, role.IncorrectKills, role.CorrectAssassinKills, role.IncorrectAssassinKills);
             Role.RoleDictionary.Remove(ImitatingPlayer.PlayerId);
+
             if (imitatorRole == RoleEnum.Detective)
             {
                 var detective = new Detective(ImitatingPlayer);
@@ -148,6 +149,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                 }
             }
             if (imitatorRole == RoleEnum.Oracle) new Oracle(ImitatingPlayer);
+            if (imitatorRole == RoleEnum.Warden) new Warden(ImitatingPlayer);
             if (imitatorRole == RoleEnum.Medic)
             {
                 var medic = new Medic(ImitatingPlayer);

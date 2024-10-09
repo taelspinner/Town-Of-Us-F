@@ -1,10 +1,12 @@
 using System.Linq;
 using HarmonyLib;
+using TownOfUs.Extensions;
 using TownOfUs.Roles;
+using TownOfUs.Roles.Modifiers;
 using UnityEngine;
 using TownOfUs.Extensions;
 
-namespace TownOfUs.NeutralRoles.PoliticianMod
+namespace TownOfUs.CrewmateRoles.PoliticianMod
 {
     [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
     public static class HudManagerUpdate
@@ -16,24 +18,28 @@ namespace TownOfUs.NeutralRoles.PoliticianMod
             if (PlayerControl.LocalPlayer.Data == null) return;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Politician)) return;
             var isDead = PlayerControl.LocalPlayer.Data.IsDead;
-            var infectButton = __instance.KillButton;
+            var campaignButton = __instance.KillButton;
             var role = Role.GetRole<Politician>(PlayerControl.LocalPlayer);
 
-            foreach (var playerId in role.CampaignedPlayers)
+            if (!PlayerControl.LocalPlayer.IsHypnotised())
             {
-                var player = Utils.PlayerById(playerId);
-                var data = player?.Data;
-                if (data == null || data.Disconnected || data.IsDead || PlayerControl.LocalPlayer.Data.IsDead || playerId == PlayerControl.LocalPlayer.PlayerId)
-                    continue;
+                foreach (var playerId in role.CampaignedPlayers)
+                {
+                    var player = Utils.PlayerById(playerId);
+                    var data = player?.Data;
+                    if (data == null || data.Disconnected || data.IsDead || PlayerControl.LocalPlayer.Data.IsDead)
+                        continue;
 
-                player.myRend().material.SetColor("_VisorColor", role.Color);
-                player.nameText().color = Color.cyan;
+                    var colour = Color.cyan;
+                    if (player.Is(ModifierEnum.Shy)) colour.a = Modifier.GetModifier<Shy>(player).Opacity;
+                    player.nameText().color = colour;
+                }
             }
 
-            infectButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
+            campaignButton.gameObject.SetActive((__instance.UseButton.isActiveAndEnabled || __instance.PetButton.isActiveAndEnabled)
                     && !MeetingHud.Instance && !PlayerControl.LocalPlayer.Data.IsDead
                     && AmongUsClient.Instance.GameState == InnerNet.InnerNetClient.GameStates.Started);
-            infectButton.SetCoolDown(role.CampaignTimer(), CustomGameOptions.CampaignCd);
+            campaignButton.SetCoolDown(role.CampaignTimer(), CustomGameOptions.CampaignCd);
 
             var notCampaigned = PlayerControl.AllPlayerControls.ToArray().Where(
                 player => !role.CampaignedPlayers.Contains(player.PlayerId)

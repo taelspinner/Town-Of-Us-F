@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TownOfUs.Extensions;
 
 namespace TownOfUs.Roles
 {
@@ -25,6 +26,7 @@ namespace TownOfUs.Roles
             AddToRoleHistory(RoleType);
             CampaignedPlayers.Add(player.PlayerId);
         }
+        public GameObject RevealButton = new GameObject();
 
         public float CampaignTimer()
         {

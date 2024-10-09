@@ -13,7 +13,7 @@ namespace TownOfUs.Modifiers.LoversMod
     {
         public static void Postfix(EndGameManager __instance)
         {
-            
+
             TextMeshPro text;
             Vector3 pos;
             if (Role.NobodyWins)
@@ -26,7 +26,7 @@ namespace TownOfUs.Modifiers.LoversMod
                 pos = __instance.WinText.transform.localPosition;
                 pos.y = 1.5f;
                 text.transform.position = pos;
-//				text.scale = 0.5f;
+//                text.scale = 0.5f;
                 return;
             }
 
@@ -65,7 +65,7 @@ namespace TownOfUs.Modifiers.LoversMod
             pos = __instance.WinText.transform.localPosition;
             pos.y = 1.5f;
             text.transform.position = pos;
-//			text.scale = 1f;
+//            text.scale = 1f;
         }
     }
 }
