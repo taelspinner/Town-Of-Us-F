@@ -4,33 +4,26 @@ using Object = UnityEngine.Object;
 using System.Linq;
 using TMPro;
 using Reactor.Utilities;
-using Reactor.Utilities.Extensions;
 using System.Collections.Generic;
 using TownOfUs.Patches;
 using System.Collections;
-using TownOfUs.Extensions;
 using TownOfUs.CrewmateRoles.MedicMod;
+using TownOfUs.Extensions;
+using TownOfUs.Patches.NeutralRoles;
 
 namespace TownOfUs.Roles
 {
     public class Transporter : Role
     {
         public DateTime LastTransported { get; set; }
-
-        public bool PressedButton;
-        public bool MenuClick;
-        public bool LastMouse;
-
-        public PoolableBehavior HighlightedPlayer;
-        public int PlayerIndex;
-        public ChatController TransportList { get; set; }
         public PlayerControl TransportPlayer1 { get; set; }
         public PlayerControl TransportPlayer2 { get; set; }
 
         public int UsesLeft;
         public TextMeshPro UsesText;
 
-        public bool ButtonUsable => UsesLeft != 0;
+        public bool ButtonUsable => UsesLeft != 0 && !SwappingMenus;
+        public bool SwappingMenus = false;
 
         public Dictionary<byte, DateTime> UntransportablePlayers = new Dictionary<byte, DateTime>();
 
@@ -44,10 +37,6 @@ namespace TownOfUs.Roles
             RoleType = RoleEnum.Transporter;
             AddToRoleHistory(RoleType);
             Scale = 1.4f;
-            PressedButton = false;
-            MenuClick = false;
-            LastMouse = false;
-            TransportList = null;
             TransportPlayer1 = null;
             TransportPlayer2 = null;
             UsesLeft = CustomGameOptions.TransportMaxUses;
@@ -63,6 +52,7 @@ namespace TownOfUs.Roles
             return (num - (float)timeSpan.TotalMilliseconds) / 1000f;
         }
 
+<<<<<<< HEAD
         public void Update(HudManager __instance)
         {
             FixedUpdate(__instance);
@@ -278,6 +268,8 @@ namespace TownOfUs.Roles
             }
         }
 
+=======
+>>>>>>> 7dbccf8487dfd3e84563a57db68b341c62b09e8a
         public static IEnumerator TransportPlayers(byte player1, byte player2, bool die)
         {
             var TP1 = Utils.PlayerById(player1);
@@ -318,14 +310,13 @@ namespace TownOfUs.Roles
                 TP1.MyPhysics.ResetMoveState();
                 TP2.MyPhysics.ResetMoveState();
                 var TempPosition = TP1.GetTruePosition();
-                var TempFacing = TP1.myRend().flipX;
+                TP1.transform.position = new Vector2(TP2.GetTruePosition().x, TP2.GetTruePosition().y + 0.3636f);
                 TP1.NetTransform.SnapTo(new Vector2(TP2.GetTruePosition().x, TP2.GetTruePosition().y + 0.3636f));
-                TP1.myRend().flipX = TP2.myRend().flipX;
                 if (die) Utils.MurderPlayer(TP1, TP2, true);
                 else
                 {
+                    TP2.transform.position = new Vector2(TempPosition.x, TempPosition.y + 0.3636f);
                     TP2.NetTransform.SnapTo(new Vector2(TempPosition.x, TempPosition.y + 0.3636f));
-                    TP2.myRend().flipX = TempFacing;
                 }
 
                 if (SubmergedCompatibility.isSubmerged())
@@ -349,6 +340,7 @@ namespace TownOfUs.Roles
                 TP2.MyPhysics.ResetMoveState();
                 var TempPosition = Player1Body.TruePosition;
                 Player1Body.transform.position = TP2.GetTruePosition();
+                TP2.transform.position = new Vector2(TempPosition.x, TempPosition.y + 0.3636f);
                 TP2.NetTransform.SnapTo(new Vector2(TempPosition.x, TempPosition.y + 0.3636f));
 
                 if (SubmergedCompatibility.isSubmerged())
@@ -366,6 +358,7 @@ namespace TownOfUs.Roles
                 StopDragging(Player2Body.ParentId);
                 TP1.MyPhysics.ResetMoveState();
                 var TempPosition = TP1.GetTruePosition();
+                TP1.transform.position = new Vector2(TP2.GetTruePosition().x, TP2.GetTruePosition().y + 0.3636f);
                 TP1.NetTransform.SnapTo(new Vector2(Player2Body.TruePosition.x, Player2Body.TruePosition.y + 0.3636f));
                 Player2Body.transform.position = TempPosition;
                 if (SubmergedCompatibility.isSubmerged())
@@ -411,6 +404,20 @@ namespace TownOfUs.Roles
 
         public void HandleMedicPlague(HudManager __instance)
         {
+            var abilityUsed = Utils.AbilityUsed(PlayerControl.LocalPlayer);
+            if (!abilityUsed) return;
+            if (TransportPlayer1.IsFortified())
+            {
+                Coroutines.Start(Utils.FlashCoroutine(Colors.Warden));
+                Utils.Rpc(CustomRPC.Fortify, (byte)1, TransportPlayer1.GetWarden().Player.PlayerId);
+                return;
+            }
+            else if (TransportPlayer2.IsFortified())
+            {
+                Coroutines.Start(Utils.FlashCoroutine(Colors.Warden));
+                Utils.Rpc(CustomRPC.Fortify, (byte)1, TransportPlayer2.GetWarden().Player.PlayerId);
+                return;
+            }
             if (!UntransportablePlayers.ContainsKey(TransportPlayer1.PlayerId) && !UntransportablePlayers.ContainsKey(TransportPlayer2.PlayerId))
             {
                 if (Player.IsInfected() || TransportPlayer1.IsInfected())
@@ -478,6 +485,46 @@ namespace TownOfUs.Roles
             {
                 __instance.StartCoroutine(Effects.SwayX(__instance.KillButton.transform));
             }
+        }
+
+        public IEnumerator OpenSecondMenu()
+        {
+            try
+            {
+                PlayerMenu.singleton.Menu.ForceClose();
+            }
+            catch
+            {
+
+            }
+            yield return (object)new WaitForSeconds(0.05f);
+            SwappingMenus = false;
+            if (MeetingHud.Instance || !PlayerControl.LocalPlayer.Is(RoleEnum.Transporter)) yield break;
+            List<byte> transportTargets = new List<byte>();
+            foreach (var player in PlayerControl.AllPlayerControls)
+            {
+                if (!player.Data.Disconnected && player != TransportPlayer1)
+                {
+                    if (!player.Data.IsDead) transportTargets.Add(player.PlayerId);
+                    else
+                    {
+                        foreach (var body in Object.FindObjectsOfType<DeadBody>())
+                        {
+                            if (body.ParentId == player.PlayerId) transportTargets.Add(player.PlayerId);
+                        }
+                    }
+                }
+            }
+            byte[] transporttargetIDs = transportTargets.ToArray();
+            var pk = new PlayerMenu((x) =>
+            {
+                TransportPlayer2 = x;
+                HandleMedicPlague(HudManager.Instance);
+            }, (y) =>
+            {
+                return transporttargetIDs.Contains(y.PlayerId);
+            });
+            Coroutines.Start(pk.Open(0f, true));
         }
     }
 }
