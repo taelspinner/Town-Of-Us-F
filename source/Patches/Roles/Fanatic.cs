@@ -56,24 +56,50 @@ namespace TownOfUs.Roles
 
         internal override bool NeutralWin(LogicGameFlowNormal __instance)
         {
-            if (Player.Data.IsDead || Player.Data.Disconnected) return true;
-            // Can't win when no Fanatics are alive
             var fanaticsAlive = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(RoleEnum.Fanatic)).ToList();
-            if (fanaticsAlive.Count == 0) return false;
-            // Can't win if another killer is still alive
-            if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
-                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling)) && !x.Is(RoleEnum.Fanatic)) > 0) return false;
-            // Can't win if other players still outnumber the Fanatics
-            var playersAlive = PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected);
-            if (fanaticsAlive.Count < (playersAlive / 2f)) return false;
-            // Can't win if Lovers should win instead
-            if (playersAlive < 4 && PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(ModifierEnum.Lover)) > 1) return false;
 
-            // Living Fanatics are equal to or greater in number than other players, no other killers are alive, and Lovers cannot win, so Fanatics win
-            FanaticWin();
-            Utils.EndGame();
-            return false;
+            if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
+                    PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
+                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling) || x.IsCrewKiller())) == 1)
+            {
+                VampWin();
+                Utils.EndGame();
+                return false;
+            }
+            else if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 4 &&
+                    PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
+                    (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling) || x.IsCrewKiller()) && !x.Is(RoleEnum.Fanatic)) == 0)
+            {
+                if (fanaticsAlive.Count == 1) return false;
+                foreach (var fanatic in fanaticsAlive)
+                {
+                    if (fanatic.IsLover()) return false;
+                }
+                VampWin();
+                Utils.EndGame();
+                return false;
+            }
+            else
+            {
+                if (fanaticsAlive.Count == 1 || fanaticsAlive.Count == 2) return false;
+                var alives = PlayerControl.AllPlayerControls.ToArray()
+                    .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
+                var killersAlive = PlayerControl.AllPlayerControls.ToArray()
+                    .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(RoleEnum.Fanatic) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralKilling) || x.IsCrewKiller())).ToList();
+                if (killersAlive.Count > 0) return false;
+                foreach (var fanatic in fanaticsAlive)
+                {
+                    if (fanatic.IsLover()) return false;
+                }
+                if (alives.Count <= 6)
+                {
+                    VampWin();
+                    Utils.EndGame();
+                    return false;
+                }
+                return false;
+            }
         }
 
         protected override void IntroPrefix(IntroCutscene._ShowTeam_d__38 __instance)
