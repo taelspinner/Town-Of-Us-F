@@ -53,9 +53,11 @@ namespace TownOfUs.Roles
             if (flag2) return 0;
             return (num - (float) timeSpan.TotalMilliseconds) / 1000f;
         }
-
-        internal override bool NeutralWin(LogicGameFlowNormal __instance)
+        
+        internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
+            if (Player.Data.IsDead || Player.Data.Disconnected) return true;
+
             var fanaticsAlive = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(RoleEnum.Fanatic)).ToList();
 
@@ -170,14 +172,6 @@ namespace TownOfUs.Roles
                 {
                     var transporterRole = GetRole<Transporter>(PlayerControl.LocalPlayer);
                     UnityEngine.Object.Destroy(transporterRole.UsesText);
-                    if (transporterRole.TransportList != null)
-                    {
-                        transporterRole.TransportList.Toggle();
-                        transporterRole.TransportList.SetVisible(false);
-                        transporterRole.TransportList = null;
-                        transporterRole.PressedButton = false;
-                        transporterRole.TransportPlayer1 = null;
-                    }
                 }
 
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Veteran))
@@ -206,8 +200,7 @@ namespace TownOfUs.Roles
                 if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial))
                 {
                     var aurialRole = GetRole<Aurial>(PlayerControl.LocalPlayer);
-                    aurialRole.NormalVision = true;
-                    SeeAll.AllToNormal();
+                    aurialRole.SenseArrows.Clear();
                     CameraEffect.singleton.materials.Clear();
                 }
 

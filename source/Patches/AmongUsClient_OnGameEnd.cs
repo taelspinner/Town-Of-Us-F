@@ -135,9 +135,9 @@ namespace TownOfUs
                     var merc = (Mercenary)role;
                     if (!merc.Player.Data.IsDead && !merc.Player.Data.Disconnected && merc.HasEnoughBrilders)
                     {
-                        var mercData = new WinningPlayerData(merc.Player.Data);
+                        var mercData = new CachedPlayerData(merc.Player.Data);
                         if (PlayerControl.LocalPlayer != merc.Player) mercData.IsYou = false;
-                        TempData.winners.Add(new WinningPlayerData(merc.Player.Data));
+                        EndGameResult.CachedWinners.Add(new CachedPlayerData(merc.Player.Data));
                     }
                 }
 
@@ -145,15 +145,15 @@ namespace TownOfUs
             }
             if (Role.MercOnlyWins)
             {
-                TempData.winners = new List<WinningPlayerData>();
+                EndGameResult.CachedWinners = new List<CachedPlayerData>();
                 foreach (var role in Role.GetRoles(RoleEnum.Mercenary))
                 {
                     var merc = (Mercenary)role;
                     if (!merc.Player.Data.IsDead && !merc.Player.Data.Disconnected && merc.HasEnoughBrilders)
                     {
-                        var mercData = new WinningPlayerData(merc.Player.Data);
+                        var mercData = new CachedPlayerData(merc.Player.Data);
                         if (PlayerControl.LocalPlayer != merc.Player) mercData.IsYou = false;
-                        TempData.winners.Add(new WinningPlayerData(merc.Player.Data));
+                        EndGameResult.CachedWinners.Add(new CachedPlayerData(merc.Player.Data));
                     }
                 }
 
@@ -220,10 +220,10 @@ namespace TownOfUs
                         var scav = (Scavenger)role;
                         if (scav.WonByDevouring)
                         {
-                            TempData.winners = new List<WinningPlayerData>();
-                            var scavData = new WinningPlayerData(scav.Player.Data);
+                            EndGameResult.CachedWinners = new List<CachedPlayerData>();
+                            var scavData = new CachedPlayerData(scav.Player.Data);
                             if (PlayerControl.LocalPlayer != scav.Player) scavData.IsYou = false;
-                            TempData.winners.Add(scavData);
+                            EndGameResult.CachedWinners.Add(scavData);
                             return;
                         }
                     }
@@ -278,13 +278,13 @@ namespace TownOfUs
 
             if (Role.FanaticsWin)
             {
-                TempData.winners = new List<WinningPlayerData>();
+                EndGameResult.CachedWinners = new List<CachedPlayerData>();
                 foreach (var role in Role.GetRoles(RoleEnum.Fanatic))
                 {
                     var fan = (Fanatic)role;
-                    var fanData = new WinningPlayerData(fan.Player.Data);
+                    var fanData = new CachedPlayerData(fan.Player.Data);
                     if (PlayerControl.LocalPlayer != fan.Player) fanData.IsYou = false;
-                    TempData.winners.Add(fanData);
+                    EndGameResult.CachedWinners.Add(fanData);
                 }
             }
 
@@ -377,11 +377,11 @@ namespace TownOfUs
                 var lwyr = (Lawyer)role;
                 if (!lwyr.TargetVotedOut && !lwyr.Player.Data.IsDead)
                 {
-                    var isImp = TempData.winners[0].IsImpostor;
-                    var lwyrWinData = new WinningPlayerData(lwyr.Player.Data);
+                    var isImp = EndGameResult.CachedWinners[0].IsImpostor;
+                    var lwyrWinData = new CachedPlayerData(lwyr.Player.Data);
                     if (isImp) lwyrWinData.IsImpostor = true;
                     if (PlayerControl.LocalPlayer != lwyr.Player) lwyrWinData.IsYou = false;
-                    TempData.winners.Add(lwyrWinData);
+                    EndGameResult.CachedWinners.Add(lwyrWinData);
                 }
             }
 
@@ -390,11 +390,11 @@ namespace TownOfUs
                 var merc = (Mercenary)role;
                 if (!merc.Player.Data.IsDead && !merc.Player.Data.Disconnected && merc.HasEnoughBrilders)
                 {
-                    var isImp = TempData.winners[0].IsImpostor;
-                    var mercWinData = new WinningPlayerData(merc.Player.Data);
+                    var isImp = EndGameResult.CachedWinners[0].IsImpostor;
+                    var mercWinData = new CachedPlayerData(merc.Player.Data);
                     if (isImp) mercWinData.IsImpostor = true;
                     if (PlayerControl.LocalPlayer != merc.Player) mercWinData.IsYou = false;
-                    TempData.winners.Add(mercWinData);
+                    EndGameResult.CachedWinners.Add(mercWinData);
                 }
             }
 

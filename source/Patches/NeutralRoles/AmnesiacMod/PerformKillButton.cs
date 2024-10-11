@@ -101,7 +101,6 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 case RoleEnum.Prosecutor:
                 case RoleEnum.Oracle:
                 case RoleEnum.Aurial:
-                case RoleEnum.Politician:
                 case RoleEnum.Warden:
                 case RoleEnum.Jailor:
 
@@ -558,7 +557,7 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
 
             else if (role == RoleEnum.Immortal && amnesiac.AmOwner)
             {
-                Utils.Camouflage();
+                Utils.GroupCamouflage();
             }
 
             else if (!(amnesiac.Is(RoleEnum.Altruist) || amnesiac.Is(RoleEnum.Amnesiac) || amnesiac.Is(Faction.Impostors)))

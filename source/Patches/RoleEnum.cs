@@ -21,6 +21,7 @@ namespace TownOfUs
         Vigilante,
         Haunter,
         Veteran,
+        VampireHunter,
         Amnesiac,
         Juggernaut,
         Tagger,
@@ -89,7 +90,7 @@ namespace TownOfUs
         Underdog,
         Frosty,
         SixthSense,
-        Shy
+        Shy,
         Vengeful
     }
 

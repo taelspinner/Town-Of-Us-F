@@ -4,7 +4,6 @@ using TownOfUs.Extensions;
 using TownOfUs.Roles;
 using TownOfUs.Roles.Modifiers;
 using UnityEngine;
-using TownOfUs.Extensions;
 
 namespace TownOfUs.CrewmateRoles.PoliticianMod
 {

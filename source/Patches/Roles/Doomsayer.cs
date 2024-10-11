@@ -5,6 +5,7 @@ using TownOfUs.Patches;
 using UnityEngine;
 using TownOfUs.NeutralRoles.ExecutionerMod;
 using TownOfUs.NeutralRoles.GuardianAngelMod;
+using TownOfUs.CrewmateRoles.VampireHunterMod;
 using System;
 
 namespace TownOfUs.Roles

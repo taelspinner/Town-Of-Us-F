@@ -38,8 +38,8 @@ namespace TownOfUs.Roles
             scavTeam.Add(PlayerControl.LocalPlayer);
             __instance.teamToShow = scavTeam;
         }
-
-        internal override bool NeutralWin(LogicGameFlowNormal __instance)
+        
+        internal override bool GameEnd(LogicGameFlowNormal __instance)
         {
             if (Player.Data.IsDead) return true;
             if (!CustomGameOptions.NeutralEvilWinEndsGame) return true;

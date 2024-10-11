@@ -11,9 +11,9 @@ namespace TownOfUs.Roles
 
         public readonly List<bool> ListOfActives = new List<bool>();
         public PlayerControl ImitatePlayer = null;
-        public List<RoleEnum> ImitatableRoles = [RoleEnum.Detective, RoleEnum.Investigator, RoleEnum.Mystic, RoleEnum.Seer, RoleEnum.Spy, RoleEnum.Tracker, RoleEnum.Sheriff,
+        public List<RoleEnum> ImitatableRoles = [RoleEnum.Detective, RoleEnum.Investigator, RoleEnum.Mystic, RoleEnum.Seer, RoleEnum.Spy, RoleEnum.Tagger, RoleEnum.Sheriff,
                             RoleEnum.Veteran, RoleEnum.Altruist, RoleEnum.Engineer, RoleEnum.Medium, RoleEnum.Transporter, RoleEnum.Trapper, RoleEnum.Medic, RoleEnum.Aurial,
-                            RoleEnum.Oracle, RoleEnum.Hunter, RoleEnum.Warden];
+                            RoleEnum.Oracle, RoleEnum.Hunter, RoleEnum.Warden, RoleEnum.Immortal];
 
         public List<RoleEnum> trappedPlayers = null;
         public PlayerControl confessingPlayer = null;

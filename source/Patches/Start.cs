@@ -84,7 +84,7 @@ namespace TownOfUs.Patches
 
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Immortal))
             {
-                Utils.Camouflage();
+                Utils.GroupCamouflage();
             }
 
             if (CustomGameOptions.CanStakeRoundOne)

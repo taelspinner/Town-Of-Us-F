@@ -100,8 +100,6 @@ namespace TownOfUs
         public static Sprite CampaignSprite;
         public static Sprite BodyguardSprite;
         public static Sprite CrimeSceneSprite;
-        public static Sprite CrimeSceneSprite;
-        public static Sprite CampaignSprite;
         public static Sprite FortifySprite;
         public static Sprite HypnotiseSprite;
         public static Sprite HysteriaSprite;
@@ -113,6 +111,7 @@ namespace TownOfUs
         public static Sprite SoulSprite;
         public static Sprite VigilanceSprite;
         public static Sprite IndoctrinateSprite;
+        public static Sprite StalkSprite;
 
         public static Sprite SettingsButtonSprite;
         public static Sprite CrewSettingsButtonSprite;

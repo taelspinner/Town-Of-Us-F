@@ -144,18 +144,6 @@ namespace TownOfUs.Modifiers.AssassinMod
                     ShowHideButtonsDoom.HideButtonsDoom(doomsayer);
                 }
 
-                if (player.Is(RoleEnum.Politician))
-                {
-                    var politician = Role.GetRole<Politician>(PlayerControl.LocalPlayer);
-                    politician.RevealButton.Destroy();
-                }
-
-                if (player.Is(RoleEnum.Mayor))
-                {
-                    var mayor = Role.GetRole<Mayor>(PlayerControl.LocalPlayer);
-                    mayor.RevealButton.Destroy();
-                }
-
                 if (player.Is(RoleEnum.Jailor))
                 {
                     var jailor = Role.GetRole<Jailor>(PlayerControl.LocalPlayer);

@@ -8,6 +8,8 @@ using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using TownOfUs.CrewmateRoles.MedicMod;
 using TownOfUs.CrewmateRoles.ImmortalMod;
+using TownOfUs.CrewmateRoles.ImitatorMod;
+using TownOfUs.CrewmateRoles.VampireHunterMod;
 using TownOfUs.Extensions;
 using TownOfUs.Patches;
 using TownOfUs.Roles;
@@ -74,7 +76,7 @@ namespace TownOfUs
         {
             if (!ImmortalFullyDead())
             {
-                DoCamouflage(player);
+                Camouflage(player);
                 return;
             }
             if (PlayerControl.LocalPlayer.IsHypnotised()) return;
@@ -696,15 +698,9 @@ namespace TownOfUs
             }
             var targetId = byte.MaxValue;
             if (target != null) targetId = target.PlayerId;
-            Rpc(CustomRPC.AbilityTrigger, player.PlayerId, targetId);
             if (PlayerControl.LocalPlayer.Is(ModifierEnum.SixthSense) && !PlayerControl.LocalPlayer.Data.IsDead && target == PlayerControl.LocalPlayer)
             {
                 Coroutines.Start(FlashCoroutine(Colors.SixthSense));
-            }
-            foreach (Role hunterRole in Role.GetRoles(RoleEnum.Hunter))
-            {
-                Hunter hunter = (Hunter)hunterRole;
-                if (hunter.StalkedPlayer == player) hunter.RpcCatchPlayer(player);
             }
             if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial) && !PlayerControl.LocalPlayer.Data.IsDead)
             {

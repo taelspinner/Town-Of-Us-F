@@ -32,8 +32,7 @@ namespace TownOfUs.NeutralRoles.VampireMod
                 .ToArray()
                 .Where(x => !x.Is(RoleEnum.Vampire) && !x.IsLover())
                 .ToList();
-            , allowVented: true);
-            else if (PlayerControl.LocalPlayer.IsLover() && CustomGameOptions.ImpLoverKillTeammate) Utils.SetTarget(ref role.ClosestPlayer, biteButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover()).ToList(), allowVented: true);
+            if (PlayerControl.LocalPlayer.IsLover() && CustomGameOptions.ImpLoverKillTeammate) Utils.SetTarget(ref role.ClosestPlayer, biteButton, float.NaN, PlayerControl.AllPlayerControls.ToArray().Where(x => !x.IsLover()).ToList(), allowVented: true);
             else if (PlayerControl.LocalPlayer.IsLover()) Utils.SetTarget(ref role.ClosestPlayer, biteButton, float.NaN, notVampireOrLover, allowVented: true);
             else Utils.SetTarget(ref role.ClosestPlayer, biteButton, float.NaN, notVampire, allowVented: true);
         }

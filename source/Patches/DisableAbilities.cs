@@ -108,9 +108,9 @@ namespace TownOfUs
                         engi.UsesText.color = Palette.DisabledClear;
                         engi.UsesText.material.SetFloat("_Desat", 1f);
                     }
-                    else if (PlayerControl.LocalPlayer.Is(RoleEnum.Tracker))
+                    else if (PlayerControl.LocalPlayer.Is(RoleEnum.Tagger))
                     {
-                        var track = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
+                        var track = Role.GetRole<Tagger>(PlayerControl.LocalPlayer);
                         track.UsesText.color = Palette.DisabledClear;
                         track.UsesText.material.SetFloat("_Desat", 1f);
                     }

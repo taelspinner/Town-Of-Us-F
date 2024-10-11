@@ -6,6 +6,7 @@ using UnityEngine;
 using TownOfUs.NeutralRoles.ExecutionerMod;
 using TownOfUs.NeutralRoles.GuardianAngelMod;
 using TownOfUs.Extensions;
+using System;
 
 namespace TownOfUs.Roles
 {

@@ -26,7 +26,6 @@ namespace TownOfUs.Roles
             AddToRoleHistory(RoleType);
             CampaignedPlayers.Add(player.PlayerId);
         }
-        public GameObject RevealButton = new GameObject();
 
         public float CampaignTimer()
         {

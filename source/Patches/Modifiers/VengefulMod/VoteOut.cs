@@ -34,9 +34,8 @@ namespace TownOfUs.NeutralRoles.VengefulMod
     {
         private static void Postfix(ExileController __instance)
         {
-            var exiled = __instance.exiled;
-            if (exiled == null) return;
-            var player = exiled.Object;
+            var player = __instance.initData.networkedPlayer?.Object;
+            if (player == null) return;
 
             if (player.Is(ModifierEnum.Vengeful))
             {

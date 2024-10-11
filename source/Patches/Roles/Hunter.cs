@@ -91,12 +91,20 @@ namespace TownOfUs.Roles
             StalkedPlayer = null;
         }
 
+        public void CatchPlayer(PlayerControl stalked)
+        {
+            if (StalkedPlayer != stalked) return;
+            RpcCatchPlayer(stalked);
+            Utils.Rpc(CustomRPC.HunterCatchPlayer, Player.PlayerId, stalked.PlayerId);
+        }
+
         public void RpcCatchPlayer(PlayerControl stalked)
         {
             if (PlayerControl.LocalPlayer.PlayerId == Player.PlayerId && !PlayerControl.LocalPlayer.Data.IsDead)
             {
                 Coroutines.Start(Utils.FlashCoroutine(Patches.Colors.Hunter));
             }
+            Utils.AbilityUsed(Player, stalked);
             CaughtPlayers.Add(stalked);
             StalkDuration = 0;
             StopStalking();

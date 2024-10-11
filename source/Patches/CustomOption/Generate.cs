@@ -27,7 +27,9 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption HunterOn;
         public static CustomNumberOption JailorOn;
         public static CustomNumberOption SheriffOn;
+        public static CustomNumberOption VampireHunterOn;
         public static CustomNumberOption VeteranOn;
+        public static CustomNumberOption VigilanteOn;
 
         public static CustomHeaderOption CrewSupportRoles;
         public static CustomNumberOption EngineerOn;
@@ -161,30 +163,6 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption VigilanteCount;
         public static CustomToggleOption AddArsonist;
         public static CustomToggleOption AddPlaguebearer;
-
-        public static CustomHeaderOption CultistSettings;
-        public static CustomNumberOption PoliticianCultistOn;
-        public static CustomNumberOption SeerCultistOn;
-        public static CustomNumberOption SheriffCultistOn;
-        public static CustomNumberOption SurvivorCultistOn;
-        public static CustomNumberOption LawyerCultistOn;
-        public static CustomNumberOption NumberOfSpecialRoles;
-        public static CustomNumberOption MaxChameleons;
-        public static CustomNumberOption MaxEngineers;
-        public static CustomNumberOption MaxInvestigators;
-        public static CustomNumberOption MaxMystics;
-        public static CustomNumberOption MaxSnitches;
-        public static CustomNumberOption MaxSpies;
-        public static CustomNumberOption MaxTransporters;
-        public static CustomNumberOption MaxVigilantes;
-        public static CustomNumberOption WhisperCooldown;
-        public static CustomNumberOption IncreasedCooldownPerWhisper;
-        public static CustomNumberOption WhisperRadius;
-        public static CustomNumberOption ConversionPercentage;
-        public static CustomNumberOption DecreasedPercentagePerConversion;
-        public static CustomNumberOption ReviveCooldown;
-        public static CustomNumberOption IncreasedCooldownPerRevive;
-        public static CustomNumberOption MaxReveals;
 
         public static CustomHeaderOption TaskTrackingSettings;
         public static CustomToggleOption SeeTasksDuringRound;
@@ -528,9 +506,6 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption AuraOuterRadius;
         public static CustomNumberOption SenseDuration;
 
-        public static CustomHeaderOption Politician;
-        public static CustomNumberOption CampaignCooldown;
-
         public static CustomHeaderOption Warden;
         public static CustomNumberOption FortifyCooldown;
 
@@ -637,8 +612,6 @@ namespace TownOfUs.CustomOption
             ImitatorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B3D94DFF>Imitator</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             MediumOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#A680FFFF>Medium</color>", 0f, 0f, 100f, 10f,
-                PercentFormat);
-            PoliticianOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#660099FF>Politician</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
             ProsecutorOn = new CustomNumberOption(num++, MultiMenu.crewmate, "<color=#B38000FF>Prosecutor</color>", 0f, 0f, 100f, 10f,
                 PercentFormat);
@@ -1105,11 +1078,6 @@ namespace TownOfUs.CustomOption
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Reveal The Medium To The Mediate Target", true);
             DeadRevealed =
                 new CustomStringOption(num++, MultiMenu.crewmate, "Who Is Revealed With Mediate", new[] { "Oldest Dead", "Newest Dead", "All Dead" });
-
-            Politician =
-                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#660099FF>Politician</color>");
-            CampaignCooldown =
-                new CustomNumberOption(num++, MultiMenu.crewmate, "Campaign Cooldown", 25f, 10f, 60f, 2.5f, CooldownFormat);
 
             Prosecutor =
                 new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#B38000FF>Prosecutor</color>");

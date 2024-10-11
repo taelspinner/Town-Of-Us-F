@@ -711,14 +711,6 @@ namespace TownOfUs
                         AddRevealButton.RemoveAssassin(mayorRole);
                         break;
 
-                    case CustomRPC.Elect:
-                        var politician = Utils.PlayerById(reader.ReadByte());
-                        Role.RoleDictionary.Remove(politician.PlayerId);
-                        var mayorRole2 = new Mayor(politician);
-                        mayorRole2.Revealed = true;
-                        AddRevealButton.RemoveAssassin(mayorRole2);
-                        break;
-
                     case CustomRPC.Prosecute:
                         var host = reader.ReadBoolean();
                         if (host && AmongUsClient.Instance.AmHost)
@@ -1303,25 +1295,6 @@ namespace TownOfUs
                         hunterRole.StalkedPlayer = stalked;
                         hunterRole.UsesLeft -= 1;
                         hunterRole.Stalk();
-                        break;
-                    case CustomRPC.AbilityTrigger:
-                        var abilityUser = Utils.PlayerById(reader.ReadByte());
-                        var abilitytargetId = reader.ReadByte();
-                        var abilitytarget = abilitytargetId == byte.MaxValue ? null : Utils.PlayerById(abilitytargetId);
-                        if (PlayerControl.LocalPlayer.Is(ModifierEnum.SixthSense) && !PlayerControl.LocalPlayer.Data.IsDead && abilitytarget == PlayerControl.LocalPlayer)
-                        {
-                            Coroutines.Start(Utils.FlashCoroutine(Colors.SixthSense));
-                        }
-                        foreach (Role hunterRole2 in Role.GetRoles(RoleEnum.Hunter))
-                        {
-                            Hunter hunter = (Hunter)hunterRole2;
-                            if (hunter.StalkedPlayer == abilityUser) hunter.RpcCatchPlayer(abilityUser);
-                        }
-                        if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial) && !PlayerControl.LocalPlayer.Data.IsDead)
-                        {
-                            var aurial = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
-                            Coroutines.Start(aurial.Sense(abilityUser));
-                        }
                         break;
                     case CustomRPC.Campaign:
                         var pn = Role.GetRole<Politician>(Utils.PlayerById(reader.ReadByte()));

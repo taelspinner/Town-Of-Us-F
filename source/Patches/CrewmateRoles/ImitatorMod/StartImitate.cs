@@ -109,7 +109,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
             if (imitatorRole == RoleEnum.Immortal)
             {
                 new Immortal(ImitatingPlayer);
-                if(ImitatingPlayer.AmOwner) Utils.Camouflage();
+                if(ImitatingPlayer.AmOwner) Utils.GroupCamouflage();
             }
             if (imitatorRole == RoleEnum.Engineer)
             {
@@ -169,12 +169,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                 }
                 vh.AddedStakes = true;
             }
-            if (imitatorRole == RoleEnum.Aurial)
-            {
-                var aurial = new Aurial(ImitatingPlayer);
-                aurial.CannotSeeDelay = DateTime.UtcNow;
-                aurial.Loaded = true;
-            }
+            if (imitatorRole == RoleEnum.Aurial) new Aurial(ImitatingPlayer);
 
             var newRole = Role.GetRole(ImitatingPlayer);
             newRole.RemoveFromRoleHistory(newRole.RoleType);
