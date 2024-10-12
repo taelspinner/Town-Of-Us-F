@@ -229,6 +229,9 @@ namespace TownOfUs
             neutRoles.AddRange(NeutralKillingRoles);
             // Roles are not, at this point, shuffled yet.
 
+            if (NeutralKillingRoles.Contains((typeof(Vampire), CustomGameOptions.VampireOn, true)) && CustomGameOptions.VampireHunterOn > 0)
+                CrewmateRoles.Add((typeof(VampireHunter), CustomGameOptions.VampireHunterOn, true));
+
             // In All/Any mode, there is at least one neutral and one crewmate, but duplicates are allowed and probability is ignored.
             if (CustomGameOptions.GameMode == GameMode.AllAny)
             {
@@ -1346,6 +1349,20 @@ namespace TownOfUs
                         var fanatic = Utils.PlayerById(reader.ReadByte());
                         var convert = Utils.PlayerById(reader.ReadByte());
                         Role.GetRole<Fanatic>(fanatic).ConvertPlayer(convert);
+                        break;
+                    case CustomRPC.AbilityTrigger:
+                        var abilityUser = Utils.PlayerById(reader.ReadByte());
+                        var abilitytargetId = reader.ReadByte();
+                        var abilitytarget = abilitytargetId == byte.MaxValue ? null : Utils.PlayerById(abilitytargetId);
+                        if (PlayerControl.LocalPlayer.Is(ModifierEnum.SixthSense) && !PlayerControl.LocalPlayer.Data.IsDead && abilitytarget == PlayerControl.LocalPlayer)
+                        {
+                            Coroutines.Start(Utils.FlashCoroutine(Colors.SixthSense));
+                        }
+                        if (PlayerControl.LocalPlayer.Is(RoleEnum.Aurial) && !PlayerControl.LocalPlayer.Data.IsDead)
+                        {
+                            var aurial = Role.GetRole<Aurial>(PlayerControl.LocalPlayer);
+                            Coroutines.Start(aurial.Sense(abilityUser));
+                        }
                         break;
                 }
             }

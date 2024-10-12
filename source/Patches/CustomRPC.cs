@@ -92,6 +92,7 @@ namespace TownOfUs
         Hypnotise,
         Jail,
         Collect,
+        AbilityTrigger,
 
         BypassKill,
         BypassMultiKill,

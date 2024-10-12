@@ -698,6 +698,7 @@ namespace TownOfUs
             }
             var targetId = byte.MaxValue;
             if (target != null) targetId = target.PlayerId;
+            Rpc(CustomRPC.AbilityTrigger, player.PlayerId, targetId);
             if (PlayerControl.LocalPlayer.Is(ModifierEnum.SixthSense) && !PlayerControl.LocalPlayer.Data.IsDead && target == PlayerControl.LocalPlayer)
             {
                 Coroutines.Start(FlashCoroutine(Colors.SixthSense));
@@ -875,6 +876,12 @@ namespace TownOfUs
                         (target.Is(Faction.NeutralEvil) && CustomGameOptions.SheriffKillsNE) ||
                         (target.Is(Faction.NeutralKilling) && CustomGameOptions.SheriffKillsNK)) sheriff.CorrectKills += 1;
                     else if (killer == target) sheriff.IncorrectKills += 1;
+                }
+
+                if (killer.Is(RoleEnum.VampireHunter))
+                {
+                    var vh = Role.GetRole<VampireHunter>(killer);
+                    if (killer != target) vh.CorrectKills += 1;
                 }
 
                 if (killer.Is(RoleEnum.Veteran))
