@@ -53,7 +53,7 @@ namespace TownOfUs.CustomOption
 
                 var panels = GameObject.FindObjectsOfType<ViewSettingsInfoPanel>();
                 foreach (var panel in panels) {
-                    if (panel.titleText.text == customOption.Name)
+                    if (panel.titleText.text == customOption.Name && customOption.Type != CustomOptionType.Header)
                     {
                         panel.SetInfo(StringNames.ImpostorsCategory, customOption.ToString(), 61);
                         panel.titleText.text = customOption.Name;

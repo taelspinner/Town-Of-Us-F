@@ -22,6 +22,7 @@ namespace TownOfUs.NeutraleRoles.SoulCollectorMod
             foreach (var role in Role.GetRoles(RoleEnum.SoulCollector))
             {
                 var sc = (SoulCollector)role;
+                if (sc.Player.Data.IsDead || sc.Player.Data.Disconnected) continue;
                 if (CustomGameOptions.PassiveSoulCollection) sc.SoulsCollected += 1;
                 if (sc.SoulsCollected >= CustomGameOptions.SoulsToWin)
                 {

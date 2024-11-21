@@ -76,6 +76,7 @@ namespace TownOfUs
         Hypnotise,
         Jail,
         Collect,
+        Retribution,
 
         BypassKill,
         BypassMultiKill,

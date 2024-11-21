@@ -174,6 +174,7 @@ namespace TownOfUs.CustomOption
         public static CustomNumberOption HunterStalkCd;
         public static CustomNumberOption HunterStalkDuration;
         public static CustomNumberOption HunterStalkUses;
+        public static CustomToggleOption RetributionOnVote;
         public static CustomToggleOption HunterBodyReport;
 
         public static CustomHeaderOption Engineer;
@@ -797,7 +798,7 @@ namespace TownOfUs.CustomOption
                     CooldownFormat);
 
             Haunter =
-                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#d3d3d3FF>Haunter</color>");
+                new CustomHeaderOption(num++, MultiMenu.crewmate, "<color=#D3D3D3FF>Haunter</color>");
             HaunterTasksRemainingClicked =
                  new CustomNumberOption(num++, MultiMenu.crewmate, "Tasks Remaining When Haunter Can Be Clicked", 5, 1, 15, 1);
             HaunterTasksRemainingAlert =
@@ -893,6 +894,8 @@ namespace TownOfUs.CustomOption
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Hunter Stalk Duration", 25f, 5f, 60f, 2.5f, CooldownFormat);
             HunterStalkUses =
                 new CustomNumberOption(num++, MultiMenu.crewmate, "Maximum Stalk Uses", 5, 1, 15, 1);
+            RetributionOnVote =
+                new CustomToggleOption(num++, MultiMenu.crewmate, "Hunter Kills Last Voter If Voted Out", false);
             HunterBodyReport =
                 new CustomToggleOption(num++, MultiMenu.crewmate, "Hunter Can Report Who They've Killed");
 

@@ -16,6 +16,18 @@
     "InternalVersions": {
       "50607300": "2024.9.4"
     },
+    "ModVersion": "5.1.0"
+  },
+  {
+    "InternalVersions": {
+      "50607300": "2024.9.4"
+    },
     "ModVersion": "5.1.1"
+  },
+  {
+    "InternalVersions": {
+      "50614900": "2024.10.29"
+    },
+    "ModVersion": "5.1.2"
   }
 ]

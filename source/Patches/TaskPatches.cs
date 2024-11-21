@@ -67,5 +67,14 @@ namespace TownOfUs
                 return true;
             }
         }
+
+        [HarmonyPatch(typeof(PlayerControl), nameof(PlayerControl.CompleteTask))]
+        public class CompleteTask
+        {
+            public static void Postfix(PlayerControl __instance)
+            {
+                if (__instance.Is(RoleEnum.Haunter) || !__instance.Is(Faction.Crewmates)) GameData.Instance.CompletedTasks--;
+            }
+        }
     }
 }

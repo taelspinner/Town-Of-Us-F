@@ -113,12 +113,18 @@ namespace TownOfUs.Roles
 
         internal virtual bool ColorCriteria()
         {
-            return SelfCriteria() || DeadCriteria() || ((ImpostorCriteria() || VampireCriteria() || RoleCriteria() || GuardianAngelCriteria()) && (!PlayerControl.LocalPlayer.IsHypnotised() || MeetingHud.Instance));
+            return SelfCriteria() || DeadCriteria() || ((ColourImpostorCriteria() || VampireCriteria() || RoleCriteria() || GuardianAngelCriteria()) && (!PlayerControl.LocalPlayer.IsHypnotised() || MeetingHud.Instance));
         }
 
         internal virtual bool DeadCriteria()
         {
             if (PlayerControl.LocalPlayer.Data.IsDead && CustomGameOptions.DeadSeeRoles) return Utils.ShowDeadBodies;
+            return false;
+        }
+
+        internal virtual bool ColourImpostorCriteria()
+        {
+            if (Faction == Faction.Impostors && PlayerControl.LocalPlayer.Data.IsImpostor()) return true;
             return false;
         }
 
@@ -270,7 +276,7 @@ namespace TownOfUs.Roles
 
         protected virtual string NameText(bool revealTasks, bool revealRole, bool revealModifier, bool revealLover, PlayerVoteArea player = null)
         {
-            if (PlayerControl.LocalPlayer.IsHypnotised() && Player.GetCustomOutfitType() == CustomPlayerOutfitType.Morph) return PlayerControl.LocalPlayer.GetDefaultOutfit().PlayerName;
+            if (PlayerControl.LocalPlayer.IsHypnotised() && Player.GetCustomOutfitType() == CustomPlayerOutfitType.Morph && player == null) return PlayerControl.LocalPlayer.GetDefaultOutfit().PlayerName;
             else if (((CamouflageUnCamouflage.IsCamoed && !PlayerControl.LocalPlayer.IsHypnotised()) || (PlayerControl.LocalPlayer.IsHypnotised() && PlayerControl.LocalPlayer != Player)) && player == null) return "";
 
             if (Player == null) return "";
@@ -813,9 +819,6 @@ namespace TownOfUs.Roles
         [HarmonyPatch(typeof(HudManager), nameof(HudManager.Update))]
         public static class HudManager_Update
         {
-            private static Vector3 oldScale = Vector3.zero;
-            private static Vector3 oldPosition = Vector3.zero;
-
             private static void UpdateMeeting(MeetingHud __instance)
             {
                 foreach (var player in __instance.playerStates)
@@ -823,7 +826,7 @@ namespace TownOfUs.Roles
                     player.ColorBlindName.transform.localPosition = new Vector3(-0.93f, -0.2f, -0.1f);
 
                     var role = GetRole(player);
-                    if (role != null && role.Criteria())
+                    if (role != null)
                     {
                         bool selfFlag = role.SelfCriteria();
                         bool deadFlag = role.DeadCriteria();
@@ -895,8 +898,6 @@ namespace TownOfUs.Roles
                                 player.nameText().color = role.Color;
                         }
                     }
-
-                    if (player.Data != null && PlayerControl.LocalPlayer.Data.IsImpostor() && player.Data.IsImpostor()) continue;
                 }
             }
         }

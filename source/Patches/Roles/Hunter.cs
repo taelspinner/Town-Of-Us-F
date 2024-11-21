@@ -27,6 +27,7 @@ namespace TownOfUs.Roles
         public PlayerControl ClosestPlayer;
         public PlayerControl ClosestStalkPlayer;
         public PlayerControl StalkedPlayer;
+        public PlayerControl LastVoted;
         public List<PlayerControl> CaughtPlayers = new List<PlayerControl>();
         public bool Enabled { get; set; }
         public DateTime LastStalked { get; set; }

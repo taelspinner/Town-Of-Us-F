@@ -8,8 +8,9 @@ using System.Collections.Generic;
 using TownOfUs.Patches;
 using System.Collections;
 using TownOfUs.CrewmateRoles.MedicMod;
-using TownOfUs.Extensions;
 using TownOfUs.Patches.NeutralRoles;
+using TownOfUs.Roles.Modifiers;
+using TownOfUs.Modifiers.ShyMod;
 
 namespace TownOfUs.Roles
 {
@@ -68,6 +69,20 @@ namespace TownOfUs.Roles
             {
                 foreach (var body in deadBodies) if (body.ParentId == TP2.PlayerId) Player2Body = body;
                 if (Player2Body == null) yield break;
+            }
+            if (TP1.Is(ModifierEnum.Shy))
+            {
+                var shy = Modifier.GetModifier<Shy>(TP1);
+                shy.Opacity = 1f;
+                HudManagerUpdate.SetVisiblity(TP1, shy.Opacity);
+                shy.Moving = true;
+            }
+            if (TP2.Is(ModifierEnum.Shy))
+            {
+                var shy = Modifier.GetModifier<Shy>(TP2);
+                shy.Opacity = 1f;
+                HudManagerUpdate.SetVisiblity(TP2, shy.Opacity);
+                shy.Moving = true;
             }
 
             if (TP1.inVent && PlayerControl.LocalPlayer.PlayerId == TP1.PlayerId)

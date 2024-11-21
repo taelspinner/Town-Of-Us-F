@@ -25,7 +25,6 @@ using Reactor.Networking.Extensions;
 using TownOfUs.CrewmateRoles.DetectiveMod;
 using TownOfUs.NeutralRoles.SoulCollectorMod;
 using static TownOfUs.Roles.Glitch;
-using UnityEngine.Rendering;
 using TownOfUs.Patches.NeutralRoles;
 
 namespace TownOfUs
@@ -669,6 +668,14 @@ namespace TownOfUs
             if (data != null && !data.IsDead)
             {
                 if (ShowRoundOneShield.DiedFirst == "") ShowRoundOneShield.DiedFirst = target.GetDefaultOutfit().PlayerName;
+
+                if (killer.Is(ModifierEnum.Shy))
+                {
+                    var shy = Modifier.GetModifier<Shy>(killer);
+                    shy.Opacity = 1f;
+                    Modifiers.ShyMod.HudManagerUpdate.SetVisiblity(killer, shy.Opacity);
+                    shy.Moving = true;
+                }
 
                 if (target.Is(RoleEnum.Jailor))
                 {
