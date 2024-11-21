@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Il2CppSystem.Collections.Generic;
 using TownOfUs.Extensions;
+using TownOfUs.Roles.Modifiers;
 
 namespace TownOfUs.Roles
 {
@@ -36,8 +37,10 @@ namespace TownOfUs.Roles
         {
             if (Player.Data.IsDead || Player.Data.Disconnected) return true;
 
-            var vampsAlives = PlayerControl.AllPlayerControls.ToArray()
+            var vampsAlive = PlayerControl.AllPlayerControls.ToArray()
                 .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(RoleEnum.Vampire)).ToList();
+            var loversAlive = PlayerControl.AllPlayerControls.ToArray()
+                .Where(x => !x.Data.IsDead && !x.Data.Disconnected && x.Is(ModifierEnum.Lover)).ToList();
 
             if (PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) <= 2 &&
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
@@ -51,27 +54,21 @@ namespace TownOfUs.Roles
                     PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected &&
                     (x.Data.IsImpostor() || x.Is(Faction.NeutralKilling) || x.IsCrewKiller()) && !x.Is(RoleEnum.Vampire)) == 0)
             {
-                if (vampsAlives.Count == 1) return false;
-                foreach (var vamp in vampsAlives)
-                {
-                    if (vamp.IsLover()) return false;
-                }
+                if (vampsAlive.Count == 1) return false;
+                else if (loversAlive.Count == 2 && PlayerControl.AllPlayerControls.ToArray().Count(x => !x.Data.IsDead && !x.Data.Disconnected) == 4) return false;
                 VampWin();
                 Utils.EndGame();
                 return false;
             }
             else
             {
-                if (vampsAlives.Count == 1 || vampsAlives.Count == 2) return false;
+                if (vampsAlive.Count == 1 || vampsAlive.Count == 2) return false;
                 var alives = PlayerControl.AllPlayerControls.ToArray()
                     .Where(x => !x.Data.IsDead && !x.Data.Disconnected).ToList();
                 var killersAlive = PlayerControl.AllPlayerControls.ToArray()
                     .Where(x => !x.Data.IsDead && !x.Data.Disconnected && !x.Is(RoleEnum.Vampire) && (x.Is(Faction.Impostors) || x.Is(Faction.NeutralKilling) || x.IsCrewKiller())).ToList();
                 if (killersAlive.Count > 0) return false;
-                foreach (var vamp in vampsAlives)
-                {
-                    if (vamp.IsLover()) return false;
-                }
+                if (loversAlive.Count == 2) return false;
                 if (alives.Count <= 6)
                 {
                     VampWin();

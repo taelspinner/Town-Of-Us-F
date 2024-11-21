@@ -23,11 +23,12 @@ namespace TownOfUs.CrewmateRoles.JailorMod
                         else if (chatText.ToLower().StartsWith("/ jail")) chatText = chatText[6..];
                         else if (chatText.ToLower().StartsWith("/ jail ")) chatText = chatText[7..];
                         JailorMessage = true;
-                        if (sourcePlayer != PlayerControl.LocalPlayer && PlayerControl.LocalPlayer.IsJailed()) sourcePlayer = PlayerControl.LocalPlayer;
+                        if (sourcePlayer != PlayerControl.LocalPlayer && PlayerControl.LocalPlayer.IsJailed() && !sourcePlayer.Data.IsDead) sourcePlayer = PlayerControl.LocalPlayer;
                         return true;
                     }
                     else return false;
                 }
+                if (chatText.ToLower().StartsWith("/")) return false;
                 if (sourcePlayer.IsJailed() && MeetingHud.Instance)
                 {
                     if (PlayerControl.LocalPlayer == sourcePlayer || PlayerControl.LocalPlayer.Is(RoleEnum.Jailor)) return true;

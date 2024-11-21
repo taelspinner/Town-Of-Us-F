@@ -25,7 +25,7 @@ namespace TownOfUs.CrewmateRoles.TransporterMod
             {
                 try
                 {
-                    PlayerMenu.singleton.Menu.Close();
+                    PlayerMenu.singleton.Menu.ForceClose();
                 }
                 catch {
                     role.TransportPlayer1 = null;

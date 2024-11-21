@@ -588,7 +588,7 @@ namespace TownOfUs.CustomOption
                 {
                     if (option.Type == CustomOptionType.Header)
                     {
-                        if (settingsThisHeader % 2 != 0) num -= 0.6f;
+                        if (settingsThisHeader % 2 != 0) num -= 0.85f;
                         CategoryHeaderMasked header = UnityEngine.Object.Instantiate<CategoryHeaderMasked>(__instance.categoryHeaderOrigin);
                         header.SetHeader(StringNames.ImpostorsCategory, 61);
                         header.Title.text = option.Name;
@@ -596,7 +596,7 @@ namespace TownOfUs.CustomOption
                         header.transform.localScale = Vector3.one;
                         header.transform.localPosition = new Vector3(-9.8f, num, -2f);
                         __instance.settingsInfo.Add(header.gameObject);
-                        num -= 0.85f;
+                        num -= 1f;
                         headingCount += 1;
                         settingsThisHeader = 0;
                         continue;
@@ -610,7 +610,7 @@ namespace TownOfUs.CustomOption
                         if (settingsThisHeader % 2 != 0)
                         {
                             panel.transform.localPosition = new Vector3(-3f, num, -2f);
-                            num -= 0.6f;
+                            num -= 0.85f;
                         }
                         else
                         {
@@ -624,7 +624,7 @@ namespace TownOfUs.CustomOption
                     }
                 }
 
-                float spacing = (headingCount * 0.85f + settingRowCount * 0.6f + 0.5f) / (headingCount + settingRowCount);
+                float spacing = (headingCount * 1f + settingRowCount * 0.85f + 2f) / (headingCount + settingRowCount);
                 __instance.scrollBar.CalculateAndSetYBounds((float)(__instance.settingsInfo.Count + headingCount + settingRowCount), 4f, 6f, spacing);
             }
         }

@@ -41,6 +41,9 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
+| 2024.10.29s & 2024.10.29e | v5.1.2 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.1.2/ToU.v5.1.2.zip) |
+| 2024.9.4s & 2024.9.4e | v5.1.1 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.1.1/ToU.v5.1.1.zip) |
+| 2024.9.4s & 2024.9.4e | v5.1.0 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.1.0/ToU.v5.1.0.zip) |
 | 2024.3.5s & 2024.3.5e | v5.0.4 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.4/ToU.v5.0.4.zip) |
 | 2023.11.28s & 2023.11.28e | v5.0.3 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.3/ToU.v5.0.3.zip) |
 | 2023.7.12s & 2023.7.12e | v5.0.2 | [Download](https://github.com/eDonnes124/Town-Of-Us/releases/download/v5.0.2/ToU.v5.0.2.zip) |
@@ -107,15 +110,14 @@ Join our [Discord](https://discord.gg/ugyc4EVUYZ) if you have any problems or wa
 <details>
   <summary> Changelog </summary>
   <details>
-  <summary> v5.0.4 </summary>
-  <ul> <li>Compatibility with the new Among Us version v2024.3.5</li> </ul>
-  <ul> <li>Added ghosts ignore tasks option</li> </ul>
-  <ul> <li>Hide vanilla roles in hudstring and its tab, courtesy of @whichtwix</li> </ul>
-  <ul> <li>April fools options, courtesy of @whichtwix</li> </ul>
-  <ul> <li>Vampire Remains Vampire When Remembered, courtesy of @Loons-Loons/@Loonie-Toons</li> </ul>
-  <ul> <li>Hats system standardised to Unity Addressables</li> </ul>
-  <ul> <li>New Role: Hunter, courtesy of @fariparedes</li> </ul>
-  <ul> <li>Modified updater, courtesy of @whichtwix</li> </ul>
+  <summary> v5.1.2 </summary>
+  <ul> <li>Compatibility with the new Among Us version v2024.10.29</li> </ul>
+  <ul> <li>Minor Bug Fixes</li> </ul>
+  <ul> <li>Added Retribution back to Hunter as a setting</li> </ul>
+  </details>
+  <details>
+  <summary> v5.1.1 </summary>
+  <ul> <li>Hotfix Versioning Issue</li> </ul>
   </details>
   <details>
   <summary> v5.0.3 </summary>
@@ -1011,6 +1013,7 @@ however the Hunter may only execute players who have given them probable cause.
 | Hunter Stalk Cooldown | The cooldown of the Hunter's Stalk button | Number | 10s |
 | Hunter Stalk Duration | The duration of the Hunter's Stalk | Number | 25s |
 | Maximum Stalk Uses | Maximum number of times a Hunter can Stalk | Number | 5 |
+| Hunter Kills Last Voter If Voted Out |  Whether the Hunter kills the last person that votes them if they are voted out  | Toggle | False |
 | Hunter Can Report Who They've Killed |  Whether the Hunter is able to report their own kills | Toggle | True |
 
 -----------------------

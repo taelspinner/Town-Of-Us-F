@@ -39,6 +39,7 @@ using TownOfUs.CrewmateRoles.MercenaryMod;
 using TownOfUs.Patches.NeutralRoles;
 using TownOfUs.ImpostorRoles.BomberMod;
 using TownOfUs.NeutralRoles.LawyerMod;
+using TownOfUs.CrewmateRoles.HunterMod;
 
 namespace TownOfUs
 {
@@ -440,7 +441,7 @@ namespace TownOfUs
                 Utils.Rpc(CustomRPC.SetPhantom, byte.MaxValue);
             }
 
-            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Politician) && !x.Is(RoleEnum.Prosecutor) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Vigilante) && x != SetTraitor.WillBeTraitor).ToList();
+            var exeTargets = PlayerControl.AllPlayerControls.ToArray().Where(x => x.Is(Faction.Crewmates) && !x.Is(ModifierEnum.Lover) && !x.Is(RoleEnum.Politician) && !x.Is(RoleEnum.Prosecutor) && !x.Is(RoleEnum.Swapper) && !x.Is(RoleEnum.Vigilante) && !x.Is(RoleEnum.Jailor) && x != SetTraitor.WillBeTraitor).ToList();
             foreach (var role in Role.GetRoles(RoleEnum.Executioner))
             {
                 var exe = (Executioner)role;
@@ -763,7 +764,19 @@ namespace TownOfUs
                         readByte2 = reader.ReadByte();
                         var amnesiac = Utils.PlayerById(readByte1);
                         var other = Utils.PlayerById(readByte2);
-                        PerformKillButton.Remember(Role.GetRole<Amnesiac>(amnesiac), other);
+                        switch (reader.ReadByte()) {
+                            case 0: // start
+                                if (AmongUsClient.Instance.AmHost && amnesiac.Is(RoleEnum.Amnesiac))
+                                {
+                                    Utils.Rpc(CustomRPC.Remember, amnesiac.PlayerId, other.PlayerId, (byte)1);
+                                    PerformKillButton.Remember(Role.GetRole<Amnesiac>(amnesiac), other);
+                                }
+                                break;
+                            case 1: // end
+                            default:
+                                PerformKillButton.Remember(Role.GetRole<Amnesiac>(amnesiac), other);
+                                break;
+                        }
                         break;
                     case CustomRPC.Protect:
                         readByte1 = reader.ReadByte();
@@ -952,6 +965,11 @@ namespace TownOfUs
                     case CustomRPC.Bless:
                         var oracle2 = Role.GetRole<Oracle>(Utils.PlayerById(reader.ReadByte()));
                         oracle2.SavedConfessor = true;
+                        break;
+                    case CustomRPC.Retribution:
+                        var hunter2 = Role.GetRole<Hunter>(Utils.PlayerById(reader.ReadByte()));
+                        var hunterLastVoted = Utils.PlayerById(reader.ReadByte());
+                        Retribution.MurderPlayer(hunter2, hunterLastVoted);
                         break;
                     case CustomRPC.ExecutionerToJester:
                         TargetColor.ExeToJes(Utils.PlayerById(reader.ReadByte()));

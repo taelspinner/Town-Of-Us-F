@@ -49,9 +49,13 @@ namespace TownOfUs.NeutralRoles.AmnesiacMod
                 foreach (var pn in Role.GetRoles(RoleEnum.Politician)) ((Politician)pn).RpcSpreadCampaign(player, role.Player);
             }
 
-            Utils.Rpc(CustomRPC.Remember, PlayerControl.LocalPlayer.PlayerId, playerId);
+            if (AmongUsClient.Instance.AmHost)
+            {
+                Utils.Rpc(CustomRPC.Remember, PlayerControl.LocalPlayer.PlayerId, playerId, (byte)1);
+                Remember(role, player);
+            }
+            else Utils.Rpc(CustomRPC.Remember, PlayerControl.LocalPlayer.PlayerId, playerId, (byte)0);
 
-            Remember(role, player);
             return false;
         }
 
